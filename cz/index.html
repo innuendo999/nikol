@@ -49,19 +49,10 @@
         <nav class="ann-main-menu">
             <ul>
                 <li class="active"><a href='/'>Home</a></li>
-                <li><a href='/about/'>About Me</a></li>
-                <!--
-                <li class="ann-sub"><a href="#">Menu</a>
-                    <ul>
-                        <li><a href="#">Dropdown Menu</a></li>
-                        <li><a href="#">Dropdown Menu</a></li>
-                    </ul>
-                </li> 
-                -->
-                <li><a href='/services/'>Services</a></li>
-                <li><a href='/portfolio/'>Portfolio</a></li>
-                <li><a href='/blog/'>Blog</a></li>
-                <li><a href='/contact/'>Contact</a></li>
+                <li><a href='#'>About Me</a></li>
+                <li><a href='#'>Services</a></li>
+                <li><a href='#'>Portfolio</a></li>
+                <li><a href='#'>Contact</a></li>
             </ul>
         </nav>
         <!-- Bottom -->
@@ -167,6 +158,116 @@
                 </div>
             </div>
         </section>
+
+        <!-- Portfolio -->
+        <section class="ann-portfolio-page-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="ann-blog-items ann-single-post">
+                            <div class="entry-thumb"> <img src="/img/blog/post.jpg" alt="blog post"> </div>
+                            <div class="ann-page-content mb-20">
+                                <h2>Portfolio</h2> </div>
+                            <p>Nullam blandit augue nec ex venenatis accumsan. Suspendisse orci leo, faucibus sit amet velit sit amet, tristique semper magna. Nulla sit amet finibus dolor. Praesent et euismod odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                            <p>Nullam tempor, est vitae hendrerit hendrerit, lacus purus viverra ex, in consequat sapien ligula vulputate nisi. Nulla lobortis sapien nec felis finibus, at suscipit lacus porta. Fusce ut ultrices libero. In accumsan porta neque ut semper. Vivamus pretium ultrices risus quis suscipit. In vehicula arcu sit amet velit varius, in molestie mi dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                            <p>Nullam blandit augue nec ex venenatis accumsan. Suspendisse orci leo, faucibus sit amet velit sit amet, tristique semper magna. Nulla sit amet finibus dolor. Praesent et euismod odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="row ann-portfolio-gallery-section">
+                    <div class="col-md-12 text-center">
+                        <h2>Portfolio Photos</h2>
+                        <ul class="gallery-filter align-center mb-40">
+                            <li class="active" data-filter="*">All</li>
+                            <li data-filter=".hair" class="">Hair Makeup</li>
+                            <li data-filter=".wedding" class="">Face Makeup</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row gallery-items" style="position: relative; height: 1469.41px;">
+                    <div class="col-md-6 single-item hair">
+                        <div class="gallery-wrap">
+                            <a href="/img/portfolio/p-02.jpg" class="gallery-link img-popup vbox-item" data-gall="galleryimg"> <img src="/img/portfolio/p-02.jpg" alt=""> </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 single-item wedding">
+                        <div class="gallery-wrap">
+                            <a href="/img/portfolio/p-01.jpg" class="gallery-link img-popup vbox-item" data-gall="galleryimg"> <img src="/img/portfolio/p-01.jpg" alt=""> </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 single-item hair">
+                        <div class="gallery-wrap">
+                            <a href="/img/portfolio/p-04.jpg" class="gallery-link img-popup vbox-item" data-gall="galleryimg"> <img src="/img/portfolio/p-04.jpg" alt=""> </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 single-item wedding">
+                        <div class="gallery-wrap">
+                            <a href="/img/portfolio/p-03.jpg" class="gallery-link img-popup vbox-item" data-gall="galleryimg"> <img src="/img/portfolio/p-03.jpg" alt=""> </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Me -->
+    <section class="ann-page-section">
+        <div class="container">
+            <div class="col-md-8 offset-md-2">
+                <div class="ann-page-content text-center">
+                    <h2>Contact</h2>
+                    <p>Please reach out to me with your inquiry!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ann-contact-section">
+        <div id="ann-contactMap"></div>
+        <div class="container">
+            <div class="row ann-contact-wrap">
+                <div class="col-md-6 xs-padding">
+                    <div class="ann-contact-info">
+                        <h3>Get in touch</h3>
+                        <p>Nunc ultrices odio mauris fermentum, gravida varius dranex the celacinia. Proin dictum nisleu scelerisque risus feugiat the amet. Vestibulum con dimentum sem non dui tempoeu.</p>
+                        <ul>
+                            <li><i class="ti-location-pin"></i> Prague, Czech Republic</li>
+                            <li><i class="ti-mobile"></i> +420 608 178 390</li>
+                            <li><i class="ti-email"></i> mua@nikol.makeup</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 xs-padding">
+                    <div class="ann-contact-form">
+                        <h3>Contact Form</h3>
+                        <p>Please reach out to me with your inquiry! I service all of Prague.</p>
+                        <form action="contact/" method="post" class="form-horizontal">
+                            <div class="form-group colum-row row">
+                                <div class="col-sm-6">
+                                    <input type="text" id="name" name="name" class="form-control" placeholder="Name" required> </div>
+                                <div class="col-sm-6">
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" required> </div>
+                            </div>
+                            <div class="form-group colum-row row">
+                                <div class="col-sm-12">
+                                    <input type="text" id="text" name="text" class="form-control" placeholder="Service of interest" required> </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <textarea id="message" name="message" cols="30" rows="5" class="form-control message" placeholder="Enter your message" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <button class="ann-btn2" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
         <!-- Footer -->
         <footer class="ann-footer-section text-center">
             <div class="container">

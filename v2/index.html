@@ -1,17 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CZ">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NODA - Makeup Artist</title>
-    <link rel="icon" type="image/png" href="images/favicon.png" />
+    
+    <title>Nikol Pavlova - Professional Makeup Artist in Prague</title>
+    <meta name="description" content="Professional English-speaking makeup artist in Prague. Specialized in bridal and evening styling. Book your session today." />
+    <meta name="author" content="Nikol Pavlova">
+
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Syne:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="css/plugins.css" />
     <link rel="stylesheet" href="css/style.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "name": "Nikol Pavlova",
+      "jobTitle": "Makeup Artist",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Prague",
+        "addressCountry": "Czech Republic"
+      },
+      "priceRange": "$$",
+      "url": "https://nikol.makeup/",
+      "image": "/img/logo1.png",
+      "description": "Nikol Pavlova is a professional makeup artist based in Prague, Czech Republic.",
+      "telephone": "+420608178390",
+      "email": "pavlovanikol@gmail.com",
+      "sameAs": [
+        "https://www.instagram.com/nikol_pavlova_mua",
+        "https://www.facebook.com/nikki.yumi",
+        "https://www.threads.net/@nikol_pavlova_mua"
+      ]
+    }
+    </script>
 </head>
 <body>
-    <!-- Preloader -->
     <div class="preloader-bg"></div>
     <div class="preloader">
         <div class="item">
@@ -19,108 +47,79 @@
                 <div class="circle"></div>
                 <div class="line-mask">
                     <div class="line"></div>
-                </div> <img src="images/logo-light.png" alt="">
+                </div> 
+                <h2 style="font-family: 'Syne', sans-serif; font-weight: 700;">NP</h2>
             </div>
         </div>
     </div>
-    <!-- Progress scroll totop -->
+
     <div class="progress-wrap cursor-pointer">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
         </svg>
     </div>
-    <!-- Cursor -->
+
     <div class="cursor js-cursor"></div>
-    <!-- Navbar -->
+
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <!-- Logo -->
             <div class="logo-wrapper">
-                <a class="logo" href="index.html"><img src="images/logo-light.png" class="logo-img" alt=""></a>
-                <!-- <a class="logo" href="index.html"> <h2>NODA</h2> </a> -->
+                <a class="logo" href="/"> 
+                    <img src="/img/logo1.png" class="logo-img" alt="Nikol Pavlova Logo" style="max-height: 50px;">
+                </a>
             </div>
-            <!-- Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"><i class="fa-regular fa-bars"></i></span> </button>
-            <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown"> <a class="nav-link active dropdown-toggle" href="index.html#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Home <i class="fa-light fa-angle-down"></i></a>
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">EN <i class="fa-light fa-angle-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.html" class="dropdown-item active"><span>Default</span></a></li>
-                            <li><a href="index2.html" class="dropdown-item"><span>Slider</span></a></li>
-                            <li><a href="index3.html" class="dropdown-item"><span>Parallax Image</span></a></li>
-                            <li><a href="index4.html" class="dropdown-item"><span>Video</span></a></li>
-                            <li><a href="index5.html" class="dropdown-item"><span>Slideshow</span></a></li>
+                            <li><a href="/" class="dropdown-item"><span>EN</span></a></li>
+                            <li><a href="/cz/" class="dropdown-item"><span>CZ</span></a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="index.html#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Services <i class="fa-light fa-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="services.html" class="dropdown-item"><span>Services 1</span></a></li>
-                            <li><a href="services2.html" class="dropdown-item"><span>Services 2</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="index.html#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages <i class="fa-light fa-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="pricing.html" class="dropdown-item"><span>Pricing</span></a></li>
-                            <li><a href="team.html" class="dropdown-item"><span>Team</span></a></li>
-                            <li><a href="before-after.html" class="dropdown-item"><span>Before & After</span></a></li>
-                            <li><a href="gallery-image.html" class="dropdown-item"><span>Image Gallery</span></a></li>
-                            <li><a href="gallery-video.html" class="dropdown-item"><span>Video Gallery</span></a></li>
-                            <li><a href="faq.html" class="dropdown-item"><span>FAQ</span></a></li>
-                            <li class="dropdown-submenu dropdown"> <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" href="index.html#"><span>Other Pages <i class="fa-light fa-angle-right"></i></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="services-single.html" class="dropdown-item"><span>Services Single 01</span></a></li>
-                                    <li><a href="services-single2.html" class="dropdown-item"><span>Services Single 02</span></a></li>
-                                    <li><a href="team-single.html" class="dropdown-item"><span>Team Single</span></a></li>
-                                    <li><a href="post.html" class="dropdown-item"><span>Post Single</span></a></li>
-                                    <li><a href="404.html" class="dropdown-item"><span>404 Page</span></a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="index.html#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Blog <i class="fa-light fa-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="blog.html" class="dropdown-item"><span>Blog Grid</span></a></li>
-                            <li><a href="blog2.html" class="dropdown-item"><span>Blog Standard</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
                 <div class="navbar-right">
                     <div class="wrap">
                         <div class="icon"> <i class="fa-light fa-phone"></i> </div>
                         <div class="text">
-                            <p>Need Makeup?</p>
-                            <h5><a href="tel:8551004444">800 123 4444</a></h5>
+                            <p>Book Appointment</p>
+                            <h5><a href="tel:+420608178390">+420 608 178 390</a></h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
-    <!-- Homepage Default -->
-    <section class="home-default">
+
+    <section class="home-default" id="home">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-60">
                     <div class="item">
                         <div class="view-on-mobile">
-                            <h6>Makeup Artist</h6>
-                            <h1>Bobbi Noda</h1>
+                            <h6>Makeup Artist Prague</h6>
+                            <h1>Nikol Pavlova</h1>
                         </div>
-                        <div class="transform-banner position-relative"> <img class="img home-default-img home-default-img-left wow imago" src="images/slider.jpg" alt=""> </div>
+                        <div class="transform-banner position-relative"> 
+                            <img class="img home-default-img home-default-img-left wow imago" src="/img/slider/slider-3.webp" alt="Nikol Pavlova Makeup Artist"> 
+                        </div>
                         <div class="home-default-cont home-default-cont-right">
                             <div class="home-default-cont-absolute home-default-cont-absolute-right">
                                 <div class="not-view-on-mobile">
-                                    <h6 class="wow" data-splitting>Makeup Artist</h6>
-                                    <h1 class="wow" data-splitting>Bobbi Noda</h1>
+                                    <h6 class="wow" data-splitting>Makeup Artist Prague</h6>
+                                    <h1 class="wow" data-splitting>Nikol Pavlova</h1>
                                 </div>
                                 <div class="home-default-cont-text">
-                                    <p class="wow" data-splitting>Hello, I’am Bobbi Noda! I love people love to fell beautiful, which is the reason I’ve spent last 12 years engulfed in doing Make up.</p>
+                                    <p class="wow" data-splitting>Hi beautiful! I love designing beautiful makeup looks which enhance your natural features and distinctive style. Let's create stunning makeup transformations together!</p>
                                 </div>
                                 <div class="btn-wrap text-center">
-                                    <div class="btn-link"> <a href="services.html">Our Services</a> <span class="btn-block animation-bounce"></span> </div>
+                                    <div class="btn-link"> <a href="#services">My Services</a> <span class="btn-block animation-bounce"></span> </div>
                                 </div>
                             </div>
                         </div>
@@ -129,15 +128,15 @@
             </div>
         </div>
     </section>
-    <!-- divider line -->
+
     <div class="line-vr-section"></div>
-    <!-- Services -->
-    <section class="services section-padding">
+
+    <section class="services section-padding" id="services">
         <div class="container">
             <div class="row mb-45">
                 <div class="col-md-12 text-center">
-                    <h6 class="wow" data-splitting>Services That I Provide</h6>
-                    <h1 class="wow" data-splitting>Our Services</h1>
+                    <h6 class="wow" data-splitting>What I Do</h6>
+                    <h1 class="wow" data-splitting>My Services</h1>
                 </div>
             </div>
         </div>
@@ -147,66 +146,55 @@
                     <div class="owl-carousel owl-theme">
                         <div class="item">
                             <div class="wrap">
-                                <div class="img"> <img src="images/services/1.jpg" class="img-fluid rounded-1"> </div>
+                                <div class="img"> <img src="/img/service/wedding-makeup.png" class="img-fluid rounded-1" alt="Wedding Makeup Prague"> </div>
                                 <div class="text">
-                                    <a href="services-single.html">
-                                        <h4>Hair Makeup</h4>
-                                        <p>Discover</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="wrap">
-                                <div class="img"> <img src="images/services/2.jpg" class="img-fluid rounded-1"> </div>
-                                <div class="text">
-                                    <a href="services-single.html">
-                                        <h4>Eye Makeup</h4>
-                                        <p>Discover</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="wrap">
-                                <div class="img"> <img src="images/services/3.jpg" class="img-fluid rounded-1"> </div>
-                                <div class="text">
-                                    <a href="services-single.html">
+                                    <a href="#portfolio">
                                         <h4>Wedding Makeup</h4>
-                                        <p>Discover</p>
+                                        <p>Long-lasting & radiant</p>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
                             <div class="wrap">
-                                <div class="img"> <img src="images/services/4.jpg" class="img-fluid rounded-1"> </div>
+                                <div class="img"> <img src="/img/service/nude.png" class="img-fluid rounded-1" alt="Nude Makeup Prague"> </div>
                                 <div class="text">
-                                    <a href="services-single.html">
-                                        <h4>Effect Makeup</h4>
-                                        <p>Discover</p>
+                                    <a href="#portfolio">
+                                        <h4>Nude Makeup</h4>
+                                        <p>Enhancing natural beauty</p>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
                             <div class="wrap">
-                                <div class="img"> <img src="images/services/5.jpg" class="img-fluid rounded-1"> </div>
+                                <div class="img"> <img src="/img/service/cocktail-evening.png" class="img-fluid rounded-1" alt="Evening Makeup Prague"> </div>
                                 <div class="text">
-                                    <a href="services-single.html">
-                                        <h4>Face Makeup</h4>
-                                        <p>Discover</p>
+                                    <a href="#portfolio">
+                                        <h4>Evening Makeup</h4>
+                                        <p>Elegant & Glamorous</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="item">
+                            <div class="wrap">
+                                <div class="img"> <img src="/img/service/commercial.png" class="img-fluid rounded-1" alt="Commercial Makeup"> </div>
+                                <div class="text">
+                                    <a href="#portfolio">
+                                        <h4>Commercial</h4>
+                                        <p>Photo shoots & Media</p>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
                             <div class="wrap">
-                                <div class="img"> <img src="images/services/6.jpg" class="img-fluid rounded-1"> </div>
+                                <div class="img"> <img src="/img/service/courses.png" class="img-fluid rounded-1" alt="Makeup Courses"> </div>
                                 <div class="text">
-                                    <a href="services-single.html">
-                                        <h4>Fashion Makeup</h4>
-                                        <p>Discover</p>
+                                    <a href="#contact">
+                                        <h4>Makeup Courses</h4>
+                                        <p>Learn professional techniques</p>
                                     </a>
                                 </div>
                             </div>
@@ -216,146 +204,68 @@
             </div>
         </div>
     </section>
-    <!-- divider line -->
+
     <div class="line-vr-section"></div>
-    <!-- About -->
-    <section class="about section-padding">
+
+    <section class="about section-padding" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <h6 class="wow" data-splitting>Makeup Artist</h6>
-                    <h1 class="wow" data-splitting>Bobbi Noda</h1>
-                    <p class="wow fadeInUp" data-wow-delay=".2s">Nulla posuere tortoran nisan sempere scelerisque etiam ornare iros metusan the ravidane sodales vesaire. Integer ac molestie nisi orci varius natoque penatis magnis the duru parturient montes, nascetur ridiculus mus.</p>
-                    <p class="wow fadeInUp" data-wow-delay=".3s">Phasellus et lacus suscipit congue nisl the volutpat magna done miss the rana risus tincidunt convallis velit orci congue tortor eu dignissim ipsum suam non odio esuntion miss the imperdiet metus ornare.</p>
-                    <!-- list -->
+                    <h6 class="wow" data-splitting>About Me</h6>
+                    <h1 class="wow" data-splitting>Nikol Pavlova</h1>
+                    <p class="wow fadeInUp" data-wow-delay=".2s">My name is Nikol Pavlova and I work as your dedicated makeup artist based in Prague. I love designing beautiful makeup looks which enhance your natural features and distinctive style.</p>
+                    <p class="wow fadeInUp" data-wow-delay=".3s">I will transform your vision into reality whether you dream of a soft bridal glow or glamorous evening makeup or something boldly creative. My commitment lies in precision and creativity.</p>
                     <ul class="list-unstyled list mt-30 mb-30 wow fadeInUp" data-wow-delay=".4s">
                         <li>
                             <div class="list-icon"> <i class="fa-regular fa-check"></i> </div>
-                            <div class="list-text">
-                                <p>Face Makeup</p>
-                            </div>
+                            <div class="list-text"><p>Bridal Specialist</p></div>
                         </li>
                         <li>
                             <div class="list-icon"> <i class="fa-regular fa-check"></i> </div>
-                            <div class="list-text">
-                                <p>Wedding Makeup</p>
-                            </div>
+                            <div class="list-text"><p>Editorial & Commercial</p></div>
                         </li>
                         <li>
                             <div class="list-icon"> <i class="fa-regular fa-check"></i> </div>
-                            <div class="list-text">
-                                <p>Eyebrow Makeup</p>
-                            </div>
+                            <div class="list-text"><p>Personalized Courses</p></div>
                         </li>
                     </ul>
                     <div class="clients mb-30 wow fadeInUp" data-wow-delay=".5s">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="owl-carousel owl-theme">
-                                <div class="clients-logo">
-                                    <a href="index.html#0"><img src="images/clients/1.png" alt=""></a>
-                                </div>
-                                <div class="clients-logo">
-                                    <a href="index.html#0"><img src="images/clients/2.png" alt=""></a>
-                                </div>
-                                <div class="clients-logo">
-                                    <a href="index.html#0"><img src="images/clients/3.png" alt=""></a>
-                                </div>
-                                <div class="clients-logo">
-                                    <a href="index.html#0"><img src="images/clients/4.png" alt=""></a>
-                                </div>
-                                <div class="clients-logo">
-                                    <a href="index.html#0"><img src="images/clients/5.png" alt=""></a>
-                                </div>
-                                <div class="clients-logo">
-                                    <a href="index.html#0"><img src="images/clients/6.png" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <img src="/img/services/signature3.png" alt="Signature" style="max-height: 60px;">
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1 col-md-6 wow fadeInUp" data-wow-delay=".6s">
                     <div class="profile-img">
-                        <div class="img"> <img src="images/about.jpg" alt=""> </div>
+                        <div class="img"> <img src="/img/nikol-header.webp" alt="Nikol Pavlova Profile"> </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- divider line -->
+
     <div class="line-vr-section"></div>
-    <!-- Team -->
-    <section class="team section-padding">
+
+    <section class="price section-padding" id="pricing">
         <div class="container">
             <div class="row mb-45">
                 <div class="col-md-12 text-center">
-                    <h6 class="wow" data-splitting>Makeup Artist</h6>
-                    <h1 class="wow" data-splitting>Our Team</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="img"><img src="images/team/01.jpg" alt=""></div>
-                            <div class="con">
-                                <h5 class="mb-0"><a href="team-single.html">Jessica Brown<br><span>Pro Hair & Makeup Artist</span></a></h5>
-                                <div class="arrow"> <a href="team-single.html"><i class="fa-light fa-arrow-up-right"></i></a> </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="img"> <img src="images/team/02.jpg" alt="" class="w-100"> </div>
-                            <div class="con">
-                                <h5 class="mb-0"><a href="team-single.html">Emma Smith<br><span>Senior Pro Hairstylist</span></a></h5>
-                                <div class="arrow"> <a href="team-single.html"><i class="fa-light fa-arrow-up-right"></i></a> </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="img"> <img src="images/team/03.jpg" alt="" class="w-100"> </div>
-                            <div class="con">
-                                <h5 class="mb-0"><a href="team-single.html">Daniel Martin<br><span>Senior Makeup Artist</span></a></h5>
-                                <div class="arrow"> <a href="team-single.html"><i class="fa-light fa-arrow-up-right"></i></a> </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="img"><img src="images/team/04.jpg" alt=""></div>
-                            <div class="con">
-                                <h5 class="mb-0"><a href="team-single.html">Jessica Brown<br><span>Pro Hair & Makeup Artist</span></a></h5>
-                                <div class="arrow"> <a href="team-single.html"><i class="fa-light fa-arrow-up-right"></i></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- divider line -->
-    <div class="line-vr-section"></div>
-    <!-- Price -->
-    <section class="price section-padding">
-        <div class="container">
-            <div class="row mb-45">
-                <div class="col-md-12 text-center">
-                    <h6 class="wow" data-splitting>Our Pricing</h6>
-                    <h1 class="wow" data-splitting>Pricing Plan</h1>
+                    <h6 class="wow" data-splitting>Rates</h6>
+                    <h1 class="wow" data-splitting>Pricing Packages</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6 col-md-12 mb-30 wow fadeInUp" data-wow-delay=".2s">
                     <div class="item">
-                        <h6 class="type">General</h6>
+                        <h6 class="type">Special Occasions</h6>
                         <div class="content d-flex align-items-center">
                             <div class="mr-40">
-                                <h2>$120</h2>
+                                <h2>Request</h2>
                             </div>
                             <div class="feat">
                                 <ul class="rest">
-                                    <li><i class="fa-regular fa-check"></i> <span>Eye and Eyelash Makeup</span></li>
-                                    <li><i class="fa-regular fa-check"></i> <span>Hair Makeup</span>
-                                    <li><i class="fa-regular fa-check"></i> <span>Children Face Makeup</span>
-                                    <li><i class="fa-regular fa-check"></i> <span>Effect Makeup</span></li>
-                                    <li><i class="fa-regular fa-check"></i> <span>Face Makeup</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Cocktail Makeup</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Evening Styling</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Prom / Ball Makeup</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Photo Shoots</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -366,15 +276,14 @@
                         <h6 class="type">Wedding</h6>
                         <div class="content d-flex align-items-center">
                             <div class="mr-40">
-                                <h2>$170</h2>
+                                <h2>Request</h2>
                             </div>
                             <div class="feat">
                                 <ul class="rest">
-                                    <li><i class="fa-regular fa-check"></i> <span>Curly Haircute & Colors</span></li>
-                                    <li><i class="fa-regular fa-check"></i> <span>Color corrections</span></li>
-                                    <li><i class="fa-regular fa-check"></i> <span>Hair Wash</span></li>
-                                    <li><i class="fa-regular fa-check"></i> <span>Blow Dry Hair</span></li>
-                                    <li><i class="fa-regular fa-check"></i> <span>Foilyage</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Bridal Trial</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Wedding Day Makeup</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Lashes Included</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Touch-up Kit</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -383,179 +292,80 @@
             </div>
         </div>
     </section>
-    <!-- divider line -->
+
     <div class="line-vr-section"></div>
-    <!-- Blog Home -->
-    <section class="blog-home section-padding">
-        <div class="container">
-            <div class="row mb-45">
-                <div class="col-md-12 text-center">
-                    <h6 class="wow" data-splitting>Makeup Trends</h6>
-                    <h1 class="wow" data-splitting>Read Blog</h1>
-                </div>
-            </div>
-        </div>
-        <div class="full-width">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="wrap">
-                                <div class="img"> <img src="images/blog/1.jpg" class="img-fluid rounded-1"> </div>
-                                <div class="title">
-                                    <a href="post.html">
-                                        <h6>Bridal</h6>
-                                        <h4>Wedding Hairstyle Tips</h4> <i class="icon fa-light fa-arrow-up-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="wrap">
-                                <div class="img"> <img src="images/blog/2.jpg" class="img-fluid rounded-1"> </div>
-                                <div class="title">
-                                    <a href="post.html">
-                                        <h6>Hair Makeup</h6>
-                                        <h4>Hair Care & Styling Tips</h4> <i class="icon fa-light fa-arrow-up-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="wrap">
-                                <div class="img"> <img src="images/blog/3.jpg" class="img-fluid rounded-1"> </div>
-                                <div class="title">
-                                    <a href="post.html">
-                                        <h6>Makeup</h6>
-                                        <h4>Birthday Party Ideas</h4> <i class="icon fa-light fa-arrow-up-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="wrap">
-                                <div class="img"> <img src="images/blog/4.jpg" class="img-fluid rounded-1"> </div>
-                                <div class="title">
-                                    <a href="post.html">
-                                        <h6>Face Makeup</h6>
-                                        <h4>Tips for Face Makeup</h4> <i class="icon fa-light fa-arrow-up-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="wrap">
-                                <div class="img"> <img src="images/blog/5.jpg" class="img-fluid rounded-1"> </div>
-                                <div class="title">
-                                    <a href="post.html">
-                                        <h6>Makeup</h6>
-                                        <h4>Make Up Techniques</h4> <i class="icon fa-light fa-arrow-up-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Testiominals -->
-    <section class="testimonials">
-        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="4" data-background="images/slider/1.jpg">
+
+    <section class="testimonials" id="contact">
+        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="4" data-background="/img/portfolio/commercial-2-min.jpg">
             <div class="container">
                 <div class="row">
-                    <!-- need helps -->
                     <div class="col-lg-6 col-md-12 mb-30 mt-60">
-                        <h6>Need Help?</h6>
+                        <h6>Contact Me</h6>
                         <h5 class="wow" data-splitting>Do you need help with creative make-up?</h5>
+                        <p style="color: #ccc; margin-bottom: 20px;">I'm committed to ensuring your satisfaction with bridal, event, or editorial makeup services. Reach out to plan your requirements.</p>
                         <div class="btn-wrap text-left wow fadeInUp" data-wow-delay=".6s">
-                            <div class="btn-link"> <a href="index.html#">hi@makeup.com</a> <span class="btn-block animation-bounce"></span> </div>
+                            <div class="btn-link"> <a href="mailto:pavlovanikol@gmail.com">pavlovanikol@gmail.com</a> <span class="btn-block animation-bounce"></span> </div>
                         </div>
                     </div>
-                    <!-- testiominals -->
                     <div class="col-lg-5 offset-lg-1 col-md-12">
-                        <div class="wrap">
-                            <h6>Testiominals</h6>
-                            <h5>What Clients Say</h5>
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <p>Dan entesque magna magna semper daibus elisan the aliuen risus morbi tristique senectus et netus malesuan fames ac urpis miss muris in the sero dictum aselusion lacus suscipit congue the volutpat.</p> <span class="quote"><i class="fa-sharp fa-solid fa-quote-right"></i></span>
-                                    <div class="info">
-                                        <div class="author-img"> <img src="images/team/02.jpg" alt=""> </div>
-                                        <div class="cont">
-                                            <h6>Emily Brown</h6> <span>Customer</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <p>Dan entesque magna magna semper daibus elisan the aliuen risus morbi tristique senectus et netus malesuan fames ac urpis miss muris in the sero dictum aselusion lacus suscipit congue the volutpat.</p> <span class="quote"><i class="fa-sharp fa-solid fa-quote-right"></i></span>
-                                    <div class="info">
-                                        <div class="author-img"> <img src="images/team/03.jpg" alt=""> </div>
-                                        <div class="cont">
-                                            <h6>Jason White</h6> <span>Customer</span>
-                                        </div>
-                                    </div>
-                                </div>
+                         <div class="wrap">
+                            <h6>Location</h6>
+                            <h5>Prague, Czech Republic</h5>
+                            <div class="info mt-30">
+                                <p><i class="fa-light fa-phone"></i> <a href="tel:+420608178390" style="color:white;">+420 608 178 390</a></p>
+                                <p><i class="fa-brands fa-instagram"></i> <a href="https://www.instagram.com/nikol_pavlova_mua" style="color:white;">@nikol_pavlova_mua</a></p>
                             </div>
-                        </div>
+                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Footer -->
+
     <footer class="footer">
-        <!-- top -->
         <div class="top">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 mb-45">
-                        <h5>About Us</h5>
-                        <p>Makeup amacus suscipit oremen miss the volutpat magnaz donec miss the drana risus convais nisan.</p>
-                        <div class="social"> <a href="index.html#"><i class="fa-brands fa-instagram"></i></a> <a href="index.html#"><i class="fa-brands fa-twitter"></i></a> <a href="index.html#"><i class="fa-brands fa-pinterest-p"></i></a> </div>
+                        <h5>Nikol Pavlova</h5>
+                        <p>Professional makeup artist based in Prague. Designing bespoke beauty looks that reflect your distinct personality.</p>
+                        <div class="social"> 
+                            <a href="https://www.instagram.com/nikol_pavlova_mua" target="_blank"><i class="fa-brands fa-instagram"></i></a> 
+                            <a href="https://www.facebook.com/nikki.yumi" target="_blank"><i class="fa-brands fa-facebook"></i></a> 
+                            <a href="https://www.threads.net/@nikol_pavlova_mua" target="_blank"><i class="fa-brands fa-twitter"></i></a> 
+                        </div>
                     </div>
                     <div class="col-md-4 offset-md-1 mb-45">
                         <div class="worktime">
-                            <h5>Work Time</h5>
+                            <h5>Services</h5>
                             <ul>
-                                <li>
-                                    <div class="tit">Monday - Friday</div>
-                                    <div class="dots"></div> <span>8:00 AM - 7:00 PM</span>
-                                </li>
-                                <li>
-                                    <div class="tit">Saturday</div>
-                                    <div class="dots"></div> <span>9:00 AM - 6:00 PM</span>
-                                </li>
-                                <li>
-                                    <div class="tit">Sunday</div>
-                                    <div class="dots"></div> <span>Closed</span>
-                                </li>
+                                <li><div class="tit">Wedding Makeup</div><div class="dots"></div></li>
+                                <li><div class="tit">Evening Styling</div><div class="dots"></div></li>
+                                <li><div class="tit">Commercial</div><div class="dots"></div></li>
+                                <li><div class="tit">Makeup Courses</div><div class="dots"></div></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-3 offset-md-1 mb-45">
                         <h5>Contact</h5>
-                        <p>0665 Broadway NY, New York 10001
-                            <br>United States of America
-                        </p>
-                        <div class="phone">800 123 4444</div>
-                        <div class="mail">hi@makeup.com</div>
+                        <p>Prague, Czech Republic<br>(Available for travel)</p>
+                        <div class="phone"><a href="tel:+420608178390">+420 608 178 390</a></div>
+                        <div class="mail"><a href="mailto:pavlovanikol@gmail.com">pavlovanikol@gmail.com</a></div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- bottom -->
         <div class="bottom">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <p>2025 © All rights reserved. Designed by <a href="https://1.envato.market/DuruThemes" target="_blank">DuruThemes</a>.</p>
+                        <p>2025 © Nikol Pavlova. All rights reserved.</p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- jQuery -->
+
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/jquery-migrate-3.4.1.min.js"></script>
     <script src="js/modernizr-2.6.2.min.js"></script>

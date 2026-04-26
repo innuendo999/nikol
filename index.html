@@ -15,12 +15,35 @@
     <link rel="alternate" href="https://nikol.makeup/cz/" hreflang="cs" />
     <link rel="alternate" href="https://nikol.makeup/" hreflang="x-default" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Nikol Pavlova - Makeup Artist Prague" />
-    <meta property="og:description" content="Bridal and evening makeup in Prague. Professional styling & courses." />
-    <meta property="og:url" content="https://nikol.makeup/" />
-    <meta property="og:image" content="https://nikol.makeup/img/og-image.jpg" /> 
-    <meta property="og:locale" content="en_CZ" />
+    <!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Nikol Pavlova - Makeup Artist Prague" />
+<meta property="og:title" content="Nikol Pavlova — Professional Makeup Artist in Prague" />
+<meta property="og:description" content="Bridal, evening and commercial makeup in Prague. English-speaking MUA offering personalized services and professional courses. Book your appointment." />
+<meta property="og:url" content="https://nikol.makeup/" />
+<meta property="og:image" content="https://nikol.makeup/img/nikol.jpg" />
+<meta property="og:image:secure_url" content="https://nikol.makeup/img/nikol.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="1200" />
+<meta property="og:image:alt" content="Nikol Pavlova — Professional Makeup Artist in Prague" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="cs_CZ" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Nikol Pavlova — Makeup Artist Prague" />
+<meta name="twitter:description" content="Bridal, evening and commercial makeup in Prague. English-speaking MUA offering personalized services and courses." />
+<meta name="twitter:image" content="https://nikol.makeup/img/nikol.jpg" />
+<meta name="twitter:image:alt" content="Nikol Pavlova — Professional Makeup Artist in Prague" />
+
+<!-- Geo / Local SEO -->
+<meta name="geo.region" content="CZ-PR" />
+<meta name="geo.placename" content="Prague" />
+<meta name="geo.position" content="50.0755;14.4378" />
+<meta name="ICBM" content="50.0755, 14.4378" />
+
+
     
     <link rel="icon" type="image/png" href="/img/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,43 +53,181 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "BeautySalon",
-      "name": "Nikol Pavlova",
-      "jobTitle": "Makeup Artist",
-      "image": "https://nikol.makeup/img/logo1.png",
+      "@type": ["LocalBusiness", "BeautySalon"],
+      "@id": "https://nikol.makeup/#business",
+      "name": "Nikol Pavlova - Makeup Artist",
+      "alternateName": "Nikol Pavlova MUA",
+      "description": "Professional English-speaking makeup artist in Prague. Bridal, evening, commercial makeup and personalized courses.",
+      "image": [
+        "https://nikol.makeup/img/nikol.jpg",
+        "https://nikol.makeup/img/nikol-header.webp"
+      ],
+      "logo": "https://nikol.makeup/img/logo1.png",
       "url": "https://nikol.makeup/",
       "telephone": "+420608178390",
       "email": "pavlovanikol@gmail.com",
       "priceRange": "$$",
+      "currenciesAccepted": "CZK, EUR",
+      "paymentAccepted": "Cash, Credit Card, Bank Transfer",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "...", 
         "addressLocality": "Prague",
-        "postalCode": "...",
+        "addressRegion": "Prague",
         "addressCountry": "CZ"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 50.0755, 
+        "latitude": 50.0755,
         "longitude": 14.4378
       },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "09:00",
-          "closes": "20:00"
-        }
+      "areaServed": [
+        { "@type": "City", "name": "Prague" },
+        { "@type": "Country", "name": "Czech Republic" }
+      ],
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "20:00"
+      }],
+      "knowsLanguage": ["en", "cs", "uk"],
+      "founder": { "@id": "https://nikol.makeup/#person" },
+      "employee": { "@id": "https://nikol.makeup/#person" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Makeup Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Wedding Makeup",
+              "description": "Long-lasting bridal makeup with trial, wedding-day application, lashes and touch-up kit."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Evening & Cocktail Makeup",
+              "description": "Elegant and glamorous makeup for evenings, cocktails, proms and balls."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Nude Makeup",
+              "description": "Natural-look makeup enhancing your features for everyday elegance."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Commercial Makeup",
+              "description": "Makeup for photo shoots, editorial and media projects."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Makeup Courses",
+              "description": "Personalized one-on-one courses teaching professional makeup techniques."
+            }
+          }
+        ]
+      },
+      "sameAs": [
+        "https://www.instagram.com/nikol__mua",
+        "https://www.facebook.com/nikki.yumi",
+        "https://www.threads.net/@nikol_pavlova_mua"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://nikol.makeup/#person",
+      "name": "Nikol Pavlova",
+      "jobTitle": "Makeup Artist",
+      "image": "https://nikol.makeup/img/nikol.jpg",
+      "url": "https://nikol.makeup/",
+      "worksFor": { "@id": "https://nikol.makeup/#business" },
+      "knowsLanguage": ["en", "cs", "uk"],
+      "knowsAbout": [
+        "Bridal Makeup",
+        "Evening Makeup",
+        "Commercial Makeup",
+        "Editorial Makeup",
+        "Makeup Courses"
       ],
       "sameAs": [
         "https://www.instagram.com/nikol__mua",
         "https://www.facebook.com/nikki.yumi",
         "https://www.threads.net/@nikol_pavlova_mua"
       ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nikol.makeup/#website",
+      "url": "https://nikol.makeup/",
+      "name": "Nikol Pavlova - Makeup Artist Prague",
+      "publisher": { "@id": "https://nikol.makeup/#business" },
+      "inLanguage": ["en", "cs"]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nikol.makeup/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where is Nikol Pavlova based?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nikol Pavlova is a professional makeup artist based in Prague, Czech Republic, also available for travel to other locations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makeup services does Nikol Pavlova offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Services include wedding and bridal makeup, evening and cocktail styling, nude/natural makeup, commercial and editorial makeup, and personalized one-on-one makeup courses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Nikol Pavlova speak English?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Nikol provides makeup services in English and Czech, making her well-suited for international clients and destination weddings in Prague."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included in the wedding makeup package?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The wedding package includes a bridal trial, wedding-day makeup application, false lashes, and a touch-up kit for the day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I book a makeup appointment with Nikol Pavlova?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can book by calling +420 608 178 390, emailing pavlovanikol@gmail.com, or sending a direct message on Instagram @nikol__mua."
+          }
+        }
+      ]
     }
-    </script>
+  ]
+}
+</script>
 </head>
 
 <body>

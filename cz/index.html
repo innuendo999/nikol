@@ -1,15 +1,51 @@
 <!DOCTYPE html>
-<html lang="cs-CZ">
+<html lang="cs">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <title>Profesionální vizážistka Praha - Líčení & Kurzy | Nikol Pavlova</title>
     <meta name="description" content="Hledáte zkušenou vizážistku v Praze? Nabízím profesionální svatební líčení, večerní make-up a kurzy líčení. Rezervujte si termín online." />
     <meta name="author" content="Nikol Pavlova">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
+    <link rel="canonical" href="https://nikol.makeup/cz/" />
+    <link rel="alternate" href="https://nikol.makeup/" hreflang="en" />
+    <link rel="alternate" href="https://nikol.makeup/cz/" hreflang="cs" />
+    <link rel="alternate" href="https://nikol.makeup/" hreflang="x-default" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nikol Pavlova - Vizážistka Praha" />
+    <meta property="og:title" content="Nikol Pavlova — Profesionální vizážistka v Praze" />
+    <meta property="og:description" content="Svatební, večerní a komerční líčení v Praze. Profesionální vizážistka, individuální služby a kurzy líčení. Rezervujte si termín." />
+    <meta property="og:url" content="https://nikol.makeup/cz/" />
+    <meta property="og:image" content="https://nikol.makeup/img/nikol.jpg" />
+    <meta property="og:image:secure_url" content="https://nikol.makeup/img/nikol.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+    <meta property="og:image:alt" content="Nikol Pavlova — profesionální vizážistka v Praze" />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nikol Pavlova — Vizážistka Praha" />
+    <meta name="twitter:description" content="Svatební, večerní a komerční líčení v Praze. Profesionální služby a kurzy líčení." />
+    <meta name="twitter:image" content="https://nikol.makeup/img/nikol.jpg" />
+    <meta name="twitter:image:alt" content="Nikol Pavlova — profesionální vizážistka v Praze" />
+
+    <!-- Geo / Local SEO -->
+    <meta name="geo.region" content="CZ-PR" />
+    <meta name="geo.placename" content="Praha" />
+    <meta name="geo.position" content="50.0755;14.4378" />
+    <meta name="ICBM" content="50.0755, 14.4378" />
 
     <link rel="icon" type="image/png" href="../img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Syne:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="../css/plugins.css" />
     <link rel="stylesheet" href="../css/style.css">
@@ -17,25 +53,202 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "BeautySalon",
-      "name": "Nikol Pavlova - Vizážistka Praha",
-      "image": "https://nikol.makeup/img/logo1.png",
-      "@id": "https://nikol.makeup/cz/#vizazistka",
-      "url": "https://nikol.makeup/cz/",
-      "telephone": "+420608178390",
-      "email": "pavlovanikol@gmail.com",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Praha",
-        "addressCountry": "CZ"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 50.0755,
-        "longitude": 14.4378
-      },
-      "description": "Profesionální vizážistka v Praze nabízející svatební líčení, večerní make-up a kurzy líčení."
+      "@graph": [
+        {
+          "@type": ["LocalBusiness", "BeautySalon"],
+          "@id": "https://nikol.makeup/#business",
+          "name": "Nikol Pavlova - Vizážistka Praha",
+          "alternateName": "Nikol Pavlova MUA",
+          "description": "Profesionální vizážistka v Praze. Svatební, večerní a komerční líčení a osobní kurzy líčení.",
+          "image": [
+            "https://nikol.makeup/img/nikol.jpg",
+            "https://nikol.makeup/img/nikol-header.webp"
+          ],
+          "logo": "https://nikol.makeup/img/logo1.png",
+          "url": "https://nikol.makeup/cz/",
+          "telephone": "+420608178390",
+          "email": "pavlovanikol@gmail.com",
+          "priceRange": "$$",
+          "currenciesAccepted": "CZK, EUR",
+          "paymentAccepted": "Hotovost, Platební karta, Bankovní převod",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Praha",
+            "addressRegion": "Praha",
+            "addressCountry": "CZ"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 50.0755,
+            "longitude": 14.4378
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Praha" },
+            { "@type": "Country", "name": "Česká republika" }
+          ],
+          "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "09:00",
+            "closes": "20:00"
+          }],
+          "knowsLanguage": ["cs", "en", "uk"],
+          "founder": { "@id": "https://nikol.makeup/#person" },
+          "employee": { "@id": "https://nikol.makeup/#person" },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Služby líčení",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Svatební líčení",
+                  "description": "Dlouhotrvající svatební make-up se zkouškou, líčením v den svatby, umělými řasami a touch-up kitem."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Večerní a koktejlový make-up",
+                  "description": "Elegantní a glamour líčení na večírky, koktejly, plesy a maturitní bály."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Nude make-up",
+                  "description": "Přirozené líčení zdůrazňující vaše rysy pro každodenní eleganci."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Komerční líčení",
+                  "description": "Make-up na focení, editorialy a mediální projekty."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Kurzy líčení",
+                  "description": "Osobní (one-on-one) kurzy s výukou profesionálních technik líčení."
+                }
+              }
+            ]
+          },
+          "sameAs": [
+            "https://www.instagram.com/nikol__mua",
+            "https://www.facebook.com/nikki.yumi",
+            "https://www.threads.net/@nikol_pavlova_mua"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://nikol.makeup/#person",
+          "name": "Nikol Pavlova",
+          "jobTitle": "Vizážistka",
+          "image": "https://nikol.makeup/img/nikol.jpg",
+          "url": "https://nikol.makeup/cz/",
+          "worksFor": { "@id": "https://nikol.makeup/#business" },
+          "knowsLanguage": ["cs", "en", "uk"],
+          "knowsAbout": [
+            "Svatební líčení",
+            "Večerní líčení",
+            "Komerční líčení",
+            "Editorial líčení",
+            "Kurzy líčení"
+          ],
+          "sameAs": [
+            "https://www.instagram.com/nikol__mua",
+            "https://www.facebook.com/nikki.yumi",
+            "https://www.threads.net/@nikol_pavlova_mua"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://nikol.makeup/#website",
+          "url": "https://nikol.makeup/",
+          "name": "Nikol Pavlova - Vizážistka Praha",
+          "publisher": { "@id": "https://nikol.makeup/#business" },
+          "inLanguage": ["cs", "en"]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://nikol.makeup/cz/#faq",
+          "inLanguage": "cs",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Kde působíte a jezdíte za klienty?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Jsem profesionální vizážistka se sídlem v Praze. Pracuji ve všech pražských čtvrtích — včetně Prahy 1 (Staré Město), Prahy 2 (Vinohrady) a Prahy 7 — a zároveň cestuji do dalších měst v České republice i po Evropě za svatbami, focením a akcemi."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Jaké služby líčení nabízíte?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nabízím svatební líčení, večerní a koktejlový make-up, přirozené nude looky, plesový make-up, komerční a editorial líčení pro focení i osobní kurzy líčení pro klienty, kteří se chtějí naučit profesionální techniky."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "V jakých jazycích mluvíte?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Mluvím plynně česky a anglicky, takže nabízím pohodlný servis jak českým, tak mezinárodním klientům, expatům žijícím v Praze i párům plánujícím destination svatbu v České republice."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Co obsahuje balíček svatebního líčení?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Svatební balíček zahrnuje předsvatební zkoušku líčení, kompletní líčení v den svatby, umělé řasy a osobní touch-up kit, aby váš look vypadal skvěle od obřadu až po hostinu."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Kolik stojí líčení v Praze?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ceny závisí na typu služby, lokaci a termínu — svatební balíčky, večerní líčení i komerční zakázky cením individuálně. Napište mi prosím detaily vaší akce a do 24 hodin vám pošlu osobní cenovou nabídku."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Jak dlouho dopředu si rezervovat termín?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Pro svatby doporučuji rezervaci 6–12 měsíců dopředu, zejména v hlavní sezóně od května do září. Pro večerní líčení a focení obvykle stačí 2–3 týdny, někdy lze zařídit i last-minute termín — stačí mě kontaktovat."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Jak probíhá kurz líčení?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Kurzy jsou osobní (one-on-one) lekce přizpůsobené vaší úrovni a cílům — od běžného líčení pro sebe až po profesionální techniky pro začínající vizážistky. Probereme přípravu pleti, teorii barev, aplikační techniky a výběr produktů přímo na vaší tváři."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Jak si mohu rezervovat termín?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Rezervovat můžete telefonicky nebo SMS na +420 608 178 390, e-mailem na pavlovanikol@gmail.com nebo přes Instagram @nikol__mua. Obvykle odpovídám do několika hodin."
+              }
+            }
+          ]
+        }
+      ]
     }
     </script>
 </head>
@@ -47,7 +260,7 @@
                 <div class="circle"></div>
                 <div class="line-mask">
                     <div class="line"></div>
-                </div> 
+                </div>
                 <h2 style="font-family: 'Syne', sans-serif; font-weight: 700;">NP</h2>
             </div>
         </div>
@@ -64,7 +277,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <div class="logo-wrapper">
-                <a class="logo" href="/cz/"> 
+                <a class="logo" href="/cz/">
                     <img src="../img/logo1.png" class="logo-img" alt="Nikol Pavlova Logo" style="max-height: 50px;">
                 </a>
             </div>
@@ -105,8 +318,8 @@
                             <h6>Profesionální vizážistka Praha</h6>
                             <h1>Nikol Pavlova</h1>
                         </div>
-                        <div class="transform-banner position-relative"> 
-                            <img class="img home-default-img home-default-img-left wow imago" src="../img/slider/slider-3.webp" alt="Nikol Pavlova Makeup Artist"> 
+                        <div class="transform-banner position-relative">
+                            <img class="img home-default-img home-default-img-left wow imago" src="../img/slider/slider-3.webp" alt="Nikol Pavlova - vizážistka v Praze">
                         </div>
                         <div class="home-default-cont home-default-cont-right">
                             <div class="home-default-cont-absolute home-default-cont-absolute-right">
@@ -234,7 +447,7 @@
                 </div>
                 <div class="col-lg-5 offset-lg-1 col-md-6 wow fadeInUp" data-wow-delay=".6s">
                     <div class="profile-img">
-                        <div class="img"> <img src="../img/nikol-header.webp" alt="Nikol Pavlova Vizážistka"> </div>
+                        <div class="img"> <img src="../img/nikol-header.webp" alt="Nikol Pavlova - profil vizážistky"> </div>
                     </div>
                 </div>
             </div>
@@ -299,6 +512,97 @@
 
     <div class="line-vr-section"></div>
 
+    <!-- FAQ -->
+    <section class="section-padding" id="faq">
+        <div class="container">
+            <div class="row mb-45">
+                <div class="col-md-12 text-center">
+                    <h6 class="wow" data-splitting>Časté dotazy</h6>
+                    <h1 class="wow" data-splitting>Nejčastější otázky</h1>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-9 col-md-12">
+                    <ul class="accordion-box clearfix">
+
+                        <li class="accordion block">
+                            <div class="acc-btn"><span class="count">1.</span> Kde působíte a jezdíte za klienty?</div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <div class="text">Jsem profesionální vizážistka se sídlem v Praze. Pracuji ve všech pražských čtvrtích — včetně Prahy 1 (Staré Město), Prahy 2 (Vinohrady) a Prahy 7 — a zároveň cestuji do dalších měst v České republice i po Evropě za svatbami, focením a akcemi.</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="accordion block">
+                            <div class="acc-btn"><span class="count">2.</span> Jaké služby líčení nabízíte?</div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <div class="text">Nabízím svatební líčení, večerní a koktejlový make-up, přirozené nude looky, plesový make-up, komerční a editorial líčení pro focení i osobní kurzy líčení pro klienty, kteří se chtějí naučit profesionální techniky.</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="accordion block">
+                            <div class="acc-btn"><span class="count">3.</span> V jakých jazycích mluvíte?</div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <div class="text">Mluvím plynně česky a anglicky, takže nabízím pohodlný servis jak českým, tak mezinárodním klientům, expatům žijícím v Praze i párům plánujícím destination svatbu v České republice.</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="accordion block">
+                            <div class="acc-btn"><span class="count">4.</span> Co obsahuje balíček svatebního líčení?</div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <div class="text">Svatební balíček zahrnuje předsvatební zkoušku líčení, kompletní líčení v den svatby, umělé řasy a osobní touch-up kit, aby váš look vypadal skvěle od obřadu až po hostinu.</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="accordion block">
+                            <div class="acc-btn"><span class="count">5.</span> Kolik stojí líčení v Praze?</div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <div class="text">Ceny závisí na typu služby, lokaci a termínu — svatební balíčky, večerní líčení i komerční zakázky cením individuálně. Napište mi prosím detaily vaší akce a do 24 hodin vám pošlu osobní cenovou nabídku.</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="accordion block">
+                            <div class="acc-btn"><span class="count">6.</span> Jak dlouho dopředu si rezervovat termín?</div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <div class="text">Pro svatby doporučuji rezervaci 6–12 měsíců dopředu, zejména v hlavní sezóně od května do září. Pro večerní líčení a focení obvykle stačí 2–3 týdny, někdy lze zařídit i last-minute termín — stačí mě kontaktovat.</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="accordion block">
+                            <div class="acc-btn"><span class="count">7.</span> Jak probíhá kurz líčení?</div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <div class="text">Kurzy jsou osobní (one-on-one) lekce přizpůsobené vaší úrovni a cílům — od běžného líčení pro sebe až po profesionální techniky pro začínající vizážistky. Probereme přípravu pleti, teorii barev, aplikační techniky a výběr produktů přímo na vaší tváři.</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="accordion block">
+                            <div class="acc-btn"><span class="count">8.</span> Jak si mohu rezervovat termín?</div>
+                            <div class="acc-content">
+                                <div class="content">
+                                    <div class="text">Rezervovat můžete telefonicky nebo SMS na +420 608 178 390, e-mailem na pavlovanikol@gmail.com nebo přes Instagram @nikol__mua. Obvykle odpovídám do několika hodin.</div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="testimonials" id="contact">
         <div class="background bg-img bg-fixed section-padding" data-overlay-dark="4" data-background="../img/portfolio/commercial-2-min.jpg">
             <div class="container">
@@ -308,7 +612,7 @@
                         <h5 class="wow" data-splitting>Máte dotaz nebo si přejete rezervovat termín?</h5>
                         <p style="color: #ccc; margin-bottom: 20px;">Ráda vám pomohu vytvořit dokonalý look na váš speciální den. Neváhejte mě kontaktovat a společně naplánujeme vše potřebné.</p>
                         <div class="btn-wrap text-left wow fadeInUp" data-wow-delay=".6s">
-                            <div class="btn-link"> <a href="mailto:pavlovanikol@gmail.com">pavlovanikol@gmail.com</a> <span class="btn-block animation-bounce"></span> </div>
+                            <div class="btn-link"> <a href="/cdn-cgi/l/email-protection#b1c1d0c7dddec7d0dfd8dadeddf1d6dcd0d8dd9fd2dedc"><span class="__cf_email__" data-cfemail="5b2b3a2d37342d3a35323034371b3c363a323775383436">[email&#160;protected]</span></a> <span class="btn-block animation-bounce"></span> </div>
                         </div>
                     </div>
                     <div class="col-lg-5 offset-lg-1 col-md-12">
@@ -333,10 +637,10 @@
                     <div class="col-md-3 mb-45">
                         <h5>Nikol Pavlova</h5>
                         <p>Profesionální vizážistka v Praze. Tvořím make-up, který podtrhne vaši osobnost a přirozenou krásu.</p>
-                        <div class="social"> 
-                            <a href="https://www.instagram.com/nikol__mua" target="_blank"><i class="fa-brands fa-instagram"></i></a> 
-                            <a href="https://www.facebook.com/nikki.yumi" target="_blank"><i class="fa-brands fa-facebook"></i></a> 
-                            <a href="https://www.threads.net/@nikol_pavlova_mua" target="_blank"><i class="fa-brands fa-twitter"></i></a> 
+                        <div class="social">
+                            <a href="https://www.instagram.com/nikol__mua" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/nikki.yumi" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://www.threads.net/@nikol_pavlova_mua" target="_blank" rel="noopener"><i class="fa-brands fa-twitter"></i></a>
                         </div>
                     </div>
                     <div class="col-md-4 offset-md-1 mb-45">
@@ -354,7 +658,7 @@
                         <h5>Kontakt</h5>
                         <p>Praha 7, Česká republika<br>(Možnost dojezdu)</p>
                         <div class="phone"><a href="tel:+420608178390">+420 608 178 390</a></div>
-                        <div class="mail"><a href="mailto:pavlovanikol@gmail.com">pavlovanikol@gmail.com</a></div>
+                        <div class="mail"><a href="/cdn-cgi/l/email-protection#a3d3c2d5cfccd5c2cdcac8cccfe3c4cec2cacf8dc0ccce"><span class="__cf_email__" data-cfemail="6d1d0c1b01021b0c03040602012d0a000c0401430e0200">[email&#160;protected]</span></a></div>
                     </div>
                 </div>
             </div>
@@ -363,13 +667,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <p>2025 © Nikol Pavlova. Všechna práva vyhrazena.</p>
+                        <p>2026 © Nikol Pavlova. Všechna práva vyhrazena.</p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="../js/jquery-3.7.1.min.js"></script>
     <script src="../js/jquery-migrate-3.4.1.min.js"></script>
     <script src="../js/modernizr-2.6.2.min.js"></script>
@@ -388,5 +693,6 @@
     <script src="../js/smooth-scroll.min.js"></script>
     <script src="../js/wow.js"></script>
     <script src="../js/custom.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"86e0fdd980734e30a563d9e0b0a1f0fa","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>

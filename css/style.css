@@ -39,7 +39,7 @@
 38. toTop Button style
 39. Media Query style
 40. Overlay Effect Bg image
-
+41. FAQ
 ------------------------------------------------------------------- */
 
 
@@ -4546,3 +4546,117 @@ input[type="checkbox"] {
 [data-overlay-dark="10"]:before {
     opacity: 1;
 }
+
+
+
+/* ======= FAQ style ======= */
+
+
+<style>
+.faq .faq-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 0;
+    transition: background-color 0.3s ease;
+}
+ 
+.faq .faq-item:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+ 
+.faq .faq-question {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Syne', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #1a1a1a;
+    transition: color 0.3s ease, padding 0.3s ease;
+    gap: 20px;
+}
+ 
+.faq .faq-question:hover,
+.faq .faq-question[aria-expanded="true"] {
+    color: #b08968;
+}
+ 
+.faq .faq-q-text {
+    flex: 1;
+    line-height: 1.4;
+}
+ 
+.faq .faq-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    font-size: 14px;
+}
+ 
+.faq .faq-question[aria-expanded="true"] .faq-icon {
+    transform: rotate(45deg);
+    background-color: #b08968;
+    border-color: #b08968;
+    color: #fff;
+}
+ 
+.faq .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+ 
+.faq .faq-answer-inner {
+    padding: 0 0 28px 0;
+    max-width: 90%;
+}
+ 
+.faq .faq-answer p {
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin: 0;
+}
+ 
+.faq .faq-answer a {
+    color: #b08968;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(176, 137, 104, 0.4);
+    transition: border-color 0.3s ease;
+}
+ 
+.faq .faq-answer a:hover {
+    border-bottom-color: #b08968;
+}
+ 
+@media (max-width: 768px) {
+    .faq .faq-question {
+        font-size: 17px;
+        padding: 22px 0;
+    }
+    .faq .faq-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+    .faq .faq-answer-inner {
+        max-width: 100%;
+        padding-bottom: 22px;
+    }
+    .faq .faq-answer p {
+        font-size: 15px;
+    }
+}
+</style>

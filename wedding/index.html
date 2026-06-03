@@ -147,6 +147,23 @@
             ]
           },
           "serviceType": "Bridal Makeup",
+          "potentialAction": {
+            "@type": "ReserveAction",
+            "name": "Book a makeup appointment",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://calendly.com/pavlovanikol/makeup-hair",
+              "inLanguage": "en",
+              "actionPlatform": [
+                "https://schema.org/DesktopWebPlatform",
+                "https://schema.org/MobileWebPlatform"
+              ]
+            },
+            "result": {
+              "@type": "Reservation",
+              "name": "Wedding Makeup Appointment"
+            }
+          },
           "audience": {
             "@type": "Audience",
             "audienceType": "Brides, wedding parties, destination wedding couples in Prague"
@@ -282,462 +299,55 @@
     <link rel="stylesheet" href="/css/plugins.css" />
     <link rel="stylesheet" href="/css/style.css">
 
-    <!-- Page-specific enhancements -->
+    <!-- Page-specific enhancements (minimal, self-contained) -->
     <style>
-        /* ─── Wedding page enhancements ─── */
-        .wedding-hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-        .wedding-hero .bg-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.55) 100%);
-            z-index: 1;
-        }
-        .wedding-hero .hero-bg {
-            position: absolute;
-            inset: 0;
-            background-image: url('/img/wedding/wedding-1.png');
-            background-size: cover;
-            background-position: center top;
-            z-index: 0;
-        }
-        .wedding-hero .container {
-            position: relative;
-            z-index: 2;
-        }
-        .wedding-hero h6 {
-            color: #c9a96e;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
-        .wedding-hero h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2.8rem, 6vw, 5.5rem);
-            font-weight: 800;
-            color: #fff;
-            line-height: 1.05;
-            margin-bottom: 25px;
-        }
-        .wedding-hero p {
-            color: rgba(255,255,255,0.82);
-            font-size: 17px;
-            line-height: 1.75;
-            max-width: 520px;
-            margin-bottom: 35px;
-        }
-        .wedding-hero .hero-cta-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .btn-gold {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 34px;
-            background: #c9a96e;
-            color: #000;
-            font-family: 'Syne', sans-serif;
-            font-weight: 600;
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .btn-gold:hover {
-            background: #b8954f;
-            color: #000;
-            transform: translateY(-2px);
-        }
-        .btn-outline-white {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 33px;
-            border: 1px solid rgba(255,255,255,0.5);
-            color: #fff;
-            font-family: 'Syne', sans-serif;
-            font-weight: 500;
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .btn-outline-white:hover {
-            border-color: #c9a96e;
-            color: #c9a96e;
-        }
-        .hero-badges {
-            position: absolute;
-            bottom: 50px;
-            right: 60px;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .hero-badge {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(201,169,110,0.3);
-            padding: 12px 20px;
-            color: #fff;
-            font-size: 12px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-family: 'Syne', sans-serif;
-        }
-        .hero-badge span {
-            display: block;
-            color: #c9a96e;
-            font-size: 10px;
-            margin-bottom: 3px;
-        }
+        /* Accent matches the site's warm tone used in breadcrumbs */
+        :root { --wed-accent: #b08968; }
 
-        /* ─── Breadcrumb ─── */
-        .breadcrumb-bar {
-            background: #f8f5f0;
-            padding: 14px 0;
-            border-bottom: 1px solid #ede8e0;
-        }
-        .breadcrumb-bar ol {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: #888;
-            font-family: 'Didact Gothic', sans-serif;
-        }
-        .breadcrumb-bar ol li a {
-            color: #888;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .breadcrumb-bar ol li a:hover { color: #c9a96e; }
-        .breadcrumb-bar ol li.active { color: #333; }
-        .breadcrumb-bar ol li + li::before {
-            content: '—';
-            margin-right: 8px;
-            color: #c9a96e;
-        }
+        /* ── Hero (uses theme's JS bg-img / overlay system) ── */
+        .wed-hero .background { position: relative; }
+        .wed-hero .hero-inner { min-height: 86vh; display: flex; align-items: center; }
+        .wed-hero h6 { color: var(--wed-accent); letter-spacing: 4px; text-transform: uppercase; font-size: 13px; margin-bottom: 18px; }
+        .wed-hero h1 { font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; line-height: 1.06; font-size: clamp(2.6rem, 6vw, 5rem); margin-bottom: 22px; }
+        .wed-hero p { color: rgba(255,255,255,0.85); font-size: 17px; line-height: 1.75; max-width: 540px; margin-bottom: 30px; }
+        .wed-hero .btn-link a { color: #fff; }
 
-        /* ─── Why Choose section ─── */
-        .why-choose {
-            background: #fff;
-        }
-        .why-card {
-            padding: 40px 35px;
-            border: 1px solid #ede8e0;
-            position: relative;
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        .why-card::before {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 0; height: 2px;
-            background: #c9a96e;
-            transition: width 0.4s ease;
-        }
-        .why-card:hover::before { width: 100%; }
-        .why-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.06); }
-        .why-card .icon {
-            width: 52px; height: 52px;
-            border: 1px solid #c9a96e;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 22px;
-            color: #c9a96e;
-            font-size: 20px;
-        }
-        .why-card h4 {
-            font-family: 'Syne', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1a1a1a;
-        }
-        .why-card p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.75;
-            margin: 0;
-        }
+        /* ── Reusable bordered box (proven pattern from portfolio page) ── */
+        .wed-box { padding: 32px 30px; border: 1px solid rgba(0,0,0,0.09); border-radius: 4px; height: 100%; transition: box-shadow .3s ease, transform .3s ease; }
+        .wed-box:hover { box-shadow: 0 18px 45px rgba(0,0,0,0.06); transform: translateY(-3px); }
+        .wed-box .wed-ic { width: 50px; height: 50px; border: 1px solid var(--wed-accent); display: flex; align-items: center; justify-content: center; color: var(--wed-accent); font-size: 18px; margin-bottom: 20px; }
+        .wed-box h4 { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 12px; }
+        .wed-box p { font-family: 'Didact Gothic', sans-serif; line-height: 1.7; color: #555; margin: 0; }
 
-        /* ─── Package section ─── */
-        .package-card {
-            background: #f9f6f1;
-            padding: 45px 40px;
-            border-top: 3px solid #c9a96e;
-            height: 100%;
-            transition: box-shadow 0.3s;
-        }
-        .package-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
-        .package-card .pkg-label {
-            display: inline-block;
-            background: #c9a96e;
-            color: #000;
-            font-family: 'Syne', sans-serif;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 5px 14px;
-            margin-bottom: 18px;
-        }
-        .package-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 26px;
-            font-weight: 800;
-            color: #1a1a1a;
-            margin-bottom: 8px;
-        }
-        .package-card .pkg-price {
-            font-family: 'Syne', sans-serif;
-            font-size: 14px;
-            color: #c9a96e;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 28px;
-            padding-bottom: 28px;
-            border-bottom: 1px solid #e0d8cc;
-        }
-        .package-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 30px;
-        }
-        .package-card ul li {
-            padding: 9px 0;
-            border-bottom: 1px solid #ede8e0;
-            font-size: 14px;
-            color: #444;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .package-card ul li i {
-            color: #c9a96e;
-            font-size: 12px;
-            flex-shrink: 0;
-        }
+        /* ── Numbered process steps ── */
+        .wed-step { display: flex; gap: 26px; padding: 30px 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
+        .wed-step:last-child { border-bottom: none; }
+        .wed-step .num { flex-shrink: 0; width: 54px; height: 54px; border: 1px solid var(--wed-accent); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 19px; color: var(--wed-accent); }
+        .wed-step h4 { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 7px; }
+        .wed-step p { font-family: 'Didact Gothic', sans-serif; line-height: 1.7; color: #555; margin: 0; }
 
-        /* ─── Process timeline ─── */
-        .process-step {
-            display: flex;
-            gap: 30px;
-            padding: 35px 0;
-            border-bottom: 1px solid #ede8e0;
-            position: relative;
-        }
-        .process-step:last-child { border-bottom: none; }
-        .step-num {
-            width: 56px; height: 56px;
-            border: 1px solid #c9a96e;
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Syne', sans-serif;
-            font-size: 20px;
-            font-weight: 800;
-            color: #c9a96e;
-            flex-shrink: 0;
-        }
-        .step-content h4 {
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            color: #1a1a1a;
-            margin-bottom: 8px;
-        }
-        .step-content p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.75;
-            margin: 0;
-        }
+        /* ── SEO prose helpers ── */
+        .wed-prose { font-family: 'Didact Gothic', sans-serif; font-size: 16px; line-height: 1.85; color: #555; }
+        .wed-prose h2 { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 22px; color: #1a1a1a; margin-top: 32px; margin-bottom: 12px; }
+        .wed-prose strong { color: #1a1a1a; }
+        .wed-prose ul { padding-left: 20px; }
+        .wed-prose ul li { padding: 5px 0; }
 
-        /* ─── Gallery grid ─── */
-        .wedding-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: auto;
-            gap: 12px;
-        }
-        .wedding-gallery .gal-item {
-            overflow: hidden;
-            position: relative;
-        }
-        .wedding-gallery .gal-item:first-child {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
-        .wedding-gallery .gal-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.6s ease;
-            min-height: 200px;
-        }
-        .wedding-gallery .gal-item:first-child img { min-height: 420px; }
-        .wedding-gallery .gal-item:hover img { transform: scale(1.05); }
-
-        /* ─── FAQ ─── */
-        .faq-speakable .accordion-block {
-            border-bottom: 1px solid #ede8e0;
-        }
-
-        /* ─── Testimonial card ─── */
-        .testimonial-card {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(201,169,110,0.25);
-            backdrop-filter: blur(8px);
-            padding: 35px;
-            margin-bottom: 20px;
-        }
-        .testimonial-card p {
-            font-size: 15px;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.85);
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-        .testimonial-card .tc-author {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .testimonial-card .tc-author .avatar {
-            width: 46px; height: 46px;
-            border-radius: 50%;
-            border: 2px solid #c9a96e;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-        .testimonial-card .tc-author .avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .testimonial-card .tc-author h6 { color: #fff; margin: 0; font-size: 14px; }
-        .testimonial-card .tc-author span { color: #c9a96e; font-size: 12px; }
-        .testimonial-card .stars { color: #c9a96e; font-size: 12px; margin-bottom: 16px; }
-
-        /* ─── CTA section ─── */
-        .cta-section {
-            background: #1a1a1a;
-            padding: 90px 0;
-        }
-        .cta-section h6 {
-            color: #c9a96e;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-size: 12px;
-            margin-bottom: 16px;
-        }
-        .cta-section h2 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 25px;
-            line-height: 1.1;
-        }
-        .cta-section p {
-            color: rgba(255,255,255,0.6);
-            font-size: 15px;
-            line-height: 1.75;
-            max-width: 420px;
-        }
-        .cta-contact-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .cta-contact-list li {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.07);
-        }
-        .cta-contact-list li .cta-icon {
-            width: 44px; height: 44px;
-            border: 1px solid rgba(201,169,110,0.4);
-            display: flex; align-items: center; justify-content: center;
-            color: #c9a96e;
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-        .cta-contact-list li .cta-info p { color: rgba(255,255,255,0.5); font-size: 12px; margin: 0 0 4px; letter-spacing: 1px; text-transform: uppercase; }
-        .cta-contact-list li .cta-info a { color: #fff; font-size: 15px; text-decoration: none; font-family: 'Syne', sans-serif; transition: color 0.2s; }
-        .cta-contact-list li .cta-info a:hover { color: #c9a96e; }
-
-        /* ─── Section label ─── */
-        .sec-label {
-            font-size: 12px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: #c9a96e;
-            font-family: 'Syne', sans-serif;
-            display: block;
-            margin-bottom: 14px;
-        }
-        .sec-title {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            line-height: 1.1;
-            color: #1a1a1a;
-        }
-
-        /* ─── SEO prose blocks ─── */
-        .seo-prose {
-            font-size: 15px;
-            line-height: 1.85;
-            color: #555;
-        }
-        .seo-prose h2, .seo-prose h3 {
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-top: 35px;
-            margin-bottom: 12px;
-        }
-        .seo-prose h2 { font-size: 22px; }
-        .seo-prose h3 { font-size: 18px; }
-        .seo-prose strong { color: #1a1a1a; }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero-badges { display: none; }
-            .wedding-gallery { grid-template-columns: 1fr 1fr; }
-            .wedding-gallery .gal-item:first-child { grid-column: span 2; }
-            .hero-cta-group { flex-direction: column; align-items: flex-start; }
+            .wed-hero .hero-inner { min-height: 70vh; padding: 100px 0 60px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- ═══════════════════════════════════════════
-         PRELOADER
-    ═══════════════════════════════════════════ -->
+    <!-- Preloader -->
     <div class="preloader-bg"></div>
     <div class="preloader">
         <div class="item">
             <div class="wrap">
                 <div class="circle"></div>
-                <div class="line-mask">
-                    <div class="line"></div>
-                </div>
+                <div class="line-mask"><div class="line"></div></div>
                 <h2 style="font-family: 'Syne', sans-serif; font-weight: 700;">NP</h2>
             </div>
         </div>
@@ -751,27 +361,21 @@
 
     <div class="cursor js-cursor"></div>
 
-    <!-- ═══════════════════════════════════════════
-         NAVBAR
-    ═══════════════════════════════════════════ -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <div class="logo-wrapper">
-                <a class="logo" href="/">
-                    <img src="/img/logo1.png" class="logo-img" alt="Nikol Pavlova Makeup Artist Prague" style="max-height: 50px;">
-                </a>
+                <a class="logo" href="/"><img src="/img/logo1.png" class="logo-img" alt="Nikol Pavlova Makeup Artist Prague" style="max-height: 50px;"></a>
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"><i class="fa-regular fa-bars"></i></span>
-            </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="fa-regular fa-bars"></i></span></button>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/#about">About Me</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/portfolio/">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/wedding/">Wedding</a></li>
                     <li class="nav-item"><a class="nav-link" href="/#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">EN <i class="fa-light fa-angle-down"></i></a>
                         <ul class="dropdown-menu">
@@ -784,7 +388,7 @@
                     <div class="wrap">
                         <div class="icon"><i class="fa-light fa-phone"></i></div>
                         <div class="text">
-                            <p>Book Bridal Appointment</p>
+                            <p><a href="https://calendly.com/pavlovanikol/makeup-hair" target="_blank" rel="noopener">Book Online</a></p>
                             <h5><a href="tel:+420608178390">+420 608 178 390</a></h5>
                         </div>
                     </div>
@@ -793,108 +397,44 @@
         </div>
     </nav>
 
-    <!-- ═══════════════════════════════════════════
-         BREADCRUMB (Schema-aligned)
-    ═══════════════════════════════════════════ -->
-    <div class="breadcrumb-bar">
-        <div class="container">
-            <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
-                    <meta itemprop="position" content="1">
-                </li>
-                <li class="active" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <span itemprop="name">Wedding Makeup Prague</span>
-                    <meta itemprop="position" content="2">
-                </li>
-            </ol>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         HERO — Wedding Makeup Artist Prague
-    ═══════════════════════════════════════════ -->
-    <section class="wedding-hero" aria-label="Wedding Makeup Artist Prague — Nikol Pavlova">
-        <div class="hero-bg" role="img" aria-label="Bridal makeup by Nikol Pavlova Prague"></div>
-        <div class="bg-overlay"></div>
-        <div class="container">
-            <div class="row align-items-center" style="min-height: 100vh; padding: 120px 0 80px;">
-                <div class="col-lg-7 col-md-10">
-                    <h6 class="hero-headline">Wedding Makeup Artist · Prague</h6>
-                    <h1 class="hero-headline">Bridal Makeup<br>That Lasts All Day</h1>
-                    <p>Your wedding day deserves a look as unique as your love story. I create long-lasting, radiant bridal makeup that enhances your natural beauty — tailored entirely to you, your dress, and your vision.</p>
-                    <div class="hero-cta-group">
-                        <a href="#contact" class="btn-gold">
-                            Book Bridal Consultation <i class="ti-arrow-top-right"></i>
-                        </a>
-                        <a href="#packages" class="btn-outline-white">
-                            View Packages
-                        </a>
+    <!-- ============ HERO (theme bg-img + overlay system) ============ -->
+    <section class="testimonials wed-hero" id="home">
+        <div class="background bg-img bg-fixed" data-overlay-dark="5" data-background="/img/wedding/wedding-1.png">
+            <div class="container">
+                <div class="row hero-inner">
+                    <div class="col-lg-9 col-md-12">
+                        <h6 class="hero-headline">Wedding Makeup Artist &middot; Prague</h6>
+                        <h1 class="hero-headline">Bridal Makeup<br>That Lasts All Day</h1>
+                        <p>Your wedding day deserves a look as unique as your love story. I create long-lasting, radiant bridal makeup that enhances your natural beauty &mdash; tailored entirely to you, your dress and your vision.</p>
+                        <div class="btn-wrap text-left wow fadeInUp" data-wow-delay=".4s">
+                            <div class="btn-link"><a href="https://calendly.com/pavlovanikol/makeup-hair" target="_blank" rel="noopener">Book Appointment Online <i class="ti-arrow-top-right"></i></a> <span class="btn-block animation-bounce"></span></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="hero-badges">
-            <div class="hero-badge">
-                <span>Based in</span>
-                Prague, Czech Republic
-            </div>
-            <div class="hero-badge">
-                <span>Languages</span>
-                English · Czech · Ukrainian
-            </div>
-            <div class="hero-badge">
-                <span>Available for</span>
-                Destination Weddings
             </div>
         </div>
     </section>
 
-    <div class="line-vr-section"></div>
-
-    <!-- ═══════════════════════════════════════════
-         INTRO — SEO-rich descriptive text
-    ═══════════════════════════════════════════ -->
-    <section class="section-padding" id="about-service">
+    <!-- ============ INTRO / ABOUT THE SERVICE ============ -->
+    <section class="about section-padding" id="about-service">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-5 col-md-12 mb-30 wow fadeInUp" data-wow-delay=".1s">
-                    <div class="wedding-gallery">
-                        <div class="gal-item">
-                            <a href="/img/wedding/wedding-1.png" class="img-zoom">
-                                <img src="/img/wedding/wedding-1.png" alt="Bridal makeup Prague by Nikol Pavlova — soft glam wedding look" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="gal-item">
-                            <a href="/img/wedding/wedding-2.png" class="img-zoom">
-                                <img src="/img/wedding/wedding-2.png" alt="Wedding makeup detail — flawless radiant bridal skin Prague" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="gal-item">
-                            <a href="/img/wedding/wedding-3.png" class="img-zoom">
-                                <img src="/img/wedding/wedding-3.png" alt="Romantic long-lasting bridal makeup look Prague" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="gal-item">
-                            <a href="/img/wedding/wedding-4.png" class="img-zoom">
-                                <img src="/img/wedding/wedding-4.png" alt="Elegant wedding-day bridal makeup Prague" loading="lazy">
-                            </a>
-                        </div>
+                <div class="col-lg-6 col-md-12 mb-30 wow fadeInUp" data-wow-delay=".1s">
+                    <div class="profile-img">
+                        <div class="img"><img src="/img/wedding/wedding-2.png" class="img-fluid" alt="Bridal makeup Prague by Nikol Pavlova — radiant wedding look"></div>
                     </div>
                 </div>
-                <div class="col-lg-6 offset-lg-1 col-md-12 wow fadeInUp" data-wow-delay=".2s">
-                    <span class="sec-label">About the Service</span>
-                    <h2 class="sec-title" style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 22px;">
-                        Your Bridal Look,<br>Exactly as You Imagined
-                    </h2>
-                    <div class="about-intro seo-prose">
-                        <p>As a professional <strong>wedding makeup artist based in Prague</strong>, I work with brides to create looks that are beautiful, camera-ready, and — most importantly — uniquely theirs. Whether you're getting married in Prague's Old Town, a vineyard in Moravia, or planning a destination wedding anywhere in Europe, I'll travel to you.</p>
-                        <p>Every bridal makeup service begins with a detailed consultation where we discuss your vision, skin type, dress style, and wedding aesthetic. A <strong>bridal trial session</strong> is included in every wedding package so you arrive on your wedding day fully confident.</p>
+                <div class="col-lg-5 offset-lg-1 col-md-12 wow fadeInUp" data-wow-delay=".2s">
+                    <h6 data-splitting>About the Service</h6>
+                    <h1 data-splitting>Your Bridal Look, Exactly as You Imagined</h1>
+                    <div class="about-intro">
+                        <p>As a professional <strong>wedding makeup artist based in Prague</strong>, I work with brides to create looks that are beautiful, camera-ready, and &mdash; most importantly &mdash; uniquely theirs. Whether you are getting married in Prague's Old Town, a château outside the city, or planning a destination wedding anywhere in Europe, I will travel to you.</p>
+                        <p>Every bridal service begins with a detailed consultation about your vision, skin type, dress and wedding aesthetic. A <strong>bridal trial</strong> is included in every wedding package so you arrive on your wedding day fully confident.</p>
                     </div>
-                    <ul class="list-unstyled list mt-30 mb-35 wow fadeInUp" data-wow-delay=".3s">
+                    <ul class="list-unstyled list mt-30 mb-30">
                         <li>
                             <div class="list-icon"><i class="fa-regular fa-check"></i></div>
-                            <div class="list-text"><p>English-speaking — ideal for international & expat brides in Prague</p></div>
+                            <div class="list-text"><p>English-speaking &mdash; ideal for international &amp; expat brides</p></div>
                         </li>
                         <li>
                             <div class="list-icon"><i class="fa-regular fa-check"></i></div>
@@ -902,65 +442,115 @@
                         </li>
                         <li>
                             <div class="list-icon"><i class="fa-regular fa-check"></i></div>
-                            <div class="list-text"><p>Available for entire bridal party — bride, bridesmaids, mother of the bride</p></div>
+                            <div class="list-text"><p>Bride, bridesmaids &amp; mother of the bride</p></div>
                         </li>
                         <li>
                             <div class="list-icon"><i class="fa-regular fa-check"></i></div>
-                            <div class="list-text"><p>Destination weddings across Czech Republic & Europe</p></div>
+                            <div class="list-text"><p>Destination weddings across Czech Republic &amp; Europe</p></div>
                         </li>
                     </ul>
                     <div class="btn-wrap text-left">
-                        <div class="btn-link">
-                            <a href="#contact">Book Your Bridal Consultation <i class="ti-arrow-top-right"></i></a>
-                            <span class="btn-block animation-bounce"></span>
+                        <div class="btn-link"><a href="https://calendly.com/pavlovanikol/makeup-hair" target="_blank" rel="noopener">Book Your Bridal Consultation <i class="ti-arrow-top-right"></i></a> <span class="btn-block animation-bounce"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="line-vr-section"></div>
+
+    <!-- ============ WHY BRIDES CHOOSE NIKOL ============ -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row mb-45">
+                <div class="col-md-12 text-center">
+                    <h6 data-splitting>Why Brides Choose Nikol</h6>
+                    <h1 data-splitting>What Sets the Experience Apart</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".1s">
+                    <div class="wed-box">
+                        <div class="wed-ic"><i class="fa-light fa-comments"></i></div>
+                        <h4>English-Speaking MUA</h4>
+                        <p>Fluent in English, Czech and Ukrainian &mdash; no communication barriers for international brides or destination weddings in Prague.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".2s">
+                    <div class="wed-box">
+                        <div class="wed-ic"><i class="fa-light fa-calendar-check"></i></div>
+                        <h4>Bridal Trial Included</h4>
+                        <p>Every wedding package includes a dedicated trial session so you refine your look and arrive on the day with complete confidence.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="wed-box">
+                        <div class="wed-ic"><i class="fa-light fa-plane"></i></div>
+                        <h4>Destination Weddings</h4>
+                        <p>Available throughout the Czech Republic and across Europe &mdash; I come to your venue, hotel or location of choice.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".4s">
+                    <div class="wed-box">
+                        <div class="wed-ic"><i class="fa-light fa-gem"></i></div>
+                        <h4>Long-Lasting Finish</h4>
+                        <p>Professional products and techniques keep your bridal look fresh and photo-ready from the ceremony to the last dance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="line-vr-section"></div>
+
+    <!-- ============ PACKAGES (native price block) ============ -->
+    <section class="price section-padding" id="pricing">
+        <div class="container">
+            <div class="row mb-45">
+                <div class="col-md-12 text-center">
+                    <h6 data-splitting>Rates &amp; Services</h6>
+                    <h1 data-splitting>Wedding Makeup Packages</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-30 wow fadeInUp" data-wow-delay=".2s">
+                    <div class="item">
+                        <h6 class="type">Full Bridal Package</h6>
+                        <div class="content d-flex align-items-center">
+                            <div class="mr-40"><h2>Request</h2></div>
+                            <div class="feat">
+                                <ul class="rest">
+                                    <li><i class="fa-regular fa-check"></i> <span>Personalised Bridal Trial</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Wedding-Day Application</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>False Lashes Included</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Touch-Up Kit for the Day</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Travel to Venue (Prague)</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mb-30 wow fadeInUp" data-wow-delay=".4s">
+                    <div class="item">
+                        <h6 class="type">Bridal Party &amp; Travel</h6>
+                        <div class="content d-flex align-items-center">
+                            <div class="mr-40"><h2>Request</h2></div>
+                            <div class="feat">
+                                <ul class="rest">
+                                    <li><i class="fa-regular fa-check"></i> <span>Bridesmaids Makeup</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Mother of the Bride</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Coordinated Party Look</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>Travel Across Czech Republic</span></li>
+                                    <li><i class="fa-regular fa-check"></i> <span>European Destinations</span></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <div class="line-vr-section"></div>
-
-    <!-- ═══════════════════════════════════════════
-         WHY CHOOSE
-    ═══════════════════════════════════════════ -->
-    <section class="section-padding why-choose" id="why-choose">
-        <div class="container">
-            <div class="row mb-50">
+            <div class="row">
                 <div class="col-md-12 text-center">
-                    <span class="sec-label wow" data-splitting>Why Brides Choose Nikol</span>
-                    <h2 class="sec-title wow" data-splitting style="font-size: clamp(1.8rem, 3vw, 2.8rem);">What Sets the Experience Apart</h2>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".1s">
-                    <div class="why-card">
-                        <div class="icon"><i class="fa-light fa-language"></i></div>
-                        <h4>English-Speaking MUA</h4>
-                        <p>Fully fluent in English, Czech and Ukrainian — no communication barriers for international brides or destination weddings in Prague.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                    <div class="why-card">
-                        <div class="icon"><i class="fa-light fa-calendar-check"></i></div>
-                        <h4>Bridal Trial Included</h4>
-                        <p>Every wedding package includes a dedicated trial session so you can refine your look and arrive on your big day with complete confidence.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="why-card">
-                        <div class="icon"><i class="fa-light fa-plane"></i></div>
-                        <h4>Destination Weddings</h4>
-                        <p>Available for weddings throughout the Czech Republic and across Europe — I come to your venue, hotel, or location of choice.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".4s">
-                    <div class="why-card">
-                        <div class="icon"><i class="fa-light fa-sparkles"></i></div>
-                        <h4>Long-Lasting Formula</h4>
-                        <p>Professional-grade products and techniques ensure your bridal look stays fresh and photo-ready from the ceremony through the last dance.</p>
-                    </div>
+                    <p style="color:#888; font-family:'Didact Gothic',sans-serif;">Pricing varies by date, location and scope. Contact Nikol with your wedding details for a personalised quote within 24 hours.</p>
                 </div>
             </div>
         </div>
@@ -968,122 +558,42 @@
 
     <div class="line-vr-section"></div>
 
-    <!-- ═══════════════════════════════════════════
-         PACKAGES
-    ═══════════════════════════════════════════ -->
-    <section class="section-padding" id="packages" style="background: #faf7f3;">
-        <div class="container">
-            <div class="row mb-50">
-                <div class="col-md-12 text-center">
-                    <span class="sec-label wow" data-splitting>Rates & Services</span>
-                    <h2 class="sec-title wow" data-splitting style="font-size: clamp(1.8rem, 3vw, 2.8rem);">Wedding Makeup Packages</h2>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay=".1s">
-                    <div class="package-card">
-                        <span class="pkg-label">Most Popular</span>
-                        <h3>Full Bridal Package</h3>
-                        <p class="pkg-price">Price on request</p>
-                        <ul>
-                            <li><i class="fa-regular fa-check"></i> Personalised Bridal Trial</li>
-                            <li><i class="fa-regular fa-check"></i> Wedding-Day Makeup Application</li>
-                            <li><i class="fa-regular fa-check"></i> False Lashes Included</li>
-                            <li><i class="fa-regular fa-check"></i> Touch-Up Kit for the Day</li>
-                            <li><i class="fa-regular fa-check"></i> Travel to Venue (Prague)</li>
-                            <li><i class="fa-regular fa-check"></i> 1:1 Bridal Consultation</li>
-                        </ul>
-                        <a href="#contact" class="btn-gold" style="width: 100%; justify-content: center;">
-                            Request a Quote
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay=".2s">
-                    <div class="package-card">
-                        <span class="pkg-label">Add-On</span>
-                        <h3>Bridal Party Makeup</h3>
-                        <p class="pkg-price">Price on request</p>
-                        <ul>
-                            <li><i class="fa-regular fa-check"></i> Bridesmaids Makeup</li>
-                            <li><i class="fa-regular fa-check"></i> Mother of the Bride</li>
-                            <li><i class="fa-regular fa-check"></i> Coordinated Look for the Party</li>
-                            <li><i class="fa-regular fa-check"></i> Professional Products</li>
-                            <li><i class="fa-regular fa-check"></i> On-location Service</li>
-                            <li><i class="fa-regular fa-check"></i> Flexible Scheduling</li>
-                        </ul>
-                        <a href="#contact" class="btn-gold" style="width: 100%; justify-content: center;">
-                            Request a Quote
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="package-card">
-                        <span class="pkg-label">Destination</span>
-                        <h3>Travel Bridal Package</h3>
-                        <p class="pkg-price">Price on request</p>
-                        <ul>
-                            <li><i class="fa-regular fa-check"></i> Everything in Full Bridal</li>
-                            <li><i class="fa-regular fa-check"></i> Travel Across Czech Republic</li>
-                            <li><i class="fa-regular fa-check"></i> European Destinations</li>
-                            <li><i class="fa-regular fa-check"></i> Destination Wedding Expertise</li>
-                            <li><i class="fa-regular fa-check"></i> Flexible Date Scheduling</li>
-                            <li><i class="fa-regular fa-check"></i> English Communication</li>
-                        </ul>
-                        <a href="#contact" class="btn-gold" style="width: 100%; justify-content: center;">
-                            Request a Quote
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-40">
-                <div class="col-md-12 text-center">
-                    <p style="color: #888; font-size: 14px;">Pricing varies based on date, location, and scope. Contact Nikol with your wedding details for a personalised quote within 24 hours.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="line-vr-section"></div>
-
-    <!-- ═══════════════════════════════════════════
-         PROCESS
-    ═══════════════════════════════════════════ -->
-    <section class="section-padding" id="process">
+    <!-- ============ PROCESS ============ -->
+    <section class="section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-12 mb-40">
-                    <span class="sec-label wow" data-splitting>How It Works</span>
-                    <h2 class="sec-title wow" data-splitting style="font-size: clamp(1.8rem, 3vw, 2.8rem); margin-bottom: 20px;">The Bridal Makeup Process</h2>
-                    <p class="seo-prose">From your first consultation to the final touch-up on your wedding day — here's exactly what to expect when you book Nikol Pavlova as your <strong>wedding makeup artist in Prague</strong>.</p>
-                    <p class="seo-prose mt-20">The entire process is designed to be relaxed, personal, and entirely focused on your vision. Brides frequently describe the experience as stress-free and joyful.</p>
+                    <h6 data-splitting>How It Works</h6>
+                    <h1 data-splitting>The Bridal Process</h1>
+                    <p class="wed-prose">From your first consultation to the final touch-up on your wedding day &mdash; here is exactly what to expect when you book Nikol Pavlova as your <strong>wedding makeup artist in Prague</strong>.</p>
                 </div>
                 <div class="col-lg-6 offset-lg-1 col-md-12">
-                    <div class="process-step wow fadeInUp" data-wow-delay=".1s">
-                        <div class="step-num">01</div>
-                        <div class="step-content">
+                    <div class="wed-step wow fadeInUp" data-wow-delay=".1s">
+                        <div class="num">01</div>
+                        <div>
                             <h4>Initial Consultation</h4>
-                            <p>We discuss your wedding vision, dress, venue, and the looks you love. This can be done in person, by phone, or via video call — convenient for international brides planning a destination wedding in Prague.</p>
+                            <p>We discuss your vision, dress and venue &mdash; in person, by phone or video call, convenient for international brides planning a destination wedding in Prague.</p>
                         </div>
                     </div>
-                    <div class="process-step wow fadeInUp" data-wow-delay=".15s">
-                        <div class="step-num">02</div>
-                        <div class="step-content">
+                    <div class="wed-step wow fadeInUp" data-wow-delay=".15s">
+                        <div class="num">02</div>
+                        <div>
                             <h4>Bridal Trial Session</h4>
-                            <p>Typically 4–8 weeks before your wedding. We test the full look, adjust colours and techniques, and make sure you feel completely confident. Trial photos help finalise every detail.</p>
+                            <p>Typically 4&ndash;8 weeks before the wedding. We test the full look, adjust colours and techniques, and finalise every detail with trial photos.</p>
                         </div>
                     </div>
-                    <div class="process-step wow fadeInUp" data-wow-delay=".2s">
-                        <div class="step-num">03</div>
-                        <div class="step-content">
+                    <div class="wed-step wow fadeInUp" data-wow-delay=".2s">
+                        <div class="num">03</div>
+                        <div>
                             <h4>Wedding Morning Makeup</h4>
-                            <p>Nikol arrives at your hotel, venue or home. Bridal party makeup is scheduled first; the bride's look is applied last so it's freshest for the ceremony and photos.</p>
+                            <p>Nikol arrives at your hotel, venue or home. Bridal party makeup is scheduled first; the bride's look is applied last so it is freshest for the ceremony and photos.</p>
                         </div>
                     </div>
-                    <div class="process-step wow fadeInUp" data-wow-delay=".25s">
-                        <div class="step-num">04</div>
-                        <div class="step-content">
-                            <h4>Touch-Up Kit & Final Check</h4>
-                            <p>You receive a personalised touch-up kit with the key products used on your skin so your look stays perfect from the ceremony through the last dance of the reception.</p>
+                    <div class="wed-step wow fadeInUp" data-wow-delay=".25s">
+                        <div class="num">04</div>
+                        <div>
+                            <h4>Touch-Up Kit &amp; Final Check</h4>
+                            <p>You receive a personalised touch-up kit with the key products used on your skin, so your look stays perfect through to the last dance.</p>
                         </div>
                     </div>
                 </div>
@@ -1093,141 +603,105 @@
 
     <div class="line-vr-section"></div>
 
-    <!-- ═══════════════════════════════════════════
-         BRIDAL GALLERY — real wedding looks (image SEO)
-    ═══════════════════════════════════════════ -->
-    <section class="section-padding" id="gallery" aria-label="Bridal makeup gallery Prague">
+    <!-- ============ BRIDAL LOOKS GALLERY (img-zoom lightbox) ============ -->
+    <section class="section-padding" id="gallery">
         <div class="container">
-            <div class="row mb-50">
+            <div class="row mb-45">
                 <div class="col-md-12 text-center">
-                    <span class="sec-label wow" data-splitting>Selected Work</span>
-                    <h2 class="sec-title wow" data-splitting style="font-size: clamp(1.8rem, 3vw, 2.8rem);">Recent Bridal Looks</h2>
+                    <h6 data-splitting>Selected Work</h6>
+                    <h1 data-splitting>Recent Bridal Looks</h1>
                 </div>
             </div>
-            <div class="row g-3">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".05s">
-                    <div class="gal-item" style="overflow:hidden;">
-                        <a href="/img/wedding/wedding-5.png" class="img-zoom">
-                            <img src="/img/wedding/wedding-5.png" class="img-fluid" style="width:100%; height:340px; object-fit:cover;" alt="Bridal makeup look — soft bridal glow, Prague wedding" loading="lazy">
-                        </a>
-                    </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".05s">
+                    <a href="/img/wedding/wedding-5.png" title="Bridal makeup — soft bridal glow, Prague wedding" class="img-zoom">
+                        <div class="gallery-box"><div class="gallery-img"><img src="/img/wedding/wedding-5.png" class="img-fluid mx-auto d-block" alt="Bridal makeup look — soft bridal glow, Prague wedding" loading="lazy"></div></div>
+                    </a>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".1s">
-                    <div class="gal-item" style="overflow:hidden;">
-                        <a href="/img/wedding/wedding-7.png" class="img-zoom">
-                            <img src="/img/wedding/wedding-7.png" class="img-fluid" style="width:100%; height:340px; object-fit:cover;" alt="Bridal makeup look — classic bridal beauty by Nikol Pavlova" loading="lazy">
-                        </a>
-                    </div>
+                <div class="col-lg-3 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".1s">
+                    <a href="/img/wedding/wedding-7.png" title="Bridal makeup — classic bridal beauty, Prague" class="img-zoom">
+                        <div class="gallery-box"><div class="gallery-img"><img src="/img/wedding/wedding-7.png" class="img-fluid mx-auto d-block" alt="Bridal makeup look — classic bridal beauty by Nikol Pavlova" loading="lazy"></div></div>
+                    </a>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".15s">
-                    <div class="gal-item" style="overflow:hidden;">
-                        <a href="/img/wedding/wedding-9.png" class="img-zoom">
-                            <img src="/img/wedding/wedding-9.png" class="img-fluid" style="width:100%; height:340px; object-fit:cover;" alt="Bridal makeup look — Prague destination wedding" loading="lazy">
-                        </a>
-                    </div>
+                <div class="col-lg-3 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".15s">
+                    <a href="/img/wedding/wedding-9.png" title="Bridal makeup — Prague destination wedding" class="img-zoom">
+                        <div class="gallery-box"><div class="gallery-img"><img src="/img/wedding/wedding-9.png" class="img-fluid mx-auto d-block" alt="Bridal makeup look — Prague destination wedding" loading="lazy"></div></div>
+                    </a>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                    <div class="gal-item" style="overflow:hidden;">
-                        <a href="/img/wedding/wedding-11.png" class="img-zoom">
-                            <img src="/img/wedding/wedding-11.png" class="img-fluid" style="width:100%; height:340px; object-fit:cover;" alt="Bridal makeup look — luminous wedding skin" loading="lazy">
-                        </a>
-                    </div>
+                <div class="col-lg-3 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".2s">
+                    <a href="/img/wedding/wedding-11.png" title="Bridal makeup — luminous wedding skin" class="img-zoom">
+                        <div class="gallery-box"><div class="gallery-img"><img src="/img/wedding/wedding-11.png" class="img-fluid mx-auto d-block" alt="Bridal makeup look — luminous wedding skin" loading="lazy"></div></div>
+                    </a>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".05s">
-                    <div class="gal-item" style="overflow:hidden;">
-                        <a href="/img/wedding/wedding-12.png" class="img-zoom">
-                            <img src="/img/wedding/wedding-12.png" class="img-fluid" style="width:100%; height:340px; object-fit:cover;" alt="Bridal makeup look — bridesmaids and bride styling, Prague" loading="lazy">
-                        </a>
-                    </div>
+                <div class="col-lg-3 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".05s">
+                    <a href="/img/wedding/wedding-12.png" title="Bridal party makeup — bride and bridesmaids, Prague" class="img-zoom">
+                        <div class="gallery-box"><div class="gallery-img"><img src="/img/wedding/wedding-12.png" class="img-fluid mx-auto d-block" alt="Bridal party makeup — bride and bridesmaids, Prague" loading="lazy"></div></div>
+                    </a>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".1s">
-                    <div class="gal-item" style="overflow:hidden;">
-                        <a href="/img/wedding/wedding-13.png" class="img-zoom">
-                            <img src="/img/wedding/wedding-13.png" class="img-fluid" style="width:100%; height:340px; object-fit:cover;" alt="Bridal makeup look — natural bridal beauty" loading="lazy">
-                        </a>
-                    </div>
+                <div class="col-lg-3 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".1s">
+                    <a href="/img/wedding/wedding-13.png" title="Bridal makeup — natural bridal beauty" class="img-zoom">
+                        <div class="gallery-box"><div class="gallery-img"><img src="/img/wedding/wedding-13.png" class="img-fluid mx-auto d-block" alt="Bridal makeup look — natural bridal beauty" loading="lazy"></div></div>
+                    </a>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".15s">
-                    <div class="gal-item" style="overflow:hidden;">
-                        <a href="/img/wedding/wedding-14.png" class="img-zoom">
-                            <img src="/img/wedding/wedding-14.png" class="img-fluid" style="width:100%; height:340px; object-fit:cover;" alt="Bridal makeup look — soft glam bridal, Prague" loading="lazy">
-                        </a>
-                    </div>
+                <div class="col-lg-3 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".15s">
+                    <a href="/img/wedding/wedding-14.png" title="Bridal makeup — soft glam bridal, Prague" class="img-zoom">
+                        <div class="gallery-box"><div class="gallery-img"><img src="/img/wedding/wedding-14.png" class="img-fluid mx-auto d-block" alt="Bridal makeup look — soft glam bridal, Prague" loading="lazy"></div></div>
+                    </a>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                    <div class="gal-item" style="overflow:hidden;">
-                        <a href="/img/wedding/wedding-15.png" class="img-zoom">
-                            <img src="/img/wedding/wedding-15.png" class="img-fluid" style="width:100%; height:340px; object-fit:cover;" alt="Bridal makeup look — bridal makeup by Nikol Pavlova, Prague" loading="lazy">
-                        </a>
-                    </div>
+                <div class="col-lg-3 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".2s">
+                    <a href="/img/wedding/wedding-15.png" title="Bridal makeup by Nikol Pavlova, Prague" class="img-zoom">
+                        <div class="gallery-box"><div class="gallery-img"><img src="/img/wedding/wedding-15.png" class="img-fluid mx-auto d-block" alt="Bridal makeup look by Nikol Pavlova, Prague" loading="lazy"></div></div>
+                    </a>
                 </div>
             </div>
-            <div class="row mt-40">
-                <div class="col-md-12 text-center">
-                    <div class="btn-wrap text-center">
-                        <div class="btn-link"><a href="/portfolio/">View Full Portfolio <i class="ti-arrow-top-right"></i></a> <span class="btn-block animation-bounce"></span></div>
-                    </div>
+            <div class="row">
+                <div class="col-md-12 text-center mt-15">
+                    <div class="btn-wrap"><div class="btn-link"><a href="/portfolio/">View Full Portfolio <i class="ti-arrow-top-right"></i></a> <span class="btn-block animation-bounce"></span></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="line-vr-section"></div>
-
-    <!-- ═══════════════════════════════════════════
-         TESTIMONIALS (dark bg, matching site style)
-    ═══════════════════════════════════════════ -->
+    <!-- ============ TESTIMONIALS (native owl carousel) ============ -->
     <section class="testimonials" id="reviews">
-        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="5" data-background="/img/portfolio/commercial-2-min.jpg">
+        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="4" data-background="/img/wedding/wedding-9.png">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12 text-center mb-50">
-                        <h6 style="color:#c9a96e; letter-spacing:4px; text-transform:uppercase; font-size:12px;">Testimonials</h6>
-                        <h2 style="font-family:'Syne',sans-serif; font-weight:800; color:#fff; font-size: clamp(1.8rem, 3vw, 2.8rem);">What Brides Say</h2>
-                    </div>
-                </div>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".1s">
-                        <div class="testimonial-card">
-                            <div class="stars">★★★★★</div>
-                            <p>"Nikol was absolutely incredible on our wedding day. She made me feel so relaxed and the makeup lasted the entire evening — even through happy tears! Highly recommend to any bride in Prague."</p>
-                            <div class="tc-author">
-                                <div class="avatar">
-                                    <img src="/img/team/02.jpg" alt="Bridal makeup client Prague">
-                                </div>
-                                <div>
-                                    <h6>Sarah M.</h6>
-                                    <span>Bride · Prague Old Town</span>
-                                </div>
-                            </div>
+                    <div class="col-lg-6 col-md-12 mb-30 mt-60">
+                        <h6>Testimonials</h6>
+                        <h5 class="wow" data-splitting>What brides say about working with Nikol</h5>
+                        <div class="btn-wrap text-left wow fadeInUp" data-wow-delay=".6s">
+                            <div class="btn-link"><a href="https://calendly.com/pavlovanikol/makeup-hair" target="_blank" rel="noopener">Book your date</a> <span class="btn-block animation-bounce"></span></div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                        <div class="testimonial-card">
-                            <div class="stars">★★★★★</div>
-                            <p>"As an English-speaking expat in Prague, finding Nikol was a relief. She understood exactly what I wanted, spoke perfect English, and created the most beautiful bridal look. The trial made everything so easy."</p>
-                            <div class="tc-author">
-                                <div class="avatar">
-                                    <img src="/img/team/03.jpg" alt="International bride Prague wedding makeup">
+                    <div class="col-lg-5 offset-lg-1 col-md-12">
+                        <div class="wrap">
+                            <h6>Reviews</h6>
+                            <h5>Happy Brides</h5>
+                            <div class="owl-carousel owl-theme">
+                                <div class="item">
+                                    <p>Nikol was absolutely incredible on our wedding day. She made me feel so relaxed and the makeup lasted the entire evening &mdash; even through happy tears. Highly recommend to any bride in Prague.</p>
+                                    <span class="quote"><i class="fa-sharp fa-solid fa-quote-right"></i></span>
+                                    <div class="info">
+                                        <div class="author-img"><img src="/img/team/02.jpg" alt="Bridal makeup client Prague"></div>
+                                        <div class="cont"><h6>Sarah M.</h6> <span>Bride &middot; Prague Old Town</span></div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h6>Emma K.</h6>
-                                    <span>Bride · Destination Wedding, Prague</span>
+                                <div class="item">
+                                    <p>As an English-speaking expat, finding Nikol was a relief. She understood exactly what I wanted and created the most beautiful bridal look. The trial made everything so easy.</p>
+                                    <span class="quote"><i class="fa-sharp fa-solid fa-quote-right"></i></span>
+                                    <div class="info">
+                                        <div class="author-img"><img src="/img/team/03.jpg" alt="International bride Prague wedding makeup"></div>
+                                        <div class="cont"><h6>Emma K.</h6> <span>Bride &middot; Destination Wedding</span></div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                        <div class="testimonial-card">
-                            <div class="stars">★★★★★</div>
-                            <p>"Nikol did makeup for me and all four of my bridesmaids. She was calm, professional, and everyone looked stunning. The touch-up kit was such a thoughtful touch — we used it all day."</p>
-                            <div class="tc-author">
-                                <div class="avatar">
-                                    <img src="/img/team/02.jpg" alt="Bridal party makeup Prague">
-                                </div>
-                                <div>
-                                    <h6>Lucie B.</h6>
-                                    <span>Bride & Bridal Party · Praha 2</span>
+                                <div class="item">
+                                    <p>Nikol did makeup for me and all four of my bridesmaids. Calm, professional, and everyone looked stunning. The touch-up kit was such a thoughtful touch.</p>
+                                    <span class="quote"><i class="fa-sharp fa-solid fa-quote-right"></i></span>
+                                    <div class="info">
+                                        <div class="author-img"><img src="/img/team/02.jpg" alt="Bridal party makeup Prague"></div>
+                                        <div class="cont"><h6>Lucie B.</h6> <span>Bride &middot; Praha 2</span></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1239,40 +713,39 @@
 
     <div class="line-vr-section"></div>
 
-    <!-- ═══════════════════════════════════════════
-         SEO CONTENT BLOCK — Topical Authority
-    ═══════════════════════════════════════════ -->
-    <section class="section-padding" id="guide" style="background:#faf7f3;">
+    <!-- ============ SEO GUIDE (Topical Authority) ============ -->
+    <section class="section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <span class="sec-label text-center d-block wow" data-splitting>Bridal Makeup Guide</span>
-                    <h2 class="sec-title text-center wow" data-splitting style="font-size: clamp(1.8rem, 3vw, 2.8rem); margin-bottom: 40px;">Wedding Makeup in Prague: Everything You Need to Know</h2>
-                    <div class="seo-prose">
-                        <p>Choosing the right <strong>wedding makeup artist in Prague</strong> is one of the most important decisions a bride makes. Your makeup needs to photograph beautifully, last from morning through the reception, and most importantly — make you feel like yourself on your most significant day.</p>
+                    <div class="text-center mb-45">
+                        <h6 data-splitting>Bridal Makeup Guide</h6>
+                        <h1 data-splitting>Wedding Makeup in Prague</h1>
+                    </div>
+                    <div class="wed-prose">
+                        <p>Choosing the right <strong>wedding makeup artist in Prague</strong> is one of the most important decisions a bride makes. Your makeup needs to photograph beautifully, last from morning through the reception, and most importantly &mdash; make you feel like yourself on your most significant day.</p>
 
-                        <h2>What Does a Bridal Makeup Artist in Prague Offer?</h2>
-                        <p>A professional <strong>bridal makeup artist in Prague</strong> like Nikol Pavlova provides a full end-to-end service. This typically begins with an initial consultation to understand your vision and skin type, followed by a <strong>bridal trial session</strong> to test and perfect the look before the wedding day itself. On the wedding morning, the makeup artist travels to your venue or accommodation to apply the bridal look on-location.</p>
+                        <h2>What does a bridal makeup artist in Prague offer?</h2>
+                        <p>A professional <strong>bridal makeup artist in Prague</strong> like Nikol Pavlova provides a full end-to-end service: an initial consultation to understand your vision and skin type, a <strong>bridal trial</strong> to perfect the look beforehand, and on-location application at your venue or accommodation on the wedding morning.</p>
 
-                        <h2>How Far in Advance Should You Book Wedding Makeup in Prague?</h2>
-                        <p>For <strong>wedding makeup in Prague</strong>, most professional artists book 6–12 months in advance, particularly for the peak wedding season between May and September. Prague is one of Europe's most popular destination wedding cities, which means high demand for English-speaking wedding makeup artists during summer months. Booking early secures your preferred date and allows ample time to schedule your bridal trial.</p>
+                        <h2>How far in advance should you book?</h2>
+                        <p>For <strong>wedding makeup in Prague</strong>, most artists book 6&ndash;12 months ahead, particularly for the peak season from May to September. Prague is one of Europe's most popular destination-wedding cities, so demand for English-speaking makeup artists is high in summer. Booking early secures your date and leaves time for the bridal trial.</p>
 
-                        <h2>What Is a Bridal Trial and Why Is It Important?</h2>
-                        <p>A <strong>bridal trial</strong> is a full makeup rehearsal, typically held 4–8 weeks before the wedding. During the trial, you and your makeup artist test the complete look — including foundation shade, eye makeup style, lip colour, and false lashes. The trial produces reference photos to guide the wedding-day application and ensures you arrive on your big day completely confident. Every wedding makeup package with Nikol Pavlova includes a bridal trial as standard.</p>
+                        <h2>What is a bridal trial and why does it matter?</h2>
+                        <p>A <strong>bridal trial</strong> is a full makeup rehearsal, usually 4&ndash;8 weeks before the wedding. You test foundation shade, eye look, lip colour and lashes, producing reference photos that guide the wedding-day application. Every wedding package with Nikol Pavlova includes a bridal trial as standard.</p>
 
-                        <h2>English-Speaking Wedding Makeup Artist in Prague</h2>
-                        <p>For international brides, expats living in Prague, and couples planning a <strong>destination wedding in the Czech Republic</strong>, working with an <strong>English-speaking wedding makeup artist in Prague</strong> removes a significant source of stress. Nikol Pavlova is fluent in English, Czech, and Ukrainian, making her a natural choice for multicultural weddings and clients travelling from the UK, USA, Australia, or elsewhere in Europe.</p>
+                        <h2>English-speaking wedding makeup artist in Prague</h2>
+                        <p>For international brides, expats and couples planning a <strong>destination wedding in the Czech Republic</strong>, working with an <strong>English-speaking wedding makeup artist in Prague</strong> removes a major source of stress. Nikol is fluent in English, Czech and Ukrainian &mdash; a natural choice for multicultural weddings and clients travelling from the UK, USA, Ireland, Australia and across Europe.</p>
 
-                        <h2>Bridal Makeup Styles Available in Prague</h2>
-                        <p>Every bride has a different vision. Popular bridal makeup styles available in Prague include:</p>
-                        <ul style="padding-left: 20px; margin: 16px 0;">
-                            <li style="padding: 6px 0; color:#555; font-size:14px;"><strong>Soft bridal glow</strong> — dewy, luminous skin with subtle eye definition</li>
-                            <li style="padding: 6px 0; color:#555; font-size:14px;"><strong>Glamorous evening bridal</strong> — full coverage, bold lashes, and defined eyes</li>
-                            <li style="padding: 6px 0; color:#555; font-size:14px;"><strong>Natural nude bridal</strong> — skin-like coverage that enhances rather than transforms</li>
-                            <li style="padding: 6px 0; color:#555; font-size:14px;"><strong>Old Hollywood bridal</strong> — dramatic liner, red lip, flawless base</li>
-                            <li style="padding: 6px 0; color:#555; font-size:14px;"><strong>Bohemian bridal</strong> — warm tones, earthy palette, relaxed and romantic</li>
+                        <h2>Bridal makeup styles available in Prague</h2>
+                        <ul>
+                            <li><strong>Soft bridal glow</strong> &mdash; dewy, luminous skin with subtle eye definition</li>
+                            <li><strong>Glamorous evening bridal</strong> &mdash; full coverage, bold lashes, defined eyes</li>
+                            <li><strong>Natural nude bridal</strong> &mdash; skin-like coverage that enhances rather than transforms</li>
+                            <li><strong>Old Hollywood bridal</strong> &mdash; dramatic liner, red lip, flawless base</li>
+                            <li><strong>Bohemian bridal</strong> &mdash; warm tones, earthy palette, relaxed and romantic</li>
                         </ul>
-                        <p>During your consultation, Nikol will help you choose the style that best suits your skin, dress, venue and wedding aesthetic.</p>
+                        <p>During your consultation, Nikol helps you choose the style that best suits your skin, dress, venue and wedding theme.</p>
                     </div>
                 </div>
             </div>
@@ -1281,156 +754,109 @@
 
     <div class="line-vr-section"></div>
 
-    <!-- ═══════════════════════════════════════════
-         FAQ — AEO / AI Overview Optimised
-    ═══════════════════════════════════════════ -->
-    <section class="section-padding faq-speakable" id="faq">
+    <!-- ============ FAQ (native accordion) ============ -->
+    <section class="section-padding" id="faq">
         <div class="container">
-            <div class="row mb-50">
+            <div class="row mb-45">
                 <div class="col-md-12 text-center">
-                    <span class="sec-label wow" data-splitting>FAQ</span>
-                    <h2 class="sec-title wow" data-splitting style="font-size: clamp(1.8rem, 3vw, 2.8rem);">Wedding Makeup Questions</h2>
+                    <h6 data-splitting>Frequently Asked Questions</h6>
+                    <h1 data-splitting>Wedding Makeup Questions</h1>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-9 col-md-12">
                     <ul class="accordion-box clearfix">
-
                         <li class="accordion block">
-                            <div class="acc-btn"><span class="count">1.</span> What is included in a wedding makeup package with Nikol Pavlova in Prague?</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">Every bridal makeup package with Nikol Pavlova includes a personalised bridal trial session, full wedding-day makeup application, false lashes, and a touch-up kit containing the key products used on your skin. Travel to your Prague venue is included; travel fees may apply for locations outside Prague.</div>
-                                </div>
-                            </div>
+                            <div class="acc-btn"><span class="count">1.</span> What is included in a wedding makeup package in Prague?</div>
+                            <div class="acc-content"><div class="content"><div class="text">Every bridal package includes a personalised bridal trial, full wedding-day makeup application, false lashes, and a touch-up kit with the key products used on your skin. Travel to your Prague venue is included; travel fees may apply for locations outside Prague.</div></div></div>
                         </li>
-
                         <li class="accordion block">
                             <div class="acc-btn"><span class="count">2.</span> How far in advance should I book a wedding makeup artist in Prague?</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">For weddings in Prague, especially during the peak season from May to September, booking 6–12 months in advance is strongly recommended. Popular Saturdays during peak season book out quickly. For autumn and winter weddings, 3–6 months is usually sufficient. Contact Nikol as early as possible to secure your date.</div>
-                                </div>
-                            </div>
+                            <div class="acc-content"><div class="content"><div class="text">For weddings in Prague, especially during peak season from May to September, booking 6&ndash;12 months in advance is strongly recommended. Popular summer Saturdays book out quickly. For autumn and winter weddings, 3&ndash;6 months is usually sufficient.</div></div></div>
                         </li>
-
                         <li class="accordion block">
-                            <div class="acc-btn"><span class="count">3.</span> Is Nikol Pavlova available for destination weddings in Czech Republic?</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">Yes. Nikol is based in Prague but regularly travels for destination weddings throughout the Czech Republic — including South Moravia wine country, Bohemian castles, and spa towns like Karlovy Vary. She is also available for weddings across Europe. Travel and accommodation fees apply for locations outside Prague.</div>
-                                </div>
-                            </div>
+                            <div class="acc-btn"><span class="count">3.</span> Are you available for destination weddings in the Czech Republic?</div>
+                            <div class="acc-content"><div class="content"><div class="text">Yes. Nikol is based in Prague but regularly travels for destination weddings across the Czech Republic &mdash; South Moravia wine country, Bohemian châteaux, spa towns like Karlovy Vary &mdash; and across Europe. Travel and accommodation fees apply outside Prague.</div></div></div>
                         </li>
-
                         <li class="accordion block">
-                            <div class="acc-btn"><span class="count">4.</span> Does Nikol Pavlova speak English for international brides?</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">Yes. Nikol is fully fluent in English, Czech and Ukrainian. She regularly works with international brides, expats living in Prague, and couples from the UK, USA, Ireland, Australia and other English-speaking countries who are planning a destination wedding in the Czech Republic.</div>
-                                </div>
-                            </div>
+                            <div class="acc-btn"><span class="count">4.</span> Do you speak English for international brides?</div>
+                            <div class="acc-content"><div class="content"><div class="text">Yes. Nikol is fully fluent in English, Czech and Ukrainian, and regularly works with international brides, expats in Prague, and couples from the UK, USA, Ireland, Australia and elsewhere planning a destination wedding in the Czech Republic.</div></div></div>
                         </li>
-
                         <li class="accordion block">
                             <div class="acc-btn"><span class="count">5.</span> How much does bridal makeup cost in Prague?</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">Bridal makeup pricing in Prague depends on the type of service, wedding location, date, and whether a bridal party is included. Nikol provides personalised quotes after an initial consultation. Contact her with your wedding details via phone, email or Instagram and she'll respond within 24 hours with a tailored quote.</div>
-                                </div>
-                            </div>
+                            <div class="acc-content"><div class="content"><div class="text">Bridal makeup pricing depends on the service scope, wedding location, date, and whether a bridal party is included. Nikol provides personalised quotes after an initial consultation &mdash; share your wedding details and she will respond within 24 hours.</div></div></div>
                         </li>
-
                         <li class="accordion block">
-                            <div class="acc-btn"><span class="count">6.</span> Can Nikol do makeup for my entire bridal party?</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">Yes. In addition to the bride, Nikol can provide professional makeup for bridesmaids, the mother of the bride, and flower girls. Group bridal party packages are available. To ensure everyone is ready on time, a schedule is created in advance based on the size of the party and the time of the ceremony.</div>
-                                </div>
-                            </div>
+                            <div class="acc-btn"><span class="count">6.</span> Can you do makeup for my entire bridal party?</div>
+                            <div class="acc-content"><div class="content"><div class="text">Yes. Beyond the bride, Nikol provides makeup for bridesmaids, the mother of the bride and flower girls. Group packages are available, and a timed schedule is created in advance so everyone is ready before the ceremony.</div></div></div>
                         </li>
-
                         <li class="accordion block">
-                            <div class="acc-btn"><span class="count">7.</span> What bridal makeup styles does Nikol Pavlova offer?</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">Nikol specialises in all bridal makeup styles including soft natural glow, glamorous evening bridal, classic nude, Old Hollywood, and bohemian romantic looks. Every look is tailored to the bride's skin type, features, dress and wedding theme. The bridal trial is the perfect opportunity to explore different directions and find the perfect look.</div>
-                                </div>
-                            </div>
+                            <div class="acc-btn"><span class="count">7.</span> What bridal makeup styles do you offer?</div>
+                            <div class="acc-content"><div class="content"><div class="text">Nikol specialises in all bridal styles &mdash; soft natural glow, glamorous evening bridal, classic nude, Old Hollywood and bohemian romantic. Each look is tailored to the bride's skin, features, dress and theme, and the trial is the perfect time to explore directions.</div></div></div>
                         </li>
-
                         <li class="accordion block">
-                            <div class="acc-btn"><span class="count">8.</span> How can I book a bridal makeup consultation in Prague?</div>
-                            <div class="acc-content">
-                                <div class="content">
-                                    <div class="text">To book a bridal consultation with Nikol Pavlova in Prague, you can call or text +420 608 178 390, email pavlovanikol@gmail.com, or send a direct message on Instagram @nikol__mua. Nikol typically replies within a few hours. Consultations can be held in person in Prague or via video call for international clients.</div>
-                                </div>
-                            </div>
+                            <div class="acc-btn"><span class="count">8.</span> How can I book a bridal consultation?</div>
+                            <div class="acc-content"><div class="content"><div class="text">Book instantly online via the Calendly scheduling page at calendly.com/pavlovanikol/makeup-appointment, or call/text +420 608 178 390, email pavlovanikol@gmail.com, or send a direct message on Instagram @nikol__mua. Nikol typically replies within a few hours. Consultations can be held in person in Prague or by video call for international clients.</div></div></div>
                         </li>
-
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="line-vr-section"></div>
-
-    <!-- ═══════════════════════════════════════════
-         CONTACT / CTA
-    ═══════════════════════════════════════════ -->
-    <section class="cta-section" id="contact" aria-label="Book wedding makeup artist Prague">
+    <!-- ============ CONTACT (native contact-box info cards) ============ -->
+    <div class="contact-box section-padding" id="contact">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-12 mb-40 wow fadeInUp" data-wow-delay=".1s">
-                    <h6>Book Your Bridal Consultation</h6>
-                    <h2>Ready to Plan Your<br>Wedding Look?</h2>
-                    <p>Whether your wedding is next month or next year, get in touch to discuss your bridal vision. Nikol will respond with a personalised quote within 24 hours.</p>
-                    <div class="mt-35">
-                        <a href="mailto:pavlovanikol@gmail.com" class="btn-gold">
-                            Email Nikol <i class="ti-arrow-top-right"></i>
-                        </a>
+            <div class="row mb-45">
+                <div class="col-md-12 text-center">
+                    <h6 data-splitting>Book Your Bridal Consultation</h6>
+                    <h1 data-splitting>Get in Touch</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 wow fadeInUp" data-wow-delay=".15s">
+                    <div class="item">
+                        <span class="icon fa-light fa-calendar-check"></span>
+                        <h5>Book Online</h5>
+                        <p><a href="https://calendly.com/pavlovanikol/makeup-hair" target="_blank" rel="noopener" style="color:inherit;">Pick a date &amp; time</a></p>
+                        <span class="numb fa-light fa-calendar-check"></span>
                     </div>
                 </div>
-                <div class="col-lg-5 offset-lg-1 col-md-12 wow fadeInUp" data-wow-delay=".2s">
-                    <ul class="cta-contact-list">
-                        <li>
-                            <div class="cta-icon"><i class="fa-light fa-phone"></i></div>
-                            <div class="cta-info">
-                                <p>Phone / WhatsApp</p>
-                                <a href="tel:+420608178390">+420 608 178 390</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="cta-icon"><i class="fa-light fa-envelope"></i></div>
-                            <div class="cta-info">
-                                <p>Email</p>
-                                <a href="mailto:pavlovanikol@gmail.com">pavlovanikol@gmail.com</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="cta-icon"><i class="fa-brands fa-instagram"></i></div>
-                            <div class="cta-info">
-                                <p>Instagram</p>
-                                <a href="https://www.instagram.com/nikol__mua" target="_blank" rel="noopener">@nikol__mua</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="cta-icon"><i class="fa-light fa-location-dot"></i></div>
-                            <div class="cta-info">
-                                <p>Based in</p>
-                                <a href="/#contact">Prague, Czech Republic</a>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="col-md-3 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="item active">
+                        <span class="icon fa-light fa-phone"></span>
+                        <h5>Call / WhatsApp</h5>
+                        <p><a href="tel:+420608178390" style="color:inherit;">+420 608 178 390</a></p>
+                        <span class="numb fa-light fa-phone"></span>
+                    </div>
+                </div>
+                <div class="col-md-3 wow fadeInUp" data-wow-delay=".45s">
+                    <div class="item">
+                        <span class="icon fa-light fa-envelope"></span>
+                        <h5>Email</h5>
+                        <p><a href="mailto:pavlovanikol@gmail.com" style="color:inherit;">pavlovanikol@gmail.com</a></p>
+                        <span class="numb fa-light fa-envelope"></span>
+                    </div>
+                </div>
+                <div class="col-md-3 wow fadeInUp" data-wow-delay=".6s">
+                    <div class="item">
+                        <span class="icon fa-brands fa-instagram"></span>
+                        <h5>Instagram</h5>
+                        <p><a href="https://www.instagram.com/nikol__mua" target="_blank" rel="noopener" style="color:inherit;">@nikol__mua</a></p>
+                        <span class="numb fa-brands fa-instagram"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-30">
+                <div class="col-md-12 text-center">
+                    <div class="btn-wrap"><div class="btn-link"><a href="https://calendly.com/pavlovanikol/makeup-hair" target="_blank" rel="noopener">Book Your Appointment Online <i class="ti-arrow-top-right"></i></a> <span class="btn-block animation-bounce"></span></div></div>
+                    <p class="mt-30" style="color:#888; font-family:'Didact Gothic',sans-serif;">Based in Prague, Czech Republic &middot; Available for travel across Europe. Personalised quote within 24 hours.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- ═══════════════════════════════════════════
-         INTERNAL LINKS — Related Services
-    ═══════════════════════════════════════════ -->
+    <!-- ============ RELATED SERVICES ============ -->
     <section class="nex-prv">
         <div class="container">
             <div class="row">
@@ -1438,7 +864,7 @@
                     <div class="prv">
                         <div class="img bg-img" data-background="/img/evening/evening-5.png">
                             <div class="text-start ontop">
-                                <h5><a href="/evening/">Evening Makeup</a></h5>
+                                <h5><a href="/#services">Evening Makeup</a></h5>
                                 <h6>Related Service</h6>
                             </div>
                             <div class="overly"></div>
@@ -1452,7 +878,7 @@
                     <div class="nxt">
                         <div class="img bg-img" data-background="/img/courses/IMG_7417.jpg">
                             <div class="text-end ontop">
-                                <h5><a href="/courses/">Makeup Courses</a></h5>
+                                <h5><a href="/#services">Makeup Courses</a></h5>
                                 <h6>Related Service</h6>
                             </div>
                             <div class="overly"></div>
@@ -1463,16 +889,14 @@
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         FOOTER
-    ═══════════════════════════════════════════ -->
+    <!-- ============ FOOTER ============ -->
     <footer class="footer">
         <div class="top">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 mb-45">
                         <h5>Nikol Pavlova</h5>
-                        <p>Professional wedding makeup artist based in Prague. English-speaking. Available for bridal, evening and commercial work across Czech Republic and Europe.</p>
+                        <p>Professional wedding makeup artist based in Prague. English-speaking. Available for bridal, evening and commercial work across the Czech Republic and Europe.</p>
                         <div class="social">
                             <a href="https://www.instagram.com/nikol__mua" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                             <a href="https://www.facebook.com/nikki.yumi" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
@@ -1503,14 +927,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <p>2026 © Nikol Pavlova. All rights reserved. <a href="/" style="color:inherit;">Wedding Makeup Artist Prague</a>.</p>
+                        <p>2026 &copy; Nikol Pavlova. All rights reserved. <a href="/" style="color:inherit;">Wedding Makeup Artist Prague</a>.</p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts (matching nikol.makeup) -->
+    <!-- Scripts -->
     <script src="/js/jquery-3.7.1.min.js"></script>
     <script src="/js/jquery-migrate-3.4.1.min.js"></script>
     <script src="/js/modernizr-2.6.2.min.js"></script>

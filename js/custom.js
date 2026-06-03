@@ -58,10 +58,10 @@
             logo = $(".navbar .logo> img");
         if (bodyScroll > 100) {
             navbar.addClass("nav-scroll");
-            logo.attr('src', 'images/logo-light.png');
+            logo.attr('src', '/img/nikol-logo.png');
         } else {
             navbar.removeClass("nav-scroll");
-            logo.attr('src', 'images/logo-light.png');
+            logo.attr('src', '/img/nikol-logo.png');
         }
     });
 

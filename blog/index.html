@@ -4,11 +4,120 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NODA - Makeup Artist</title>
+
+    <!-- ===== SEO ===== -->
+    <title>Blog — Makeup Reviews, Tips & Tutorials | Nikol Pavlova, Prague</title>
+    <meta name="description" content="Honest makeup reviews, professional tips and tutorials from Nikol Pavlova, an English-speaking makeup artist based in Prague.">
+    <meta name="author" content="Nikol Pavlova">
+    <meta name="robots" content="index, follow">
+    <!-- TODO: confirm final blog URL -->
+    <link rel="canonical" href="https://nikol.makeup/blog/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Nikol Pavlova - Makeup Artist Prague">
+    <meta property="og:title" content="Blog — Makeup Reviews, Tips & Tutorials | Nikol Pavlova">
+    <meta property="og:description" content="Honest makeup reviews, professional tips and tutorials from a Prague makeup artist.">
+    <meta property="og:url" content="https://nikol.makeup/blog/">
+    <meta property="og:image" content="https://nikol.makeup/img/nikol.jpg">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Syne:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="css/plugins.css" />
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- ===== Scoped styles for the blog index (won't clash with the theme) ===== -->
+    <style>
+    .np-blog{
+        --np-ink:#211c18;
+        --np-soft:#6f635a;
+        --np-line:rgba(33,28,24,.12);
+        --np-accent:#b9714a;
+        --np-accent-deep:#9a5634;
+        --np-accent-soft:#f4e6dd;
+        --np-cream:#faf5f0;
+    }
+    .np-blog .np-intro{max-width:620px;margin:0 auto;color:var(--np-soft);font-family:"Didact Gothic",sans-serif;font-size:1.08rem;line-height:1.7;}
+
+    /* featured article card */
+    .np-feature{
+        display:grid;grid-template-columns:1.05fr .95fr;gap:0;
+        background:#fff;border:1px solid var(--np-line);border-radius:18px;overflow:hidden;
+        box-shadow:0 30px 70px -40px rgba(33,28,24,.5);
+    }
+    .np-feature .np-fimg{position:relative;min-height:340px;overflow:hidden;display:block;}
+    .np-feature .np-fimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s ease;}
+    .np-feature:hover .np-fimg img{transform:scale(1.05);}
+    .np-feature .np-flag{
+        position:absolute;top:1rem;left:1rem;z-index:2;
+        background:var(--np-accent);color:#fff;font-family:"Syne",sans-serif;font-weight:600;
+        font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.4rem .8rem;border-radius:999px;
+    }
+    .np-feature .np-play{
+        position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
+        width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.92);
+        display:flex;align-items:center;justify-content:center;color:var(--np-accent-deep);font-size:1.2rem;
+        box-shadow:0 10px 30px -8px rgba(0,0,0,.45);transition:transform .3s;
+    }
+    .np-feature:hover .np-play{transform:translate(-50%,-50%) scale(1.08);}
+    .np-feature .np-fbody{padding:2.4rem;display:flex;flex-direction:column;justify-content:center;}
+    .np-feature .np-eyebrow{
+        font-family:"Syne",sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
+        color:var(--np-accent-deep);margin-bottom:.7rem;display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;
+    }
+    .np-feature .np-eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--np-accent);opacity:.6;}
+    .np-feature .np-eyebrow .muted{color:var(--np-soft);letter-spacing:.08em;}
+    .np-feature h2{
+        font-family:"Syne",sans-serif;font-weight:800;color:var(--np-ink);
+        font-size:clamp(1.5rem,2.6vw,2.15rem);line-height:1.12;margin:0 0 .9rem;letter-spacing:-.01em;
+    }
+    .np-feature h2 a{color:inherit;text-decoration:none;}
+    .np-feature h2 a:hover{color:var(--np-accent-deep);}
+    .np-feature .np-exc{font-family:"Didact Gothic",sans-serif;color:var(--np-soft);font-size:1.02rem;line-height:1.7;margin:0 0 1.4rem;}
+    .np-feature .np-more{
+        font-family:"Syne",sans-serif;font-weight:600;font-size:.92rem;color:var(--np-accent-deep);
+        text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;
+    }
+    .np-feature .np-more i{transition:transform .3s;}
+    .np-feature .np-more:hover i{transform:translate(4px,-4px);}
+
+    /* small "what's on the blog" topics */
+    .np-topics{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem;}
+    .np-topics .t{
+        background:var(--np-cream);border:1px solid var(--np-line);border-radius:14px;padding:1.3rem 1.4rem;
+    }
+    .np-topics .t .k{font-family:"Syne",sans-serif;font-weight:700;color:var(--np-ink);font-size:1.02rem;margin:0 0 .3rem;display:flex;align-items:center;gap:.55rem;}
+    .np-topics .t .k i{color:var(--np-accent);}
+    .np-topics .t p{font-family:"Didact Gothic",sans-serif;color:var(--np-soft);font-size:.92rem;line-height:1.6;margin:0;}
+
+    @media (max-width:991px){
+        .np-feature{grid-template-columns:1fr;}
+        .np-feature .np-fimg{min-height:240px;}
+        .np-topics{grid-template-columns:1fr;}
+    }
+    </style>
+
+    <!-- ===== Structured data ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Nikol Pavlova — Makeup Blog",
+      "url": "https://nikol.makeup/blog/",
+      "author": { "@type": "Person", "name": "Nikol Pavlova", "url": "https://nikol.makeup/" },
+      "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "headline": "Full Face of NYX: A Makeup Artist's Honest Review",
+          "url": "https://nikol.makeup/blog/full-face-of-nyx-review/",
+          "datePublished": "2026-03-20",
+          "image": "https://i.ytimg.com/vi/U89IYdxyJy4/maxresdefault.jpg",
+          "author": { "@type": "Person", "name": "Nikol Pavlova" }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Preloader -->
@@ -19,7 +128,7 @@
                 <div class="circle"></div>
                 <div class="line-mask">
                     <div class="line"></div>
-                </div> <img src="images/logo-light.png" alt="">
+                </div> <img src="images/logo-light.png" alt="Nikol Pavlova">
             </div>
         </div>
     </div>
@@ -31,247 +140,162 @@
     </div>
     <!-- Cursor -->
     <div class="cursor js-cursor"></div>
-    <!-- Navbar -->
+
+    <!-- Navbar (real Nikol Pavlova menu, English only) -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <!-- Logo -->
             <div class="logo-wrapper">
-                <a class="logo" href="index.html"> <img src="images/logo-light.png" class="logo-img" alt=""> </a>
-                <!-- <a class="logo" href="index.html"> <h2>NODA</h2> </a> -->
+                <a class="logo" href="https://nikol.makeup/"> <img src="images/logo-light.png" class="logo-img" alt="Nikol Pavlova Makeup Artist Prague"> </a>
             </div>
-            <!-- Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"><i class="fa-regular fa-bars"></i></span> </button>
-            <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="blog.html#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Home <i class="fa-light fa-angle-down"></i></a>
+                    <li class="nav-item"><a class="nav-link" href="https://nikol.makeup/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://nikol.makeup/#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://nikol.makeup/portfolio/">Portfolio</a></li>
+                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Services <i class="fa-light fa-angle-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.html" class="dropdown-item"><span>Default</span></a></li>
-                            <li><a href="index2.html" class="dropdown-item"><span>Slider</span></a></li>
-                            <li><a href="index3.html" class="dropdown-item"><span>Parallax Image</span></a></li>
-                            <li><a href="index4.html" class="dropdown-item"><span>Video</span></a></li>
-                            <li><a href="index5.html" class="dropdown-item"><span>Slideshow</span></a></li>
+                            <li><a href="https://nikol.makeup/wedding/" class="dropdown-item"><span>Wedding Makeup</span></a></li>
+                            <li><a href="https://nikol.makeup/courses/" class="dropdown-item"><span>Makeup Courses</span></a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="blog.html#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Services <i class="fa-light fa-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="services.html" class="dropdown-item"><span>Services 1</span></a></li>
-                            <li><a href="services2.html" class="dropdown-item"><span>Services 2</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="blog.html#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages <i class="fa-light fa-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="pricing.html" class="dropdown-item"><span>Pricing</span></a></li>
-                            <li><a href="team.html" class="dropdown-item"><span>Team</span></a></li>
-                            <li><a href="before-after.html" class="dropdown-item"><span>Before & After</span></a></li>
-                            <li><a href="gallery-image.html" class="dropdown-item"><span>Image Gallery</span></a></li>
-                            <li><a href="gallery-video.html" class="dropdown-item"><span>Video Gallery</span></a></li>
-                            <li><a href="faq.html" class="dropdown-item"><span>FAQ</span></a></li>
-                            <li class="dropdown-submenu dropdown"> <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" href="blog.html#"><span>Other Pages <i class="fa-light fa-angle-right"></i></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="services-single.html" class="dropdown-item"><span>Services Single 01</span></a></li>
-                                    <li><a href="services-single2.html" class="dropdown-item"><span>Services Single 02</span></a></li>
-                                    <li><a href="team-single.html" class="dropdown-item"><span>Team Single</span></a></li>
-                                    <li><a href="post.html" class="dropdown-item"><span>Post Single</span></a></li>
-                                    <li><a href="404.html" class="dropdown-item"><span>404 Page</span></a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown"> <a class="nav-link active dropdown-toggle" href="blog.html#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Blog <i class="fa-light fa-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="blog.html" class="dropdown-item active"><span>Blog Grid</span></a></li>
-                            <li><a href="blog2.html" class="dropdown-item"><span>Blog Standard</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="https://nikol.makeup/blog/">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://nikol.makeup/#contact">Contact</a></li>
                 </ul>
                 <div class="navbar-right">
                     <div class="wrap">
                         <div class="icon"> <i class="fa-light fa-phone"></i> </div>
                         <div class="text">
                             <p>Need Makeup?</p>
-                            <h5><a href="tel:8551004444">800 123 4444</a></h5>
+                            <h5><a href="tel:+420608178390">+420 608 178 390</a></h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+
     <!-- Blog -->
     <section class="blog-home section-padding">
         <div class="container">
-            <div class="row mb-45">
-                <div class="col-md-12 text-center">
-                    <h6 class="wow" data-splitting>Makeup Trends</h6>
-                    <h1 class="wow" data-splitting>Read Blog</h1>
+            <div class="np-blog">
+
+                <div class="row mb-45">
+                    <div class="col-md-12 text-center">
+                        <h6 class="wow" data-splitting>Reviews, Tips &amp; Tutorials</h6>
+                        <h1 class="wow" data-splitting>The Blog</h1>
+                        <p class="np-intro mt-15">Honest product reviews, professional tips and behind-the-scenes notes from my work as a makeup artist in Prague — written to help you choose better products and create looks that suit you.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="row mb-45">
-                <div class="col-lg-6 col-md-12 mb-15">
-                    <div class="item">
-                        <div class="wrap">
-                            <div class="img"> <img src="images/blog/1.jpg" class="img-fluid rounded-1"> </div>
-                            <div class="title">
-                                <a href="post.html">
-                                    <h6>Bridal</h6>
-                                    <h4>Wedding Hairstyle Tips</h4> <i class="icon fa-light fa-arrow-up-right"></i>
-                                </a>
+
+                <!-- Featured post: NYX review -->
+                <div class="row">
+                    <div class="col-md-12 mb-30 wow fadeInUp" data-wow-delay=".2s">
+                        <article class="np-feature">
+                            <a class="np-fimg" href="full-face-of-nyx-review.html" aria-label="Read: Full Face of NYX review">
+                                <span class="np-flag">Latest Review</span>
+                                <span class="np-play"><i class="fa-regular fa-play"></i></span>
+                                <img src="https://i.ytimg.com/vi/U89IYdxyJy4/maxresdefault.jpg" alt="Nikol Pavlova testing a full face of NYX makeup" onerror="this.onerror=null;this.src='images/blog/4.jpg';">
+                            </a>
+                            <div class="np-fbody">
+                                <div class="np-eyebrow"><span>Reviews</span><span class="dot"></span><span class="muted">20 March 2026</span><span class="dot"></span><span class="muted">9 min read</span></div>
+                                <h2><a href="full-face-of-nyx-review.html">Full Face of NYX: A Makeup Artist's Honest Review</a></h2>
+                                <p class="np-exc">I tested a full face of NYX — bestsellers and a few brand-new launches — then wore it through a real working day. Here is what earned a place in my kit, what depends on your skin type, and what I would happily skip, plus an honest all-day wear test.</p>
+                                <a class="np-more" href="full-face-of-nyx-review.html">Read the review <i class="fa-light fa-arrow-up-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- What you'll find here (real topic areas, not placeholder posts) -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="np-topics">
+                            <div class="t">
+                                <p class="k"><i class="fa-light fa-flask"></i> Product reviews</p>
+                                <p>Honest, hands-on takes on the products I test — what is worth it and what is not.</p>
+                            </div>
+                            <div class="t">
+                                <p class="k"><i class="fa-light fa-wand-magic-sparkles"></i> Pro tips &amp; tutorials</p>
+                                <p>Techniques from my kit — skin prep, longevity, colour and application made simple.</p>
+                            </div>
+                            <div class="t">
+                                <p class="k"><i class="fa-light fa-ring"></i> Bridal &amp; events</p>
+                                <p>How to plan and prepare for long-lasting makeup on the days that matter most.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 mb-15">
-                        <div class="item">
-                            <div class="wrap">
-                                <div class="img"> <img src="images/blog/2.jpg" class="img-fluid rounded-1"> </div>
-                                <div class="title">
-                                    <a href="post.html">
-                                        <h6>Hair Makeup</h6>
-                                        <h4>Hair Care & Styling Tips</h4> <i class="icon fa-light fa-arrow-up-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <div class="col-lg-6 col-md-12 mb-15">
-                        <div class="item">
-                            <div class="wrap">
-                                <div class="img"> <img src="images/blog/3.jpg" class="img-fluid rounded-1"> </div>
-                                <div class="title">
-                                    <a href="post.html">
-                                        <h6>Makeup</h6>
-                                        <h4>Birthday Party Ideas</h4> <i class="icon fa-light fa-arrow-up-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <div class="col-lg-6 col-md-12 mb-15">
-                        <div class="item">
-                            <div class="wrap">
-                                <div class="img"> <img src="images/blog/4.jpg" class="img-fluid rounded-1"> </div>
-                                <div class="title">
-                                    <a href="post.html">
-                                        <h6>Face Makeup</h6>
-                                        <h4>Tips for Face Makeup</h4> <i class="icon fa-light fa-arrow-up-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                </div>  
-            </div>
-            <div class="row">
-                <!-- pagination -->
-                <div class="col-md-12 text-center">
-                    <ul class="pagination-wrap mb-30 mt-30">
-                        <li><a href="blog2.html#"><i class="fa-light fa-angle-left"></i></a></li>
-                        <li><a href="blog2.html#">1</a></li>
-                        <li><a href="blog2.html#" class="active">2</a></li>
-                        <li><a href="blog2.html#">3</a></li>
-                         <li><a href="blog2.html#"><i class="fa-light fa-angle-right"></i></a></li>
-                    </ul>
-                </div>
-            </div>
+
+            </div><!-- /.np-blog -->
         </div>
     </section>
-    <!-- Testiominals -->
+
+    <!-- Need help / Learn With Me CTA band (theme markup, real content) -->
     <section class="testimonials">
         <div class="background bg-img bg-fixed section-padding" data-overlay-dark="4" data-background="images/slider/1.jpg">
             <div class="container">
                 <div class="row">
-                    <!-- need helps -->
                     <div class="col-lg-6 col-md-12 mb-30 mt-60">
                         <h6>Need Help?</h6>
                         <h5 class="wow" data-splitting>Do you need help with creative make-up?</h5>
                         <div class="btn-wrap text-left wow fadeInUp" data-wow-delay=".6s">
-                            <div class="btn-link"> <a href="blog.html#">hi@makeup.com</a> <span class="btn-block animation-bounce"></span> </div>
+                            <div class="btn-link"> <a href="https://calendly.com/pavlovanikol/makeup-hair">Book Online</a> <span class="btn-block animation-bounce"></span> </div>
                         </div>
                     </div>
-                    <!-- testiominals -->
-                    <div class="col-lg-5 offset-lg-1 col-md-12">
-                        <div class="wrap">
-                            <h6>Testiominals</h6>
-                            <h5>What Clients Say</h5>
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <p>Dan entesque magna magna semper daibus elisan the aliuen risus morbi tristique senectus et netus malesuan fames ac urpis miss muris in the sero dictum aselusion lacus suscipit congue the volutpat.</p> <span class="quote"><i class="fa-sharp fa-solid fa-quote-right"></i></span>
-                                    <div class="info">
-                                        <div class="author-img"> <img src="images/team/02.jpg" alt=""> </div>
-                                        <div class="cont">
-                                            <h6>Emily Brown</h6> <span>Customer</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <p>Dan entesque magna magna semper daibus elisan the aliuen risus morbi tristique senectus et netus malesuan fames ac urpis miss muris in the sero dictum aselusion lacus suscipit congue the volutpat.</p> <span class="quote"><i class="fa-sharp fa-solid fa-quote-right"></i></span>
-                                    <div class="info">
-                                        <div class="author-img"> <img src="images/team/03.jpg" alt=""> </div>
-                                        <div class="cont">
-                                            <h6>Jason White</h6> <span>Customer</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-lg-5 offset-lg-1 col-md-12 mt-60">
+                        <h6>Learn With Me</h6>
+                        <h5 class="wow" data-splitting>Personalised one-on-one makeup courses in Prague</h5>
+                        <div class="btn-wrap text-left wow fadeInUp" data-wow-delay=".6s">
+                            <div class="btn-link"> <a href="https://nikol.makeup/courses/">View Courses</a> <span class="btn-block animation-bounce"></span> </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Footer -->
+
+    <!-- Footer (real content, theme markup) -->
     <footer class="footer">
-        <!-- top -->
         <div class="top">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 mb-45">
-                        <h5>About Us</h5>
-                        <p>Makeup amacus suscipit oremen miss the volutpat magnaz donec miss the drana risus convais nisan.</p>
-                        <div class="social"> <a href="blog.html#"><i class="fa-brands fa-instagram"></i></a> <a href="blog.html#"><i class="fa-brands fa-twitter"></i></a> <a href="blog.html#"><i class="fa-brands fa-pinterest-p"></i></a> </div>
+                        <h5>About</h5>
+                        <p>Professional makeup artist based in Prague. Designing bespoke beauty looks that reflect your distinct personality.</p>
+                        <div class="social"> <a href="https://www.instagram.com/nikol__mua"><i class="fa-brands fa-instagram"></i></a> <a href="https://www.facebook.com/nikki.yumi"><i class="fa-brands fa-facebook-f"></i></a> <a href="https://www.threads.net/@nikol_pavlova_mua"><i class="fa-brands fa-threads"></i></a> </div>
                     </div>
                     <div class="col-md-4 offset-md-1 mb-45">
-                        <div class="worktime">
-                            <h5>Work Time</h5>
-                            <ul>
-                                <li>
-                                    <div class="tit">Monday - Friday</div>
-                                    <div class="dots"></div> <span>8:00 AM - 7:00 PM</span>
-                                </li>
-                                <li>
-                                    <div class="tit">Saturday</div>
-                                    <div class="dots"></div> <span>9:00 AM - 6:00 PM</span>
-                                </li>
-                                <li>
-                                    <div class="tit">Sunday</div>
-                                    <div class="dots"></div> <span>Closed</span>
-                                </li>
-                            </ul>
-                        </div>
+                        <h5>Services</h5>
+                        <ul style="list-style:none;padding:0;margin:0;line-height:2.1;">
+                            <li><a href="https://nikol.makeup/wedding/">Wedding Makeup</a></li>
+                            <li><a href="https://nikol.makeup/#services">Evening Styling</a></li>
+                            <li><a href="https://nikol.makeup/#services">Commercial</a></li>
+                            <li><a href="https://nikol.makeup/courses/">Makeup Courses</a></li>
+                        </ul>
                     </div>
                     <div class="col-md-3 offset-md-1 mb-45">
                         <h5>Contact</h5>
-                        <p>0665 Broadway NY, New York 10001
-                            <br>United States of America
+                        <p>Prague 7, Czech Republic
+                            <br>(Available for travel)
                         </p>
-                        <div class="phone">800 123 4444</div>
-                        <div class="mail">hi@makeup.com</div>
+                        <div class="phone"><a href="tel:+420608178390">+420 608 178 390</a></div>
+                        <div class="mail"><a href="https://www.instagram.com/nikol__mua">@nikol__mua</a></div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- bottom -->
         <div class="bottom">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <p>2025 © All rights reserved. Designed by <a href="https://1.envato.market/DuruThemes" target="_blank">DuruThemes</a>.</p>
+                        <p>2026 © Nikol Pavlova. All rights reserved.</p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+
     <!-- jQuery -->
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/jquery-migrate-3.4.1.min.js"></script>

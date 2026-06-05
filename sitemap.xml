@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- ============================================================= -->
+  <!-- HOME  (EN)                                                    -->
+  <!-- ============================================================= -->
+  <url>
+    <loc>https://nikol.makeup/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikol.makeup/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://nikol.makeup/cz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikol.makeup/"/>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/nikol.jpg</image:loc>
+      <image:title>Nikol Pavlova — Professional Makeup Artist in Prague</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/nikol-header.webp</image:loc>
+      <image:title>Nikol Pavlova — Makeup Artist Profile</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/wedding/wedding-5.png</image:loc>
+      <image:title>Wedding Makeup Prague</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/evening/evening-5.png</image:loc>
+      <image:title>Evening Makeup Prague</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/commercial/commercial-4.png</image:loc>
+      <image:title>Commercial Makeup Prague</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================================= -->
+  <!-- HOME  (CZ)                                                    -->
+  <!-- ============================================================= -->
+  <url>
+    <loc>https://nikol.makeup/cz/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikol.makeup/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://nikol.makeup/cz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikol.makeup/"/>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/nikol.jpg</image:loc>
+      <image:title>Nikol Pavlova — Profesionální vizážistka v Praze</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/nikol-header.webp</image:loc>
+      <image:title>Nikol Pavlova — profil vizážistky</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================================= -->
+  <!-- WEDDING / BRIDAL  (EN)                                        -->
+  <!-- ============================================================= -->
+  <url>
+    <loc>https://nikol.makeup/wedding/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikol.makeup/wedding/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://nikol.makeup/cz/svatebni-liceni/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikol.makeup/wedding/"/>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/wedding/wedding-prague-1.png</image:loc>
+      <image:title>Bridal Makeup by Nikol Pavlova — Wedding Makeup Artist Prague</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/wedding/wedding-2.png</image:loc>
+      <image:title>Radiant Wedding Look Prague</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/wedding/wedding-7.png</image:loc>
+      <image:title>Classic Bridal Beauty Prague</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/wedding/wedding-9.png</image:loc>
+      <image:title>Prague Destination Wedding Makeup</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/wedding/wedding-11.png</image:loc>
+      <image:title>Luminous Wedding Skin</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/wedding/wedding-12.png</image:loc>
+      <image:title>Bride and Bridesmaids Makeup Prague</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/wedding/wedding-13.png</image:loc>
+      <image:title>Natural Bridal Beauty</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/wedding/wedding-14.png</image:loc>
+      <image:title>Soft Glam Bridal Prague</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================================= -->
+  <!-- WEDDING / BRIDAL  (CZ)                                        -->
+  <!-- ============================================================= -->
+  <url>
+    <loc>https://nikol.makeup/cz/svatebni-liceni/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikol.makeup/wedding/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://nikol.makeup/cz/svatebni-liceni/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikol.makeup/wedding/"/>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/wedding/wedding-prague-1.png</image:loc>
+      <image:title>Svatební líčení — Nikol Pavlova, vizážistka Praha</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/wedding/wedding-5.png</image:loc>
+      <image:title>Svatební líčení Praha</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================================= -->
+  <!-- MAKEUP COURSES  (EN)                                          -->
+  <!-- ============================================================= -->
+  <url>
+    <loc>https://nikol.makeup/courses/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikol.makeup/courses/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://nikol.makeup/cz/kurzy-liceni/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikol.makeup/courses/"/>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/courses/IMG_7417.jpg</image:loc>
+      <image:title>Makeup Courses Prague — Learn Professional Techniques</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================================= -->
+  <!-- MAKEUP COURSES  (CZ)                                          -->
+  <!-- ============================================================= -->
+  <url>
+    <loc>https://nikol.makeup/cz/kurzy-liceni/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikol.makeup/courses/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://nikol.makeup/cz/kurzy-liceni/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikol.makeup/courses/"/>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/courses/IMG_7417.jpg</image:loc>
+      <image:title>Kurzy líčení Praha — naučte se líčit jako profík</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================================= -->
+  <!-- PORTFOLIO  (EN)                                               -->
+  <!-- ============================================================= -->
+  <url>
+    <loc>https://nikol.makeup/portfolio/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikol.makeup/portfolio/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://nikol.makeup/cz/portfolio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikol.makeup/portfolio/"/>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/nude/nude-1.png</image:loc>
+      <image:title>Nude Makeup Prague</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/evening/evening-5.png</image:loc>
+      <image:title>Evening Makeup Prague</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/commercial/commercial-4.png</image:loc>
+      <image:title>Commercial Makeup Prague</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================================= -->
+  <!-- PORTFOLIO  (CZ)                                               -->
+  <!-- ============================================================= -->
+  <url>
+    <loc>https://nikol.makeup/cz/portfolio/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikol.makeup/portfolio/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://nikol.makeup/cz/portfolio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikol.makeup/portfolio/"/>
+    <image:image>
+      <image:loc>https://nikol.makeup/img/nude/nude-1.png</image:loc>
+      <image:title>Nude Makeup Praha</image:title>
+    </image:image>
+  </url>
+
+</urlset>

@@ -5,6 +5,7 @@ Static pages are generated from Python templates (no dependencies beyond the sta
 ```
 pip install rcssmin rjsmin   # optional, for minified CSS/JS
 python3 _build/build.py      # rebuilds assets, every page, sitemap.xml, robots.txt, llms.txt, 404.html
+python3 _build/og.py         # (needs Playwright + Pillow, local server on :8765) regenerates /assets/og/*.jpg
 python3 _build/images.py     # (needs Pillow) regenerates responsive WebP images in /assets/img
 ```
 

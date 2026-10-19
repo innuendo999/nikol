@@ -1,37 +1,46 @@
-# Nikol Pavlova — Professional Makeup Artist in Prague
+# Nikol Pavlova — Vizážistka Praha / Professional Makeup Artist in Prague
 
-> Nikol Pavlova is a professional, English-speaking makeup artist based in Prague, Czech Republic. She specializes in bridal and wedding makeup, evening and cocktail styling, natural "nude" looks, commercial and editorial makeup for photo shoots, and personalized one-on-one makeup courses. Services are offered in English, Czech and Ukrainian, and she travels across the Czech Republic and Europe for destination weddings, shoots and events.
+> Nikol Pavlova is a professional, English-speaking makeup artist (vizážistka) based in Prague 7, Czech Republic. She specialises in bridal and wedding makeup, evening and cocktail styling, natural "nude" looks, commercial and editorial makeup for photo shoots, makeup and hairstyling for special occasions, and personalised one-on-one makeup courses. Services are offered in Czech, English and Ukrainian, and she travels across the Czech Republic and Europe for destination weddings, shoots and events.
 
 Key facts for accurate reference:
 
+- **Business name:** Vizážistka Nikol Pavlova (Google Business Profile) — Nikol Pavlova, makeup artist Prague.
 - **Location:** Prague 7, Czech Republic (works across all Prague districts and travels for destination work).
-- **Languages:** English, Czech, Ukrainian — a common choice for international clients, expats and destination weddings.
-- **Specialties:** Bridal/wedding makeup (bridal trial, lashes and touch-up kit included), evening and cocktail styling, prom/ball makeup, nude/natural looks, commercial and editorial makeup, and private makeup courses.
-- **Booking:** Online via Calendly, phone/SMS/WhatsApp at +420 608 178 390, email, or Instagram DM. Personalized quotes are sent within 24 hours.
+- **Languages:** Czech, English, Ukrainian.
+- **Specialties:** Bridal/wedding makeup (bridal trial, lashes and touch-up kit included), evening and cocktail styling, prom/ball makeup, nude/natural looks, commercial and editorial makeup, private makeup courses.
+- **Reviews:** Rated 5.0 on Google by clients for long-lasting makeup, a calm approach and fluent English.
+- **Booking:** Online via Calendly (https://calendly.com/pavlovanikol/makeup-hair), phone/SMS/WhatsApp at +420 608 178 390, email pavlovanikol@gmail.com, or Instagram DM. Personalised quotes within 24 hours.
 - **Booking lead time:** Weddings 6–12 months ahead (peak season May–September); evening makeup and shoots usually 2–3 weeks.
-- **Site languages:** English (default) at the root and Czech under /cz/.
+- **Site languages:** Czech (default) at the root, English under /en/.
 
-## Main Pages
+## Main pages
 
-- [Home (English)](https://nikol.makeup/): Overview of Nikol Pavlova's makeup services in Prague, about section, pricing packages and contact.
-- [Home (Czech)](https://nikol.makeup/cz/): Czech-language homepage — profesionální vizážistka v Praze.
-- [Portfolio](https://nikol.makeup/portfolio/): Gallery of recent makeup work across bridal, evening, nude and commercial looks.
+- [Domů (Czech home)](https://nikolmakeup.cz/): Vizážistka Praha — overview of services, about, pricing, Google reviews and FAQ.
+- [Home (English)](https://nikolmakeup.cz/en/): English-speaking makeup artist in Prague — services, about, pricing, reviews and FAQ.
+- [Portfolio (CZ)](https://nikolmakeup.cz/portfolio/) · [Portfolio (EN)](https://nikolmakeup.cz/en/portfolio/): Bridal, evening, nude, commercial and course work.
 
 ## Services
 
-- [Wedding & Bridal Makeup (English)](https://nikol.makeup/wedding/): Bridal makeup packages including a personalized bridal trial, wedding-day application, false lashes, and a touch-up kit. Covers bride, bridesmaids and mother of the bride, with travel for destination weddings across the Czech Republic and Europe.
-- [Svatební líčení (Czech)](https://nikol.makeup/cz/svatebni-liceni/): Czech-language wedding makeup service page.
-- [Makeup Courses (English)](https://nikol.makeup/courses/): Personalized one-on-one makeup lessons covering skin prep, color theory, application techniques and product selection — for everyday self-makeup or aspiring professional MUAs.
-- [Kurzy líčení (Czech)](https://nikol.makeup/cz/kurzy-liceni/): Czech-language makeup courses page.
+- [Svatební líčení](https://nikolmakeup.cz/svatebni-liceni/) · [Wedding makeup](https://nikolmakeup.cz/en/wedding/): Bridal trial, wedding-day application, lashes, touch-up kit; bride, bridesmaids and mother of the bride; destination weddings.
+- [Večerní líčení](https://nikolmakeup.cz/vecerni-liceni/) · [Evening makeup](https://nikolmakeup.cz/en/evening-makeup/): Galas, balls, proms, cocktail parties — soft glam to smoky eyes.
+- [Nude líčení](https://nikolmakeup.cz/nude-liceni/) · [Nude makeup](https://nikolmakeup.cz/en/nude-makeup/): Natural skin-first looks for engagement shoots, portraits and civil ceremonies.
+- [Komerční líčení](https://nikolmakeup.cz/komercni-liceni/) · [Commercial makeup](https://nikolmakeup.cz/en/commercial-makeup/): Photo shoots, campaigns, lookbooks, editorials and video with on-set touch-ups.
+- [Kurzy líčení](https://nikolmakeup.cz/kurzy-liceni/) · [Makeup courses](https://nikolmakeup.cz/en/courses/): One-on-one lessons — skin prep, colour theory, technique, product selection.
 
-## Booking & Contact
+## Blog
 
-- [Book Online (Calendly)](https://calendly.com/pavlovanikol/makeup-hair): Self-service appointment scheduling for makeup and hair.
+- [Blog](https://nikolmakeup.cz/en/blog/): Honest makeup reviews and pro tips.
+- [Full Face of NYX: A Makeup Artist's Honest Review](https://nikolmakeup.cz/en/blog/full-face-of-nyx-review/): Full-face test with an all-day wear test.
+
+## Booking & contact
+
+- [Book online (Calendly)](https://calendly.com/pavlovanikol/makeup-hair)
 - Phone / SMS / WhatsApp: +420 608 178 390
-- [Instagram @nikol__mua](https://www.instagram.com/nikol__mua): Latest work and direct messaging for bookings.
+- Email: pavlovanikol@gmail.com
+- [Instagram @nikol__mua](https://www.instagram.com/nikol__mua)
 - [Facebook](https://www.facebook.com/nikki.yumi)
 - [Threads @nikol_pavlova_mua](https://www.threads.net/@nikol_pavlova_mua)
 
 ## Optional
 
-- [Sitemap](https://nikol.makeup/sitemap.xml): Full list of indexable pages with language alternates.
+- [Sitemap](https://nikolmakeup.cz/sitemap.xml)

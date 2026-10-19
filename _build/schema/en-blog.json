@@ -1,0 +1,26 @@
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Nikol Pavlova — Makeup Blog",
+  "url": "https://nikolmakeup.cz/en/blog/",
+  "author": {
+   "@type": "Person",
+   "name": "Nikol Pavlova",
+   "url": "https://nikolmakeup.cz/en/"
+  },
+  "blogPost": [
+   {
+    "@type": "BlogPosting",
+    "headline": "Full Face of NYX: A Makeup Artist's Honest Review",
+    "url": "https://nikolmakeup.cz/en/blog/full-face-of-nyx-review/",
+    "datePublished": "2026-03-20",
+    "image": "https://i.ytimg.com/vi/U89IYdxyJy4/maxresdefault.jpg",
+    "author": {
+     "@type": "Person",
+     "name": "Nikol Pavlova"
+    }
+   }
+  ]
+ }
+]

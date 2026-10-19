@@ -1,0 +1,306 @@
+[
+ {
+  "@context": "https://schema.org",
+  "@graph": [
+   {
+    "@type": "BreadcrumbList",
+    "@id": "https://nikolmakeup.cz/svatebni-liceni/#breadcrumb",
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Domů",
+      "item": "https://nikolmakeup.cz/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Svatební líčení Praha",
+      "item": "https://nikolmakeup.cz/svatebni-liceni/"
+     }
+    ]
+   },
+   {
+    "@type": "Service",
+    "@id": "https://nikolmakeup.cz/svatebni-liceni/#service",
+    "name": "Svatební líčení Praha",
+    "alternateName": [
+     "Svatební vizážistka Praha",
+     "Svatební makeup Praha",
+     "Líčení na svatbu Praha"
+    ],
+    "description": "Profesionální svatební líčení v Praze od Nikol Pavlové. Každý svatební balíček zahrnuje osobní zkušební líčení, kompletní líčení v den svatby, umělé řasy a sadu na dotyky. K dispozici pro destinační svatby a cestování po Evropě.",
+    "url": "https://nikolmakeup.cz/svatebni-liceni/",
+    "image": "https://nikolmakeup.cz/img/wedding/wedding-prague-1.png",
+    "provider": {
+     "@type": [
+      "LocalBusiness",
+      "BeautySalon"
+     ],
+     "@id": "https://nikolmakeup.cz/#business",
+     "name": "Nikol Pavlova - Vizážistka",
+     "telephone": "+420608178390",
+     "email": "pavlovanikol@gmail.com",
+     "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Praha",
+      "addressRegion": "Praha",
+      "addressCountry": "CZ"
+     },
+     "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 50.0755,
+      "longitude": 14.4378
+     },
+     "priceRange": "$$",
+     "currenciesAccepted": "CZK, EUR",
+     "sameAs": [
+      "https://www.instagram.com/nikol__mua",
+      "https://www.facebook.com/nikki.yumi",
+      "https://www.threads.net/@nikol_pavlova_mua"
+     ]
+    },
+    "areaServed": [
+     {
+      "@type": "City",
+      "name": "Praha"
+     },
+     {
+      "@type": "Country",
+      "name": "Česká republika"
+     },
+     {
+      "@type": "Continent",
+      "name": "Evropa"
+     }
+    ],
+    "hasOfferCatalog": {
+     "@type": "OfferCatalog",
+     "name": "Balíčky svatebního líčení",
+     "itemListElement": [
+      {
+       "@type": "Offer",
+       "@id": "https://nikolmakeup.cz/svatebni-liceni/#offer-bridal",
+       "name": "Kompletní svatební balíček",
+       "description": "Zkušební líčení, líčení v den svatby, umělé řasy v ceně, osobní sada na dotyky pro obřad i hostinu.",
+       "priceCurrency": "CZK",
+       "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "CZK",
+        "description": "Cena na vyžádání – kontaktujte pro osobní nabídku"
+       },
+       "eligibleRegion": {
+        "@type": "Country",
+        "name": "Česká republika"
+       }
+      },
+      {
+       "@type": "Offer",
+       "@id": "https://nikolmakeup.cz/svatebni-liceni/#offer-bridesmaid",
+       "name": "Líčení svatebního doprovodu",
+       "description": "Sladěné líčení pro celý svatební doprovod – jednotný a elegantní vzhled v den svatby.",
+       "priceCurrency": "CZK",
+       "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "CZK",
+        "description": "Cena na vyžádání"
+       }
+      }
+     ]
+    },
+    "serviceType": "Svatební líčení",
+    "potentialAction": {
+     "@type": "ReserveAction",
+     "name": "Rezervovat termín líčení",
+     "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://calendly.com/pavlovanikol/makeup-hair",
+      "inLanguage": "cs",
+      "actionPlatform": [
+       "https://schema.org/DesktopWebPlatform",
+       "https://schema.org/MobileWebPlatform"
+      ]
+     },
+     "result": {
+      "@type": "Reservation",
+      "name": "Termín svatebního líčení"
+     }
+    },
+    "audience": {
+     "@type": "Audience",
+     "audienceType": "Nevěsty, svatební doprovod, páry plánující svatbu v Praze"
+    }
+   },
+   {
+    "@type": "ImageGallery",
+    "@id": "https://nikolmakeup.cz/svatebni-liceni/#gallery",
+    "name": "Svatební líčení od Nikol Pavlové – Praha",
+    "description": "Výběr svatebních looků vytvořených Nikol Pavlovou pro nevěsty v Praze i po Evropě.",
+    "isPartOf": {
+     "@id": "https://nikolmakeup.cz/svatebni-liceni/#webpage"
+    },
+    "associatedMedia": [
+     {
+      "@type": "ImageObject",
+      "contentUrl": "https://nikolmakeup.cz/img/wedding/wedding-1.png",
+      "name": "Svatební líčení – jemný glamour, Praha",
+      "creator": {
+       "@id": "https://nikolmakeup.cz/#person"
+      }
+     },
+     {
+      "@type": "ImageObject",
+      "contentUrl": "https://nikolmakeup.cz/img/wedding/wedding-5.png",
+      "name": "Svatební líčení – jemný svatební glow, Praha",
+      "creator": {
+       "@id": "https://nikolmakeup.cz/#person"
+      }
+     },
+     {
+      "@type": "ImageObject",
+      "contentUrl": "https://nikolmakeup.cz/img/wedding/wedding-9.png",
+      "name": "Svatební líčení – destinační svatba Praha",
+      "creator": {
+       "@id": "https://nikolmakeup.cz/#person"
+      }
+     },
+     {
+      "@type": "ImageObject",
+      "contentUrl": "https://nikolmakeup.cz/img/wedding/wedding-12.png",
+      "name": "Líčení svatebního doprovodu – družičky a nevěsta, Praha",
+      "creator": {
+       "@id": "https://nikolmakeup.cz/#person"
+      }
+     },
+     {
+      "@type": "ImageObject",
+      "contentUrl": "https://nikolmakeup.cz/img/wedding/wedding-15.png",
+      "name": "Svatební líčení od Nikol Pavlové, Praha",
+      "creator": {
+       "@id": "https://nikolmakeup.cz/#person"
+      }
+     }
+    ]
+   },
+   {
+    "@type": "Person",
+    "@id": "https://nikolmakeup.cz/#person",
+    "name": "Nikol Pavlova",
+    "jobTitle": "Profesionální vizážistka",
+    "description": "Nikol Pavlova je profesionální anglicky a česky mluvící vizážistka v Praze, specializující se na svatební, večerní a komerční líčení.",
+    "image": "https://nikolmakeup.cz/img/nikol.jpg",
+    "url": "https://nikolmakeup.cz/",
+    "telephone": "+420608178390",
+    "email": "pavlovanikol@gmail.com",
+    "knowsLanguage": [
+     "en",
+     "cs",
+     "uk"
+    ],
+    "knowsAbout": [
+     "Svatební líčení",
+     "Svatební makeup",
+     "Večerní líčení",
+     "Komerční líčení",
+     "Editoriální líčení",
+     "Kurzy líčení"
+    ],
+    "worksFor": {
+     "@id": "https://nikolmakeup.cz/#business"
+    },
+    "sameAs": [
+     "https://www.instagram.com/nikol__mua",
+     "https://www.facebook.com/nikki.yumi"
+    ]
+   },
+   {
+    "@type": "FAQPage",
+    "@id": "https://nikolmakeup.cz/svatebni-liceni/#faq",
+    "inLanguage": "cs",
+    "mainEntity": [
+     {
+      "@type": "Question",
+      "name": "Co je zahrnuto v balíčku svatebního líčení v Praze?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Každý balíček svatebního líčení zahrnuje osobní zkušební líčení před svatbou, kompletní líčení v den svatby, umělé řasy a osobní sadu na dotyky, aby váš vzhled vydržel perfektní od obřadu až po hostinu. Doprava na místo v Praze je v ceně; mimo Prahu může být účtováno cestovné."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Jak dlouho dopředu si rezervovat svatební vizážistku v Praze?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Pro svatby v Praze, zejména v hlavní sezóně od května do září, doporučujeme rezervaci 6–12 měsíců předem. Oblíbené letní soboty se plní rychle. Na podzim a v zimě obvykle stačí 3–6 měsíců. Zkušební líčení se obvykle plánuje 4–8 týdnů před svatbou."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Jezdíte na destinační svatby po České republice?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ano. Působím v Praze, ale pravidelně cestuji na svatby po celé České republice – jižní Morava, zámky i lázeňská města jako Karlovy Vary – a po celé Evropě. Mimo Prahu se účtuje cestovné a případné ubytování."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Mluvíte anglicky pro zahraniční nevěsty?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ano. Mluvím plynně anglicky, česky a ukrajinsky a pravidelně pracuji se zahraničními nevěstami, expaty v Praze a páry z Velké Británie, USA, Irska, Austrálie i odjinud, kteří plánují destinační svatbu v České republice."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Kolik stojí svatební líčení v Praze?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Cena svatebního líčení závisí na rozsahu služby, místě, datu a tom, zda je zahrnut svatební doprovod. Po úvodní konzultaci připravím osobní cenovou nabídku – pošlete mi detaily své svatby a ozvu se do 24 hodin."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Můžete nalíčit celý svatební doprovod?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Ano. Kromě nevěsty líčím i družičky, maminku nevěsty a květinové družičky. K dispozici jsou skupinové balíčky a předem připravím časový harmonogram, aby byli všichni hotovi před obřadem."
+      }
+     },
+     {
+      "@type": "Question",
+      "name": "Jaké styly svatebního líčení nabízíte?",
+      "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Specializuji se na všechny styly svatebního líčení – jemný přirozený glow, glamour večerní líčení, klasický nude, Old Hollywood i bohémský romantický styl. Každý look je přizpůsoben pleti, rysům, šatům a tématu svatby."
+      }
+     }
+    ]
+   },
+   {
+    "@type": "WebPage",
+    "@id": "https://nikolmakeup.cz/svatebni-liceni/#webpage",
+    "url": "https://nikolmakeup.cz/svatebni-liceni/",
+    "name": "Svatební líčení Praha | Svatební vizážistka Nikol Pavlova",
+    "description": "Profesionální svatební líčení v Praze od Nikol Pavlové. Balíčky, zkušební líčení, destinační svatby. Anglicky mluvící vizážistka.",
+    "isPartOf": {
+     "@id": "https://nikolmakeup.cz/#website"
+    },
+    "about": {
+     "@id": "https://nikolmakeup.cz/svatebni-liceni/#service"
+    },
+    "breadcrumb": {
+     "@id": "https://nikolmakeup.cz/svatebni-liceni/#breadcrumb"
+    },
+    "inLanguage": "cs",
+    "speakable": {
+     "@type": "SpeakableSpecification",
+     "cssSelector": [
+      ".hero-headline",
+      ".about-intro",
+      ".faq-speakable"
+     ]
+    }
+   }
+  ]
+ }
+]

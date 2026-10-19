@@ -1,319 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog — Makeup Reviews, Tips &amp; Tutorials | Nikol Pavlova, Prague</title>
+<meta name="description" content="Honest makeup reviews, professional tips and tutorials from Nikol Pavlova, an English-speaking makeup artist based in Prague.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://nikolmakeup.cz/en/blog/">
+<link rel="alternate" hreflang="en" href="https://nikolmakeup.cz/en/blog/">
+<meta name="theme-color" content="#FBF7F5">
+<meta name="geo.region" content="CZ-PR">
+<meta name="geo.placename" content="Praha">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nikol Pavlova">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Blog — Makeup Reviews, Tips &amp; Tutorials | Nikol Pavlova, Prague">
+<meta property="og:description" content="Honest makeup reviews, professional tips and tutorials from Nikol Pavlova, an English-speaking makeup artist based in Prague.">
+<meta property="og:url" content="https://nikolmakeup.cz/en/blog/">
+<meta property="og:image" content="https://nikolmakeup.cz/img/nikol.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/images/favicon.png" type="image/png">
+<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- ===== SEO ===== -->
-    <title>Blog — Makeup Reviews, Tips & Tutorials | Nikol Pavlova, Prague</title>
-    <meta name="description" content="Honest makeup reviews, professional tips and tutorials from Nikol Pavlova, an English-speaking makeup artist based in Prague.">
-    <meta name="author" content="Nikol Pavlova">
-    <meta name="robots" content="index, follow">
-    <!-- TODO: confirm final blog URL -->
-    <link rel="canonical" href="https://nikolmakeup.cz/en/blog/">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261019">
+<script src="/assets/js/site.js?v=20261019" defer></script>
 
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Nikol Pavlova - Makeup Artist Prague">
-    <meta property="og:title" content="Blog — Makeup Reviews, Tips & Tutorials | Nikol Pavlova">
-    <meta property="og:description" content="Honest makeup reviews, professional tips and tutorials from a Prague makeup artist.">
-    <meta property="og:url" content="https://nikolmakeup.cz/en/blog/">
-    <meta property="og:image" content="https://nikolmakeup.cz/img/nikol.jpg">
-    <meta property="og:locale" content="en_US">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <link rel="icon" type="image/png" href="/images/favicon.png" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Syne:wght@400;500;600;700;800&display=swap">
-    <link rel="stylesheet" href="/css/plugins.css" />
-    <link rel="stylesheet" href="/css/style.css">
-
-    <!-- ===== Scoped styles for the blog index (won't clash with the theme) ===== -->
-    <style>
-    .np-blog{
-        --np-ink:#211c18;
-        --np-soft:#6f635a;
-        --np-line:rgba(33,28,24,.12);
-        --np-accent:#b9714a;
-        --np-accent-deep:#9a5634;
-        --np-accent-soft:#f4e6dd;
-        --np-cream:#faf5f0;
-    }
-    .np-blog .np-intro{max-width:620px;margin:0 auto;color:var(--np-soft);font-family:"Didact Gothic",sans-serif;font-size:1.08rem;line-height:1.7;}
-
-    /* featured article card */
-    .np-feature{
-        display:grid;grid-template-columns:1.05fr .95fr;gap:0;
-        background:#fff;border:1px solid var(--np-line);border-radius:18px;overflow:hidden;
-        box-shadow:0 30px 70px -40px rgba(33,28,24,.5);
-    }
-    .np-feature .np-fimg{position:relative;min-height:340px;overflow:hidden;display:block;}
-    .np-feature .np-fimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s ease;}
-    .np-feature:hover .np-fimg img{transform:scale(1.05);}
-    .np-feature .np-flag{
-        position:absolute;top:1rem;left:1rem;z-index:2;
-        background:var(--np-accent);color:#fff;font-family:"Syne",sans-serif;font-weight:600;
-        font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.4rem .8rem;border-radius:999px;
-    }
-    .np-feature .np-play{
-        position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
-        width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.92);
-        display:flex;align-items:center;justify-content:center;color:var(--np-accent-deep);font-size:1.2rem;
-        box-shadow:0 10px 30px -8px rgba(0,0,0,.45);transition:transform .3s;
-    }
-    .np-feature:hover .np-play{transform:translate(-50%,-50%) scale(1.08);}
-    .np-feature .np-fbody{padding:2.4rem;display:flex;flex-direction:column;justify-content:center;}
-    .np-feature .np-eyebrow{
-        font-family:"Syne",sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;
-        color:var(--np-accent-deep);margin-bottom:.7rem;display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;
-    }
-    .np-feature .np-eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--np-accent);opacity:.6;}
-    .np-feature .np-eyebrow .muted{color:var(--np-soft);letter-spacing:.08em;}
-    .np-feature h2{
-        font-family:"Syne",sans-serif;font-weight:800;color:var(--np-ink);
-        font-size:clamp(1.5rem,2.6vw,2.15rem);line-height:1.12;margin:0 0 .9rem;letter-spacing:-.01em;
-    }
-    .np-feature h2 a{color:inherit;text-decoration:none;}
-    .np-feature h2 a:hover{color:var(--np-accent-deep);}
-    .np-feature .np-exc{font-family:"Didact Gothic",sans-serif;color:var(--np-soft);font-size:1.02rem;line-height:1.7;margin:0 0 1.4rem;}
-    .np-feature .np-more{
-        font-family:"Syne",sans-serif;font-weight:600;font-size:.92rem;color:var(--np-accent-deep);
-        text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;
-    }
-    .np-feature .np-more i{transition:transform .3s;}
-    .np-feature .np-more:hover i{transform:translate(4px,-4px);}
-
-    /* small "what's on the blog" topics */
-    .np-topics{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem;}
-    .np-topics .t{
-        background:var(--np-cream);border:1px solid var(--np-line);border-radius:14px;padding:1.3rem 1.4rem;
-    }
-    .np-topics .t .k{font-family:"Syne",sans-serif;font-weight:700;color:var(--np-ink);font-size:1.02rem;margin:0 0 .3rem;display:flex;align-items:center;gap:.55rem;}
-    .np-topics .t .k i{color:var(--np-accent);}
-    .np-topics .t p{font-family:"Didact Gothic",sans-serif;color:var(--np-soft);font-size:.92rem;line-height:1.6;margin:0;}
-
-    @media (max-width:991px){
-        .np-feature{grid-template-columns:1fr;}
-        .np-feature .np-fimg{min-height:240px;}
-        .np-topics{grid-template-columns:1fr;}
-    }
-    </style>
-
-    <!-- ===== Structured data ===== -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Blog",
-      "name": "Nikol Pavlova — Makeup Blog",
-      "url": "https://nikolmakeup.cz/en/blog/",
-      "author": { "@type": "Person", "name": "Nikol Pavlova", "url": "https://nikolmakeup.cz/en/" },
-      "blogPost": [
-        {
-          "@type": "BlogPosting",
-          "headline": "Full Face of NYX: A Makeup Artist's Honest Review",
-          "url": "https://nikolmakeup.cz/en/blog/full-face-of-nyx-review/",
-          "datePublished": "2026-03-20",
-          "image": "https://i.ytimg.com/vi/U89IYdxyJy4/maxresdefault.jpg",
-          "author": { "@type": "Person", "name": "Nikol Pavlova" }
-        }
-      ]
-    }
-    </script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Nikol Pavlova — Makeup Blog","url":"https://nikolmakeup.cz/en/blog/","author":{"@type":"Person","name":"Nikol Pavlova","url":"https://nikolmakeup.cz/en/"},"blogPost":[{"@type":"BlogPosting","headline":"Full Face of NYX: A Makeup Artist's Honest Review","url":"https://nikolmakeup.cz/en/blog/full-face-of-nyx-review/","datePublished":"2026-03-20","image":"https://i.ytimg.com/vi/U89IYdxyJy4/maxresdefault.jpg","author":{"@type":"Person","name":"Nikol Pavlova"}}]}</script>
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader-bg"></div>
-    <div class="preloader">
-        <div class="item">
-            <div class="wrap">
-                <div class="circle"></div>
-                <div class="line-mask">
-                    <div class="line"></div>
-                </div> <img src="/images/logo-light.png" alt="Nikol Pavlova">
-            </div>
-        </div>
-    </div>
-    <!-- Progress scroll totop -->
-    <div class="progress-wrap cursor-pointer">
-        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-        </svg>
-    </div>
-    <!-- Cursor -->
-    <div class="cursor js-cursor"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<div class="bar glass">
+<a class="logo" href="/en/">Nikol Pavlova</a>
+<nav class="nav" id="site-nav" aria-label="Main navigation">
+<ul>
+<li><a class="nav-link" href="/en/">Home</a></li>
+<li><a class="nav-link" href="/en/#about">About</a></li>
+<li><a class="nav-link" href="/en/portfolio/">Portfolio</a></li>
+<li class="dd"><button class="nav-link dd-btn" type="button" aria-expanded="false" aria-controls="dd-services">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg></button>
+<ul class="dd-menu glass" id="dd-services"><li><a href="/en/wedding/">Wedding makeup</a></li><li><a href="/en/evening-makeup/">Evening makeup</a></li><li><a href="/en/nude-makeup/">Nude makeup</a></li><li><a href="/en/commercial-makeup/">Commercial makeup</a></li><li><a href="/en/courses/">Makeup courses</a></li></ul></li>
+<li><a class="nav-link" href="/en/blog/" aria-current="page">Blog</a></li>
+<li><a class="nav-link" href="#contact">Contact</a></li>
+</ul>
+</nav>
+<div class="bar-end">
+<a class="lang lbl" href="/" hreflang="cs" lang="cs" aria-label="Česká verze">CZ</a>
+<a class="btn" href="https://calendly.com/pavlovanikol/makeup-hair" rel="noopener">Book online <span aria-hidden="true">+</span></a>
+<button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div>
+</div>
+</div>
+</header>
+<main id="main">
+<section class="page-head" aria-labelledby="page-h1"><div class="wrap">
+<nav class="crumbs lbl" aria-label="Breadcrumb"><ol><li><a href="/en/">Home</a></li><li><span aria-current="page">Blog</span></li></ol></nav>
+<div class="top"><h1 class="h1" id="page-h1"><span class="big wide">The Blog</span><span class="sub serif">— makeup reviews, tips &amp; tutorials from Prague</span></h1>
+<p class="body">Honest product reviews, professional tips and behind-the-scenes notes from my work as a makeup artist in Prague — written to help you choose better products and create looks that suit you.</p></div>
+</div></section>
+<section class="sec--tight" aria-labelledby="latest-h"><div class="wrap">
+<h2 class="visually-hidden" id="latest-h">Latest review</h2>
+<article><a class="feat" href="/en/blog/full-face-of-nyx-review/"><img src="/assets/img/nikol-hero-640.webp" srcset="/assets/img/nikol-hero-640.webp 640w, /assets/img/nikol-hero-1280.webp 1280w" sizes="(max-width: 900px) 100vw, 1280px" width="1280" height="853" alt="Nikol Pavlova testing a full face of NYX makeup" loading="lazy" decoding="async"><span class="badge lbl glass">Latest review</span>
+<div class="card glass"><p class="lbl muted" style="display:flex;gap:14px;flex-wrap:wrap"><span class="red">Reviews</span><time datetime="2026-03-20">20 March 2026</time><span>9 min read</span></p>
+<h3 class="wide" style="font-size:30px;font-weight:500;line-height:1.1">Full Face of NYX: A Makeup Artist's Honest Review</h3>
+<p style="color:var(--text)">I tested a full face of NYX — bestsellers and a few brand-new launches — then wore it through a real working day. Here is what earned a place in my kit, what depends on your skin type, and what I would happily skip, plus an honest all-day wear test.</p>
+<span class="btn" style="align-self:flex-start">Read the review →</span></div></a></article>
+</div></section>
+<section class="sec sec--blush" aria-labelledby="topics-h"><div class="wrap">
+<div class="sec-head"><h2 class="sec-title" id="topics-h">Topics <span class="serif">— what I write about</span></h2></div>
 
-    <!-- Navbar (real Nikol Pavlova menu, English only) -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <div class="logo-wrapper">
-                <a class="logo" href="https://nikolmakeup.cz/en/"> <img src="/images/logo-light.png" class="logo-img" alt="Nikol Pavlova Makeup Artist Prague"> </a>
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"><i class="fa-regular fa-bars"></i></span> </button>
-            <div class="collapse navbar-collapse" id="navbar">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="https://nikolmakeup.cz/en/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://nikolmakeup.cz/en/#about">About Me</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://nikolmakeup.cz/en/portfolio/">Portfolio</a></li>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Services <i class="fa-light fa-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://nikolmakeup.cz/en/wedding/" class="dropdown-item"><span>Wedding Makeup</span></a></li>
-                            <li><a href="https://nikolmakeup.cz/en/courses/" class="dropdown-item"><span>Makeup Courses</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link active" href="https://nikolmakeup.cz/en/blog/">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://nikolmakeup.cz/en/#contact">Contact</a></li>
-                </ul>
-                <div class="navbar-right">
-                    <div class="wrap">
-                        <div class="icon"> <i class="fa-light fa-phone"></i> </div>
-                        <div class="text">
-                            <p>Need Makeup?</p>
-                            <h5><a href="tel:+420608178390">+420 608 178 390</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Blog -->
-    <section class="blog-home section-padding">
-        <div class="container">
-            <div class="np-blog">
-
-                <div class="row mb-45">
-                    <div class="col-md-12 text-center">
-                        <h6 class="wow" data-splitting>Reviews, Tips &amp; Tutorials</h6>
-                        <h1 class="wow" data-splitting>The Blog</h1>
-                        <p class="np-intro mt-15">Honest product reviews, professional tips and behind-the-scenes notes from my work as a makeup artist in Prague — written to help you choose better products and create looks that suit you.</p>
-                    </div>
-                </div>
-
-                <!-- Featured post: NYX review -->
-                <div class="row">
-                    <div class="col-md-12 mb-30 wow fadeInUp" data-wow-delay=".2s">
-                        <article class="np-feature">
-                            <a class="np-fimg" href="/en/blog/full-face-of-nyx-review/" aria-label="Read: Full Face of NYX review">
-                                <span class="np-flag">Latest Review</span>
-                                <span class="np-play"><i class="fa-regular fa-play"></i></span>
-                                <img src="https://i.ytimg.com/vi/U89IYdxyJy4/maxresdefault.jpg" alt="Nikol Pavlova testing a full face of NYX makeup" onerror="this.onerror=null;this.src='/images/blog/4.jpg';">
-                            </a>
-                            <div class="np-fbody">
-                                <div class="np-eyebrow"><span>Reviews</span><span class="dot"></span><span class="muted">20 March 2026</span><span class="dot"></span><span class="muted">9 min read</span></div>
-                                <h2><a href="/en/blog/full-face-of-nyx-review/">Full Face of NYX: A Makeup Artist's Honest Review</a></h2>
-                                <p class="np-exc">I tested a full face of NYX — bestsellers and a few brand-new launches — then wore it through a real working day. Here is what earned a place in my kit, what depends on your skin type, and what I would happily skip, plus an honest all-day wear test.</p>
-                                <a class="np-more" href="/en/blog/full-face-of-nyx-review/">Read the review <i class="fa-light fa-arrow-up-right"></i></a>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
-                <!-- What you'll find here (real topic areas, not placeholder posts) -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="np-topics">
-                            <div class="t">
-                                <p class="k"><i class="fa-light fa-flask"></i> Product reviews</p>
-                                <p>Honest, hands-on takes on the products I test — what is worth it and what is not.</p>
-                            </div>
-                            <div class="t">
-                                <p class="k"><i class="fa-light fa-wand-magic-sparkles"></i> Pro tips &amp; tutorials</p>
-                                <p>Techniques from my kit — skin prep, longevity, colour and application made simple.</p>
-                            </div>
-                            <div class="t">
-                                <p class="k"><i class="fa-light fa-ring"></i> Bridal &amp; events</p>
-                                <p>How to plan and prepare for long-lasting makeup on the days that matter most.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div><!-- /.np-blog -->
-        </div>
-    </section>
-
-    <!-- Need help / Learn With Me CTA band (theme markup, real content) -->
-    <section class="testimonials">
-        <div class="background bg-img bg-fixed section-padding" data-overlay-dark="4" data-background="/images/slider/1.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 mb-30 mt-60">
-                        <h6>Need Help?</h6>
-                        <h5 class="wow" data-splitting>Do you need help with creative make-up?</h5>
-                        <div class="btn-wrap text-left wow fadeInUp" data-wow-delay=".6s">
-                            <div class="btn-link"> <a href="https://calendly.com/pavlovanikol/makeup-hair">Book Online</a> <span class="btn-block animation-bounce"></span> </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 offset-lg-1 col-md-12 mt-60">
-                        <h6>Learn With Me</h6>
-                        <h5 class="wow" data-splitting>Personalised one-on-one makeup courses in Prague</h5>
-                        <div class="btn-wrap text-left wow fadeInUp" data-wow-delay=".6s">
-                            <div class="btn-link"> <a href="https://nikolmakeup.cz/en/courses/">View Courses</a> <span class="btn-block animation-bounce"></span> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer (real content, theme markup) -->
-    <footer class="footer">
-        <div class="top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 mb-45">
-                        <h5>About</h5>
-                        <p>Professional makeup artist based in Prague. Designing bespoke beauty looks that reflect your distinct personality.</p>
-                        <div class="social"> <a href="https://www.instagram.com/nikol__mua"><i class="fa-brands fa-instagram"></i></a> <a href="https://www.facebook.com/nikki.yumi"><i class="fa-brands fa-facebook-f"></i></a> <a href="https://www.threads.net/@nikol_pavlova_mua"><i class="fa-brands fa-threads"></i></a> </div>
-                    </div>
-                    <div class="col-md-4 offset-md-1 mb-45">
-                        <h5>Services</h5>
-                        <ul style="list-style:none;padding:0;margin:0;line-height:2.1;">
-                            <li><a href="https://nikolmakeup.cz/en/wedding/">Wedding Makeup</a></li>
-                            <li><a href="https://nikolmakeup.cz/en/#services">Evening Styling</a></li>
-                            <li><a href="https://nikolmakeup.cz/en/#services">Commercial</a></li>
-                            <li><a href="https://nikolmakeup.cz/en/courses/">Makeup Courses</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 offset-md-1 mb-45">
-                        <h5>Contact</h5>
-                        <p>Prague 7, Czech Republic
-                            <br>(Available for travel)
-                        </p>
-                        <div class="phone"><a href="tel:+420608178390">+420 608 178 390</a></div>
-                        <div class="mail"><a href="https://www.instagram.com/nikol__mua">@nikol__mua</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>2026 © Nikol Pavlova. All rights reserved.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- jQuery -->
-    <script src="/js/jquery-3.7.1.min.js"></script>
-    <script src="/js/jquery-migrate-3.4.1.min.js"></script>
-    <script src="/js/modernizr-2.6.2.min.js"></script>
-    <script src="/js/imagesloaded.pkgd.min.js"></script>
-    <script src="/js/jquery.isotope.v3.0.2.js"></script>
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/scrollIt.min.js"></script>
-    <script src="/js/jquery.waypoints.min.js"></script>
-    <script src="/js/owl.carousel.min.js"></script>
-    <script src="/js/jquery.stellar.min.js"></script>
-    <script src="/js/jquery.magnific-popup.js"></script>
-    <script src="/js/YouTubePopUp.js"></script>
-    <script src="/js/before-after.js"></script>
-    <script src="/js/jquery.easing.1.3.js"></script>
-    <script src="/js/smooth-scroll.min.js"></script>
-    <script src="/js/wow.js"></script>
-    <script src="/js/custom.js"></script>
+<ul class="topic-rows">
+<li><h3>Product reviews</h3><p>Honest, hands-on takes on the products I test — what is worth it and what is not.</p><span class="lbl red">1 article</span></li>
+<li><h3>Pro tips &amp; tutorials</h3><p>Techniques from my kit — skin prep, longevity, colour and application made simple.</p><span class="lbl muted2">Coming soon</span></li>
+<li><h3>Bridal &amp; events</h3><p>How to plan and prepare for long-lasting makeup on the days that matter most.</p><span class="lbl muted2">Coming soon</span></li>
+</ul></div></section>
+<section class="duo" aria-label="Book or learn">
+<div class="ox-box"><p class="lbl pink">Need help?</p><h2 class="big-h">Do you need help with creative make-up?</h2><a class="btn btn--pink" href="https://calendly.com/pavlovanikol/makeup-hair" rel="noopener">Book online +</a></div>
+<div class="tiles" style="display:block"><a href="/en/courses/" style="height:100%;min-height:420px"><img src="/assets/img/course-600.webp" srcset="/assets/img/course-600.webp 600w, /assets/img/course-1000.webp 1000w, /assets/img/course-1400.webp 1400w" sizes="(max-width: 900px) 100vw, 50vw" width="1400" height="2100" alt="" loading="lazy" decoding="async" style="object-position:50% 15%"><span class="cap"><span class="lbl pink">Learn with me</span><span class="wide" style="font-size:clamp(24px,2.6vw,34px)">Personalised one-on-one makeup courses in Prague →</span></span></a></div>
+</section>
+</main>
+<footer class="site-footer" id="contact">
+<div class="wrap">
+<div class="cols-f">
+<div class="cta-f">
+<p class="lbl pink">Contact me</p>
+<h2 class="mid-h">Do you need help with creative make-up?</h2>
+<p>Professional makeup artist based in Prague. Designing bespoke beauty looks that reflect your distinct personality.</p>
+<p style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn--pink" href="https://calendly.com/pavlovanikol/makeup-hair" rel="noopener">Book online +</a><a class="btn btn--ghost" href="mailto:pavlovanikol@gmail.com">Email</a></p>
+</div>
+<nav class="f-col" aria-label="Services"><h3 class="lbl">Services</h3><a href="/en/wedding/">Wedding makeup</a><a href="/en/evening-makeup/">Evening makeup</a><a href="/en/nude-makeup/">Nude makeup</a><a href="/en/commercial-makeup/">Commercial makeup</a><a href="/en/courses/">Makeup courses</a></nav>
+<div class="f-col"><h3 class="lbl">Location</h3><address>Prague 7, Czech Republic<br>(Available across Prague, Czechia &amp; Europe)</address></div>
+<div class="f-col"><h3 class="lbl">Write to me</h3><a href="mailto:pavlovanikol@gmail.com">pavlovanikol@gmail.com</a><a href="https://www.instagram.com/nikol__mua" rel="noopener">Instagram @nikol__mua</a><a href="https://www.facebook.com/nikki.yumi" rel="noopener">Facebook</a><a href="https://www.threads.net/@nikol_pavlova_mua" rel="noopener">Threads</a></div>
+<div class="f-col"><h3 class="lbl">Phone / WhatsApp</h3><a class="tel" href="tel:+420608178390">+420 608 178 390</a></div>
+</div>
+<div class="f-bar lbl"><span>Nikol Pavlova · makeup artist Prague</span><span>2026 © All rights reserved</span><a href="/en/portfolio/">Portfolio</a><a href="/en/blog/">Blog</a><a href="#main">Back to top ↑</a></div>
+</div>
+<div class="f-name" aria-hidden="true"><img src="/assets/img/nikol-footer-800.webp" srcset="/assets/img/nikol-footer-800.webp 800w, /assets/img/nikol-footer-1080.webp 1080w" sizes="100vw" width="1080" height="1620" alt="" loading="lazy" decoding="async"><div class="mesh"></div><span>Nikol Pavlova</span></div>
+</footer>
 </body>
 </html>

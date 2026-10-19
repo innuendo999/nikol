@@ -2,7 +2,7 @@ from lib import *
 from lib import img as I
 import schema as S
 from reviews import pick
-from pages_cs import PORTFOLIO_ITEMS, portfolio_grid
+from pages_cs import PORTFOLIO_ITEMS, portfolio_grid, NOSCRIPT
 
 LANG = 'en'
 HOME = ('Home', '/en/')
@@ -22,13 +22,13 @@ def home():
     title = 'Nikol Pavlova - Professional Makeup Artist in Prague'
     desc = 'Professional English-speaking makeup artist in Prague. Specialized in bridal, evening styling and courses. Book your appointment.'
     faq_items = [
-        ('Where are you based and do you travel for bookings?', 'I am a professional makeup artist based in Prague, Czech Republic. I work across all districts of Prague — including Praha 1 (Old Town), Praha 2 (Vinohrady), and Praha 7 — and I also travel to other cities in the Czech Republic and across Europe for destination weddings, photo shoots and events.'),
+        ('Where are you based and do you travel for bookings?', 'I am a professional makeup artist based in Prague, Czech Republic. I work across all districts of Prague – including Praha 1 (Old Town), Praha 2 (Vinohrady), and Praha 7 – and I also travel to other cities in the Czech Republic and across Europe for destination weddings, photo shoots and events.'),
         ('What makeup services do you offer?', 'I offer wedding and bridal makeup, evening and cocktail styling, natural nude looks, prom and ball makeup, commercial and editorial makeup for photo shoots, and personalized one-on-one makeup courses for clients who want to learn professional techniques.'),
         ('Do you speak English?', 'Yes. I provide makeup services fluently in English and Czech, which makes me a comfortable choice for international clients, expats living in Prague, and couples planning a destination wedding in the Czech Republic.'),
         ('What is included in the wedding makeup package?', 'The wedding package includes a bridal trial before the wedding day, full wedding-day makeup application, false lashes, and a personal touch-up kit so your look stays fresh from the ceremony through the reception.'),
-        ('How much does makeup in Prague cost?', 'Prices depend on the type of service, location, and timing — bridal packages, evening makeup and commercial shoots are all priced individually. Please contact me with your event details and I will send you a personalized quote within 24 hours.'),
-        ('How far in advance should I book?', 'For weddings I recommend booking 6–12 months in advance, especially for the peak season from May to September. For evening makeup and shoots, 2–3 weeks is usually enough, though last-minute slots can sometimes be arranged — just get in touch.'),
-        ('What does a makeup course look like?', 'Courses are personalized one-on-one sessions tailored to your skill level and goals — from learning everyday makeup for yourself to professional techniques for aspiring MUAs. We cover skin prep, color theory, application techniques, and product selection using your own face as the canvas.'),
+        ('How much does makeup in Prague cost?', 'Prices depend on the type of service, location, and timing – bridal packages, evening makeup and commercial shoots are all priced individually. Please contact me with your event details and I will send you a personalized quote within 24 hours.'),
+        ('How far in advance should I book?', 'For weddings I recommend booking 6–12 months in advance, especially for the peak season from May to September. For evening makeup and shoots, 2–3 weeks is usually enough, though last-minute slots can sometimes be arranged – just get in touch.'),
+        ('What does a makeup course look like?', 'Courses are personalized one-on-one sessions tailored to your skill level and goals – from learning everyday makeup for yourself to professional techniques for aspiring MUAs. We cover skin prep, color theory, application techniques, and product selection using your own face as the canvas.'),
         ('How can I book an appointment?', f'You can book <a href="{CAL}">online via Calendly</a>, call or text <a href="tel:{TEL}">{TEL_H}</a>, email <a href="mailto:{MAIL}">{MAIL}</a>, or send a direct message on Instagram <a href="{IG}">@nikol__mua</a>. I usually reply within a few hours.'),
     ]
     h = head(LANG, title, desc, path, alts('/', '/en/'), SITE + '/img/nikol.jpg', S.load('en-home'), preload('nikol-hero', '100vw'))
@@ -38,7 +38,7 @@ def home():
 <div class="wrap inner"><div></div>
 <div style="display:flex;flex-direction:column;gap:20px">
 <div class="hero-row"><p>Hi beautiful! I love designing beautiful makeup looks which enhance your natural features and distinctive style. Let's create stunning makeup transformations together!</p><a class="btn btn--light" href="#services">My services <span aria-hidden="true">↓</span></a></div>
-<h1 class="h1" id="page-h1"><span class="big">Nikol Pavlova</span><span class="sub">— English-speaking makeup artist in Prague</span></h1>
+<h1 class="h1" id="page-h1"><span class="big">Nikol Pavlova</span><span class="sub">– English-speaking makeup artist in Prague</span></h1>
 </div></div>
 </section>
 '''
@@ -64,7 +64,7 @@ def home():
 <li>{I('commercial-4', 'Commercial makeup for a beauty brand shoot')}</li>
 <li>{I('course', 'Makeup courses Prague', style='object-position:50% 15%')}</li>
 <li><a class="tile-panel center" href="/en/courses/"><h3>Makeup courses</h3><p class="serif">Learn professional techniques</p><span class="lbl more">Details →</span></a></li>
-<li class="span2"><a class="tile-panel center dark" style="height:100%" href="{CAL}" rel="noopener"><p class="serif" style="font-size:28px">Your look, your day.</p><h3 style="font-size:30px">Book an appointment +</h3></a></li>
+<li class="span2"><a class="tile-panel center dark" style="height:100%" href="{CAL}"><p class="serif" style="font-size:28px">Your look, your day.</p><h3 style="font-size:30px">Book an appointment +</h3></a></li>
 </ul>
 </section>
 <section class="mos-sec" aria-labelledby="mos-h">
@@ -124,8 +124,8 @@ def wedding():
 <div class="wrap inner">
 <div>{crumbs(LANG, [HOME, SVC, ('Wedding makeup', None)], cls='lbl glass crumbs-glass')}</div>
 <div style="display:flex;flex-direction:column;gap:20px">
-<div class="hero-row"><p>Your wedding day deserves a look as unique as your love story. I create long-lasting, radiant bridal makeup that enhances your natural beauty – tailored entirely to you, your dress and your vision.</p><a class="btn btn--light" href="{CAL}" rel="noopener">Book appointment online +</a></div>
-<h1 class="h1" id="page-h1"><span class="big">Bridal makeup</span><span class="sub">in Prague — makeup that lasts all day</span></h1>
+<div class="hero-row"><p>Your wedding day deserves a look as unique as your love story. I create long-lasting, radiant bridal makeup that enhances your natural beauty – tailored entirely to you, your dress and your vision.</p><a class="btn btn--light" href="{CAL}">Book appointment online +</a></div>
+<h1 class="h1" id="page-h1"><span class="big">Bridal makeup</span><span class="sub">in Prague – makeup that lasts all day</span></h1>
 </div></div>
 </section>
 '''
@@ -208,8 +208,8 @@ EVENING = dict(
     desc='Evening, cocktail and ball makeup in Prague. Glamorous looks for galas, proms and parties – smoky eyes, statement lips and makeup that lasts all night.',
     service_name='Evening makeup Prague', service_type='Evening and ball makeup',
     offers=['Cocktail Makeup', 'Evening Styling', 'Prom / Ball Makeup', 'Photo Shoots'],
-    big='Evening<br>makeup', sub='in Prague — galas, balls &amp; parties',
-    lead='Glamorous looks built for galas, cocktail parties, proms, balls and special events in Prague. Smoky eyes, sculpted cheekbones, statement lips and luminous skin — finished with techniques that hold up under both flash photography and ambient evening light.',
+    big='Evening<br>makeup', sub='in Prague – galas, balls &amp; parties',
+    lead='Glamorous looks built for galas, cocktail parties, proms, balls and special events in Prague. Smoky eyes, sculpted cheekbones, statement lips and luminous skin – finished with techniques that hold up under both flash photography and ambient evening light.',
     buttons=[('Book appointment +', CAL), ('Makeup styles', '#grid-h')], hero_img='evening-5', hero_alt='Evening makeup Prague – elegant glamour look',
     marquee=['Balls', 'Galas', 'Cocktail parties', 'Proms', 'Smoky eyes', 'Statement lips'],
     intro_title='A bold look you feel confident in', intro_tag='from soft glam to dramatic smoky eyes',
@@ -234,9 +234,9 @@ EVENING = dict(
         ('evening-14', 'Evening look – modern evening styling'), ('evening-17', 'Evening look – finishing touch')],
     rv_sub='makeup that lasts into the night', reviews=pick('nelli', 'stepanka', 'glenn'),
     faq_sub='evening makeup questions', faq=[
-        ('How far in advance should I book?', 'For evening makeup and shoots, 2–3 weeks is usually enough, though last-minute slots can sometimes be arranged — just get in touch.'),
+        ('How far in advance should I book?', 'For evening makeup and shoots, 2–3 weeks is usually enough, though last-minute slots can sometimes be arranged – just get in touch.'),
         ('How much does evening makeup cost in Prague?', 'Prices depend on the type of service, location and timing. Send me your event details and I will reply with a personalised quote within 24 hours.'),
-        ('Do you come to me?', 'Yes. I work across all districts of Prague — including Praha 1 (Old Town), Praha 2 (Vinohrady) and Praha 7 — and travel to other cities in the Czech Republic and across Europe.'),
+        ('Do you come to me?', 'Yes. I work across all districts of Prague – including Praha 1 (Old Town), Praha 2 (Vinohrady) and Praha 7 – and travel to other cities in the Czech Republic and across Europe.'),
         ('Do you speak English?', 'Yes, I speak fluent English and Czech, so international clients and expats in Prague are very welcome.'), BOOK_FAQ],
     related=[('Wedding makeup', '/en/wedding/', 'wedding-5'), ('Commercial makeup', '/en/commercial-makeup/', 'commercial-4')],
     f_label='Book your evening makeup', f_text='Based in Prague, Czech Republic · Available for travel. Personalised quote within 24 hours.')
@@ -247,7 +247,7 @@ NUDE = dict(
     desc='Natural nude makeup in Prague. Soft, skin-first looks for engagement shoots, portraits and civil ceremonies – healthy glowing skin without a heavy finish.',
     service_name='Nude makeup Prague', service_type='Natural makeup',
     offers=['Skin preparation', 'Light base &amp; concealer', 'Soft eye &amp; brow definition', 'Natural cheeks &amp; lips'],
-    big='Nude<br>makeup', sub='in Prague — enhance, never transform',
+    big='Nude<br>makeup', sub='in Prague – enhance, never transform',
     lead='Soft, skin-first looks that enhance natural features without looking heavy. Ideal for engagement shoots, daytime portraits, civil ceremonies and clients who prefer a barely-there finish with healthy glowing skin.',
     buttons=[('Book appointment +', CAL), ('Who it is for', '#grid-h')], hero_img='nude-1', hero_alt='Nude makeup Prague – natural no-makeup look',
     marquee=['No-makeup look', 'Healthy glow', 'Dewy skin', 'Engagement shoots', 'Civil ceremonies'],
@@ -274,7 +274,7 @@ NUDE = dict(
     faq_sub='nude makeup questions', faq=[
         ('Does a nude look work for a wedding?', 'Yes. Natural nude is one of the bridal styles I offer – ideal for civil ceremonies and brides who want to look like themselves. See <a href="/en/wedding/">Wedding makeup</a>.'),
         ('How much does nude makeup cost?', 'Prices depend on the type of service, location and timing. Send me the details and I will reply with a personalised quote within 24 hours.'),
-        ('How far in advance should I book?', 'For shoots and everyday events, 2–3 weeks is usually enough, though last-minute slots can sometimes be arranged — just get in touch.'), BOOK_FAQ],
+        ('How far in advance should I book?', 'For shoots and everyday events, 2–3 weeks is usually enough, though last-minute slots can sometimes be arranged – just get in touch.'), BOOK_FAQ],
     related=[('Wedding makeup', '/en/wedding/', 'wedding-5'), ('Evening makeup', '/en/evening-makeup/', 'evening-5')],
     f_label='Book your nude makeup', f_text='Based in Prague, Czech Republic · Available for travel. Personalised quote within 24 hours.')
 
@@ -284,8 +284,8 @@ COMMERCIAL = dict(
     desc='Commercial and editorial makeup in Prague for photo shoots, campaigns, lookbooks and video. Makeup adapted to light and concept, with on-set touch-ups all day.',
     service_name='Commercial and editorial makeup Prague', service_type='Makeup for photo shoots and advertising',
     offers=['Concept &amp; look consultation', 'Makeup for light &amp; brief', 'On-set touch-ups', 'Travel across Czechia &amp; Europe'],
-    big='Commercial<br>makeup', sub='in Prague — shoots, campaigns &amp; editorial',
-    lead='Makeup for photo shoots, brand campaigns, lookbooks, magazine editorials and video content. Adapted to the lighting and concept of each shoot — from clean beauty work to bold editorial styling — with on-set touch-ups across the production day.',
+    big='Commercial<br>makeup', sub='in Prague – shoots, campaigns &amp; editorial',
+    lead='Makeup for photo shoots, brand campaigns, lookbooks, magazine editorials and video content. Adapted to the lighting and concept of each shoot – from clean beauty work to bold editorial styling – with on-set touch-ups across the production day.',
     buttons=[('Send a brief +', f'mailto:{MAIL}'), ('Project types', '#grid-h')], hero_img='commercial-4', hero_alt='Commercial makeup – beauty brand shoot',
     marquee=['Beauty', 'Campaigns', 'Lookbooks', 'Editorial', 'Video content', 'On-set touch-ups'],
     intro_title='Makeup that works on camera', intro_tag='from clean beauty to bold editorial',
@@ -310,7 +310,7 @@ COMMERCIAL = dict(
     rv_sub='shoots &amp; modelling', reviews=pick('polina', 'zoe_c', 'glenn'),
     faq_sub='commercial makeup questions', faq=[
         ('How much does commercial makeup cost?', 'Commercial projects are priced individually by type of service, location and date. Send me the details and I will reply with a personalised quote within 24 hours.'),
-        ('How far in advance should I book a shoot?', 'For shoots, 2–3 weeks is usually enough, though last-minute slots can sometimes be arranged — just get in touch.'),
+        ('How far in advance should I book a shoot?', 'For shoots, 2–3 weeks is usually enough, though last-minute slots can sometimes be arranged – just get in touch.'),
         ('Do you travel for shoots outside Prague?', 'Yes. I am based in Prague and travel for shoots to other cities in the Czech Republic and across Europe.'),
         ('Do you work in English?', 'Yes, I speak fluent English and Czech, so international teams are very welcome.'), BOOK_FAQ],
     related=[('Evening makeup', '/en/evening-makeup/', 'evening-5'), ('Nude makeup', '/en/nude-makeup/', 'nude-1')],
@@ -333,7 +333,7 @@ def courses():
     ]
     h = head(LANG, title, desc, path, alts('/kurzy-liceni/', path), SITE + '/img/courses/IMG_7417.jpg', S.load('en-courses'), preload('course', '(max-width: 900px) 100vw, 50vw'))
     h += header(LANG, path, '/kurzy-liceni/')
-    h += hero_split(LANG, 'tone-sand', [HOME, SVC, ('Makeup courses', None)], 'Makeup<br>courses', 'in Prague — learn to create your own looks',
+    h += hero_split(LANG, 'tone-sand', [HOME, SVC, ('Makeup courses', None)], 'Makeup<br>courses', 'in Prague – learn to create your own looks',
                     'Personalised one-on-one makeup lessons in Prague – whether you want to master everyday makeup for yourself or build professional skills as an aspiring makeup artist. We work on your own face, at your own pace.',
                     [('Book a course online +', CAL), ('Course options', '#packages')], 'course', 'One-on-one makeup course in Prague with Nikol Pavlova', '50% 15%')
     h += marquee(['One-on-one', 'On your own face', 'English &amp; Czech', 'Beginners &amp; aspiring MUAs', 'Product list to take home'])
@@ -364,7 +364,7 @@ def courses():
 <li><figure class="pcard"><div class="ph">{I('evening-7', 'Defined eye makeup technique, Prague makeup lesson')}</div><figcaption class="wide" style="font-size:15px;font-weight:600">Defined eyes</figcaption></figure></li>
 </ul></div></section>
 <section class="sec sec--blush" aria-labelledby="students-h"><div class="wrap">
-{sec_head('Happy students', 'what they say about the lessons', f'<a class="btn" href="{CAL}" rel="noopener">Book your lesson +</a>', hid='students-h')}
+{sec_head('Happy students', 'what they say about the lessons', f'<a class="btn" href="{CAL}">Book your lesson +</a>', hid='students-h')}
 <div class="quotes3">
 <figure><blockquote><p>“I finally understand how to do my own makeup. Nikol explained everything so clearly and let me do it myself – now I actually use these techniques every day.”</p></blockquote><figcaption class="lbl"><cite>Tereza H.</cite> <span class="muted2">· Personal lesson</span></figcaption></figure>
 <figure><blockquote><p>“As someone starting out as an MUA, the pro session was exactly what I needed – real technique, hygiene and product advice you can't get from videos.”</p></blockquote><figcaption class="lbl"><cite>Marta S.</cite> <span class="muted2">· Pro course</span></figcaption></figure>
@@ -400,69 +400,70 @@ EN_ITEMS = {
 
 def portfolio():
     path = '/en/portfolio/'
-    title = 'Makeup Portfolio Prague — Bridal, Evening & Commercial Looks | Nikol Pavlova'
+    title = 'Makeup Portfolio Prague – Bridal, Evening & Commercial Looks | Nikol Pavlova'
     desc = 'Portfolio of Nikol Pavlova, professional makeup artist in Prague. Browse bridal, evening, nude, commercial and editorial makeup looks for clients in the Czech Republic and Europe.'
+    total = sum(len(v[2]) for v in (PORTFOLIO_ITEMS if LANG == 'cs' else EN_ITEMS).values())
     pills, figs = portfolio_grid(LANG, EN_ITEMS, 'All', '', '')
-    h = head(LANG, title, desc, path, alts('/portfolio/', path), SITE + '/img/wedding/wedding-1.png', S.load('en-portfolio'))
+    h = head(LANG, title, desc, path, alts('/portfolio/', path), SITE + '/img/wedding/wedding-1.png', S.load('en-portfolio'), extra=NOSCRIPT)
     h += header(LANG, 'portfolio', '/portfolio/')
     h += f'''<section class="page-head" aria-labelledby="page-h1"><div class="wrap">
 {crumbs(LANG, [HOME, ('Portfolio', None)])}
-<div class="top"><h1 class="h1" id="page-h1"><span class="big wide">Portfolio</span><span class="sub serif">makeup — Nikol Pavlova, makeup artist Prague</span></h1>
+<div class="top"><h1 class="h1" id="page-h1"><span class="big wide">Portfolio</span><span class="sub serif">makeup – Nikol Pavlova, makeup artist Prague</span></h1>
 <p class="body">This is a curated selection of makeup work created by <b>Nikol Pavlova</b>, a professional makeup artist based in <b>Prague, Czech Republic</b>. The portfolio covers bridal looks for weddings across Prague and Europe, glamorous evening and cocktail makeup, soft natural nude styling, commercial and editorial work for photo shoots, and behind-the-scenes images from one-on-one makeup courses. Each look is designed to enhance the client's natural features while reflecting their personal style and the occasion.</p></div>
 </div></section>
 <section class="sec--tight" aria-labelledby="looks-h">
 <div class="wrap">{sec_head('Choose a look', 'browse by category', f'<div class="filters" role="group" aria-label="Category">{pills}</div>', hid='looks-h')}</div>
 <div class="pgrid" data-portfolio data-label-shown="Showing {{n}} of {{t}}" data-label-more="Show more ({{n}}) ↓" aria-live="polite">{figs}</div>
-<div class="more-wrap"><p class="serif muted2" data-status></p><button class="pill btn--lg" type="button" data-more hidden>Show more</button></div>
+<div class="more-wrap"><p class="serif muted2" data-status>Showing {min(16, total)} of {total}</p><button class="pill btn--lg" type="button" data-more>Show more ({max(0, total - 16)}) ↓</button></div>
 </section>
 <section class="sec sec--blush" aria-labelledby="cats-h"><div class="wrap">
 {sec_head('About each category', 'inside the portfolio', hid='cats-h')}
 <div class="cat-rows">
 <a href="/en/wedding/"><h3>Wedding makeup →</h3><p>Bridal looks designed to last from the first kiss to the final dance. Each wedding service includes a pre-wedding trial in Prague, day-of application with long-wear products suited to Czech summer and winter conditions, individual lashes, and a personal touch-up kit. Available for ceremonies in Prague Old Town, Vinohrady, château weddings outside the city, and destination weddings across Europe.</p></a>
-<a href="/en/evening-makeup/"><h3>Evening &amp; cocktail makeup →</h3><p>Glamorous looks built for galas, cocktail parties, proms, balls and special events in Prague. Smoky eyes, sculpted cheekbones, statement lips and luminous skin — finished with techniques that hold up under both flash photography and ambient evening light.</p></a>
+<a href="/en/evening-makeup/"><h3>Evening &amp; cocktail makeup →</h3><p>Glamorous looks built for galas, cocktail parties, proms, balls and special events in Prague. Smoky eyes, sculpted cheekbones, statement lips and luminous skin – finished with techniques that hold up under both flash photography and ambient evening light.</p></a>
 <a href="/en/nude-makeup/"><h3>Nude &amp; natural makeup →</h3><p>Soft, skin-first looks that enhance natural features without looking heavy. Ideal for engagement shoots, daytime portraits, civil ceremonies and clients who prefer a barely-there finish with healthy glowing skin.</p></a>
-<a href="/en/commercial-makeup/"><h3>Commercial &amp; editorial →</h3><p>Makeup for photo shoots, brand campaigns, lookbooks, magazine editorials and video content. Adapted to the lighting and concept of each shoot — from clean beauty work to bold editorial styling — with on-set touch-ups across the production day.</p></a>
-<a href="/en/courses/"><h3>Personalized makeup courses →</h3><p>One-on-one makeup courses tailored to your level — from clients who want to master everyday looks to aspiring makeup artists building professional skills. Held in Prague, covering skin prep, color theory, application techniques, tool selection and product recommendations using your own face as the canvas.</p></a>
+<a href="/en/commercial-makeup/"><h3>Commercial &amp; editorial →</h3><p>Makeup for photo shoots, brand campaigns, lookbooks, magazine editorials and video content. Adapted to the lighting and concept of each shoot – from clean beauty work to bold editorial styling – with on-set touch-ups across the production day.</p></a>
+<a href="/en/courses/"><h3>Personalized makeup courses →</h3><p>One-on-one makeup courses tailored to your level – from clients who want to master everyday looks to aspiring makeup artists building professional skills. Held in Prague, covering skin prep, color theory, application techniques, tool selection and product recommendations using your own face as the canvas.</p></a>
 </div></div></section>
 <section class="sec sec--ox" aria-labelledby="like-h"><div class="wrap ox-split" style="align-items:end">
 <div style="display:flex;flex-direction:column;gap:22px"><p class="lbl pink">Like what you see?</p><h2 class="big-h" id="like-h">Let's create your own makeup look</h2><p class="serif ox-note">Get in touch to discuss your wedding, event or shoot. I'll send a personalized quote and availability within 24 hours.</p>
-<p style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn--pink" href="{CAL}" rel="noopener">Book online +</a><a class="btn btn--ghost" href="mailto:{MAIL}">{MAIL}</a></p></div>
-<dl class="kv"><div><dt class="lbl">Location</dt><dd>Prague, Czech Republic</dd></div><div><dt class="lbl">Phone</dt><dd><a href="tel:{TEL}">{TEL_H}</a></dd></div><div><dt class="lbl">Instagram</dt><dd><a href="{IG}" rel="noopener">@nikol__mua</a></dd></div><div><dt class="lbl">Travel</dt><dd>Czechia &amp; Europe</dd></div></dl>
+<p style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn--pink" href="{CAL}">Book online +</a><a class="btn btn--ghost" href="mailto:{MAIL}">{MAIL}</a></p></div>
+<dl class="kv"><div><dt class="lbl">Location</dt><dd>Prague, Czech Republic</dd></div><div><dt class="lbl">Phone</dt><dd><a href="tel:{TEL}">{TEL_H}</a></dd></div><div><dt class="lbl">Instagram</dt><dd><a href="{IG}">@nikol__mua</a></dd></div><div><dt class="lbl">Travel</dt><dd>Czechia &amp; Europe</dd></div></dl>
 </div></section>
 '''
-    h += footer(LANG, 'Contact me', 'Do you need help with creative make-up?', "Get in touch to plan your look — I'll reply within 24 hours.")
+    h += footer(LANG, 'Contact me', 'Do you need help with creative make-up?', "Get in touch to plan your look – I'll reply within 24 hours.")
     write(path, h)
 
 
 # ---------------------------------------------------------------- BLOG
 def blog():
     path = '/en/blog/'
-    title = 'Blog — Makeup Reviews, Tips & Tutorials | Nikol Pavlova, Prague'
+    title = 'Blog – Makeup Reviews, Tips & Tutorials | Nikol Pavlova, Prague'
     desc = 'Honest makeup reviews, professional tips and tutorials from Nikol Pavlova, an English-speaking makeup artist based in Prague.'
     h = head(LANG, title, desc, path, [('en', path)], SITE + '/img/nikol.jpg', S.load('en-blog'))
     h += header(LANG, 'blog', '/')
     h += f'''<section class="page-head" aria-labelledby="page-h1"><div class="wrap">
 {crumbs(LANG, [HOME, ('Blog', None)])}
-<div class="top"><h1 class="h1" id="page-h1"><span class="big wide">The Blog</span><span class="sub serif">— makeup reviews, tips &amp; tutorials from Prague</span></h1>
-<p class="body">Honest product reviews, professional tips and behind-the-scenes notes from my work as a makeup artist in Prague — written to help you choose better products and create looks that suit you.</p></div>
+<div class="top"><h1 class="h1" id="page-h1"><span class="big wide">The Blog</span><span class="sub serif">– makeup reviews, tips &amp; tutorials from Prague</span></h1>
+<p class="body">Honest product reviews, professional tips and behind-the-scenes notes from my work as a makeup artist in Prague – written to help you choose better products and create looks that suit you.</p></div>
 </div></section>
 <section class="sec--tight" aria-labelledby="latest-h"><div class="wrap">
 <h2 class="visually-hidden" id="latest-h">Latest review</h2>
 <article><a class="feat" href="/en/blog/full-face-of-nyx-review/">{I('nikol-hero', 'Nikol Pavlova testing a full face of NYX makeup', sizes='(max-width: 900px) 100vw, 1280px')}<span class="badge lbl glass">Latest review</span>
 <div class="card glass"><p class="lbl muted" style="display:flex;gap:14px;flex-wrap:wrap"><span class="red">Reviews</span><time datetime="2026-03-20">20 March 2026</time><span>9 min read</span></p>
 <h3 class="wide" style="font-size:30px;font-weight:500;line-height:1.1">Full Face of NYX: A Makeup Artist's Honest Review</h3>
-<p style="color:var(--text)">I tested a full face of NYX — bestsellers and a few brand-new launches — then wore it through a real working day. Here is what earned a place in my kit, what depends on your skin type, and what I would happily skip, plus an honest all-day wear test.</p>
+<p style="color:var(--text)">I tested a full face of NYX – bestsellers and a few brand-new launches – then wore it through a real working day. Here is what earned a place in my kit, what depends on your skin type, and what I would happily skip, plus an honest all-day wear test.</p>
 <span class="btn" style="align-self:flex-start">Read the review →</span></div></a></article>
 </div></section>
 <section class="sec sec--blush" aria-labelledby="topics-h"><div class="wrap">
 {sec_head('Topics', 'what I write about', hid='topics-h')}
 <ul class="topic-rows">
-<li><h3>Product reviews</h3><p>Honest, hands-on takes on the products I test — what is worth it and what is not.</p><span class="lbl red">1 article</span></li>
-<li><h3>Pro tips &amp; tutorials</h3><p>Techniques from my kit — skin prep, longevity, colour and application made simple.</p><span class="lbl muted2">Coming soon</span></li>
+<li><h3>Product reviews</h3><p>Honest, hands-on takes on the products I test – what is worth it and what is not.</p><span class="lbl red">1 article</span></li>
+<li><h3>Pro tips &amp; tutorials</h3><p>Techniques from my kit – skin prep, longevity, colour and application made simple.</p><span class="lbl muted2">Coming soon</span></li>
 <li><h3>Bridal &amp; events</h3><p>How to plan and prepare for long-lasting makeup on the days that matter most.</p><span class="lbl muted2">Coming soon</span></li>
 </ul></div></section>
 <section class="duo" aria-label="Book or learn">
-<div class="ox-box"><p class="lbl pink">Need help?</p><h2 class="big-h">Do you need help with creative make-up?</h2><a class="btn btn--pink" href="{CAL}" rel="noopener">Book online +</a></div>
+<div class="ox-box"><p class="lbl pink">Need help?</p><h2 class="big-h">Do you need help with creative make-up?</h2><a class="btn btn--pink" href="{CAL}">Book online +</a></div>
 <div class="tiles" style="display:block"><a href="/en/courses/" style="height:100%;min-height:420px">{I('course', '', sizes='(max-width: 900px) 100vw, 50vw', style='object-position:50% 15%')}<span class="cap"><span class="lbl pink">Learn with me</span><span class="wide" style="font-size:clamp(24px,2.6vw,34px)">Personalised one-on-one makeup courses in Prague →</span></span></a></div>
 </section>
 '''
@@ -473,17 +474,17 @@ def blog():
 def post():
     path = '/en/blog/full-face-of-nyx-review/'
     title = "Full Face of NYX: A Makeup Artist's Honest Review | Nikol Pavlova"
-    desc = 'Prague makeup artist Nikol Pavlova tests a full face of NYX — primer, concealer, brows, bronzer, eyeshadow, liner, mascara and setting spray — with an honest all-day wear test.'
+    desc = 'Prague makeup artist Nikol Pavlova tests a full face of NYX – primer, concealer, brows, bronzer, eyeshadow, liner, mascara and setting spray – with an honest all-day wear test.'
     faqs = [
-        ('Do professional makeup artists really use drugstore brands like NYX?', 'Absolutely. A working kit is a mix of price points — what matters is how a product performs, not its label. Several NYX products, including the bronzer, powder, mascara and long-wear liner, hold their own next to far pricier options.'),
+        ('Do professional makeup artists really use drugstore brands like NYX?', 'Absolutely. A working kit is a mix of price points – what matters is how a product performs, not its label. Several NYX products, including the bronzer, powder, mascara and long-wear liner, hold their own next to far pricier options.'),
         ('What were the best NYX products in this test?', 'The cult bronzer, the pressed powder, the brow glue, the mascara, the long-wear eyeliner, and the concealer for targeted spot coverage.'),
-        ('Is NYX makeup good enough for a wedding or a long event?', 'The long-wear pieces — powder, setting spray, locking liner and brow glue — can last impressively well. For your wedding day I would still recommend a professional application and a trial first. You can see what that involves on my <a href="/en/wedding/">wedding makeup</a> page.'),
-        ('Which NYX products should I be careful with?', 'The plumping primer can feel tight on dry or flaky skin, and the matte eyeshadows are lovely but lower in pigment — swatch them in store first.'),
-        ('Can I learn to create a full-face look like this myself?', 'Yes — that is exactly what my <a href="/en/courses/">one-on-one makeup courses</a> are for, tailored to your skin type and goals, from everyday looks to professional techniques.'),
+        ('Is NYX makeup good enough for a wedding or a long event?', 'The long-wear pieces – powder, setting spray, locking liner and brow glue – can last impressively well. For your wedding day I would still recommend a professional application and a trial first. You can see what that involves on my <a href="/en/wedding/">wedding makeup</a> page.'),
+        ('Which NYX products should I be careful with?', 'The plumping primer can feel tight on dry or flaky skin, and the matte eyeshadows are lovely but lower in pigment – swatch them in store first.'),
+        ('Can I learn to create a full-face look like this myself?', 'Yes – that is exactly what my <a href="/en/courses/">one-on-one makeup courses</a> are for, tailored to your skin type and goals, from everyday looks to professional techniques.'),
         ('Where are you based?', 'I am an English-speaking makeup artist based in Prague, and I travel across the Czech Republic and Europe for weddings, shoots and events. <a href="#contact">Get in touch here.</a>'),
     ]
     faq_html = ''.join(f'<details{" open" if i == 0 else ""}><summary><h3>{q}</h3><span class="pm" aria-hidden="true">+</span></summary><div><p>{a_}</p></div></details>' for i, (q, a_) in enumerate(faqs))
-    h = head(LANG, title, desc, path, [('en', path)], 'https://i.ytimg.com/vi/U89IYdxyJy4/maxresdefault.jpg', S.load('en-post'), og_type='article')
+    h = head(LANG, title, desc, path, [('en', path)], 'https://i.ytimg.com/vi/U89IYdxyJy4/maxresdefault.jpg', S.load('en-post'), preload('nikol-hero', '100vw'), og_type='article')
     h += header(LANG, 'blog', '/')
     h += f'''<article aria-labelledby="page-h1">
 <header class="page-head post-head" style="padding-bottom:48px"><div class="wrap" style="display:flex;flex-direction:column;gap:28px">
@@ -491,75 +492,75 @@ def post():
 <p class="lbl muted" style="display:flex;gap:18px;flex-wrap:wrap"><span class="red">Reviews</span><time datetime="2026-03-20">20 March 2026</time><span>9 min read</span></p>
 <h1 class="wide big" id="page-h1" style="max-width:1180px">Full Face of NYX: A Makeup Artist's Honest Review</h1>
 <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid var(--ink);padding-top:20px">
-<p style="display:flex;align-items:center;gap:14px">{I('nikol-portrait', '', sizes='52px', style='width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:50% 20%')}<span class="body">By <a rel="author" href="/en/#about"><b>Nikol Pavlova</b></a> <span class="serif" style="font-size:18px">— Professional Makeup Artist, Prague</span></span></p>
+<p style="display:flex;align-items:center;gap:14px">{I('nikol-portrait', '', sizes='52px', style='width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:50% 20%')}<span class="body">By <a rel="author" href="/en/#about"><b>Nikol Pavlova</b></a> <span class="serif" style="font-size:18px">– Professional Makeup Artist, Prague</span></span></p>
 <a class="link-arrow" href="#verdict">Jump to the verdict ↓</a></div>
 </div></header>
-<a class="video" href="https://www.youtube.com/watch?v=U89IYdxyJy4" rel="noopener" aria-label="Watch the full test on YouTube (spoken in Ukrainian)">{I('nikol-hero', 'Nikol Pavlova testing a full face of NYX makeup', sizes='100vw')}<span class="play glass" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24" fill="#A8232F"><path d="M8 5l12 7-12 7z"/></svg></span><span class="lbl glass">Watch the full test · spoken in Ukrainian</span></a>
+<a class="video" href="https://www.youtube.com/watch?v=U89IYdxyJy4">{I('nikol-hero', 'Video: Nikol Pavlova testing a full face of NYX makeup', sizes='100vw', priority=True)}<span class="play glass" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24" fill="#A8232F"><path d="M8 5l12 7-12 7z"/></svg></span><span class="lbl glass">Watch the full test on YouTube · spoken in Ukrainian</span></a>
 <div class="sec"><div class="wrap post-layout">
 <aside class="post-toc"><p class="lbl red">In this review</p><nav class="toc" aria-label="Contents" style="border-top:1px solid var(--ink)"><a href="#verdict">The verdict at a glance</a><a href="#primer">Skin prep</a><a href="#concealer">Complexion</a><a href="#brows">Brows</a><a href="#bronzer">Warmth</a><a href="#powder">Setting the base</a><a href="#eyes">Eyes</a><a href="#lips">Lips</a><a href="#spray">The finish</a><a href="#wear">A full day of wear</a><a href="#worth">Is it worth it?</a><a href="#lessons">Three lessons</a><a href="#faq">FAQ</a></nav></aside>
 <div class="art">
-<p class="opener">NYX has always sat in an interesting spot for me. It is no longer truly cheap, yet it never pretends to be luxury either — and that quiet confidence is exactly why it holds one of the most stable reputations in the drugstore world. So I put it to the test the only way that really counts: a full face, start to finish, using nothing but NYX.</p>
-<p>Bestsellers, a few brand-new launches I had been dying to try, and — most importantly — an honest wear test at the end of the day. Below is everything that earned its place in my kit, and everything I would happily leave on the shelf.</p>
-<p style="font-size:15px;color:var(--muted2)">Watch the full test on my channel (spoken in Ukrainian). The written breakdown, verdicts and all-day wear test are below — no sound required.</p>
-<aside class="note"><p class="lbl red">How I tested it</p><p>I applied a complete look on camera — from skin prep through to setting spray — then wore it through a full working day and checked it again that night, and once more the next day. For reference, my skin is normal-to-combination.</p></aside>
+<p class="opener">NYX has always sat in an interesting spot for me. It is no longer truly cheap, yet it never pretends to be luxury either – and that quiet confidence is exactly why it holds one of the most stable reputations in the drugstore world. So I put it to the test the only way that really counts: a full face, start to finish, using nothing but NYX.</p>
+<p>Bestsellers, a few brand-new launches I had been dying to try, and – most importantly – an honest wear test at the end of the day. Below is everything that earned its place in my kit, and everything I would happily leave on the shelf.</p>
+<p style="font-size:15px;color:var(--muted2)">Watch the full test on my channel (spoken in Ukrainian). The written breakdown, verdicts and all-day wear test are below – no sound required.</p>
+<aside class="note"><p class="lbl red">How I tested it</p><p>I applied a complete look on camera – from skin prep through to setting spray – then wore it through a full working day and checked it again that night, and once more the next day. For reference, my skin is normal-to-combination.</p></aside>
 <h2 id="verdict">The verdict at a glance</h2>
 <div class="verdict">
 <div><p class="v v-yes">Worth buying</p><ul><li>The cult bronzer</li><li>Pressed powder</li><li>Brow glue</li><li>Mascara</li><li>Concealer (spot coverage)</li><li>Long-wear eyeliner*</li></ul></div>
 <div><p class="v v-dep">Depends on your skin</p><ul><li>Plumping primer</li><li>Setting spray</li></ul></div>
 <div><p class="v v-sw">Swatch first</p><ul><li>Matte eyeshadow palette</li><li>Warm lip liner</li></ul></div>
 </div>
-<p style="font-size:15px;color:var(--muted2)">*Brilliant longevity, but unforgiving — best for confident hands.</p>
+<p style="font-size:15px;color:var(--muted2)">*Brilliant longevity, but unforgiving – best for confident hands.</p>
 <h2 id="primer">Skin prep: the plumping primer</h2><p class="v v-dep">Depends on skin type</p>
-<p>This is the brand's hero of the moment — a light, gel-emulsion that promises to be serum and primer in one, with a pleasant, neutral scent. On me it turned tacky very quickly and the tight feeling only built through the day. That stickiness can actually help foundation grip, so I would happily recommend it for combination or oily skin — but on dry or flaky skin it will not smooth those dry patches, and the pulled feeling is not for everyone. Not quite the universal hero the label suggests.</p>
-<h2 id="concealer">Complexion: the serum concealer</h2><p class="v v-yes">Worth it — for targeted coverage</p>
+<p>This is the brand's hero of the moment – a light, gel-emulsion that promises to be serum and primer in one, with a pleasant, neutral scent. On me it turned tacky very quickly and the tight feeling only built through the day. That stickiness can actually help foundation grip, so I would happily recommend it for combination or oily skin – but on dry or flaky skin it will not smooth those dry patches, and the pulled feeling is not for everyone. Not quite the universal hero the label suggests.</p>
+<h2 id="concealer">Complexion: the serum concealer</h2><p class="v v-yes">Worth it – for targeted coverage</p>
 <p>Surprisingly dense and full-coverage for something sold as a "serum" concealer. It stays put, does not slide, and the slim tube means you will actually use every last drop. It leans slightly drying, and my shade ran a touch warmer than a true cool vanilla, so check your undertone. For targeted coverage it is excellent; over the whole face the usage adds up fast.</p>
 <aside class="note"><p class="lbl red">Pro move</p><p class="serif" style="font-size:20px">Mix a little into your serum or moisturiser to turn it into a sheer tint.</p></aside>
-<h2 id="brows">Brows: pencils, micro-liners &amp; the brow glue</h2><p class="v v-yes">Worth it — find your shade</p>
-<p>The pencils are genuinely good: consistent, easy to work with and very wearable. One thing to watch — a couple of the taupe-leaning shades can oxidise slightly green on me over time, so I have switched to the cooler blond shade, which also draws beautifully even over the brow glue. The glue itself gives serious, laminated hold, perfect if you love that brushed-up, locked-in look. I personally prefer a softer, more natural shape these days, so I used it with a lighter hand. Tip: set your brows <strong>before</strong> foundation for the cleanest finish.</p>
+<h2 id="brows">Brows: pencils, micro-liners &amp; the brow glue</h2><p class="v v-yes">Worth it – find your shade</p>
+<p>The pencils are genuinely good: consistent, easy to work with and very wearable. One thing to watch – a couple of the taupe-leaning shades can oxidise slightly green on me over time, so I have switched to the cooler blond shade, which also draws beautifully even over the brow glue. The glue itself gives serious, laminated hold, perfect if you love that brushed-up, locked-in look. I personally prefer a softer, more natural shape these days, so I used it with a lighter hand. Tip: set your brows <strong>before</strong> foundation for the cleanest finish.</p>
 <h2 id="bronzer">Warmth: the cult bronzer (and a word on blush)</h2><p class="v v-yes">Worth it</p>
-<p>A deserved classic. Only the warm shade was in stock, so my face ran a little golden — but the formula is the real story. It smells like a chocolate-vanilla dessert, it is not baked, and yet it still does not go patchy, which is rare at this price (un-baked budget bronzers usually streak no matter your technique). Around 10–15 €, easy top marks. I pressed it into place rather than buffing, because the skin underneath was a touch tacky.</p>
-<aside class="note"><p class="lbl red">A pro note on hygiene</p><p>For blush I reached for a powder I have owned since long before I became a makeup artist — and that is something to flag, not to copy. Powders carry a period-after-opening for a reason. My honest advice as a professional is to respect those dates and replace anything well past them. Your skin will thank you.</p></aside>
+<p>A deserved classic. Only the warm shade was in stock, so my face ran a little golden – but the formula is the real story. It smells like a chocolate-vanilla dessert, it is not baked, and yet it still does not go patchy, which is rare at this price (un-baked budget bronzers usually streak no matter your technique). Around 10–15 €, easy top marks. I pressed it into place rather than buffing, because the skin underneath was a touch tacky.</p>
+<aside class="note"><p class="lbl red">A pro note on hygiene</p><p>For blush I reached for a powder I have owned since long before I became a makeup artist – and that is something to flag, not to copy. Powders carry a period-after-opening for a reason. My honest advice as a professional is to respect those dates and replace anything well past them. Your skin will thank you.</p></aside>
 <h2 id="powder">Setting the base: the pressed powder</h2><p class="v v-yes">Worth it</p>
-<p>It lives up to the hype. It sets the base and controls shine without clinging to dry patches or exaggerating texture — the exact failure point of so many heavier budget powders. One of my favourite finds of the whole haul.</p>
+<p>It lives up to the hype. It sets the base and controls shine without clinging to dry patches or exaggerating texture – the exact failure point of so many heavier budget powders. One of my favourite finds of the whole haul.</p>
 <h2 id="eyes">Eyes: palette, liner &amp; mascara</h2>
 <h3>The matte eyeshadow palette</h3><p class="v v-sw">Swatch first</p>
-<p>A very on-trend warm-neutral palette with a few cooler, pinky tones. The shades are pretty, but pigmentation sits on the softer side — especially layered over powder, which sheered them further. The look still came together nicely; next time I would skip powdering the lid first.</p>
-<h3>The eyeliner</h3><p class="v v-yes">Worth it — for steady hands</p>
-<p>Honestly, a wow. It is intensely long-wearing and does not budge or transfer once it sets — which is also the catch: there is almost no room for error, so it is not the most forgiving choice for beginners. I built a soft winged shape and loved how crisp it stayed all day.</p>
+<p>A very on-trend warm-neutral palette with a few cooler, pinky tones. The shades are pretty, but pigmentation sits on the softer side – especially layered over powder, which sheered them further. The look still came together nicely; next time I would skip powdering the lid first.</p>
+<h3>The eyeliner</h3><p class="v v-yes">Worth it – for steady hands</p>
+<p>Honestly, a wow. It is intensely long-wearing and does not budge or transfer once it sets – which is also the catch: there is almost no room for error, so it is not the most forgiving choice for beginners. I built a soft winged shape and loved how crisp it stayed all day.</p>
 <h3>The mascara</h3><p class="v v-yes">Worth it</p>
-<p>Fresh from the tube it applied cleanly with a classic brush, adding volume rather than just length — my preference. Pending a proper flake test over a few wears, this is one I would repurchase.</p>
+<p>Fresh from the tube it applied cleanly with a classic brush, adding volume rather than just length – my preference. Pending a proper flake test over a few wears, this is one I would repurchase.</p>
 <h2 id="lips">Lips: liner &amp; matte balm</h2><p class="v v-mix">Mixed</p>
-<p>The lip liner is a long-standing favourite, though a reformulation made it noticeably warmer — it reads quite orange-warm on me now, so it suited today's warm look but will not be everyone's everyday. The matte "whip" balm gives a soft tint with a comfortable, slightly slippery feel and a lovely sweet scent; I also dabbed it on the cheeks as a quick cream blush to tie the whole look together.</p>
+<p>The lip liner is a long-standing favourite, though a reformulation made it noticeably warmer – it reads quite orange-warm on me now, so it suited today's warm look but will not be everyone's everyday. The matte "whip" balm gives a soft tint with a comfortable, slightly slippery feel and a lovely sweet scent; I also dabbed it on the cheeks as a quick cream blush to tie the whole look together.</p>
 <h2 id="spray">The finish: setting spray</h2><p class="v v-dep">Depends on skin type</p>
-<p>Last year's much-hyped spray (mine had settled, so it is clearly powder-infused — shake well). The applicator is punchy and it genuinely locks everything down. For a true matte finish it is great; on drier skin, combined with the primer, it was simply too much fixation for me.</p>
+<p>Last year's much-hyped spray (mine had settled, so it is clearly powder-infused – shake well). The applicator is punchy and it genuinely locks everything down. For a true matte finish it is great; on drier skin, combined with the primer, it was simply too much fixation for me.</p>
 <h2 id="wear">The part that actually matters: a full day of wear</h2>
 <p>Swatches and first impressions are easy. What separates a good product from a great one is how it looks after hours of real life, so here is the honest timeline.</p>
 <dl class="timeline">
 <div><dt>After 3–4 hours</dt><dd>The skin had picked up a natural sheen but still looked alive, nothing had creased under the eyes, and the brows held their shape.</dd></div>
-<div><dt>End of the day</dt><dd>The complexion was shiny (which I do not mind), under-eyes stayed clean, the lip tint held on beautifully and the brows had softened only minimally. The honest downside: my skin felt tight all day — which I put down to the primer-plus-setting-spray combination being too much fixation for my normal-combination skin.</dd></div>
-<div><dt>Day two</dt><dd>I re-tested just the concealer and powder over my own usual skin prep and foundation. The verdict: barely moved after five hours. That told me the concealer and powder are genuinely excellent — the tight, dry feeling was the primer, not the base.</dd></div>
+<div><dt>End of the day</dt><dd>The complexion was shiny (which I do not mind), under-eyes stayed clean, the lip tint held on beautifully and the brows had softened only minimally. The honest downside: my skin felt tight all day – which I put down to the primer-plus-setting-spray combination being too much fixation for my normal-combination skin.</dd></div>
+<div><dt>Day two</dt><dd>I re-tested just the concealer and powder over my own usual skin prep and foundation. The verdict: barely moved after five hours. That told me the concealer and powder are genuinely excellent – the tight, dry feeling was the primer, not the base.</dd></div>
 </dl>
 <h2 id="worth">So, is a full face of NYX worth it?</h2>
-<p>NYX is exactly what its reputation suggests — a confident, dependable brand that has quietly graduated from pure drugstore into the lower mid-range. The pieces I would happily keep in a working kit: the bronzer, the pressed powder, the brow glue, the mascara, the long-wear liner (for confident hands) and the concealer for targeted coverage. The plumping primer and setting spray are skin-type dependent — wonderful for combination and oily skin, a lot for dry skin. The matte palette is pretty but worth swatching for pigment first. Match the right pieces to your skin, and NYX absolutely earns its place.</p>
+<p>NYX is exactly what its reputation suggests – a confident, dependable brand that has quietly graduated from pure drugstore into the lower mid-range. The pieces I would happily keep in a working kit: the bronzer, the pressed powder, the brow glue, the mascara, the long-wear liner (for confident hands) and the concealer for targeted coverage. The plumping primer and setting spray are skin-type dependent – wonderful for combination and oily skin, a lot for dry skin. The matte palette is pretty but worth swatching for pigment first. Match the right pieces to your skin, and NYX absolutely earns its place.</p>
 <h2 id="lessons">Three things this look can teach you about your own makeup</h2>
 <ol class="lessons">
-<li><span class="n" aria-hidden="true">1</span><div><p><strong>A product is only as good as its fit for your skin.</strong></p><p style="font-size:16px">My primer struggle was not a "bad product" — it was the wrong product for my skin that day. Learning to read your own skin is half of great makeup.</p></div></li>
-<li><span class="n" aria-hidden="true">2</span><div><p><strong>Placement beats pigment.</strong></p><p style="font-size:16px">Whether you powder before shadow, press versus buff your bronzer, or sheer out a dense concealer — technique decides the result far more than price does.</p></div></li>
-<li><span class="n" aria-hidden="true">3</span><div><p><strong>Build for the day you will actually have.</strong></p><p style="font-size:16px">For events and weddings I lean on the long-wear pieces — powder, a locking liner, brow gel — and adjust fixation to the skin in front of me.</p></div></li>
+<li><span class="n" aria-hidden="true">1</span><div><p><strong>A product is only as good as its fit for your skin.</strong></p><p style="font-size:16px">My primer struggle was not a "bad product" – it was the wrong product for my skin that day. Learning to read your own skin is half of great makeup.</p></div></li>
+<li><span class="n" aria-hidden="true">2</span><div><p><strong>Placement beats pigment.</strong></p><p style="font-size:16px">Whether you powder before shadow, press versus buff your bronzer, or sheer out a dense concealer – technique decides the result far more than price does.</p></div></li>
+<li><span class="n" aria-hidden="true">3</span><div><p><strong>Build for the day you will actually have.</strong></p><p style="font-size:16px">For events and weddings I lean on the long-wear pieces – powder, a locking liner, brow gel – and adjust fixation to the skin in front of me.</p></div></li>
 </ol>
-<aside class="note" style="flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px"><div style="max-width:480px"><p class="wide" style="font-size:18px;font-weight:600">Want to learn this properly?</p><p>These are exactly the skills we work through, one-on-one, in my <a href="/en/courses/">personalised makeup courses</a> — using your own face, your own skin type, and products that genuinely suit you.</p></div><a class="btn" href="/en/courses/">View courses →</a></aside>
+<aside class="note" style="flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px"><div style="max-width:480px"><p class="wide" style="font-size:18px;font-weight:600">Want to learn this properly?</p><p>These are exactly the skills we work through, one-on-one, in my <a href="/en/courses/">personalised makeup courses</a> – using your own face, your own skin type, and products that genuinely suit you.</p></div><a class="btn" href="/en/courses/">View courses →</a></aside>
 <section style="background:var(--ox);color:var(--paper);padding:44px;display:flex;flex-direction:column;gap:18px;margin-top:24px" aria-labelledby="cta-h">
 <h2 id="cta-h" style="margin:0;padding:0;border:0;color:var(--paper)">Let's create your look</h2>
 <p class="serif" style="font-size:20px;color:#F4D6CF">Whether you want flawless, long-lasting makeup for your wedding or a special event, or you would like to learn these techniques yourself, I would love to help.</p>
-<p style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn--pink" style="color:var(--ox)" href="{CAL}" rel="noopener">Book online +</a><a class="btn btn--ghost" style="color:#fff" href="/en/wedding/">Wedding makeup</a><a class="btn btn--ghost" style="color:#fff" href="/en/courses/">Makeup courses</a></p>
+<p style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn btn--pink" style="color:var(--ox)" href="{CAL}">Book online +</a><a class="btn btn--ghost" style="color:#fff" href="/en/wedding/">Wedding makeup</a><a class="btn btn--ghost" style="color:#fff" href="/en/courses/">Makeup courses</a></p>
 </section>
 <h2 id="faq">Frequently asked questions</h2>
 <div class="faq" style="border-top:0">{faq_html}</div>
-<div class="author">{I('nikol-portrait', 'Nikol Pavlova, makeup artist in Prague', sizes='112px')}<div style="flex:1 1 300px;display:flex;flex-direction:column;gap:6px"><p class="wide" style="font-size:20px;font-weight:600">Nikol Pavlova</p><p class="serif muted2" style="font-size:18px">Makeup Artist · Prague</p><p style="font-size:15px;line-height:1.7">Bridal, evening and editorial makeup artist based in Prague, offering personalised services and one-on-one courses. Designing looks that enhance your natural features and your own distinctive style.</p><a class="lbl" href="{IG}" rel="noopener">@nikol__mua</a></div></div>
+<div class="author">{I('nikol-portrait', 'Nikol Pavlova, makeup artist in Prague', sizes='112px')}<div style="flex:1 1 300px;display:flex;flex-direction:column;gap:6px"><p class="wide" style="font-size:20px;font-weight:600">Nikol Pavlova</p><p class="serif muted2" style="font-size:18px">Makeup Artist · Prague</p><p style="font-size:15px;line-height:1.7">Bridal, evening and editorial makeup artist based in Prague, offering personalised services and one-on-one courses. Designing looks that enhance your natural features and your own distinctive style.</p><a class="lbl" href="{IG}">@nikol__mua</a></div></div>
 </div></div></div>
 </article>
 <section class="duo" aria-label="Book or learn">
-<div class="ox-box"><p class="lbl pink">Need help?</p><h2 class="big-h">Do you need help with creative make-up?</h2><a class="btn btn--pink" href="{CAL}" rel="noopener">Book online +</a></div>
+<div class="ox-box"><p class="lbl pink">Need help?</p><h2 class="big-h">Do you need help with creative make-up?</h2><a class="btn btn--pink" href="{CAL}">Book online +</a></div>
 <div class="tiles" style="display:block"><a href="/en/courses/" style="height:100%;min-height:420px">{I('course', '', sizes='(max-width: 900px) 100vw, 50vw', style='object-position:50% 15%')}<span class="cap"><span class="lbl pink">Learn with me</span><span class="wide" style="font-size:clamp(24px,2.6vw,34px)">Personalised one-on-one makeup courses in Prague →</span></span></a></div>
 </section>
 '''

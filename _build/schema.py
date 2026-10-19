@@ -1,7 +1,7 @@
 """JSON-LD helpers. Existing structured data from the old pages is reused (it was already rich);
 new pages get WebPage + BreadcrumbList + Service + FAQPage that reference the same business/person @ids."""
 import json, os, re
-from lib import ROOT, SITE, CAL
+from lib import ROOT, SITE, CAL, GBP, IG, FB, TH
 
 BUSINESS = {'@id': SITE + '/#business'}
 PERSON = {'@id': SITE + '/#person'}
@@ -16,11 +16,32 @@ def strip(html):
     return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', html)).replace('&amp;', '&').strip()
 
 
+BUSINESS_NAME = 'Vizážistka Nikol Pavlova'          # exactly as on the Google Business Profile
+ALT_NAMES = ['Nikol Pavlova – vizážistka Praha', 'Nikol Pavlova – makeup artist Prague', 'Nikol Pavlova MUA']
+SAME_AS = [GBP, IG, FB, TH]
+
+
 def patch(obj):
-    """Normalise legacy data: one domain, correct Calendly link, x-default free."""
+    """Normalise legacy data: one domain, one business entity, consistent NAP and sameAs."""
     s = json.dumps(obj, ensure_ascii=False)
-    s = s.replace('https://nikol.makeup', SITE)
-    return json.loads(s)
+    s = s.replace('https://nikol.makeup', SITE).replace(SITE + '/en/#business', SITE + '/#business')
+    return _fix(json.loads(s))
+
+
+def _fix(node):
+    if isinstance(node, list):
+        return [_fix(n) for n in node]
+    if not isinstance(node, dict):
+        return node
+    node = {k: _fix(v) for k, v in node.items()}
+    if node.get('@id') == SITE + '/#business' and len(node) > 1:
+        node['name'] = BUSINESS_NAME
+        node['alternateName'] = ALT_NAMES
+        node['sameAs'] = SAME_AS
+        node['hasMap'] = GBP
+    if node.get('@id') == SITE + '/#person' and len(node) > 1:
+        node['sameAs'] = [IG, FB, TH]
+    return node
 
 
 def breadcrumb(path, items):

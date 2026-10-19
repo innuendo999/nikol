@@ -24,8 +24,8 @@
     "@type": "CollectionPage",
     "@id": "https://nikolmakeup.cz/portfolio/#page",
     "url": "https://nikolmakeup.cz/portfolio/",
-    "name": "Portfolio líčení Praha — Nikol Pavlova",
-    "description": "Pečlivě vybrané portfolio profesionálního líčení od Nikol Pavlové — svatební, večerní, nude, komerční a editoriální looky vytvořené v Praze.",
+    "name": "Portfolio líčení Praha – Nikol Pavlova",
+    "description": "Pečlivě vybrané portfolio profesionálního líčení od Nikol Pavlové – svatební, večerní, nude, komerční a editoriální looky vytvořené v Praze.",
     "inLanguage": "cs",
     "isPartOf": {
      "@id": "https://nikolmakeup.cz/#website"
@@ -81,7 +81,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/wedding/wedding-1.png",
-      "name": "Svatební look 1 — pražská svatba",
+      "name": "Svatební look 1 – pražská svatba",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }
@@ -89,7 +89,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/wedding/wedding-5.png",
-      "name": "Svatební look 5 — pražská svatba",
+      "name": "Svatební look 5 – pražská svatba",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }
@@ -97,7 +97,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/evening/evening-1.png",
-      "name": "Večerní look 1 — glamour styling",
+      "name": "Večerní look 1 – glamour styling",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }
@@ -105,7 +105,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/evening/evening-5.png",
-      "name": "Večerní look 5 — koktejlová akce",
+      "name": "Večerní look 5 – koktejlová akce",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }
@@ -113,7 +113,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/nude/nude-1.png",
-      "name": "Nude look 1 — přirozená krása",
+      "name": "Nude look 1 – přirozená krása",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }
@@ -121,7 +121,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/commercial/commercial-1.png",
-      "name": "Komerční look 1 — editorial focení",
+      "name": "Komerční look 1 – editorial focení",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }
@@ -129,7 +129,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/courses/IMG_7417.jpg",
-      "name": "Kurz líčení — Praha",
+      "name": "Kurz líčení – Praha",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }

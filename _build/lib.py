@@ -10,7 +10,8 @@ MAIL = 'pavlovanikol@gmail.com'
 IG = 'https://www.instagram.com/nikol__mua'
 FB = 'https://www.facebook.com/nikki.yumi'
 TH = 'https://www.threads.net/@nikol_pavlova_mua'
-GMAPS = 'https://www.google.com/maps/search/?api=1&amp;query=Viz%C3%A1%C5%BEistka+Nikol+Pavlova'
+GBP = 'https://g.page/r/CVT7YlUrAr22EBM/'          # Google Business Profile
+GBP_REVIEW = GBP + 'review'
 VERSION = '20261019'
 IMG = json.load(open(os.path.join(ROOT, '_build', 'images.json')))
 
@@ -49,7 +50,7 @@ ICON_MENU = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke=
 L = {
     'cs': dict(
         skip='Přeskočit na obsah', home='Domů', about='O mně', portfolio='Portfolio', services='Služby', blog='Blog',
-        contact='Kontakt', book='Rezervovat', menu='Menu', main_nav='Hlavní navigace', other='EN', other_label='English version',
+        contact='Kontakt', book='Rezervovat', menu='Menu', main_nav='Hlavní navigace', other='EN', other_label='EN – English version',
         crumbs='Drobečková navigace', services_list=[
             ('Svatební líčení', '/svatebni-liceni/'), ('Večerní líčení', '/vecerni-liceni/'), ('Nude makeup', '/nude-liceni/'),
             ('Komerční líčení', '/komercni-liceni/'), ('Kurzy líčení', '/kurzy-liceni/')],
@@ -57,12 +58,12 @@ L = {
         f_services='Služby', f_location='Lokace', f_write='Napište mi', f_call='Telefon / WhatsApp',
         f_loc_text='Praha 7, Česká republika<br>(Možnost dojezdu po Praze, ČR i Evropě)',
         rights='Všechna práva vyhrazena', top='Nahoru ↑', online='Rezervace online +', email='E-mail',
-        reviews_title='Recenze z Google', reviews_all='Všechny recenze na Google →', stars='Hodnocení 5 z 5', g_review='Recenze Google',
+        reviews_title='Recenze z Google', reviews_all='Všechny recenze na Google →', stars='Hodnocení 5 z 5', g_review='Recenze Google', review_write='Napsat recenzi', f_gbp='Google profil',
         faq_title='Časté dotazy', related='Související služba',
     ),
     'en': dict(
         skip='Skip to content', home='Home', about='About', portfolio='Portfolio', services='Services', blog='Blog',
-        contact='Contact', book='Book online', menu='Menu', main_nav='Main navigation', other='CZ', other_label='Česká verze',
+        contact='Contact', book='Book online', menu='Menu', main_nav='Main navigation', other='CZ', other_label='CZ – Česká verze',
         crumbs='Breadcrumb', services_list=[
             ('Wedding makeup', '/en/wedding/'), ('Evening makeup', '/en/evening-makeup/'), ('Nude makeup', '/en/nude-makeup/'),
             ('Commercial makeup', '/en/commercial-makeup/'), ('Makeup courses', '/en/courses/')],
@@ -70,10 +71,15 @@ L = {
         f_services='Services', f_location='Location', f_write='Write to me', f_call='Phone / WhatsApp',
         f_loc_text='Prague 7, Czech Republic<br>(Available across Prague, Czechia &amp; Europe)',
         rights='All rights reserved', top='Back to top ↑', online='Book online +', email='Email',
-        reviews_title='Google reviews', reviews_all='All reviews on Google →', stars='Rated 5 out of 5', g_review='Google review',
+        reviews_title='Google reviews', reviews_all='All reviews on Google →', stars='Rated 5 out of 5', g_review='Google review', review_write='Write a review', f_gbp='Google profile',
         faq_title='FAQ', related='Related service',
     ),
 }
+
+
+def font_preloads(lang):
+    files = ['archivo-latin', 'archivo-latin-ext', 'lora-latin'] + (['lora-latin-ext'] if lang == 'cs' else [])
+    return '\n'.join(f'<link rel="preload" href="/assets/fonts/{f}.woff2" as="font" type="font/woff2" crossorigin>' for f in files)
 
 
 def head(lang, title, desc, path, alternates, og_image, schema, preload_html='', og_type='website', extra=''):
@@ -103,7 +109,7 @@ def head(lang, title, desc, path, alternates, og_image, schema, preload_html='',
 <meta property="og:image" content="{og_image}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/images/favicon.png" type="image/png">
-<link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+{font_preloads(lang)}
 {preload_html}
 <link rel="stylesheet" href="/assets/css/site.css?v={VERSION}">
 <script src="/assets/js/site.js?v={VERSION}" defer></script>
@@ -142,7 +148,7 @@ def header(lang, active, other_href):
 </nav>
 <div class="bar-end">
 <a class="lang lbl" href="{other_href}" hreflang="{other_lang}" lang="{other_lang}" aria-label="{t['other_label']}">{t['other']}</a>
-<a class="btn" href="{CAL}" rel="noopener">{t['book']} <span aria-hidden="true">+</span></a>
+<a class="btn" href="{CAL}">{t['book']} <span aria-hidden="true">+</span></a>
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="{t['menu']}">{ICON_MENU}</button>
 </div>
 </div>
@@ -164,11 +170,11 @@ def footer(lang, cta_label, cta_title, cta_text, primary=None):
 <p class="lbl pink">{cta_label}</p>
 <h2 class="mid-h">{cta_title}</h2>
 <p>{cta_text}</p>
-<p style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn--pink" href="{primary[0]}" rel="noopener">{primary[1]}</a><a class="btn btn--ghost" href="mailto:{MAIL}">{t['email']}</a></p>
+<p style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn--pink" href="{primary[0]}">{primary[1]}</a><a class="btn btn--ghost" href="mailto:{MAIL}">{t['email']}</a></p>
 </div>
 <nav class="f-col" aria-label="{t['f_services']}"><h3 class="lbl">{t['f_services']}</h3>{svc}</nav>
 <div class="f-col"><h3 class="lbl">{t['f_location']}</h3><address>{t['f_loc_text']}</address></div>
-<div class="f-col"><h3 class="lbl">{t['f_write']}</h3><a href="mailto:{MAIL}">{MAIL}</a><a href="{IG}" rel="noopener">Instagram @nikol__mua</a><a href="{FB}" rel="noopener">Facebook</a><a href="{TH}" rel="noopener">Threads</a></div>
+<div class="f-col"><h3 class="lbl">{t['f_write']}</h3><a href="mailto:{MAIL}">{MAIL}</a><a href="{IG}">Instagram @nikol__mua</a><a href="{FB}">Facebook</a><a href="{TH}">Threads</a><a href="{GBP}">{t['f_gbp']}</a></div>
 <div class="f-col"><h3 class="lbl">{t['f_call']}</h3><a class="tel" href="tel:{TEL}">{TEL_H}</a></div>
 </div>
 <div class="f-bar lbl"><span>Nikol Pavlova · {'vizážistka Praha' if lang == 'cs' else 'makeup artist Prague'}</span><span>2026 © {t['rights']}</span><a href="{t['portfolio_href']}">{t['portfolio']}</a><a href="{t['blog_href']}"{' hreflang="en"' if lang == 'cs' else ''}>{t['blog']}</a><a href="#main">{t['top']}</a></div>
@@ -186,7 +192,7 @@ def marquee(items):
 
 
 def sec_head(title, sub='', right='', hid='', tag='h2'):
-    sub_html = f' <span class="serif">— {sub}</span>' if sub else ''
+    sub_html = f' <span class="serif">– {sub}</span>' if sub else ''
     idattr = f' id="{hid}"' if hid else ''
     return f'<div class="sec-head"><{tag} class="sec-title"{idattr}>{title}{sub_html}</{tag}>{right}</div>\n'
 
@@ -221,7 +227,8 @@ def reviews(lang, sub, items, top=True):
                  f'<blockquote lang="{r["lang"]}"><p>{r["text"]}</p></blockquote>'
                  f'<figcaption><span class="av" aria-hidden="true">{r["ini"]}</span><span><cite class="lbl">{r["name"]}</cite><br><span class="src">{t["g_review"]}{r.get("extra", "")}</span></span></figcaption></figure>\n')
     pad = 'sec' if top else 'sec--tight'
-    right = f'<a class="btn" href="{GMAPS}" rel="noopener">{t["reviews_all"]}</a>'
+    right = (f'<p class="actions"><a class="btn" href="{GBP}">{t["reviews_all"]}</a>'
+             f'<a class="btn btn--outline" href="{GBP_REVIEW}">{t["review_write"]}</a></p>')
     return f'''<section class="{pad}" aria-labelledby="reviews-h">
 <div class="wrap">
 {sec_head(t['reviews_title'], sub, right, hid='reviews-h')}
@@ -281,7 +288,7 @@ def intro(label, title, tag, imgs, body, chips, cta=None):
     pair = ''.join(img(n, alt, sizes='260px') for n, alt in imgs) if imgs else ''
     pair_html = f'<div class="pair">{pair}</div>' if pair else ''
     chips_html = '<ul class="chips">' + ''.join(f'<li>{c}</li>' for c in chips) + '</ul>' if chips else ''
-    cta_html = f'<a class="btn" href="{cta[0]}" rel="noopener">{cta[1]}</a>' if cta else ''
+    cta_html = f'<a class="btn" href="{cta[0]}">{cta[1]}</a>' if cta else ''
     return f'''<section class="wrap intro" aria-labelledby="intro-h">
 <div class="head"><p class="lbl red">{label}</p><h2 class="mid-h" id="intro-h">{title}</h2><p class="serif tag">{tag}</p></div>
 {pair_html}
@@ -345,6 +352,7 @@ def hero_split(lang, tone, crumb_items, big, sub, desc, buttons, imgname, imgalt
 def write(path, html_str):
     out = os.path.join(ROOT, path.lstrip('/'), 'index.html') if path.endswith('/') else os.path.join(ROOT, path.lstrip('/'))
     os.makedirs(os.path.dirname(out), exist_ok=True)
+    from utilities import apply
     with open(out, 'w', encoding='utf-8') as f:
-        f.write(html_str)
+        f.write(apply(html_str).replace('', ''))
     return out

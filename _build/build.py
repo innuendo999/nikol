@@ -1,7 +1,10 @@
 """Static site generator: python3 _build/build.py  (run from repo root or anywhere)."""
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import hashlib
+import lib
 from lib import *
+from utilities import css as utility_css
 import pages_cs, pages_en
 
 LASTMOD = '2026-10-19'
@@ -40,18 +43,18 @@ def sitemap():
 
 
 def robots():
-    open(os.path.join(ROOT, 'robots.txt'), 'w').write(f'User-agent: *\nAllow: /\nDisallow: /v2/\n\nSitemap: {SITE}/sitemap.xml\n')
+    open(os.path.join(ROOT, 'robots.txt'), 'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
 
 
 def llms():
     s = SITE
-    txt = f'''# Nikol Pavlova — Vizážistka Praha / Professional Makeup Artist in Prague
+    txt = f'''# Nikol Pavlova – Vizážistka Praha / Professional Makeup Artist in Prague
 
 > Nikol Pavlova is a professional, English-speaking makeup artist (vizážistka) based in Prague 7, Czech Republic. She specialises in bridal and wedding makeup, evening and cocktail styling, natural "nude" looks, commercial and editorial makeup for photo shoots, makeup and hairstyling for special occasions, and personalised one-on-one makeup courses. Services are offered in Czech, English and Ukrainian, and she travels across the Czech Republic and Europe for destination weddings, shoots and events.
 
 Key facts for accurate reference:
 
-- **Business name:** Vizážistka Nikol Pavlova (Google Business Profile) — Nikol Pavlova, makeup artist Prague.
+- **Business name:** Vizážistka Nikol Pavlova (Google Business Profile) – Nikol Pavlova, makeup artist Prague.
 - **Location:** Prague 7, Czech Republic (works across all Prague districts and travels for destination work).
 - **Languages:** Czech, English, Ukrainian.
 - **Specialties:** Bridal/wedding makeup (bridal trial, lashes and touch-up kit included), evening and cocktail styling, prom/ball makeup, nude/natural looks, commercial and editorial makeup, private makeup courses.
@@ -62,17 +65,17 @@ Key facts for accurate reference:
 
 ## Main pages
 
-- [Domů (Czech home)]({s}/): Vizážistka Praha — overview of services, about, pricing, Google reviews and FAQ.
-- [Home (English)]({s}/en/): English-speaking makeup artist in Prague — services, about, pricing, reviews and FAQ.
+- [Domů (Czech home)]({s}/): Vizážistka Praha – overview of services, about, pricing, Google reviews and FAQ.
+- [Home (English)]({s}/en/): English-speaking makeup artist in Prague – services, about, pricing, reviews and FAQ.
 - [Portfolio (CZ)]({s}/portfolio/) · [Portfolio (EN)]({s}/en/portfolio/): Bridal, evening, nude, commercial and course work.
 
 ## Services
 
 - [Svatební líčení]({s}/svatebni-liceni/) · [Wedding makeup]({s}/en/wedding/): Bridal trial, wedding-day application, lashes, touch-up kit; bride, bridesmaids and mother of the bride; destination weddings.
-- [Večerní líčení]({s}/vecerni-liceni/) · [Evening makeup]({s}/en/evening-makeup/): Galas, balls, proms, cocktail parties — soft glam to smoky eyes.
+- [Večerní líčení]({s}/vecerni-liceni/) · [Evening makeup]({s}/en/evening-makeup/): Galas, balls, proms, cocktail parties – soft glam to smoky eyes.
 - [Nude líčení]({s}/nude-liceni/) · [Nude makeup]({s}/en/nude-makeup/): Natural skin-first looks for engagement shoots, portraits and civil ceremonies.
 - [Komerční líčení]({s}/komercni-liceni/) · [Commercial makeup]({s}/en/commercial-makeup/): Photo shoots, campaigns, lookbooks, editorials and video with on-set touch-ups.
-- [Kurzy líčení]({s}/kurzy-liceni/) · [Makeup courses]({s}/en/courses/): One-on-one lessons — skin prep, colour theory, technique, product selection.
+- [Kurzy líčení]({s}/kurzy-liceni/) · [Makeup courses]({s}/en/courses/): One-on-one lessons – skin prep, colour theory, technique, product selection.
 
 ## Blog
 
@@ -102,18 +105,33 @@ def not_found():
     h += header('cs', '', '/en/')
     h += f'''<section class="page-head" aria-labelledby="page-h1" style="min-height:60vh"><div class="wrap" style="display:flex;flex-direction:column;gap:28px">
 <p class="lbl red">Chyba 404 · Error 404</p>
-<h1 class="h1" id="page-h1"><span class="big wide" style="font-size:clamp(34px,9vw,150px)">Stránka nenalezena</span><span class="sub serif">— this page could not be found</span></h1>
+<h1 class="h1" id="page-h1"><span class="big wide" style="font-size:clamp(34px,9vw,150px)">Stránka nenalezena</span><span class="sub serif">– this page could not be found</span></h1>
 <p class="body" style="max-width:640px">Odkaz je možná zastaralý nebo stránka byla přesunuta. Zkuste hlavní stránku, služby nebo portfolio. · The link may be outdated or the page has moved.</p>
 <ul style="display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0">
-<li><a class="btn" href="/">Domů</a></li><li><a class="btn btn--outline" href="/svatebni-liceni/">Svatební líčení</a></li><li><a class="btn btn--outline" href="/portfolio/">Portfolio</a></li><li><a class="btn btn--outline" href="/en/">English</a></li><li><a class="btn btn--outline" href="{CAL}" rel="noopener">Rezervace online +</a></li>
+<li><a class="btn" href="/">Domů</a></li><li><a class="btn btn--outline" href="/svatebni-liceni/">Svatební líčení</a></li><li><a class="btn btn--outline" href="/portfolio/">Portfolio</a></li><li><a class="btn btn--outline" href="/en/">English</a></li><li><a class="btn btn--outline" href="{CAL}">Rezervace online +</a></li>
 </ul></div></section>
 '''
     h += footer('cs', 'Kontaktujte mě', 'Potřebujete pomoc s líčením?', 'Napište mi a do 24 hodin vám pošlu nabídku.')
-    # absolute asset paths already; 404 is served from any depth
-    open(os.path.join(ROOT, '404.html'), 'w', encoding='utf-8').write(h)
+    write('/404.html', h)
+
+
+def assets():
+    """Minify CSS/JS from _build/src into /assets and set the cache-busting version."""
+    src = os.path.join(ROOT, '_build', 'src')
+    css = open(os.path.join(src, 'site.css'), encoding='utf-8').read() + utility_css()
+    js = open(os.path.join(src, 'site.js'), encoding='utf-8').read()
+    try:
+        import rcssmin, rjsmin
+        css, js = rcssmin.cssmin(css), rjsmin.jsmin(js)
+    except ImportError:
+        print('rcssmin/rjsmin not installed: writing unminified assets')
+    for rel, data in (('assets/css/site.css', css), ('assets/js/site.js', js)):
+        open(os.path.join(ROOT, rel), 'w', encoding='utf-8').write(data)
+    lib.VERSION = hashlib.md5((css + js).encode()).hexdigest()[:8]
 
 
 if __name__ == '__main__':
+    assets()
     pages_cs.build()
     pages_en.build()
     sitemap(); robots(); llms(); not_found()

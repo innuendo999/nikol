@@ -24,7 +24,7 @@
     "@type": "CollectionPage",
     "@id": "https://nikolmakeup.cz/en/portfolio/#page",
     "url": "https://nikolmakeup.cz/en/portfolio/",
-    "name": "Makeup Portfolio Prague — Nikol Pavlova",
+    "name": "Makeup Portfolio Prague – Nikol Pavlova",
     "description": "Curated portfolio of professional makeup work by Nikol Pavlova, including bridal, evening, nude, commercial and editorial looks created in Prague.",
     "inLanguage": "en",
     "isPartOf": {
@@ -81,7 +81,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/wedding/wedding-1.png",
-      "name": "Bridal makeup look 1 — Prague wedding",
+      "name": "Bridal makeup look 1 – Prague wedding",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }
@@ -89,7 +89,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/wedding/wedding-5.png",
-      "name": "Bridal makeup look 5 — Prague wedding",
+      "name": "Bridal makeup look 5 – Prague wedding",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }
@@ -97,7 +97,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/evening/evening-1.png",
-      "name": "Evening makeup look 1 — glamorous styling",
+      "name": "Evening makeup look 1 – glamorous styling",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }
@@ -105,7 +105,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/evening/evening-5.png",
-      "name": "Evening makeup look 5 — cocktail event",
+      "name": "Evening makeup look 5 – cocktail event",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }
@@ -113,7 +113,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/nude/nude-1.png",
-      "name": "Nude makeup look 1 — natural beauty",
+      "name": "Nude makeup look 1 – natural beauty",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }
@@ -121,7 +121,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/commercial/commercial-1.png",
-      "name": "Commercial makeup look 1 — editorial shoot",
+      "name": "Commercial makeup look 1 – editorial shoot",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }
@@ -129,7 +129,7 @@
      {
       "@type": "ImageObject",
       "contentUrl": "https://nikolmakeup.cz/img/courses/IMG_7417.jpg",
-      "name": "Makeup course session — Prague",
+      "name": "Makeup course session – Prague",
       "creator": {
        "@id": "https://nikolmakeup.cz/#person"
       }

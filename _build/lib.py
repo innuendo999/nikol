@@ -58,7 +58,7 @@ L = {
         f_services='Služby', f_location='Lokace', f_write='Napište mi', f_call='Telefon / WhatsApp',
         f_loc_text='Praha 7, Česká republika<br>(Možnost dojezdu po Praze, ČR i Evropě)',
         rights='Všechna práva vyhrazena', top='Nahoru ↑', online='Rezervace online +', email='E-mail',
-        reviews_title='Recenze z Google', reviews_all='Všechny recenze na Google →', stars='Hodnocení 5 z 5', g_review='Recenze Google', review_write='Napsat recenzi', f_gbp='Google profil',
+        reviews_title='Recenze z Google', reviews_all='Všechny recenze na Google →', stars='Hodnocení 5 z 5', g_review='Recenze Google', review_write='Napsat recenzi', swipe='Posuňte pro další recenze →', f_gbp='Google profil',
         faq_title='Časté dotazy', related='Související služba',
     ),
     'en': dict(
@@ -71,10 +71,25 @@ L = {
         f_services='Services', f_location='Location', f_write='Write to me', f_call='Phone / WhatsApp',
         f_loc_text='Prague 7, Czech Republic<br>(Available across Prague, Czechia &amp; Europe)',
         rights='All rights reserved', top='Back to top ↑', online='Book online +', email='Email',
-        reviews_title='Google reviews', reviews_all='All reviews on Google →', stars='Rated 5 out of 5', g_review='Google review', review_write='Write a review', f_gbp='Google profile',
+        reviews_title='Google reviews', reviews_all='All reviews on Google →', stars='Rated 5 out of 5', g_review='Google review', review_write='Write a review', swipe='Swipe for more reviews →', f_gbp='Google profile',
         faq_title='FAQ', related='Related service',
     ),
 }
+
+
+def og_slug(path):
+    return path.strip('/').replace('/', '-') or 'home'
+
+
+def og_tags(path, og_image, title):
+    slug = og_slug(path) if os.path.exists(os.path.join(ROOT, 'assets', 'og', og_slug(path) + '.jpg')) else 'home'
+    f = os.path.join(ROOT, 'assets', 'og', slug + '.jpg')
+    if os.path.exists(f):
+        url = f'{SITE}/assets/og/{slug}.jpg'
+        return (f'<meta property="og:image" content="{url}">\n<meta property="og:image:type" content="image/jpeg">\n'
+                f'<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
+                f'<meta property="og:image:alt" content="{a(title)}">\n<meta name="twitter:image" content="{url}">')
+    return f'<meta property="og:image" content="{og_image}">'
 
 
 def font_preloads(lang):
@@ -106,7 +121,7 @@ def head(lang, title, desc, path, alternates, og_image, schema, preload_html='',
 <meta property="og:title" content="{a(title)}">
 <meta property="og:description" content="{a(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{og_image}">
+{og_tags(path, og_image, title)}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/images/favicon.png" type="image/png">
 {font_preloads(lang)}
@@ -232,8 +247,9 @@ def reviews(lang, sub, items, top=True):
     return f'''<section class="{pad}" aria-labelledby="reviews-h">
 <div class="wrap">
 {sec_head(t['reviews_title'], sub, right, hid='reviews-h')}
-<div class="rvs">
+<div class="rvs" role="region" aria-label="{t['reviews_title']}" tabindex="0">
 {figs}</div>
+<p class="rvs-hint serif" aria-hidden="true">{t['swipe']}</p>
 </div>
 </section>
 '''
@@ -310,7 +326,7 @@ def checker(title, sub, cells, hid='grid-h'):
             out += f'<div class="tile-panel{" alt" if alt else ""}"><span class="lbl red">{num}</span><h3>{h}</h3><p class="serif">{txt}</p></div>'
     return f'''<section aria-labelledby="{hid}">
 <div class="wrap">{sec_head(title, sub, hid=hid)}</div>
-<div class="g4">{out}</div>
+<div class="g4 g4--feat">{out}</div>
 </section>
 '''
 

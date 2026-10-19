@@ -505,33 +505,33 @@ def post():
 <aside class="note"><p class="lbl red">How I tested it</p><p>I applied a complete look on camera – from skin prep through to setting spray – then wore it through a full working day and checked it again that night, and once more the next day. For reference, my skin is normal-to-combination.</p></aside>
 <h2 id="verdict">The verdict at a glance</h2>
 <div class="verdict">
-<div><p class="v v-yes">Worth buying</p><ul><li>The cult bronzer</li><li>Pressed powder</li><li>Brow glue</li><li>Mascara</li><li>Concealer (spot coverage)</li><li>Long-wear eyeliner*</li></ul></div>
-<div><p class="v v-dep">Depends on your skin</p><ul><li>Plumping primer</li><li>Setting spray</li></ul></div>
-<div><p class="v v-sw">Swatch first</p><ul><li>Matte eyeshadow palette</li><li>Warm lip liner</li></ul></div>
+<div><p class="vtag v-yes">Worth buying</p><ul><li>The cult bronzer</li><li>Pressed powder</li><li>Brow glue</li><li>Mascara</li><li>Concealer (spot coverage)</li><li>Long-wear eyeliner*</li></ul></div>
+<div><p class="vtag v-dep">Depends on your skin</p><ul><li>Plumping primer</li><li>Setting spray</li></ul></div>
+<div><p class="vtag v-sw">Swatch first</p><ul><li>Matte eyeshadow palette</li><li>Warm lip liner</li></ul></div>
 </div>
 <p style="font-size:15px;color:var(--muted2)">*Brilliant longevity, but unforgiving – best for confident hands.</p>
-<h2 id="primer">Skin prep: the plumping primer</h2><p class="v v-dep">Depends on skin type</p>
+<h2 id="primer">Skin prep: the plumping primer</h2><p class="vtag v-dep">Depends on skin type</p>
 <p>This is the brand's hero of the moment – a light, gel-emulsion that promises to be serum and primer in one, with a pleasant, neutral scent. On me it turned tacky very quickly and the tight feeling only built through the day. That stickiness can actually help foundation grip, so I would happily recommend it for combination or oily skin – but on dry or flaky skin it will not smooth those dry patches, and the pulled feeling is not for everyone. Not quite the universal hero the label suggests.</p>
-<h2 id="concealer">Complexion: the serum concealer</h2><p class="v v-yes">Worth it – for targeted coverage</p>
+<h2 id="concealer">Complexion: the serum concealer</h2><p class="vtag v-yes">Worth it – for targeted coverage</p>
 <p>Surprisingly dense and full-coverage for something sold as a "serum" concealer. It stays put, does not slide, and the slim tube means you will actually use every last drop. It leans slightly drying, and my shade ran a touch warmer than a true cool vanilla, so check your undertone. For targeted coverage it is excellent; over the whole face the usage adds up fast.</p>
 <aside class="note"><p class="lbl red">Pro move</p><p class="serif" style="font-size:20px">Mix a little into your serum or moisturiser to turn it into a sheer tint.</p></aside>
-<h2 id="brows">Brows: pencils, micro-liners &amp; the brow glue</h2><p class="v v-yes">Worth it – find your shade</p>
+<h2 id="brows">Brows: pencils, micro-liners &amp; the brow glue</h2><p class="vtag v-yes">Worth it – find your shade</p>
 <p>The pencils are genuinely good: consistent, easy to work with and very wearable. One thing to watch – a couple of the taupe-leaning shades can oxidise slightly green on me over time, so I have switched to the cooler blond shade, which also draws beautifully even over the brow glue. The glue itself gives serious, laminated hold, perfect if you love that brushed-up, locked-in look. I personally prefer a softer, more natural shape these days, so I used it with a lighter hand. Tip: set your brows <strong>before</strong> foundation for the cleanest finish.</p>
-<h2 id="bronzer">Warmth: the cult bronzer (and a word on blush)</h2><p class="v v-yes">Worth it</p>
+<h2 id="bronzer">Warmth: the cult bronzer (and a word on blush)</h2><p class="vtag v-yes">Worth it</p>
 <p>A deserved classic. Only the warm shade was in stock, so my face ran a little golden – but the formula is the real story. It smells like a chocolate-vanilla dessert, it is not baked, and yet it still does not go patchy, which is rare at this price (un-baked budget bronzers usually streak no matter your technique). Around 10–15 €, easy top marks. I pressed it into place rather than buffing, because the skin underneath was a touch tacky.</p>
 <aside class="note"><p class="lbl red">A pro note on hygiene</p><p>For blush I reached for a powder I have owned since long before I became a makeup artist – and that is something to flag, not to copy. Powders carry a period-after-opening for a reason. My honest advice as a professional is to respect those dates and replace anything well past them. Your skin will thank you.</p></aside>
-<h2 id="powder">Setting the base: the pressed powder</h2><p class="v v-yes">Worth it</p>
+<h2 id="powder">Setting the base: the pressed powder</h2><p class="vtag v-yes">Worth it</p>
 <p>It lives up to the hype. It sets the base and controls shine without clinging to dry patches or exaggerating texture – the exact failure point of so many heavier budget powders. One of my favourite finds of the whole haul.</p>
 <h2 id="eyes">Eyes: palette, liner &amp; mascara</h2>
-<h3>The matte eyeshadow palette</h3><p class="v v-sw">Swatch first</p>
+<h3>The matte eyeshadow palette</h3><p class="vtag v-sw">Swatch first</p>
 <p>A very on-trend warm-neutral palette with a few cooler, pinky tones. The shades are pretty, but pigmentation sits on the softer side – especially layered over powder, which sheered them further. The look still came together nicely; next time I would skip powdering the lid first.</p>
-<h3>The eyeliner</h3><p class="v v-yes">Worth it – for steady hands</p>
+<h3>The eyeliner</h3><p class="vtag v-yes">Worth it – for steady hands</p>
 <p>Honestly, a wow. It is intensely long-wearing and does not budge or transfer once it sets – which is also the catch: there is almost no room for error, so it is not the most forgiving choice for beginners. I built a soft winged shape and loved how crisp it stayed all day.</p>
-<h3>The mascara</h3><p class="v v-yes">Worth it</p>
+<h3>The mascara</h3><p class="vtag v-yes">Worth it</p>
 <p>Fresh from the tube it applied cleanly with a classic brush, adding volume rather than just length – my preference. Pending a proper flake test over a few wears, this is one I would repurchase.</p>
-<h2 id="lips">Lips: liner &amp; matte balm</h2><p class="v v-mix">Mixed</p>
+<h2 id="lips">Lips: liner &amp; matte balm</h2><p class="vtag v-mix">Mixed</p>
 <p>The lip liner is a long-standing favourite, though a reformulation made it noticeably warmer – it reads quite orange-warm on me now, so it suited today's warm look but will not be everyone's everyday. The matte "whip" balm gives a soft tint with a comfortable, slightly slippery feel and a lovely sweet scent; I also dabbed it on the cheeks as a quick cream blush to tie the whole look together.</p>
-<h2 id="spray">The finish: setting spray</h2><p class="v v-dep">Depends on skin type</p>
+<h2 id="spray">The finish: setting spray</h2><p class="vtag v-dep">Depends on skin type</p>
 <p>Last year's much-hyped spray (mine had settled, so it is clearly powder-infused – shake well). The applicator is punchy and it genuinely locks everything down. For a true matte finish it is great; on drier skin, combined with the primer, it was simply too much fixation for me.</p>
 <h2 id="wear">The part that actually matters: a full day of wear</h2>
 <p>Swatches and first impressions are easy. What separates a good product from a great one is how it looks after hours of real life, so here is the honest timeline.</p>

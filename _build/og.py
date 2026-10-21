@@ -25,7 +25,11 @@ PAGES = {
     '/en/commercial-makeup/': ('commercial-4-800', 'ink', '50% 30%', 'Shoots · campaigns · editorial', None),
     '/en/courses/': ('course-1000', 'sand', '50% 15%', 'One-on-one lessons', None),
     '/en/portfolio/': ('collage', 'paper', '', 'Bridal · evening · nude · commercial', None),
-    '/en/blog/': ('nikol-portrait-800', 'ox', '50% 22%', 'Reviews · tips · tutorials', None),
+    '/blog/': ('nude-3-800', 'blush', '50% 30%', 'Tutoriály · recenze · tipy', None),
+    '/blog/letni-make-up-bez-make-upu/': ('nude-1-800', 'paper', '50% 30%', 'Tutoriál · léto', 'SPF, blur, krémové barvy a test fixačních sprejů'),
+    '/en/blog/': ('nude-3-800', 'blush', '50% 30%', 'Tutorials · reviews · tips', None),
+    '/en/blog/summer-no-makeup-makeup/': ('nude-1-800', 'paper', '50% 30%', 'Tutorial · summer', 'SPF, blur, cream colour and setting sprays tested'),
+    '/blog/recenze-nyx-cely-oblicej/': ('nikol-hero-1280', 'ink', '50% 28%', 'Recenze · celodenní test', 'Báze, korektor, obočí, bronzer, oči a celodenní test'),
     '/en/blog/full-face-of-nyx-review/': ('nikol-hero-1280', 'ink', '50% 28%', 'Review · 9 min read', 'Primer to setting spray, tested all day'),
 }
 

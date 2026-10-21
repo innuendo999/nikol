@@ -29,6 +29,7 @@ PAGES = {
     '/blog/letni-make-up-bez-make-upu/': ('nude-1-800', 'paper', '50% 30%', 'Tutoriál · léto', 'SPF, blur, krémové barvy a test fixačních sprejů'),
     '/en/blog/': ('nude-3-800', 'blush', '50% 30%', 'Tutorials · reviews · tips', None),
     '/en/blog/summer-no-makeup-makeup/': ('nude-1-800', 'paper', '50% 30%', 'Tutorial · summer', 'SPF, blur, cream colour and setting sprays tested'),
+    '/blog/recenze-nyx-cely-oblicej/': ('nikol-hero-1280', 'ink', '50% 28%', 'Recenze · celodenní test', 'Báze, korektor, obočí, bronzer, oči a celodenní test'),
     '/en/blog/full-face-of-nyx-review/': ('nikol-hero-1280', 'ink', '50% 28%', 'Review · 9 min read', 'Primer to setting spray, tested all day'),
 }
 

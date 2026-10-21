@@ -145,8 +145,19 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolmakeup.cz/blog/letni-make-up-bez-make-upu/"/>
   </url>
   <url>
+    <loc>https://nikolmakeup.cz/blog/recenze-nyx-cely-oblicej/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://nikolmakeup.cz/blog/recenze-nyx-cely-oblicej/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikolmakeup.cz/en/blog/full-face-of-nyx-review/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolmakeup.cz/blog/recenze-nyx-cely-oblicej/"/>
+  </url>
+  <url>
     <loc>https://nikolmakeup.cz/en/blog/full-face-of-nyx-review/</loc>
     <lastmod>2026-10-19</lastmod>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://nikolmakeup.cz/blog/recenze-nyx-cely-oblicej/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikolmakeup.cz/en/blog/full-face-of-nyx-review/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolmakeup.cz/blog/recenze-nyx-cely-oblicej/"/>
   </url>
 </urlset>

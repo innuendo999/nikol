@@ -422,3 +422,7 @@ a.tile-panel:hover .more{transform:translateX(4px)}
 .art-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
 .art-pair img{width:100%;height:420px;object-fit:cover}
 @media (max-width:900px){.video-split{grid-template-columns:1fr;min-height:0}.video-split img{height:360px}.vs-panel{padding:32px var(--gut)}.art-pair img{height:240px}}
+.prod-list{columns:2;column-gap:32px;padding-left:18px;font-size:16px}
+.prod-list li{break-inside:avoid;margin-bottom:8px}
+@media (max-width:600px){.prod-list{columns:1}}
+.cards3:has(> li:only-child){grid-template-columns:minmax(0,520px)}

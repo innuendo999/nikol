@@ -5,7 +5,7 @@ import hashlib
 import lib
 from lib import *
 from utilities import css as utility_css
-import pages_cs, pages_en
+import pages_cs, pages_en, pages_blog
 
 LASTMOD = '2026-10-19'
 
@@ -18,7 +18,8 @@ PAIRS = [
     ('/komercni-liceni/', '/en/commercial-makeup/', '0.8'),
     ('/kurzy-liceni/', '/en/courses/', '0.8'),
     ('/portfolio/', '/en/portfolio/', '0.7'),
-    (None, '/en/blog/', '0.6'),
+    ('/blog/', '/en/blog/', '0.6'),
+    ('/blog/letni-make-up-bez-make-upu/', '/en/blog/summer-no-makeup-makeup/', '0.6'),
     (None, '/en/blog/full-face-of-nyx-review/', '0.6'),
 ]
 
@@ -79,7 +80,8 @@ Key facts for accurate reference:
 
 ## Blog
 
-- [Blog]({s}/en/blog/): Honest makeup reviews and pro tips.
+- [Blog (CZ)]({s}/blog/) · [Blog (EN)]({s}/en/blog/): Makeup tutorials, honest reviews and pro tips.
+- [Letní make-up bez make-upu]({s}/blog/letni-make-up-bez-make-upu/) · [Summer no-makeup makeup]({s}/en/blog/summer-no-makeup-makeup/): Light summer routine: SPF prep, foundation shade for freckled skin, blur instead of shine, setting sprays compared.
 - [Full Face of NYX: A Makeup Artist's Honest Review]({s}/en/blog/full-face-of-nyx-review/): Full-face test with an all-day wear test.
 
 ## Booking & contact
@@ -134,5 +136,6 @@ if __name__ == '__main__':
     assets()
     pages_cs.build()
     pages_en.build()
+    pages_blog.build()
     sitemap(); robots(); llms(); not_found()
     print('built')

@@ -569,4 +569,4 @@ def post():
 
 
 def build():
-    home(); wedding(); service(EVENING); service(NUDE); service(COMMERCIAL); courses(); portfolio(); blog(); post()
+    home(); wedding(); service(EVENING); service(NUDE); service(COMMERCIAL); courses(); portfolio(); post()

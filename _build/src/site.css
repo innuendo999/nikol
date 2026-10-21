@@ -408,3 +408,17 @@ a.tile-panel:hover .more{transform:translateX(4px)}
 .author .lbl{display:inline-block;padding:8px 0}
 .rows dd{margin:0}
 .f-bar a{padding:8px 0}
+/* blog: video split, summary steps, image pair */
+.video-split{display:grid;grid-template-columns:1fr 1fr;min-height:560px;text-decoration:none;color:var(--paper);background:var(--ox)}
+.video-split img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.vs-panel{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:22px;padding:48px var(--gut)}
+.vs-panel .play{width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.video-split:hover .play{transform:scale(1.06)}
+.vs-panel .lbl{color:var(--pink)}
+.vs-title{font-size:clamp(28px,3vw,44px);line-height:1.1}
+.steps-list{counter-reset:s;list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}
+.steps-list li{counter-increment:s;display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--hair)}
+.steps-list li::before{content:counter(s,decimal-leading-zero);font:600 13px/1.9 var(--f-sans);font-stretch:125%;color:var(--red);min-width:28px}
+.art-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.art-pair img{width:100%;height:420px;object-fit:cover}
+@media (max-width:900px){.video-split{grid-template-columns:1fr;min-height:0}.video-split img{height:360px}.vs-panel{padding:32px var(--gut)}.art-pair img{height:240px}}

@@ -54,7 +54,7 @@ L = {
         crumbs='Drobečková navigace', services_list=[
             ('Svatební líčení', '/svatebni-liceni/'), ('Večerní líčení', '/vecerni-liceni/'), ('Nude makeup', '/nude-liceni/'),
             ('Komerční líčení', '/komercni-liceni/'), ('Kurzy líčení', '/kurzy-liceni/')],
-        blog_href='/en/blog/', home_href='/', portfolio_href='/portfolio/',
+        blog_href='/blog/', home_href='/', portfolio_href='/portfolio/',
         f_services='Služby', f_location='Lokace', f_write='Napište mi', f_call='Telefon / WhatsApp',
         f_loc_text='Praha 7, Česká republika<br>(Možnost dojezdu po Praze, ČR i Evropě)',
         rights='Všechna práva vyhrazena', top='Nahoru ↑', online='Rezervace online +', email='E-mail',
@@ -143,7 +143,7 @@ def header(lang, active, other_href):
     svc_items = ''.join(
         f'<li><a href="{u}"{" aria-current=" + chr(34) + "page" + chr(34) if active == u else ""}>{n}</a></li>' for n, u in t['services_list'])
     svc_active = ' is-active' if active in [u for n, u in t['services_list']] else ''
-    blog_lang = ' hreflang="en"' if lang == 'cs' else ''
+    blog_lang = ''
     other_lang = 'en' if lang == 'cs' else 'cs'
     return f'''<a class="skip-link" href="#main">{t['skip']}</a>
 <header class="site-header">
@@ -192,7 +192,7 @@ def footer(lang, cta_label, cta_title, cta_text, primary=None):
 <div class="f-col"><h3 class="lbl">{t['f_write']}</h3><a href="mailto:{MAIL}">{MAIL}</a><a href="{IG}">Instagram @nikol__mua</a><a href="{FB}">Facebook</a><a href="{TH}">Threads</a><a href="{GBP}">{t['f_gbp']}</a></div>
 <div class="f-col"><h3 class="lbl">{t['f_call']}</h3><a class="tel" href="tel:{TEL}">{TEL_H}</a></div>
 </div>
-<div class="f-bar lbl"><span>Nikol Pavlova · {'vizážistka Praha' if lang == 'cs' else 'makeup artist Prague'}</span><span>2026 © {t['rights']}</span><a href="{t['portfolio_href']}">{t['portfolio']}</a><a href="{t['blog_href']}"{' hreflang="en"' if lang == 'cs' else ''}>{t['blog']}</a><a href="#main">{t['top']}</a></div>
+<div class="f-bar lbl"><span>Nikol Pavlova · {'vizážistka Praha' if lang == 'cs' else 'makeup artist Prague'}</span><span>2026 © {t['rights']}</span><a href="{t['portfolio_href']}">{t['portfolio']}</a><a href="{t['blog_href']}">{t['blog']}</a><a href="#main">{t['top']}</a></div>
 </div>
 <div class="f-name" aria-hidden="true">{img('nikol-footer', '', sizes='100vw')}<div class="mesh"></div><span>Nikol Pavlova</span></div>
 </footer>

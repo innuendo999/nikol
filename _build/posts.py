@@ -2,6 +2,19 @@
 from lib import img, sec_head
 
 POSTS = {
+    'empties': {
+        'date': '2026-10-22', 'img': 'nikol-header', 'video': 'pKt5euLMl9g',
+        'cs': dict(path='/blog/dopotrebovana-kosmetika/', crumb='Dopotřebovaná kosmetika', tag='Recenze',
+                   title='Dopotřebovaná kosmetika: co si koupím znovu a co už ne',
+                   seo_title='Dopotřebovaná kosmetika: co si vizážistka koupí znovu | Nikol Pavlova',
+                   desc='Vizážistka Nikol Pavlova z Prahy hodnotí 25 dopotřebovaných produktů: péče o pleť, SPF, vlasy, tělo i make-up. Co si koupí znovu a co už nikdy.',
+                   card='Pětadvacet produktů, které jsem dopotřebovala do poslední kapky: péče, SPF, vlasy, tělo i make-up, a upřímně, co si koupím znovu.'),
+        'en': dict(path='/en/blog/beauty-empties-repurchase/', crumb='Beauty empties', tag='Reviews',
+                   title="Beauty Empties: What I'd Repurchase and What I Wouldn't",
+                   seo_title="Beauty Empties: What a Makeup Artist Would Repurchase | Nikol Pavlova",
+                   desc='Prague makeup artist Nikol Pavlova reviews 25 products she used up: skincare, SPF, hair, body and makeup, and says honestly what she would buy again.',
+                   card="Twenty-five products I used up to the last drop: skincare, SPF, hair, body and makeup, and an honest verdict on what I'd buy again."),
+    },
     'summer': {
         'date': '2026-10-21', 'img': 'nude-3', 'video': 'pg2rs7CB6lA',
         'cs': dict(path='/blog/letni-make-up-bez-make-upu/', crumb='Letní make-up bez make-upu', tag='Tutoriál',
@@ -29,7 +42,7 @@ POSTS = {
                    card='I tested a full face of NYX and wore it through a working day: what earned a place in my kit and what I would skip.'),
     },
 }
-ORDER = ['summer', 'nyx']   # newest first
+ORDER = ['empties', 'summer', 'nyx']   # newest first
 
 MONTHS = {
     'cs': ['ledna', 'února', 'března', 'dubna', 'května', 'června', 'července', 'srpna', 'září', 'října', 'listopadu', 'prosince'],

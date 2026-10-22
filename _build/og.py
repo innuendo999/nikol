@@ -26,6 +26,8 @@ PAGES = {
     '/en/courses/': ('course-1000', 'sand', '50% 15%', 'One-on-one lessons', None),
     '/en/portfolio/': ('collage', 'paper', '', 'Bridal · evening · nude · commercial', None),
     '/blog/': ('nude-3-800', 'blush', '50% 30%', 'Tutoriály · recenze · tipy', None),
+    '/blog/dopotrebovana-kosmetika/': ('nikol-header-800', 'blush', '50% 20%', 'Recenze · 25 produktů', 'Co si koupím znovu a co už ne'),
+    '/en/blog/beauty-empties-repurchase/': ('nikol-header-800', 'blush', '50% 20%', 'Reviews · 25 products', "What I'd buy again and what I wouldn't"),
     '/blog/letni-make-up-bez-make-upu/': ('nude-1-800', 'paper', '50% 30%', 'Tutoriál · léto', 'SPF, blur, krémové barvy a test fixačních sprejů'),
     '/en/blog/': ('nude-3-800', 'blush', '50% 30%', 'Tutorials · reviews · tips', None),
     '/en/blog/summer-no-makeup-makeup/': ('nude-1-800', 'paper', '50% 30%', 'Tutorial · summer', 'SPF, blur, cream colour and setting sprays tested'),

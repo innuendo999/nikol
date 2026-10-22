@@ -129,6 +129,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolmakeup.cz/blog/"/>
   </url>
   <url>
+    <loc>https://nikolmakeup.cz/blog/dopotrebovana-kosmetika/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://nikolmakeup.cz/blog/dopotrebovana-kosmetika/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikolmakeup.cz/en/blog/beauty-empties-repurchase/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolmakeup.cz/blog/dopotrebovana-kosmetika/"/>
+  </url>
+  <url>
+    <loc>https://nikolmakeup.cz/en/blog/beauty-empties-repurchase/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://nikolmakeup.cz/blog/dopotrebovana-kosmetika/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nikolmakeup.cz/en/blog/beauty-empties-repurchase/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolmakeup.cz/blog/dopotrebovana-kosmetika/"/>
+  </url>
+  <url>
     <loc>https://nikolmakeup.cz/blog/letni-make-up-bez-make-upu/</loc>
     <lastmod>2026-10-19</lastmod>
     <priority>0.6</priority>

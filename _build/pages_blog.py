@@ -4,6 +4,7 @@ from lib import *
 from lib import img as I
 import schema as S
 from posts import POSTS, ORDER, fmt_date, cards, teaser
+import post_empties
 
 L_BLOG = {
     'cs': dict(home=('Domů', '/'), blog='Blog', blog_path='/blog/', read='min čtení', by='Autorka', role='vizážistka, Praha',
@@ -328,8 +329,8 @@ NYX['cs'] = dict(
     bio='Vizážistka v Praze, kde žiji od roku 2021. Věnuji se svatebnímu, večernímu a editoriálnímu líčení a učím individuální kurzy. Na YouTube každý týden ukazuji, jak líčím a které produkty opravdu používám.',
 )
 
-CONTENT = {'summer': SUMMER, 'nyx': NYX}
-EXTRA = {'summer': dict(products=SUMMER_PRODUCTS, brands=SUMMER_BRANDS, about=('Make-up bez make-upu', 'No-makeup makeup'), video_name='Summer makeup 2.0'),
+CONTENT = {'summer': SUMMER, 'nyx': NYX, 'empties': post_empties.C}
+EXTRA = {'empties': post_empties.EXTRA, 'summer': dict(products=SUMMER_PRODUCTS, brands=SUMMER_BRANDS, about=('Make-up bez make-upu', 'No-makeup makeup'), video_name='Summer makeup 2.0'),
          'nyx': dict(products=[], brands=NYX_BRANDS, about=('Recenze NYX', 'NYX makeup review'), video_name='Все обличчя NYX',
                      upload='2026-03-20', video_desc='Nikol Pavlova applies a complete look using only NYX products and tests how it wears over a full day.')}
 
@@ -443,7 +444,7 @@ def index(lang):
         lead = 'Postupy, které používám na klientkách i na sobě, a poctivé recenze produktů. Psáno tak, abyste si vybrali lepší kosmetiku a vytvořili look, který vám sedí.'
         latest, more, topics_h, topics_sub, read_btn = 'Nejnovější článek', 'Další články', 'Témata', 'o čem píšu', 'Číst článek →'
         topics = [('Tutoriály', 'Krok za krokem: přirozený, letní i večerní make-up.', '1 článek', True),
-                  ('Recenze produktů', 'Testuji kosmetiku na sobě i v práci a říkám, co se vyplatí.', '1 článek', True),
+                  ('Recenze produktů', 'Testuji kosmetiku na sobě i v práci a říkám, co se vyplatí.', '2 články', True),
                   ('Svatby a akce', 'Jak se připravit na make-up, který vydrží celý den.', 'Připravujeme', False)]
         alt = [('cs', path), ('en', '/en/blog/'), ('x-default', path)]
     else:
@@ -453,7 +454,7 @@ def index(lang):
         lead = 'Routines I use on clients and on myself, plus honest product reviews, written to help you choose better products and create looks that suit you.'
         latest, more, topics_h, topics_sub, read_btn = 'Latest article', 'More articles', 'Topics', 'what I write about', 'Read the article →'
         topics = [('Tutorials', 'Step by step: natural, summer and evening makeup.', '1 article', True),
-                  ('Product reviews', 'I test products on myself and at work and tell you what is worth it.', '1 article', True),
+                  ('Product reviews', 'I test products on myself and at work and tell you what is worth it.', '2 articles', True),
                   ('Bridal &amp; events', 'How to prepare for makeup that lasts all day.', 'Coming soon', False)]
         alt = [('cs', '/blog/'), ('en', path), ('x-default', '/blog/')]
     graph = [{'@type': 'Blog', '@id': SITE + path + '#blog', 'name': f'Nikol Pavlova – {t["blog"]}', 'url': SITE + path, 'inLanguage': lang,

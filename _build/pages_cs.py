@@ -97,7 +97,7 @@ def home():
 </section>
 '''
     h += reviews(LANG, 'co říkají klientky', pick('nelli', 'zoe', 'polinashu', 'erika', 'darya', 'marie', 'stepanka', 'beata', 'lena'), top=False)
-    h += teaser(LANG, ['summer', 'nyx'], 'Z blogu', 'tutoriály a poctivé recenze')
+    h += teaser(LANG, ['empties', 'summer', 'nyx'], 'Z blogu', 'tutoriály a poctivé recenze')
     h += faq(LANG, 'nejčastější otázky', faq_items)
     h += footer(LANG, 'Kontaktujte mě', 'Máte dotaz nebo si přejete rezervovat termín?',
                 'Ráda vám pomohu vytvořit dokonalý look na váš speciální den. Neváhejte mě kontaktovat a společně naplánujeme vše potřebné.')
@@ -183,7 +183,7 @@ def wedding():
 </section>
 '''
     h += faq(LANG, 'otázky o svatebním líčení', faq_items)
-    h += teaser(LANG, ['nyx', 'summer'])
+    h += teaser(LANG, ['nyx', 'empties'])
     h += tiles(LANG, [('Večerní líčení', '/vecerni-liceni/', 'evening-5'), ('Kurzy líčení', '/kurzy-liceni/', 'course')])
     h += footer(LANG, 'Rezervujte si svatební konzultaci', 'Kontaktujte mě', 'Působím v Praze, ČR · K dispozici pro cestování po Evropě. Osobní nabídka do 24 hodin.',
                 (CAL, 'Rezervovat termín online +'))
@@ -260,7 +260,7 @@ EVENING = dict(
     f_label='Rezervujte si večerní líčení', f_text='Působím v Praze, ČR · Možnost dojezdu. Osobní nabídka do 24 hodin.')
 
 NUDE = dict(
-    posts=['summer', 'nyx'],
+    posts=['summer', 'empties'],
     path='/nude-liceni/', en='/en/nude-makeup/', crumb='Nude makeup', tone='tone-blush',
     title='Nude make-up Praha | Přirozené líčení – vizážistka Nikol Pavlova',
     desc='Přirozený nude make-up v Praze. Jemné líčení zaměřené na pleť pro zásnubní focení, portréty a civilní obřady – zdravá, zářivá pleť bez efektu „nalíčenosti“.',
@@ -404,7 +404,7 @@ def courses():
 </article></div></section>
 '''
     h += faq(LANG, 'otázky o kurzu líčení', faq_items)
-    h += teaser(LANG, ['summer', 'nyx'], 'Procvičte si doma', 'tutoriály z blogu')
+    h += teaser(LANG, ['summer', 'nyx', 'empties'], 'Procvičte si doma', 'tutoriály z blogu')
     h += tiles(LANG, [('Svatební líčení', '/svatebni-liceni/', 'wedding-5'), ('Nude makeup', '/nude-liceni/', 'nude-1')])
     h += footer(LANG, 'Rezervujte si kurz líčení', 'Kontaktujte mě', 'Lekce probíhají v Praze, ČR · Česky nebo anglicky. Osobní cenová nabídka do 24 hodin.',
                 (CAL, 'Rezervovat kurz online +'))

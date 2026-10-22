@@ -97,7 +97,7 @@ def home():
 </section>
 '''
     h += reviews(LANG, 'what clients say', pick('zoe', 'nelli', 'glenn', 'polina', 'shirley', 'darya', 'beata', 'marie', 'lena'), top=False)
-    h += teaser(LANG, ['summer', 'nyx'], 'From the blog', 'tutorials &amp; honest reviews')
+    h += teaser(LANG, ['empties', 'summer', 'nyx'], 'From the blog', 'tutorials &amp; honest reviews')
     h += faq(LANG, 'popular questions', faq_items)
     h += footer(LANG, 'Contact me', 'Do you need help with creative make-up?',
                 "I'm committed to ensuring your satisfaction with bridal, event, or editorial makeup services. Reach out to plan your requirements.")
@@ -176,7 +176,7 @@ def wedding():
 </article></div></section>
 '''
     h += faq(LANG, 'wedding makeup questions', faq_items)
-    h += teaser(LANG, ['nyx', 'summer'])
+    h += teaser(LANG, ['nyx', 'empties'])
     h += tiles(LANG, [('Evening makeup', '/en/evening-makeup/', 'evening-5'), ('Makeup courses', '/en/courses/', 'course')])
     h += footer(LANG, 'Book your bridal consultation', 'Get in touch', 'Based in Prague, Czech Republic · Available for travel across Europe. Personalised quote within 24 hours.', (CAL, 'Book your appointment online +'))
     write(path, h)
@@ -247,7 +247,7 @@ EVENING = dict(
     f_label='Book your evening makeup', f_text='Based in Prague, Czech Republic · Available for travel. Personalised quote within 24 hours.')
 
 NUDE = dict(
-    posts=['summer', 'nyx'],
+    posts=['summer', 'empties'],
     path='/en/nude-makeup/', cs='/nude-liceni/', crumb='Nude makeup', tone='tone-blush',
     title='Natural Nude Makeup Prague | Makeup Artist Nikol Pavlova',
     desc='Natural nude makeup in Prague. Soft, skin-first looks for engagement shoots, portraits and civil ceremonies – healthy glowing skin without a heavy finish.',
@@ -390,7 +390,7 @@ def courses():
 </article></div></section>
 '''
     h += faq(LANG, 'makeup course questions', faq_items)
-    h += teaser(LANG, ['summer', 'nyx'], 'Practise at home', 'tutorials from the blog')
+    h += teaser(LANG, ['summer', 'nyx', 'empties'], 'Practise at home', 'tutorials from the blog')
     h += tiles(LANG, [('Wedding makeup', '/en/wedding/', 'wedding-5'), ('Nude makeup', '/en/nude-makeup/', 'nude-1')])
     h += footer(LANG, 'Book your makeup course', 'Get in touch', 'Lessons held in Prague, Czech Republic · In English or Czech. Personalised quote within 24 hours.', (CAL, 'Book your course online +'))
     write(path, h)

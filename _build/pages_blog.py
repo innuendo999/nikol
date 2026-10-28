@@ -404,6 +404,12 @@ def article(key, lang):
                    else '')
             items += f'<li><figure>{pic}<figcaption><span class="pg-name">{name}</span><span class="vtag {vcls}">{vcs if lang == "cs" else ven}</span></figcaption></figure></li>'
         grid_html = f'<h2 id="{gid}">{c["grid_h"]}</h2>\n<ul class="prod-grid" role="list">{items}</ul>\n'
+        if ex.get('credit'):
+            grid_html += f'<p class="fine-print">{ex["credit"][0 if lang == "cs" else 1]}</p>\n'
+        if ex.get('figure') and ex['figure'][0] in IMG:
+            fname, fcs, fen = ex['figure']
+            cap = fcs if lang == 'cs' else fen
+            grid_html += f'<figure class="art-figure">{I(fname, cap, sizes="(max-width: 900px) 100vw, 760px")}<figcaption class="fine-print">{cap}</figcaption></figure>\n'
     h += f'''<article aria-labelledby="page-h1">
 <header class="page-head post-head pb-48"><div class="wrap stack-28">
 {crumbs(lang, [t['home'], (t['blog'], t['blog_path']), (meta['crumb'], None)])}

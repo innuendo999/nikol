@@ -427,10 +427,13 @@ a.tile-panel:hover .more{transform:translateX(4px)}
 @media (max-width:600px){.prod-list{columns:1}}
 .cards3:has(> li:only-child){grid-template-columns:minmax(0,520px)}
 /* blog: product grid */
-.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));gap:12px;list-style:none;padding:0;margin:8px 0 16px}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));min-width:0;gap:12px;list-style:none;padding:0;margin:8px 0 16px}
 .prod-grid figure{display:flex;flex-direction:column;height:100%;background:var(--blush)}
 .prod-grid img,.pg-ph{width:100%;aspect-ratio:1;object-fit:contain;background:#fff}
 .pg-ph{display:flex;align-items:center;justify-content:center;font:600 13px/1 var(--f-sans);font-stretch:125%;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);background:var(--sand)}
 .prod-grid figcaption{display:flex;flex-direction:column;gap:10px;padding:14px;flex:1}
 .pg-name{font-size:14px;line-height:1.35;font-weight:600}
-@media (max-width:600px){.prod-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.prod-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.art-figure{margin:16px 0;display:flex;flex-direction:column;gap:8px}
+.art-figure img{width:100%;height:auto;background:#fff}
+.prod-grid .vtag{max-width:100%;letter-spacing:.06em;padding:8px 10px;white-space:normal}

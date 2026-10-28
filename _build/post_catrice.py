@@ -1,7 +1,7 @@
 """Article: full face of Catrice (video lJGqeU8JfXA). Products from the Catrice Twinkling Treasures advent calendar 2025
 plus the HD Liquid Coverage foundation and Melted Sun bronzer.
 
-Product photos: drop files into img/products/catrice/<slug>.jpg|png|webp, run python3 _build/images.py, then build."""
+Product photos (Catrice packshots, cut from the official calendar flat lay): drop files into img/products/catrice/<slug>.jpg|png|webp, run python3 _build/images.py, then build."""
 
 # slug, product name, verdict class, verdict label cs / en
 PRODUCTS = [
@@ -168,4 +168,7 @@ C['en'] = dict(
     bio='Makeup artist based in Prague since 2021. I do bridal, evening and commercial makeup and teach one-on-one courses. Every week on YouTube I show how I do makeup and which products I genuinely use.',
 )
 
-EXTRA = dict(products=[], grid=PRODUCTS, brands=BRANDS, about=('Recenze Catrice', 'Catrice makeup review'), video_name='Все обличчя Catrice')
+EXTRA = dict(products=[], grid=PRODUCTS,
+             credit=('Produktové fotografie: Catrice.', 'Product photos: Catrice.'),
+             figure=('prod-advent-calendar', 'Obsah adventního kalendáře Catrice Twinkling Treasures 2025. Foto: Catrice.',
+                     'Contents of the Catrice Twinkling Treasures 2025 advent calendar. Photo: Catrice.'), brands=BRANDS, about=('Recenze Catrice', 'Catrice makeup review'), video_name='Все обличчя Catrice')

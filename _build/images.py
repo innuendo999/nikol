@@ -17,6 +17,10 @@ for i in range(1, 16): SRC[f'wedding-{i}'] = (f'img/wedding/wedding-{i}.png', [4
 for i in range(1, 18): SRC[f'evening-{i}'] = (f'img/evening/evening-{i}.png', [400, 800])
 for i in range(1, 4): SRC[f'nude-{i}'] = (f'img/nude/nude-{i}.png', [400, 800])
 for i in range(1, 7): SRC[f'commercial-{i}'] = (f'img/commercial/commercial-{i}.png', [400, 800])
+import glob
+for f in sorted(glob.glob(os.path.join(ROOT, 'img', 'products', '*', '*'))):
+    if f.lower().endswith(('.jpg', '.jpeg', '.png', '.webp')):
+        SRC['prod-' + os.path.splitext(os.path.basename(f))[0]] = (os.path.relpath(f, ROOT), [300, 600])
 meta = {}
 for name, (src, widths) in SRC.items():
     im = Image.open(os.path.join(ROOT, src)).convert('RGB')

@@ -26,6 +26,8 @@ PAGES = {
     '/en/courses/': ('course-1000', 'sand', '50% 15%', 'One-on-one lessons', None),
     '/en/portfolio/': ('collage', 'paper', '', 'Bridal · evening · nude · commercial', None),
     '/blog/': ('nude-3-800', 'blush', '50% 30%', 'Tutoriály · recenze · tipy', None),
+    '/blog/recenze-catrice-cely-oblicej/': ('nikol-portrait-800', 'ox', '50% 22%', 'Recenze · celý obličej', 'Make-up, bronzer, pečená tvářenka a rty z adventního kalendáře'),
+    '/en/blog/full-face-of-catrice-review/': ('nikol-portrait-800', 'ox', '50% 22%', 'Reviews · full face', 'Foundation, bronzer, baked blush and lips from the advent calendar'),
     '/blog/dopotrebovana-kosmetika/': ('nikol-header-800', 'blush', '50% 20%', 'Recenze · 25 produktů', 'Co si koupím znovu a co už ne'),
     '/en/blog/beauty-empties-repurchase/': ('nikol-header-800', 'blush', '50% 20%', 'Reviews · 25 products', "What I'd buy again and what I wouldn't"),
     '/blog/letni-make-up-bez-make-upu/': ('nude-1-800', 'paper', '50% 30%', 'Tutoriál · léto', 'SPF, blur, krémové barvy a test fixačních sprejů'),

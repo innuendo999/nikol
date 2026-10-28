@@ -2,6 +2,19 @@
 from lib import img, sec_head
 
 POSTS = {
+    'catrice': {
+        'date': '2026-10-28', 'img': 'nikol-portrait', 'video': 'lJGqeU8JfXA',
+        'cs': dict(path='/blog/recenze-catrice-cely-oblicej/', crumb='Celý obličej Catrice', tag='Recenze',
+                   title='Celý obličej Catrice: poctivá recenze vizážistky',
+                   seo_title='Recenze Catrice: celý obličej a adventní kalendář | Nikol Pavlova',
+                   desc='Vizážistka Nikol Pavlova z Prahy testuje celý obličej Catrice: make-up HD Liquid Coverage, bronzer Melted Sun, pečenou tvářenku, toppery, tužky a rty z adventního kalendáře.',
+                   card='Celý obličej Catrice z adventního kalendáře: pečená tvářenka a topper nadchly, tužky na oči zklamaly a make-up dostal 6 z 10.'),
+        'en': dict(path='/en/blog/full-face-of-catrice-review/', crumb='Full Face of Catrice', tag='Reviews',
+                   title="Full Face of Catrice: A Makeup Artist's Honest Review",
+                   seo_title="Full Face of Catrice: A Makeup Artist's Honest Review | Nikol Pavlova",
+                   desc='Prague makeup artist Nikol Pavlova tests a full face of Catrice: HD Liquid Coverage foundation, Melted Sun bronzer, baked blush, glitter topper, pencils and lip products from the advent calendar.',
+                   card='A full face of Catrice from the advent calendar: the baked blush and topper impressed, the eye pencils disappointed and the foundation scored 6/10.'),
+    },
     'empties': {
         'date': '2026-10-22', 'img': 'nikol-header', 'video': 'pKt5euLMl9g',
         'cs': dict(path='/blog/dopotrebovana-kosmetika/', crumb='Dopotřebovaná kosmetika', tag='Recenze',
@@ -42,7 +55,7 @@ POSTS = {
                    card='I tested a full face of NYX and wore it through a working day: what earned a place in my kit and what I would skip.'),
     },
 }
-ORDER = ['empties', 'summer', 'nyx']   # newest first
+ORDER = ['catrice', 'empties', 'summer', 'nyx']   # newest first
 
 MONTHS = {
     'cs': ['ledna', 'února', 'března', 'dubna', 'května', 'června', 'července', 'srpna', 'září', 'října', 'listopadu', 'prosince'],

@@ -19,6 +19,7 @@ PAIRS = [
     ('/kurzy-liceni/', '/en/courses/', '0.8'),
     ('/portfolio/', '/en/portfolio/', '0.7'),
     ('/blog/', '/en/blog/', '0.6'),
+    ('/blog/recenze-catrice-cely-oblicej/', '/en/blog/full-face-of-catrice-review/', '0.6'),
     ('/blog/dopotrebovana-kosmetika/', '/en/blog/beauty-empties-repurchase/', '0.6'),
     ('/blog/letni-make-up-bez-make-upu/', '/en/blog/summer-no-makeup-makeup/', '0.6'),
     ('/blog/recenze-nyx-cely-oblicej/', '/en/blog/full-face-of-nyx-review/', '0.6'),
@@ -82,6 +83,7 @@ Key facts for accurate reference:
 ## Blog
 
 - [Blog (CZ)]({s}/blog/) · [Blog (EN)]({s}/en/blog/): Makeup tutorials, honest reviews and pro tips.
+- [Celý obličej Catrice]({s}/blog/recenze-catrice-cely-oblicej/) · [Full Face of Catrice]({s}/en/blog/full-face-of-catrice-review/): Full-face test of Catrice (HD Liquid Coverage, Melted Sun bronzer, Twinkling Treasures advent calendar) with a rating for each product.
 - [Dopotřebovaná kosmetika]({s}/blog/dopotrebovana-kosmetika/) · [Beauty empties]({s}/en/blog/beauty-empties-repurchase/): 25 used-up products (skincare, SPF, hair, body, makeup) with an honest repurchase verdict for each.
 - [Letní make-up bez make-upu]({s}/blog/letni-make-up-bez-make-upu/) · [Summer no-makeup makeup]({s}/en/blog/summer-no-makeup-makeup/): Light summer routine: SPF prep, foundation shade for freckled skin, blur instead of shine, setting sprays compared.
 - [Celý obličej NYX: poctivá recenze vizážistky]({s}/blog/recenze-nyx-cely-oblicej/) · [Full Face of NYX: A Makeup Artist's Honest Review]({s}/en/blog/full-face-of-nyx-review/): Full-face test of NYX products with an all-day wear test.

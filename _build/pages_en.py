@@ -97,7 +97,7 @@ def home():
 </section>
 '''
     h += reviews(LANG, 'what clients say', pick('zoe', 'nelli', 'glenn', 'polina', 'shirley', 'darya', 'beata', 'marie', 'lena'), top=False)
-    h += teaser(LANG, ['empties', 'summer', 'nyx'], 'From the blog', 'tutorials &amp; honest reviews')
+    h += teaser(LANG, ['catrice', 'empties', 'summer'], 'From the blog', 'tutorials &amp; honest reviews')
     h += faq(LANG, 'popular questions', faq_items)
     h += footer(LANG, 'Contact me', 'Do you need help with creative make-up?',
                 "I'm committed to ensuring your satisfaction with bridal, event, or editorial makeup services. Reach out to plan your requirements.")
@@ -207,7 +207,7 @@ def service(cfg):
 
 
 EVENING = dict(
-    posts=['nyx', 'summer'],
+    posts=['catrice', 'nyx'],
     path='/en/evening-makeup/', cs='/vecerni-liceni/', crumb='Evening makeup', tone='tone-ox',
     title='Evening & Ball Makeup Prague | Cocktail Makeup – Nikol Pavlova',
     desc='Evening, cocktail and ball makeup in Prague. Glamorous looks for galas, proms and parties – smoky eyes, statement lips and makeup that lasts all night.',
@@ -390,7 +390,7 @@ def courses():
 </article></div></section>
 '''
     h += faq(LANG, 'makeup course questions', faq_items)
-    h += teaser(LANG, ['summer', 'nyx', 'empties'], 'Practise at home', 'tutorials from the blog')
+    h += teaser(LANG, ['catrice', 'summer', 'nyx'], 'Practise at home', 'tutorials from the blog')
     h += tiles(LANG, [('Wedding makeup', '/en/wedding/', 'wedding-5'), ('Nude makeup', '/en/nude-makeup/', 'nude-1')])
     h += footer(LANG, 'Book your makeup course', 'Get in touch', 'Lessons held in Prague, Czech Republic · In English or Czech. Personalised quote within 24 hours.', (CAL, 'Book your course online +'))
     write(path, h)

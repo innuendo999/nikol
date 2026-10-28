@@ -97,7 +97,7 @@ def home():
 </section>
 '''
     h += reviews(LANG, 'co říkají klientky', pick('nelli', 'zoe', 'polinashu', 'erika', 'darya', 'marie', 'stepanka', 'beata', 'lena'), top=False)
-    h += teaser(LANG, ['empties', 'summer', 'nyx'], 'Z blogu', 'tutoriály a poctivé recenze')
+    h += teaser(LANG, ['catrice', 'empties', 'summer'], 'Z blogu', 'tutoriály a poctivé recenze')
     h += faq(LANG, 'nejčastější otázky', faq_items)
     h += footer(LANG, 'Kontaktujte mě', 'Máte dotaz nebo si přejete rezervovat termín?',
                 'Ráda vám pomohu vytvořit dokonalý look na váš speciální den. Neváhejte mě kontaktovat a společně naplánujeme vše potřebné.')
@@ -220,7 +220,7 @@ def service(cfg):
 BOOK_FAQ = ('Jak si mohu rezervovat termín?', f'Rezervovat můžete <a href="{CAL}">online přes Calendly</a>, telefonicky nebo SMS na <a href="tel:{TEL}">{TEL_H}</a>, e-mailem na <a href="mailto:{MAIL}">{MAIL}</a> nebo přes Instagram <a href="{IG}">@nikol__mua</a>. Obvykle odpovídám do několika hodin.')
 
 EVENING = dict(
-    posts=['nyx', 'summer'],
+    posts=['catrice', 'nyx'],
     path='/vecerni-liceni/', en='/en/evening-makeup/', crumb='Večerní líčení', tone='tone-ox',
     title='Večerní líčení Praha | Plesový a koktejlový make-up – Nikol Pavlova',
     desc='Večerní a plesové líčení v Praze. Glamour looky na plesy, galavečery, maturitní bály a večírky – smoky eyes, výrazné rty a make-up, který vydrží celý večer.',
@@ -404,7 +404,7 @@ def courses():
 </article></div></section>
 '''
     h += faq(LANG, 'otázky o kurzu líčení', faq_items)
-    h += teaser(LANG, ['summer', 'nyx', 'empties'], 'Procvičte si doma', 'tutoriály z blogu')
+    h += teaser(LANG, ['catrice', 'summer', 'nyx'], 'Procvičte si doma', 'tutoriály z blogu')
     h += tiles(LANG, [('Svatební líčení', '/svatebni-liceni/', 'wedding-5'), ('Nude makeup', '/nude-liceni/', 'nude-1')])
     h += footer(LANG, 'Rezervujte si kurz líčení', 'Kontaktujte mě', 'Lekce probíhají v Praze, ČR · Česky nebo anglicky. Osobní cenová nabídka do 24 hodin.',
                 (CAL, 'Rezervovat kurz online +'))

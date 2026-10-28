@@ -5,6 +5,7 @@ from lib import img as I
 import schema as S
 from posts import POSTS, ORDER, fmt_date, cards, teaser
 import post_empties
+import post_catrice
 
 L_BLOG = {
     'cs': dict(home=('Domů', '/'), blog='Blog', blog_path='/blog/', read='min čtení', by='Autorka', role='vizážistka, Praha',
@@ -329,8 +330,8 @@ NYX['cs'] = dict(
     bio='Vizážistka v Praze, kde žiji od roku 2021. Věnuji se svatebnímu, večernímu a editoriálnímu líčení a učím individuální kurzy. Na YouTube každý týden ukazuji, jak líčím a které produkty opravdu používám.',
 )
 
-CONTENT = {'summer': SUMMER, 'nyx': NYX, 'empties': post_empties.C}
-EXTRA = {'empties': post_empties.EXTRA, 'summer': dict(products=SUMMER_PRODUCTS, brands=SUMMER_BRANDS, about=('Make-up bez make-upu', 'No-makeup makeup'), video_name='Summer makeup 2.0'),
+CONTENT = {'summer': SUMMER, 'nyx': NYX, 'empties': post_empties.C, 'catrice': post_catrice.C}
+EXTRA = {'catrice': post_catrice.EXTRA, 'empties': post_empties.EXTRA, 'summer': dict(products=SUMMER_PRODUCTS, brands=SUMMER_BRANDS, about=('Make-up bez make-upu', 'No-makeup makeup'), video_name='Summer makeup 2.0'),
          'nyx': dict(products=[], brands=NYX_BRANDS, about=('Recenze NYX', 'NYX makeup review'), video_name='Все обличчя NYX',
                      upload='2026-03-20', video_desc='Nikol Pavlova applies a complete look using only NYX products and tests how it wears over a full day.')}
 
@@ -392,7 +393,23 @@ def article(key, lang):
         pid = 'produkty' if lang == 'cs' else 'products'
         prod_html = (f'<h2 id="{pid}">{t["products"]}</h2>\n<p class="fine-print">{t["products_note"]}</p>\n<ul class="prod-list">'
                      + ''.join(f'<li><a href="{u}" rel="nofollow sponsored">{n}</a></li>' for n, u in ex['products']) + '</ul>\n')
-    verdict_top = key == 'nyx'
+    verdict_top = key in ('nyx', 'catrice')
+    grid_html = ''
+    if ex.get('grid'):
+        gid = 'produkty' if lang == 'cs' else 'products'
+        items = ''
+        for slug, name, vcls, vcs, ven in ex['grid']:
+            iname = 'prod-' + slug
+            pic = (I(iname, name, sizes='(max-width: 600px) 50vw, 200px') if iname in IMG
+                   else '')
+            items += f'<li><figure>{pic}<figcaption><span class="pg-name">{name}</span><span class="vtag {vcls}">{vcs if lang == "cs" else ven}</span></figcaption></figure></li>'
+        grid_html = f'<h2 id="{gid}">{c["grid_h"]}</h2>\n<ul class="prod-grid" role="list">{items}</ul>\n'
+        if ex.get('credit'):
+            grid_html += f'<p class="fine-print">{ex["credit"][0 if lang == "cs" else 1]}</p>\n'
+        if ex.get('figure') and ex['figure'][0] in IMG:
+            fname, fcs, fen = ex['figure']
+            cap = fcs if lang == 'cs' else fen
+            grid_html += f'<figure class="art-figure">{I(fname, cap, sizes="(max-width: 900px) 100vw, 760px")}<figcaption class="fine-print">{cap}</figcaption></figure>\n'
     h += f'''<article aria-labelledby="page-h1">
 <header class="page-head post-head pb-48"><div class="wrap stack-28">
 {crumbs(lang, [t['home'], (t['blog'], t['blog_path']), (meta['crumb'], None)])}
@@ -408,7 +425,7 @@ def article(key, lang):
 <div class="art">
 <p class="opener">{c['opener']}</p>
 {c.get('pre', '')}
-{steps_html}{verdict_html if verdict_top else ''}{secs}
+{steps_html}{verdict_html if verdict_top else ''}{grid_html}{secs}
 {'' if verdict_top else verdict_html}
 <h2 id="{lessons_id}">{c['lessons_h']}</h2>
 <ol class="lessons">{lessons}</ol>
@@ -444,7 +461,7 @@ def index(lang):
         lead = 'Postupy, které používám na klientkách i na sobě, a poctivé recenze produktů. Psáno tak, abyste si vybrali lepší kosmetiku a vytvořili look, který vám sedí.'
         latest, more, topics_h, topics_sub, read_btn = 'Nejnovější článek', 'Další články', 'Témata', 'o čem píšu', 'Číst článek →'
         topics = [('Tutoriály', 'Krok za krokem: přirozený, letní i večerní make-up.', '1 článek', True),
-                  ('Recenze produktů', 'Testuji kosmetiku na sobě i v práci a říkám, co se vyplatí.', '2 články', True),
+                  ('Recenze produktů', 'Testuji kosmetiku na sobě i v práci a říkám, co se vyplatí.', '3 články', True),
                   ('Svatby a akce', 'Jak se připravit na make-up, který vydrží celý den.', 'Připravujeme', False)]
         alt = [('cs', path), ('en', '/en/blog/'), ('x-default', path)]
     else:
@@ -454,7 +471,7 @@ def index(lang):
         lead = 'Routines I use on clients and on myself, plus honest product reviews, written to help you choose better products and create looks that suit you.'
         latest, more, topics_h, topics_sub, read_btn = 'Latest article', 'More articles', 'Topics', 'what I write about', 'Read the article →'
         topics = [('Tutorials', 'Step by step: natural, summer and evening makeup.', '1 article', True),
-                  ('Product reviews', 'I test products on myself and at work and tell you what is worth it.', '2 articles', True),
+                  ('Product reviews', 'I test products on myself and at work and tell you what is worth it.', '3 articles', True),
                   ('Bridal &amp; events', 'How to prepare for makeup that lasts all day.', 'Coming soon', False)]
         alt = [('cs', '/blog/'), ('en', path), ('x-default', '/blog/')]
     graph = [{'@type': 'Blog', '@id': SITE + path + '#blog', 'name': f'Nikol Pavlova – {t["blog"]}', 'url': SITE + path, 'inLanguage': lang,

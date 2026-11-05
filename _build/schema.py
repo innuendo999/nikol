@@ -34,6 +34,13 @@ def _fix(node):
     if not isinstance(node, dict):
         return node
     node = {k: _fix(v) for k, v in node.items()}
+    if node.get('@type') == 'PostalAddress':
+        cs = node.get('addressLocality') == 'Praha'
+        node = {'@type': 'PostalAddress', 'streetAddress': 'Prvního pluku 8a', 'postalCode': '180 00',
+                'addressLocality': 'Praha' if cs else 'Prague', 'addressRegion': 'Praha' if cs else 'Prague',
+                'addressCountry': 'CZ'}
+    if node.get('@type') == 'GeoCoordinates':
+        node = {'@type': 'GeoCoordinates', 'latitude': 50.092, 'longitude': 14.439}
     if node.get('@id') == SITE + '/#business' and len(node) > 1:
         node['name'] = BUSINESS_NAME
         node['alternateName'] = ALT_NAMES

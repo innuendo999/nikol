@@ -23,7 +23,7 @@ def home():
     title = 'Nikol Pavlova - Professional Makeup Artist in Prague'
     desc = 'Professional English-speaking makeup artist in Prague. Specialized in bridal, evening styling and courses. Book your appointment.'
     faq_items = [
-        ('Where are you based and do you travel for bookings?', 'I am a professional makeup artist based in Prague, Czech Republic. I work across all districts of Prague – including Praha 1 (Old Town), Praha 2 (Vinohrady), and Praha 7 – and I also travel to other cities in the Czech Republic and across Europe for destination weddings, photo shoots and events.'),
+        ('Where are you based and do you travel for bookings?', 'I am a professional makeup artist based in Prague 8 – Karlín (Prvního pluku 8a), Czech Republic. I work across all districts of Prague – including Praha 1 (Old Town), Praha 2 (Vinohrady), and Praha 8 (Karlín) – and I also travel to other cities in the Czech Republic and across Europe for destination weddings, photo shoots and events.'),
         ('What makeup services do you offer?', 'I offer wedding and bridal makeup, evening and cocktail styling, natural nude looks, prom and ball makeup, commercial and editorial makeup for photo shoots, and personalized one-on-one makeup courses for clients who want to learn professional techniques.'),
         ('Do you speak English?', 'Yes. I provide makeup services fluently in English and Czech, which makes me a comfortable choice for international clients, expats living in Prague, and couples planning a destination wedding in the Czech Republic.'),
         ('What is included in the wedding makeup package?', 'The wedding package includes a bridal trial before the wedding day, full wedding-day makeup application, false lashes, and a personal touch-up kit so your look stays fresh from the ceremony through the reception.'),
@@ -43,7 +43,7 @@ def home():
 </div></div>
 </section>
 '''
-    h += marquee(['Wedding makeup', 'Nude makeup', 'Evening makeup', 'Commercial', 'Makeup courses', 'Prague 7 · available for travel'])
+    h += marquee(['Wedding makeup', 'Nude makeup', 'Evening makeup', 'Commercial', 'Makeup courses', 'Prague 8 – Karlín · available for travel'])
     h += f'''<section class="wrap intro" id="about" aria-labelledby="about-h">
 <div class="head"><p class="lbl red">About me</p><h2 class="mid-h" id="about-h">Nikol Pavlova is a makeup artist in Prague</h2><p class="serif tag">creating makeup that still feels like you</p></div>
 <div class="pair">{I('nikol-portrait', 'Nikol Pavlova – makeup artist portrait', sizes='260px', style='object-position:50% 25%')}{I('nikol-header', 'Nikol Pavlova – makeup artist in Prague', sizes='260px', style='object-position:50% 20%')}</div>
@@ -241,7 +241,7 @@ EVENING = dict(
     faq_sub='evening makeup questions', faq=[
         ('How far in advance should I book?', 'For evening makeup and shoots, 2–3 weeks is usually enough, though last-minute slots can sometimes be arranged – just get in touch.'),
         ('How much does evening makeup cost in Prague?', 'Prices depend on the type of service, location and timing. Send me your event details and I will reply with a personalised quote within 24 hours.'),
-        ('Do you come to me?', 'Yes. I work across all districts of Prague – including Praha 1 (Old Town), Praha 2 (Vinohrady) and Praha 7 – and travel to other cities in the Czech Republic and across Europe.'),
+        ('Do you come to me?', 'Yes. I work across all districts of Prague – including Praha 1 (Old Town), Praha 2 (Vinohrady) and Praha 8 (Karlín) – and travel to other cities in the Czech Republic and across Europe.'),
         ('Do you speak English?', 'Yes, I speak fluent English and Czech, so international clients and expats in Prague are very welcome.'), BOOK_FAQ],
     related=[('Wedding makeup', '/en/wedding/', 'wedding-5'), ('Commercial makeup', '/en/commercial-makeup/', 'commercial-4')],
     f_label='Book your evening makeup', f_text='Based in Prague, Czech Republic · Available for travel. Personalised quote within 24 hours.')

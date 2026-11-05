@@ -19,7 +19,7 @@ def home():
     title = 'Profesionální vizážistka Praha - Líčení & Kurzy | Nikol Pavlova'
     desc = 'Hledáte zkušenou vizážistku v Praze? Nabízím profesionální svatební líčení, večerní make-up a kurzy líčení. Rezervujte si termín online.'
     faq_items = [
-        ('Kde působíte a jezdíte za klienty?', 'Jsem profesionální vizážistka se sídlem v Praze. Pracuji ve všech pražských čtvrtích – včetně Prahy 1 (Staré Město), Prahy 2 (Vinohrady) a Prahy 7 – a zároveň cestuji do dalších měst v České republice i po Evropě za svatbami, focením a akcemi.'),
+        ('Kde působíte a jezdíte za klienty?', 'Jsem profesionální vizážistka se sídlem v Praze 8 – Karlín (Prvního pluku 8a). Pracuji ve všech pražských čtvrtích – včetně Prahy 1 (Staré Město), Prahy 2 (Vinohrady) a Prahy 8 (Karlín) – a zároveň cestuji do dalších měst v České republice i po Evropě za svatbami, focením a akcemi.'),
         ('Jaké služby líčení nabízíte?', 'Nabízím svatební líčení, večerní a koktejlový make-up, přirozené nude looky, plesový make-up, komerční a editorial líčení pro focení i osobní kurzy líčení pro klienty, kteří se chtějí naučit profesionální techniky.'),
         ('V jakých jazycích mluvíte?', 'Mluvím plynně česky a anglicky, takže nabízím pohodlný servis jak českým, tak mezinárodním klientům, expatům žijícím v Praze i párům plánujícím destination svatbu v České republice.'),
         ('Co obsahuje balíček svatebního líčení?', 'Svatební balíček zahrnuje předsvatební zkoušku líčení, kompletní líčení v den svatby, umělé řasy a osobní touch-up kit, aby váš look vypadal skvěle od obřadu až po hostinu.'),
@@ -42,7 +42,7 @@ def home():
 </div>
 </section>
 '''
-    h += marquee(['Svatební líčení', 'Nude makeup', 'Večerní líčení', 'Komerční líčení', 'Kurzy líčení', 'Praha 7 · možnost dojezdu'])
+    h += marquee(['Svatební líčení', 'Nude makeup', 'Večerní líčení', 'Komerční líčení', 'Kurzy líčení', 'Praha 8 – Karlín · možnost dojezdu'])
     h += f'''<section class="wrap intro" id="about" aria-labelledby="about-h">
 <div class="head"><p class="lbl red">O mně</p><h2 class="mid-h" id="about-h">Nikol Pavlova je vizážistka v Praze</h2><p class="serif tag">tvořící líčení, ve kterém se cítíš jako ty</p></div>
 <div class="pair">{I('nikol-portrait', 'Nikol Pavlova – portrét vizážistky', sizes='260px', style='object-position:50% 25%')}{I('nikol-header', 'Nikol Pavlova – profesionální vizážistka v Praze', sizes='260px', style='object-position:50% 20%')}</div>
@@ -254,7 +254,7 @@ EVENING = dict(
     faq_sub='otázky o večerním líčení', faq=[
         ('Jak dlouho dopředu si rezervovat termín?', 'Pro večerní líčení a focení obvykle stačí 2–3 týdny, někdy lze zařídit i last-minute termín – stačí mě kontaktovat.'),
         ('Kolik stojí večerní líčení v Praze?', 'Ceny závisí na typu služby, lokaci a termínu. Napište mi prosím detaily vaší akce a do 24 hodin vám pošlu osobní cenovou nabídku.'),
-        ('Přijedete za mnou?', 'Ano. Pracuji ve všech pražských čtvrtích – včetně Prahy 1 (Staré Město), Prahy 2 (Vinohrady) a Prahy 7 – a cestuji i do dalších měst v České republice a po Evropě.'),
+        ('Přijedete za mnou?', 'Ano. Pracuji ve všech pražských čtvrtích – včetně Prahy 1 (Staré Město), Prahy 2 (Vinohrady) a Prahy 8 (Karlín) – a cestuji i do dalších měst v České republice a po Evropě.'),
         ('Mluvíte anglicky?', 'Ano, mluvím plynně česky a anglicky, takže se domluvíme i s mezinárodními klienty a expaty žijícími v Praze.'), BOOK_FAQ],
     related=[('Svatební líčení', '/svatebni-liceni/', 'wedding-5'), ('Komerční líčení', '/komercni-liceni/', 'commercial-4')],
     f_label='Rezervujte si večerní líčení', f_text='Působím v Praze, ČR · Možnost dojezdu. Osobní nabídka do 24 hodin.')

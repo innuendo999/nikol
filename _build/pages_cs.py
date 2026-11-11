@@ -14,7 +14,7 @@ def alts(cs, en):
 
 
 def season_banner():
-    return f'''<section class="sec--tight" aria-label="Plesová sezóna"><div class="wrap"><a class="banner" href="/plesove-liceni/"><span class="txt"><span class="lbl pink">Plesová sezóna 2027</span><span class="mid-h">Líčení i účes na ples</span><span class="serif" style="font-size:20px;color:#E9DCD8">Maturitní, reprezentační i firemní plesy. Líčení 2 500 Kč, líčení s účesem 4 500 Kč – lednové a únorové soboty se plní nejdřív.</span><span class="btn btn--pink">Plesové líčení →</span></span><span class="img">{I('evening-14', '', sizes='(max-width: 900px) 100vw, 50vw', style='object-position:50% 25%')}</span></a></div></section>
+    return f'''<section class="sec--tight" aria-label="Plesová sezóna"><div class="wrap"><a class="banner" href="/plesove-liceni/"><span class="txt"><span class="lbl pink">Plesová sezóna 2027</span><span class="mid-h">Líčení i účes na ples</span><span class="serif" style="font-size:20px;color:#E9DCD8">Maturitní, reprezentační i firemní plesy. Líčení 2 500 Kč, líčení s účesem 4 500 Kč (ušetříte 500 Kč) – lednové a únorové soboty se plní nejdřív.</span><span class="btn btn--pink">Plesové líčení →</span></span><span class="img">{I('evening-14', '', sizes='(max-width: 900px) 100vw, 50vw', style='object-position:50% 25%')}</span></a></div></section>
 '''
 
 
@@ -28,7 +28,7 @@ def home():
         ('Jaké služby líčení nabízíte?', 'Nabízím svatební líčení, večerní make-up, <a href="/plesove-liceni/">plesové líčení a účesy</a>, <a href="/liceni-na-akce/">líčení na akce a firemní události</a>, přirozené nude looky, komerční a editorial líčení pro focení i osobní kurzy líčení pro klienty, kteří se chtějí naučit profesionální techniky.'),
         ('V jakých jazycích mluvíte?', 'Mluvím plynně česky a anglicky, takže nabízím pohodlný servis jak českým, tak mezinárodním klientům, expatům žijícím v Praze i párům plánujícím destination svatbu v České republice.'),
         ('Co obsahuje balíček svatebního líčení?', 'Svatební balíček zahrnuje předsvatební zkoušku líčení, kompletní líčení v den svatby, umělé řasy a osobní touch-up kit, aby váš look vypadal skvěle od obřadu až po hostinu.'),
-        ('Kolik stojí líčení v Praze?', 'Večerní, plesové líčení a líčení na akce stojí 2 500 Kč, účes 2 000 Kč a líčení i účes společně 4 500 Kč. Svatební balíčky a komerční zakázky cením individuálně – napište mi detaily a do 24 hodin vám pošlu nabídku. Výjezd se účtuje zvlášť podle lokace.'),
+        ('Kolik stojí líčení v Praze?', 'Večerní, plesové líčení a líčení na akce stojí 2 500 Kč, účes 2 500 Kč a líčení i účes společně jen 4 500 Kč – ušetříte 500 Kč. Svatební balíčky a komerční zakázky cením individuálně – napište mi detaily a do 24 hodin vám pošlu nabídku. Výjezd se účtuje zvlášť podle lokace.'),
         ('Jak dlouho dopředu si rezervovat termín?', 'Pro svatby doporučuji rezervaci 6–12 měsíců dopředu, zejména v hlavní sezóně od května do září. Pro večerní líčení a focení obvykle stačí 2–3 týdny, někdy lze zařídit i last-minute termín – stačí mě kontaktovat.'),
         ('Jak probíhá kurz líčení?', 'Kurzy jsou osobní (one-on-one) lekce přizpůsobené vaší úrovni a cílům – od běžného líčení pro sebe až po profesionální techniky pro začínající vizážistky. Probereme přípravu pleti, teorii barev, aplikační techniky a výběr produktů přímo na vaší tváři.'),
         ('Jak si mohu rezervovat termín?', f'Rezervovat můžete <a href="{CAL}">online přes Calendly</a>, telefonicky nebo SMS na <a href="tel:{TEL}">{TEL_H}</a>, e-mailem na <a href="mailto:{MAIL}">{MAIL}</a> nebo přes Instagram <a href="{IG}">@nikol__mua</a>. Obvykle odpovídám do několika hodin.'),
@@ -233,7 +233,7 @@ EVENING = dict(
     title='Večerní líčení Praha | Glam make-up a smoky eyes – Nikol Pavlova',
     desc='Večerní líčení v Praze: soft glam, smoky eyes, výrazné rty i Hollywood glam. Make-up 2 500 Kč, s účesem 4 500 Kč. Look, který vydrží celý večer.',
     service_name='Večerní líčení Praha', service_type='Večerní make-up',
-    offers=[('Večerní líčení', 2500), ('Účes', 2000), ('Večerní líčení a účes', 4500)],
+    offers=[('Večerní líčení', 2500), ('Účes', 2500), ('Večerní líčení a účes', 4500)],
     big='Večerní<br>líčení', sub='v Praze – glam, smoky eyes a výrazné rty',
     lead='Večerní looky od jemného soft glamu po dramatické smoky eyes. Vymodelované lícní kosti, výrazné rty a zářivá pleť – dokončené technikami, které vydrží pod fotografickým bleskem i v ambientním večerním světle.',
     buttons=[('Rezervovat termín +', CAL), ('Styly líčení', '#grid-h')], hero_img='evening-5', hero_alt='Večerní líčení Praha – elegantní glamour look',
@@ -249,7 +249,7 @@ EVENING = dict(
         ('panel', '04', 'Hollywood glam', 'Dokonalá pleť, linka a klasické rudé rty – nadčasový look na velký večer.', False), ('img', 'evening-4', 'Večerní glamour styling')],
     price_title='Večerní líčení a účes', price_note='Výjezd se účtuje zvlášť podle lokace. Umělé řasy a výjezd upřesníme při rezervaci.',
     price_cols=[('Večerní líčení', '2 500 Kč', ['Příprava pleti', 'Make-up, který vydrží celý večer', 'Ladění k šatům a účesu'], 'Rezervovat +'),
-                ('Líčení + účes', '4 500 Kč', ['Večerní líčení', 'Účes', 'V jednom termínu, cca 2 hodiny'], 'Rezervovat +')],
+                ('Líčení + účes', '4 500 Kč', ['Večerní líčení', 'Účes', 'V jednom termínu, cca 2 hodiny', 'Ušetříte 500 Kč'], 'Rezervovat +')],
     price_href=CAL,
     steps_title='Průběh večerního líčení', steps=[
         ('Poptávka', 'Napište mi datum, místo a typ akce – telefonicky, SMS, e-mailem nebo přes Instagram. Obvykle odpovídám do několika hodin.'),
@@ -263,7 +263,7 @@ EVENING = dict(
     rv_sub='líčení, které vydrží do večera', reviews=pick('nelli', 'stepanka', 'glenn'),
     faq_sub='otázky o večerním líčení', faq=[
         ('Jak dlouho dopředu si rezervovat termín?', 'Pro večerní líčení a focení obvykle stačí 2–3 týdny, někdy lze zařídit i last-minute termín – stačí mě kontaktovat.'),
-        ('Kolik stojí večerní líčení v Praze?', 'Večerní líčení stojí 2 500 Kč, účes 2 000 Kč a líčení i účes společně 4 500 Kč. Výjezd se účtuje zvlášť podle lokace.'),
+        ('Kolik stojí večerní líčení v Praze?', 'Večerní líčení stojí 2 500 Kč, účes 2 500 Kč a líčení i účes společně jen 4 500 Kč – ušetříte 500 Kč. Výjezd se účtuje zvlášť podle lokace.'),
         ('Přijedete za mnou?', 'Ano. Pracuji ve všech pražských čtvrtích – včetně Prahy 1 (Staré Město), Prahy 2 (Vinohrady) a Prahy 8 (Karlín) – a cestuji i do dalších měst v České republice a po Evropě.'),
         ('Mluvíte anglicky?', 'Ano, mluvím plynně česky a anglicky, takže se domluvíme i s mezinárodními klienty a expaty žijícími v Praze.'), BOOK_FAQ],
     related=[('Plesové líčení', '/plesove-liceni/', 'evening-14'), ('Líčení na akce', '/liceni-na-akce/', 'evening-1')],
@@ -278,7 +278,7 @@ PLESY = dict(
     title='Plesové líčení a účes Praha | Make-up na maturitní ples',
     desc='Plesové líčení a účes v Praze s výjezdem až k vám. Make-up, který vydrží do rána a skvěle vypadá na fotkách. Volné termíny na plesovou sezónu 2027.',
     service_name='Plesové líčení a účes Praha', service_type='Plesový make-up a účes',
-    offers=[('Plesové líčení', 2500), ('Plesový účes', 2000), ('Plesové líčení a účes', 4500)],
+    offers=[('Plesové líčení', 2500), ('Plesový účes', 2500), ('Plesové líčení a účes', 4500)],
     big='Plesové<br>líčení', sub='v Praze – make-up, který vydrží do rána',
     lead='Líčení i účes na maturitní, reprezentační i firemní plesy. Přijedu za vámi domů nebo do hotelu kdekoli v Praze a připravím look, který vydrží celou noc, tanec i fotky s bleskem.',
     buttons=[('Ověřit volný termín +', CAL), ('Ceník', '#packages')], hero_img='evening-14',
@@ -295,8 +295,8 @@ PLESY = dict(
         ('panel', '04', 'Smoky eyes &amp; výrazné rty', 'Dramatický večerní look k černým, rudým a sametovým šatům.', False), ('img', 'evening-6', 'Výrazný večerní look na ples')],
     price_title='Plesové líčení a účes', price_note=PRICE_NOTE + ' Umělé řasy, cenu pro skupinu kamarádek a výjezd upřesníme při rezervaci.',
     price_cols=[('Plesové líčení', '2 500 Kč', ['Příprava pleti', 'Make-up, který vydrží do rána', 'Ladění k šatům a účesu', 'Tipy na opravy během večera'], 'Rezervovat +'),
-                ('Plesový účes', '2 000 Kč', ['Drdol, vlny nebo polorozpuštěný účes', 'Fixace na celou noc', 'Ladění k šatům a doplňkům'], 'Rezervovat +'),
-                ('Líčení + účes', '4 500 Kč', ['Plesové líčení', 'Plesový účes', 'V jednom termínu, cca 2 hodiny', 'Maturantka i maminka'], 'Rezervovat +')],
+                ('Plesový účes', '2 500 Kč', ['Drdol, vlny nebo polorozpuštěný účes', 'Fixace na celou noc', 'Ladění k šatům a doplňkům'], 'Rezervovat +'),
+                ('Líčení + účes', '4 500 Kč', ['Plesové líčení', 'Plesový účes', 'V jednom termínu, cca 2 hodiny', 'Ušetříte 500 Kč', 'Maturantka i maminka'], 'Rezervovat +')],
     price_href=CAL,
     steps_title='Průběh plesového líčení', steps=[
         ('Rezervace', 'Napište mi datum plesu, čas odjezdu a místo. V plesové sezóně rezervujte 4–6 týdnů předem – soboty se plní nejrychleji.'),
@@ -312,7 +312,7 @@ PLESY = dict(
 ''',
     rv_sub='líčení a účes, které vydrží', reviews=pick('zoe_c', 'shirley', 'nelli'),
     faq_sub='otázky o plesovém líčení', faq=[
-        ('Kolik stojí plesové líčení v Praze?', 'Plesové líčení stojí 2 500 Kč, plesový účes 2 000 Kč a líčení i účes společně 4 500 Kč. Výjezd se účtuje zvlášť podle lokace.'),
+        ('Kolik stojí plesové líčení v Praze?', 'Plesové líčení stojí 2 500 Kč, plesový účes 2 500 Kč a líčení i účes společně jen 4 500 Kč – ušetříte 500 Kč. Výjezd se účtuje zvlášť podle lokace.'),
         ('Děláte i plesové účesy?', 'Ano. Připravím líčení i účes v jednom termínu – od elegantního drdolu po hollywoodské vlny. Pošlete mi fotku šatů a inspiraci.'),
         ('Jak dlouho dopředu si mám termín rezervovat?', 'V plesové sezóně (leden–únor) doporučuji 4–6 týdnů předem, soboty mizí nejrychleji. Mimo sezónu obvykle stačí 2–3 týdny.'),
         ('Vydrží líčení celou noc?', 'Ano. Pleť připravím, make-up fixuji ve vrstvách a používám voděodolné produkty. Rtěnku vám nechám na drobné opravy.'),
@@ -331,7 +331,7 @@ AKCE = dict(
     title='Líčení na akce Praha | Vizážistka na firemní akce a večírky',
     desc='Líčení a účes na společenské události, galavečery a firemní akce v Praze. Individuálně i pro skupiny, česky i anglicky. Rezervace online nebo telefonicky.',
     service_name='Líčení na akce Praha', service_type='Líčení a účes na společenské události',
-    offers=[('Líčení na akci', 2500), ('Účes na akci', 2000), ('Líčení a účes na akci', 4500)],
+    offers=[('Líčení na akci', 2500), ('Účes na akci', 2500), ('Líčení a účes na akci', 4500)],
     big='Líčení<br>na akce', sub='a společenské události v Praze',
     lead='Galavečer, firemní večírek, konference, narozeniny nebo rozlučka se svobodou. Nalíčím a učešu vás i celou skupinu – u vás, v hotelu nebo přímo na místě akce.',
     buttons=[('Rezervovat online +', CAL), (f'Zavolat {TEL_H}', f'tel:{TEL}'), ('Napsat e-mail', f'mailto:{MAIL}')], hero_img='evening-1',
@@ -348,8 +348,8 @@ AKCE = dict(
         ('img', 'evening-2', 'Přirozený make-up před kamerou'), ('panel', '04', 'Před kamerou a na pódiu', 'Make-up pro speakery, moderátory a natáčení, který funguje ve světle reflektorů.', False)],
     price_title='Ceník za osobu', price_note=PRICE_NOTE + ' Opravy během akce, cenu pro skupiny a výjezd upřesníme při rezervaci.',
     price_cols=[('Líčení na akci', '2 500 Kč', ['Příprava pleti', 'Make-up, který vydrží celý večer', 'Ladění k šatům a charakteru akce'], 'Rezervovat +'),
-                ('Účes na akci', '2 000 Kč', ['Drdol, vlny nebo uhlazený účes', 'Fixace na celý večer'], 'Rezervovat +'),
-                ('Líčení + účes', '4 500 Kč', ['Líčení na akci', 'Účes', 'V jednom termínu, cca 2 hodiny'], 'Rezervovat +')],
+                ('Účes na akci', '2 500 Kč', ['Drdol, vlny nebo uhlazený účes', 'Fixace na celý večer'], 'Rezervovat +'),
+                ('Líčení + účes', '4 500 Kč', ['Líčení na akci', 'Účes', 'V jednom termínu, cca 2 hodiny', 'Ušetříte 500 Kč'], 'Rezervovat +')],
     price_href=CAL,
     steps_title='Průběh líčení na akci', steps=[
         ('Poptávka', f'Zavolejte na <a href="tel:{TEL}">{TEL_H}</a>, napište na <a href="mailto:{MAIL}">{MAIL}</a> nebo si rovnou vyberte termín v <a href="{CAL}">Calendly</a>. Uveďte datum, čas, místo a počet osob.'),
@@ -362,7 +362,7 @@ AKCE = dict(
         ('evening-4', 'Elegantní make-up na firemní akci'), ('wedding-2', 'Skupinové líčení – příprava více osob')],
     rv_sub='looky, které vydrží celý večer', reviews=pick('zoe', 'glenn', 'erika'),
     faq_sub='otázky o líčení na akce', faq=[
-        ('Kolik stojí líčení na akci?', 'Líčení stojí 2 500 Kč, účes 2 000 Kč a líčení i účes společně 4 500 Kč za osobu. Výjezd se účtuje zvlášť podle lokace.'),
+        ('Kolik stojí líčení na akci?', 'Za osobu: líčení 2 500 Kč, účes 2 500 Kč, líčení i účes společně jen 4 500 Kč – ušetříte 500 Kč. Výjezd se účtuje zvlášť podle lokace.'),
         ('Kolik osob zvládnete?', 'Záleží na čase, který máme. Počítejte zhruba 60–75 minut na samotné líčení a 2 hodiny na líčení s účesem na osobu – podle toho připravím časový plán.'),
         ('Můžete zůstat na akci a dělat opravy?', 'Ano, podle domluvy. Rozsah a cenu upřesníme při rezervaci.'),
         ('Přijedete na místo akce?', 'Ano, do hotelu, kanceláře i na místo konání kdekoli v Praze, po domluvě i mimo Prahu. Výjezd se účtuje zvlášť podle lokace.'),

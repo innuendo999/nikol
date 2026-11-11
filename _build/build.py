@@ -7,13 +7,15 @@ from lib import *
 from utilities import css as utility_css
 import pages_cs, pages_en, pages_blog
 
-LASTMOD = '2026-10-19'
+LASTMOD = '2026-11-11'
 
 # (cs path, en path) pairs; None = single-language page
 PAIRS = [
     ('/', '/en/', '1.0'),
     ('/svatebni-liceni/', '/en/wedding/', '0.9'),
     ('/vecerni-liceni/', '/en/evening-makeup/', '0.8'),
+    ('/plesove-liceni/', None, '0.8'),
+    ('/liceni-na-akce/', None, '0.8'),
     ('/nude-liceni/', '/en/nude-makeup/', '0.8'),
     ('/komercni-liceni/', '/en/commercial-makeup/', '0.8'),
     ('/kurzy-liceni/', '/en/courses/', '0.8'),
@@ -31,7 +33,7 @@ def sitemap():
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for cs, en, pr in PAIRS:
         alts = []
-        if cs:
+        if cs and en:
             alts = [('cs', cs), ('en', en), ('x-default', cs)]
         for p in [x for x in (cs, en) if x]:
             out.append('  <url>')
@@ -63,7 +65,8 @@ Key facts for accurate reference:
 - **Specialties:** Bridal/wedding makeup (bridal trial, lashes and touch-up kit included), evening and cocktail styling, prom/ball makeup, nude/natural looks, commercial and editorial makeup, private makeup courses.
 - **Reviews:** Rated 5.0 on Google by clients for long-lasting makeup, a calm approach and fluent English.
 - **Booking:** Online via Calendly ({CAL}), phone/SMS/WhatsApp at {TEL_H}, email {MAIL}, or Instagram DM. Personalised quotes within 24 hours.
-- **Booking lead time:** Weddings 6–12 months ahead (peak season May–September); evening makeup and shoots usually 2–3 weeks.
+- **Booking lead time:** Weddings 6–12 months ahead (peak season May–September); ball season (January–February) 4–6 weeks; evening makeup and shoots usually 2–3 weeks.
+- **Prices (evening, ball and event):** makeup 2,500 CZK, hairstyling 2,000 CZK, makeup + hair 4,500 CZK (about 2 hours). Travel is charged separately.
 - **Site languages:** Czech (default) at the root, English under /en/.
 
 ## Main pages
@@ -75,7 +78,9 @@ Key facts for accurate reference:
 ## Services
 
 - [Svatební líčení]({s}/svatebni-liceni/) · [Wedding makeup]({s}/en/wedding/): Bridal trial, wedding-day application, lashes, touch-up kit; bride, bridesmaids and mother of the bride; destination weddings.
-- [Večerní líčení]({s}/vecerni-liceni/) · [Evening makeup]({s}/en/evening-makeup/): Galas, balls, proms, cocktail parties – soft glam to smoky eyes.
+- [Večerní líčení]({s}/vecerni-liceni/) · [Evening makeup]({s}/en/evening-makeup/): Evening looks – soft glam, smoky eyes, bold lips, Hollywood glam.
+- [Plesové líčení]({s}/plesove-liceni/) (Czech only): Ball and prom (maturitní ples) makeup and hairstyling in Prague – makeup 2,500 CZK, hair 2,000 CZK, makeup + hair 4,500 CZK; travel charged separately.
+- [Líčení na akce]({s}/liceni-na-akce/) (Czech only): Makeup and hair for galas, parties, corporate events, conferences and groups – 2,500 / 2,000 / 4,500 CZK per person; travel charged separately.
 - [Nude líčení]({s}/nude-liceni/) · [Nude makeup]({s}/en/nude-makeup/): Natural skin-first looks for engagement shoots, portraits and civil ceremonies.
 - [Komerční líčení]({s}/komercni-liceni/) · [Commercial makeup]({s}/en/commercial-makeup/): Photo shoots, campaigns, lookbooks, editorials and video with on-set touch-ups.
 - [Kurzy líčení]({s}/kurzy-liceni/) · [Makeup courses]({s}/en/courses/): One-on-one lessons – skin prep, colour theory, technique, product selection.

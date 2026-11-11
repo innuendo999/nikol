@@ -61,6 +61,15 @@ def faq(path, lang, items):
         {'@type': 'Question', 'name': strip(q), 'acceptedAnswer': {'@type': 'Answer', 'text': strip(a)}} for q, a in items]}
 
 
+def offer(o):
+    """o: a service name, or (name, price in CZK) for a fixed price."""
+    if isinstance(o, tuple):
+        name, price = o
+        return {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': name},
+                'price': str(price), 'priceCurrency': 'CZK'}
+    return {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': o}}
+
+
 def service_page(lang, path, title, desc, service_name, service_type, image, crumb_items, faq_items, offers=None):
     graph = [
         {'@type': 'WebPage', '@id': SITE + path + '#webpage', 'url': SITE + path, 'name': title, 'description': desc,
@@ -73,7 +82,7 @@ def service_page(lang, path, title, desc, service_name, service_type, image, cru
          'availableLanguage': ['cs', 'en', 'uk'],
          'potentialAction': {'@type': 'ReserveAction', 'target': {'@type': 'EntryPoint', 'urlTemplate': CAL}},
          **({'hasOfferCatalog': {'@type': 'OfferCatalog', 'name': service_name, 'itemListElement': [
-             {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': o}} for o in offers]}} if offers else {})},
+             offer(o) for o in offers]}} if offers else {})},
         breadcrumb(path, crumb_items),
         faq(path, lang, faq_items),
     ]

@@ -13,7 +13,9 @@ from lib import ROOT, og_slug
 PAGES = {
     '/': ('nikol-hero-1280', 'paper', '50% 28%', 'Vizážistka · Praha', None),
     '/svatebni-liceni/': ('wedding-5-800', 'paper', '50% 30%', 'Svatby · Praha a Evropa', None),
-    '/vecerni-liceni/': ('evening-5-800', 'ox', '50% 25%', 'Plesy · galavečery · večírky', None),
+    '/vecerni-liceni/': ('evening-5-800', 'ox', '50% 25%', 'Glam · smoky eyes · výrazné rty', None),
+    '/plesove-liceni/': ('evening-14-800', 'ox', '50% 20%', 'Plesová sezóna · líčení i účes', None),
+    '/liceni-na-akce/': ('evening-1-800', 'sand', '50% 20%', 'Galavečery · firemní akce · skupiny', None),
     '/nude-liceni/': ('nude-1-800', 'blush', '50% 30%', 'Přirozený look', None),
     '/komercni-liceni/': ('commercial-4-800', 'ink', '50% 30%', 'Focení · kampaně · editorial', None),
     '/kurzy-liceni/': ('course-1000', 'sand', '50% 15%', 'Individuální lekce', None),

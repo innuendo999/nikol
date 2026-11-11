@@ -52,7 +52,8 @@ L = {
         skip='Přeskočit na obsah', home='Domů', about='O mně', portfolio='Portfolio', services='Služby', blog='Blog',
         contact='Kontakt', book='Rezervovat', menu='Menu', main_nav='Hlavní navigace', other='EN', other_label='EN – English version',
         crumbs='Drobečková navigace', services_list=[
-            ('Svatební líčení', '/svatebni-liceni/'), ('Večerní líčení', '/vecerni-liceni/'), ('Nude makeup', '/nude-liceni/'),
+            ('Svatební líčení', '/svatebni-liceni/'), ('Večerní líčení', '/vecerni-liceni/'),
+            ('Plesové líčení', '/plesove-liceni/'), ('Líčení na akce', '/liceni-na-akce/'), ('Nude makeup', '/nude-liceni/'),
             ('Komerční líčení', '/komercni-liceni/'), ('Kurzy líčení', '/kurzy-liceni/')],
         blog_href='/blog/', home_href='/', portfolio_href='/portfolio/',
         f_services='Služby', f_location='Lokace', f_write='Napište mi', f_call='Telefon / WhatsApp',

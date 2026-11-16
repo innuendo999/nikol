@@ -1,57 +1,84 @@
 """Article: how I wash makeup brushes (video gc_bq04a_G0).
 
-Illustrations are inline SVG (brush symbols defined once in DEFS); animations live in site.css (.bc-*),
-the bristle finder and the technique tabs are enhanced in site.js (both readable without JS)."""
+Editorial line illustrations as inline SVG (brush symbols defined once in DEFS). Motion is SMIL along drawn
+guide paths, paused off-screen and under reduced motion by site.js; reveal states (.bc-*) live in site.css.
+The bristle finder and technique tabs are enhanced in site.js; everything reads without JS."""
 
 BRANDS = ['Protex', 'Safeguard']
 
-# ---------------------------------------------------------------- shared SVG
-DEFS = '''<svg class="visually-hidden" aria-hidden="true" focusable="false"><defs>
-<linearGradient id="bc-metal" x1="0" x2="1"><stop offset="0" stop-color="#B9A9A4"/><stop offset=".38" stop-color="#F6EFEC"/><stop offset=".62" stop-color="#D8C9C4"/><stop offset="1" stop-color="#8E7C77"/></linearGradient>
-<linearGradient id="bc-ox" x1="0" x2="1"><stop offset="0" stop-color="#2A0A0E"/><stop offset=".42" stop-color="#5A1C24"/><stop offset="1" stop-color="#2A0A0E"/></linearGradient>
-<linearGradient id="bc-red" x1="0" x2="1"><stop offset="0" stop-color="#7E1822"/><stop offset=".42" stop-color="#C23A45"/><stop offset="1" stop-color="#7E1822"/></linearGradient>
-<linearGradient id="bc-pink" x1="0" x2="1"><stop offset="0" stop-color="#D58F84"/><stop offset=".42" stop-color="#F7CBC2"/><stop offset="1" stop-color="#C47D72"/></linearGradient>
-<linearGradient id="bc-nat" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#5E3A28"/><stop offset=".6" stop-color="#B4835C"/><stop offset="1" stop-color="#E9CCAA"/></linearGradient>
-<linearGradient id="bc-syn" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#1C1416"/><stop offset=".7" stop-color="#4A3A3D"/><stop offset="1" stop-color="#7C6A6C"/></linearGradient>
-<linearGradient id="bc-duog" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#1C1416"/><stop offset=".55" stop-color="#3A2D30"/><stop offset=".72" stop-color="#EDE6E1"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
-<linearGradient id="bc-soap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F4B9AE"/></linearGradient>
-<symbol id="bc-round" viewBox="0 0 60 220"><path d="M11 72C5 42 13 8 30 5c17 3 25 37 19 67z" fill="url(#bc-nat)"/><path d="M22 60c-2-20 2-42 8-48" stroke="#fff" stroke-opacity=".35" stroke-width="2" fill="none"/><rect x="11" y="70" width="38" height="40" rx="4" fill="url(#bc-metal)"/><path d="M13 108h34l-8 106q-9 6-18 0z" fill="url(#bc-ox)"/></symbol>
-<symbol id="bc-flat" viewBox="0 0 60 220"><path d="M12 72l1-48q17-22 34 0l1 48z" fill="url(#bc-syn)"/><path d="M24 66V22" stroke="#fff" stroke-opacity=".25" stroke-width="2"/><rect x="12" y="70" width="36" height="42" rx="3" fill="url(#bc-metal)"/><path d="M15 110h30l-7 104q-8 6-16 0z" fill="url(#bc-red)"/></symbol>
-<symbol id="bc-fine" viewBox="0 0 60 220"><path d="M25 72q-2-32 5-68 7 36 5 68z" fill="url(#bc-syn)"/><rect x="24" y="70" width="12" height="52" rx="2" fill="url(#bc-metal)"/><path d="M24.5 120h11L33 214q-3 4-6 0z" fill="url(#bc-ox)"/></symbol>
-<symbol id="bc-duo" viewBox="0 0 60 220"><path d="M10 72c-2-26 2-50 20-54 18 4 22 28 20 54z" fill="url(#bc-duog)"/><rect x="10" y="70" width="40" height="38" rx="4" fill="url(#bc-metal)"/><path d="M13 106h34l-8 108q-9 6-18 0z" fill="url(#bc-pink)"/></symbol>
-<symbol id="bc-bar" viewBox="0 0 200 70"><rect x="4" y="10" width="192" height="56" rx="22" fill="#D7BDB6" opacity=".45"/><rect width="192" height="58" rx="22" fill="url(#bc-soap)"/><rect x="22" y="12" width="148" height="14" rx="7" fill="#fff" opacity=".6"/></symbol>
+INK, OX, RED, PINK, BLUSH, PAPER, LINE, WATER = '#171213', '#3E1016', '#A8232F', '#F4B9AE', '#F5E4DF', '#FBF7F5', '#D7BDB6', '#6F97B8'
+_S = f'stroke="{INK}" stroke-width="1.1" vector-effect="non-scaling-stroke"'
+_T = 'stroke-width=".7" vector-effect="non-scaling-stroke" fill="none"'
+_FERRULE = lambda x, y, w, h: (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="1.5" fill="{PAPER}" {_S}/>'
+                               f'<path d="M{x} {y + 7}h{w}M{x} {y + h - 7}h{w}" stroke="{INK}" stroke-opacity=".45" {_T}/>')
+
+# ---------------------------------------------------------------- shared SVG (line art, bristles up, 60 x 220)
+DEFS = f'''<svg class="visually-hidden" aria-hidden="true" focusable="false"><defs>
+<symbol id="bc-round" viewBox="0 0 60 220"><path d="M14 74C9 46 15 14 30 8c15 6 21 38 16 66z" fill="#E7D2C3" {_S}/><path d="M22 70C20 50 23 28 29 14M30 72V12M38 70c2-20-1-42-7-56" stroke="#8C6E62" stroke-opacity=".7" {_T}/>{_FERRULE(14, 72, 32, 38)}<path d="M16 110h28l-6 104q-8 5-16 0z" fill="{OX}"/></symbol>
+<symbol id="bc-flat" viewBox="0 0 60 220"><path d="M14 74l1-46q15-20 30 0l1 46z" fill="#2E2627" {_S}/><path d="M22 70V30M30 70V22M38 70V30" stroke="#8A7B78" stroke-opacity=".8" {_T}/>{_FERRULE(14, 72, 32, 40)}<path d="M17 112h26l-5 102q-8 5-16 0z" fill="{RED}"/></symbol>
+<symbol id="bc-fine" viewBox="0 0 60 220"><path d="M26 74q-2-34 4-70 6 36 4 70z" fill="#2E2627" {_S}/>{_FERRULE(25, 72, 10, 50)}<path d="M25.5 122h9l-2.5 92q-2 4-4 0z" fill="{OX}"/></symbol>
+<symbol id="bc-duo" viewBox="0 0 60 220"><path d="M12 74c-2-26 2-48 18-52 16 4 20 26 18 52z" fill="#2E2627" {_S}/><path d="M14.5 42c2-12 7-18 15.5-20 8.5 2 13.5 8 15.5 20-9-4-22-4-31 0z" fill="{PAPER}" {_S}/>{_FERRULE(12, 72, 36, 36)}<path d="M15 108h30l-7 106q-8 5-16 0z" fill="#E3A497"/></symbol>
+<symbol id="bc-bar" viewBox="0 0 200 62"><rect x="2" y="2" width="196" height="56" rx="20" fill="#fff" {_S}/></symbol>
 </defs></svg>'''
 
-
-def stage(brush, motion, extra=''):
-    """Animated washing demo: a brush (bristles down) moving over a soap bar."""
-    return (f'<svg class="bc-stage" viewBox="0 0 400 280" role="img" aria-hidden="true">'
-            f'<use href="#bc-bar" x="100" y="200" width="200" height="70"/>'
-            f'<g class="bc-mv bc-{motion}"><g transform="translate(200 214) rotate(180)"><use href="#bc-{brush}" x="-24" width="48" height="175"/></g></g>'
-            f'<circle class="bc-foam" cx="150" cy="206" r="7"/><circle class="bc-foam d2" cx="252" cy="204" r="9"/><circle class="bc-foam d3" cx="204" cy="198" r="5"/>'
-            f'{extra}</svg>')
+PATHS = {'circle': ('M40 0a40 9 0 1 1-80 0a40 9 0 1 1 80 0', '2.8s', 172),
+         'pat': ('M-38 0Q-19-18 0 0Q19-18 38 0Q19-18 0 0Q-19-18-38 0', '2.6s', 180),
+         'gentle': ('M-12 0L12 0L-12 0', '5s', 166)}
 
 
-RULE_FIG = '''<div class="bc-compare">
-<figure class="bc-panel bc-bad"><svg viewBox="0 0 120 230" aria-hidden="true"><use href="#bc-round" x="30" y="10" width="60" height="220"/><rect class="bc-glue" x="41" y="80" width="38" height="40" rx="4" fill="#A8232F"/><g fill="#7DB3DA"><path class="bc-in" d="M60 22q-5 7 0 11 5-4 0-11z"/><path class="bc-in d2" d="M50 28q-4 6 0 9 4-3 0-9z"/><path class="bc-in d3" d="M70 28q-4 6 0 9 4-3 0-9z"/></g></svg><figcaption>✕ {bad}</figcaption></figure>
-<figure class="bc-panel bc-good"><svg viewBox="0 0 120 230" aria-hidden="true"><g transform="translate(120 222) rotate(180)"><use href="#bc-round" x="30" y="10" width="60" height="220"/></g><g fill="#7DB3DA"><path class="bc-out" d="M60 202q-5 7 0 11 5-4 0-11z"/><path class="bc-out d2" d="M52 196q-4 6 0 9 4-3 0-9z"/><path class="bc-out d3" d="M68 196q-4 6 0 9 4-3 0-9z"/></g></svg><figcaption>✓ {good}</figcaption></figure>
+def brush_down(sym, w, tilt=180):
+    """A brush pointing down with its tip at (0,0)."""
+    h = w * 220 / 60
+    tip = 6 * w / 60
+    return f'<g transform="rotate({tilt})"><use href="#bc-{sym}" x="{-w / 2}" y="{-tip}" width="{w}" height="{h}"/></g>'
+
+
+def stage(brush, kind):
+    """Washing demo: the brush tip follows a dashed guide (its real working motion) over a bar of soap."""
+    p, dur, tilt = PATHS[kind]
+    return (f'<svg class="bc-stage" viewBox="0 0 400 280" data-anim aria-hidden="true">'
+            f'<ellipse cx="200" cy="262" rx="110" ry="5" fill="#E9D4CE"/>'
+            f'<use href="#bc-bar" x="110" y="198" width="180" height="56"/>'
+            f'<g transform="translate(200 206)"><path d="{p}" fill="none" stroke="{RED}" stroke-width="1" stroke-dasharray="2 5" vector-effect="non-scaling-stroke"/>'
+            f'<g><animateMotion dur="{dur}" repeatCount="indefinite" path="{p}" calcMode="paced"/>{brush_down(brush, 44, tilt)}</g></g></svg>')
+
+
+def rule_fig(bad, good):
+    return f'''<div class="bc-compare">
+<figure class="bc-panel"><svg viewBox="0 0 160 240" data-anim aria-hidden="true"><use href="#bc-round" x="50" y="12" width="60" height="220"/>
+<rect x="64" y="84" width="32" height="38" rx="1.5" fill="none" stroke="{RED}" stroke-width="2" vector-effect="non-scaling-stroke" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.45;.65;.9;1" dur="3.2s" repeatCount="indefinite"/></rect>
+<path d="M82 18C93 30 97 56 91 84L88 104" fill="none" stroke="{WATER}" stroke-width="2" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0;0;1" keyTimes="0;.55;.9;1" dur="3.2s" repeatCount="indefinite"/></path>
+</svg><figcaption><span class="lbl red">01 · {bad[0]}</span><span>{bad[1]}</span></figcaption></figure>
+<figure class="bc-panel"><svg viewBox="0 0 160 240" data-anim aria-hidden="true"><g transform="translate(160 240) rotate(180)"><use href="#bc-round" x="50" y="12" width="60" height="220"/></g>
+<path d="M88 126C94 158 93 196 80 222" fill="none" stroke="{WATER}" stroke-width="2" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0;0;1" keyTimes="0;.5;.9;1" dur="3.2s" repeatCount="indefinite"/></path>
+<circle cx="80" cy="226" r="2.6" fill="{WATER}" opacity="0"><animate attributeName="cy" values="226;226;238" keyTimes="0;.5;1" dur="3.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0;1;0" keyTimes="0;.5;.6;1" dur="3.2s" repeatCount="indefinite"/></circle>
+</svg><figcaption><span class="lbl">02 · {good[0]}</span><span>{good[1]}</span></figcaption></figure>
 </div>'''
 
-TOWEL = '''<figure class="bc-towel"><svg viewBox="0 0 520 330" role="img" aria-label="{alt}"><rect width="520" height="330" rx="6" fill="#F5E4DF"/><path d="M0 40h520M0 290h520" stroke="#E8CFC8" stroke-width="10"/>
-<g class="bc-lay"><g transform="translate(40 85) rotate(-90)"><use href="#bc-round" x="-15" width="30" height="110"/></g></g>
-<g class="bc-lay r d1"><g transform="translate(480 130) rotate(90)"><use href="#bc-flat" x="-15" width="30" height="110"/></g></g>
-<g class="bc-lay d2"><g transform="translate(40 175) rotate(-90)"><use href="#bc-duo" x="-15" width="30" height="110"/></g></g>
-<g class="bc-lay r d3"><g transform="translate(480 220) rotate(90)"><use href="#bc-fine" x="-15" width="30" height="110"/></g></g>
-<g class="bc-lay d4"><g transform="translate(40 260) rotate(-90)"><use href="#bc-round" x="-15" width="30" height="110"/></g></g>
-<g class="bc-lay r d2"><g transform="translate(330 85) rotate(90)"><use href="#bc-fine" x="-15" width="30" height="110"/></g></g>
-<g class="bc-lay d3"><g transform="translate(190 175) rotate(-90)"><use href="#bc-flat" x="-15" width="30" height="110"/></g></g>
-<g class="bc-lay r d4"><g transform="translate(330 260) rotate(90)"><use href="#bc-duo" x="-15" width="30" height="110"/></g></g>
-</svg><figcaption class="fine-print">{cap}</figcaption></figure>'''
+
+def towel(alt, cap):
+    types = ['round', 'flat', 'duo', 'fine', 'round', 'duo', 'flat', 'fine', 'round']
+    rows = []
+    for k, sym in enumerate(types):
+        r, c = divmod(k, 3)
+        cx, y = 110 + c * 150, 78 + r * 72
+        rot = -90 if (r + c) % 2 == 0 else 90
+        rows.append((sym, cx - 51 if rot == -90 else cx + 51, y, rot))
+    g = ''.join(f'<g class="bc-lay d{min(i, 7)}"><g transform="translate({x} {y}) rotate({r})"><use href="#bc-{s}" x="-14" width="28" height="103"/></g></g>'
+                for i, (s, x, y, r) in enumerate(rows))
+    return (f'<figure class="bc-towel" data-reveal><svg viewBox="0 0 520 300" role="img" aria-label="{alt}">'
+            f'<rect x="1" y="1" width="518" height="298" fill="{PAPER}" {_S}/><path d="M1 26h518M1 32h518M1 268h518M1 274h518" stroke="{LINE}" {_T}/>'
+            f'{g}</svg><figcaption class="fine-print">{cap}</figcaption></figure>')
+
 
 OIL_SVG = [
-    '<svg viewBox="0 0 200 150" aria-hidden="true"><path d="M92 6h16v10l8 10v36a5 5 0 0 1-5 5H89a5 5 0 0 1-5-5V26l8-10z" fill="#E7C46A"/><rect x="91" y="2" width="18" height="7" rx="2" fill="#7A4A0B"/><path class="bc-drop" d="M100 76q-6 9 0 13 6-4 0-13z" fill="#D9A93A"/><g transform="translate(100 150) rotate(180)"><use href="#bc-flat" x="-12" width="24" height="66"/></g></svg>',
-    '<svg viewBox="0 0 200 150" aria-hidden="true"><ellipse cx="100" cy="122" rx="70" ry="18" fill="#F5E4DF"/><ellipse class="bc-melt" cx="100" cy="122" rx="40" ry="9" fill="#A8232F"/><g class="bc-mv bc-gentle"><g transform="translate(100 120) rotate(180)"><use href="#bc-flat" x="-20" width="40" height="110"/></g></g></svg>',
-    '<svg viewBox="0 0 200 150" aria-hidden="true"><use href="#bc-bar" x="40" y="98" width="120" height="44"/><g class="bc-mv bc-circle"><g transform="translate(100 106) rotate(180)"><use href="#bc-round" x="-18" width="36" height="100"/></g></g><circle class="bc-foam" cx="70" cy="102" r="5"/><circle class="bc-foam d2" cx="130" cy="102" r="6"/></svg>',
+    f'<svg viewBox="0 0 200 150" data-anim aria-hidden="true"><path d="M92 8h16v10l8 10v32a4 4 0 0 1-4 4H88a4 4 0 0 1-4-4V28l8-10z" fill="{PAPER}" {_S}/><path d="M85 40h30v20a3 3 0 0 1-3 3H88a3 3 0 0 1-3-3z" fill="#E8C97A"/><rect x="90" y="3" width="20" height="7" rx="1" fill="{OX}"/>'
+    f'<circle cx="100" cy="70" r="3" fill="#D9AE4E"><animate attributeName="cy" values="68;68;112" keyTimes="0;.3;1" dur="2.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.3;.92;1" dur="2.6s" repeatCount="indefinite"/></circle>'
+    f'<use href="#bc-flat" x="86" y="112" width="28" height="103"/></svg>',
+    f'<svg viewBox="0 0 200 150" data-anim aria-hidden="true"><ellipse cx="100" cy="128" rx="62" ry="10" fill="#fff" {_S}/><ellipse cx="100" cy="128" rx="34" ry="5" fill="{RED}"><animate attributeName="opacity" values="1;.15;1" dur="4s" repeatCount="indefinite"/></ellipse>'
+    f'<g transform="translate(100 124)"><g><animateMotion dur="2.6s" repeatCount="indefinite" path="{PATHS["pat"][0]}" calcMode="paced"/>{brush_down("flat", 30)}</g></g></svg>',
+    f'<svg viewBox="0 0 200 150" data-anim aria-hidden="true"><use href="#bc-bar" x="45" y="104" width="110" height="34"/>'
+    f'<g transform="translate(100 110)"><path d="M26 0a26 6 0 1 1-52 0a26 6 0 1 1 52 0" fill="none" stroke="{RED}" stroke-width="1" stroke-dasharray="2 5" vector-effect="non-scaling-stroke"/><g><animateMotion dur="2.6s" repeatCount="indefinite" path="M26 0a26 6 0 1 1-52 0a26 6 0 1 1 52 0" calcMode="paced"/>{brush_down("round", 30, 172)}</g></g></svg>',
 ]
 
 
@@ -60,7 +87,7 @@ def finder(L):
     pills = lambda name, opts: ''.join(
         f'<label class="bc-pill"><input type="radio" name="{name}" value="{v}"{" checked" if i == 0 else ""}><span>{t}</span></label>'
         for i, (v, t) in enumerate(opts))
-    ans = ''.join(f'<div class="bc-ans" data-ans="{k}"><p class="lbl red">{lab}</p><p class="bc-ans-h">{h}</p><p>{b}</p></div>' for k, lab, h, b in L['answers'])
+    ans = ''.join(f'<div class="bc-ans" data-ans="{k}"><p class="lbl">{lab}</p><p class="bc-ans-h">{h}</p><p>{b}</p></div>' for k, lab, h, b in L['answers'])
     return f'''<div class="bc-finder" data-finder>
 <div class="bc-q"><fieldset><legend class="lbl">{L['q1']}</legend>{pills('bc-fiber', L['fiber'])}</fieldset>
 <fieldset><legend class="lbl">{L['q2']}</legend>{pills('bc-quality', L['quality'])}</fieldset></div>
@@ -70,26 +97,27 @@ def finder(L):
 
 def tabs(L):
     """Technique by brush shape. Without JS the panes are stacked with their own h3."""
-    btns = ''.join(f'<button type="button" role="tab" data-tab="{k}"><svg viewBox="0 0 60 220" aria-hidden="true"><use href="#bc-{k}"/></svg>{name}</button>' for k, name, *_ in L)
-    panes = ''.join(f'<div class="bc-pane" data-pane="{k}" role="tabpanel"><div class="bc-stage-wrap">{stage(k, motion)}<span class="bc-motion lbl">{tag}</span></div><div class="bc-pane-text"><h3>{name}</h3>{body}</div></div>'
+    btns = ''.join(f'<button type="button" role="tab" data-tab="{k}">{name}</button>' for k, name, *_ in L)
+    panes = ''.join(f'<div class="bc-pane" data-pane="{k}" role="tabpanel"><div class="bc-stage-wrap">{stage(k, motion)}<span class="bc-motion lbl red">{tag}</span></div><div class="bc-pane-text"><h3>{name}</h3>{body}</div></div>'
                     for k, name, motion, tag, body in L)
     return f'<div class="bc-tabs" data-tabs><div class="bc-tablist" role="tablist" hidden>{btns}</div>{panes}</div>'
 
 
+def flow(items):
+    return '<ol class="bc-flow">' + ''.join(f'<li>{x}</li>' for x in items) + '</ol>'
+
+
 def oil_steps(items):
-    return '<ol class="bc-steps">' + ''.join(f'<li><span class="bc-n" aria-hidden="true">{i + 1}</span>{OIL_SVG[i]}<p><strong>{h}</strong></p><p class="fs-16">{b}</p></li>' for i, (h, b) in enumerate(items)) + '</ol>'
+    return '<ol class="bc-steps">' + ''.join(f'<li>{OIL_SVG[i]}<p class="bc-n">0{i + 1}</p><p><strong>{h}</strong></p><p class="fs-16">{b}</p></li>' for i, (h, b) in enumerate(items)) + '</ol>'
 
 
-def spots(items):
-    return '<div class="bc-spots">' + ''.join(f'<details class="bc-spot {cls}"><summary><span class="bc-e" aria-hidden="true">{e}</span>{q}<span class="pm" aria-hidden="true">+</span></summary><p>{a}</p></details>' for e, q, cls, a in items) + '</div>'
-
-
-def myths(items):
-    return '<div class="bc-myths">' + ''.join(f'<details class="bc-myth"><summary><span class="serif">{q}</span><span class="lbl muted2">{hint}</span></summary><p><span class="vtag {cls}">{lab}</span> {a}</p></details>' for q, hint, cls, lab, a in items) + '</div>'
+def rows(items, title_cls=''):
+    """Expandable rows (like the FAQ): spots to dry and myth/fact statements."""
+    return '<div class="bc-rows">' + ''.join(f'<details><summary><span class="{title_cls}">{q}</span><span class="pm" aria-hidden="true">+</span></summary><p><span class="vtag {cls}">{lab}</span>{a}</p></details>' for q, cls, lab, a in items) + '</div>'
 
 
 def temp(lbls):
-    return '<div class="bc-temp" aria-hidden="true"><div class="bc-temp-bar"><span class="bc-temp-dot"></span></div><div class="bc-temp-lbl">' + ''.join(f'<span>{x}</span>' for x in lbls) + '</div></div>'
+    return '<div class="bc-temp" data-reveal aria-hidden="true"><div class="bc-temp-bar"><span class="bc-temp-mark"></span></div><div class="bc-temp-lbl">' + ''.join(f'<span>{x}</span>' for x in lbls) + '</div></div>'
 
 
 # ================================================================= CZECH
@@ -106,10 +134,10 @@ _FINDER_CS = dict(
     ])
 _TABS_CS = [
     ('round', 'Kulaté štětce', 'circle', 'Krouživě',
-     '<p>Navlhčete štětec a krouživými pohyby přejíždějte po kostce mýdla. Štětec je kulatý, tak i pohyb je kulatý. Netlačte, není to potřeba. Stačí lehce, ale pořádně, aby se mýdlo dostalo dovnitř a napěnilo.</p>'
-     '<p class="bc-batch"><span>🧼 ×10</span>→<span>💧 ×10</span>→<span>ručník</span></p>'
+     '<p>Navlhčete štětec a krouživými pohyby přejíždějte po kostce mýdla. Štětec je kulatý, tak i pohyb je kulatý. Netlačte, není to potřeba. Stačí lehce, ale pořádně, aby se mýdlo dostalo dovnitř a napěnilo.</p>' +
+     flow(['10 × namydlit', '10 × opláchnout', 'na ručník']) +
      '<p class="fs-16">Štětce třídím do skupin: namydlím deset středních nebo malých kulatých za sebou, pak všech deset opláchnu a odložím na ručník.</p>'),
-    ('flat', 'Ploché štětce', 'stroke', 'Tahy a „kočičí tlapka“',
+    ('flat', 'Ploché štětce', 'pat', 'Tahy a „kočičí tlapka“',
      '<p>Plochým štětcem nikdy nekružte. Štětinám to nedělá dobře, protože s ním krouživě ani nepracujeme, jen tahy. Stejnými tahy ho tedy i myjte. Klepejte jím do mýdla jako kočičí tlapkou, hlaďte tam a zpátky, odložte a nechte chvilku odležet. Make-up se mezitím uvolní.</p>'),
     ('fine', 'Tenké štětce na linky', 'gentle', 'Velmi jemně',
      '<p>Jejich hodnota je v tenkých štětinách, které kreslí přesné linky. Když je při mytí moc mačkáte, rozčepýří se a těžko se vracejí do tvaru.</p>'
@@ -145,13 +173,13 @@ C['cs'] = dict(
 ''' + finder(_FINDER_CS) + '''
 <aside class="note"><p class="lbl red">Proč ne speciální čističe?</p><p>Speciální mýdla a šampony na štětce fungují, jen nejsou tak úsporné jako obyčejná kostka mýdla. A expresní čističe štětiny vysušují, takže s nimi nešetřím jen na nejnutnější případy. Investice do dobrého štětce se vrátí na sto procent.</p></aside>'''),
         ('pravidla', 'Tři zlatá pravidla', '''<p>Technika je jednoduchá, ale tahle pravidla jsou zásadní. Všechno ve štětci drží lepidlo, a právě to chceme chránit.</p>
-''' + RULE_FIG.format(bad='Štětinami nahoru', good='Štětinami dolů') + '''
+''' + rule_fig(('Špatně', 'Voda steče do lepidla v objímce.'), ('Správně', 'Voda odteče špičkou ven.')) + '''
 <ol class="lessons">
 <li><span class="n" aria-hidden="true">1</span><div><p><strong>Mokrý štětec nikdy nedržte štětinami nahoru.</strong></p><p class="fs-16">Voda steče do lepidla v objímce a to se časem rozmočí. Štětiny začnou vypadávat nebo se štětec rozpadne.</p></div></li>
 <li><span class="n" aria-hidden="true">2</span><div><p><strong>Štětce nenamáčejte.</strong></p><p class="fs-16">Nedávejte je všechny do umyvadla a nenechávejte je ležet ve vodě. Důvod je stejný: lepidlo.</p></div></li>
 <li><span class="n" aria-hidden="true">3</span><div><p><strong>Jen vlažná voda.</strong></p><p class="fs-16">Ve studené se kosmetika nevymyje, horká škodí lepidlu.</p></div></li>
 </ol>
-''' + temp(['Studená', 'Vlažná ✓', 'Horká'])),
+''' + temp(['Studená', 'Vlažná', 'Horká'])),
         ('technika', 'Technika podle tvaru štětce', '<p>Pohyb při mytí kopíruje pohyb, kterým štětcem pracujete. Vyberte tvar:</p>\n' + tabs(_TABS_CS)),
         ('olej', 'Make-up nebo rtěnka, které nejdou vymýt', '''<p>Hustý syntetický štětec na krémové textury, ve kterém se make-up usadí hluboko uvnitř? Nebo červená rtěnka? Hydrofilní olej nebo micelárka fungují taky, ale nejověřenější je u mě obyčejný olej z kuchyně.</p>
 ''' + oil_steps([('Kapka oleje', 'Olivový nebo slunečnicový. Opravdu jen kapička a ne hluboko do štětce.'),
@@ -159,23 +187,23 @@ C['cs'] = dict(
                  ('Domyjte mýdlem', 'Mýdlo odstraní olej i zbytky. Opláchnout, otisknout, hotovo.')]) + '''
 <aside class="note"><p class="lbl red">Jak jsem na to přišla</p><p>Úplnou náhodou. Jednou mi došlo mýdlo, zjistila jsem to až pozdě večer a ráno jsem se štětci musela do práce. Vymyla jsem je olejem a domyla prostředkem na nádobí. Od té doby mám kostku mýdla vždycky v záloze.</p></aside>'''),
         ('suseni', 'Sušení: naplocho a s rozestupy', '''<p>Po každé dávce štětce položte na <b>rovný ručník</b>. Nestavte je do stojánku a nevěšte je, není to potřeba. Plochý štětec můžete ještě lehce otisknout do ručníku, ale nemačkejte ho. Rozložte je s rozestupy, klidně střídavě hlavou k patě, aby se štětiny nedotýkaly. Přes noc uschnou.</p>
-''' + TOWEL.format(alt='Štětce rozložené na ručníku střídavě hlavou k patě', cap='Střídavě hlavou k patě, aby se štětiny nedotýkaly.') + '''
-<p class="lbl red">Kam ručník se štětci odnést? Klikněte:</p>
-''' + spots([('🛁', 'Koupelna', 'bc-no', 'Raději ne, v koupelně bývá vlhko. Ručník opatrně složím a odnesu do pokoje.'),
-             ('🔥', 'Parapet nad topením', 'bc-warn', 'Pozor: horký radiátor pod oknem může štětiny přesušit. Raději je dejte na stůl.'),
-             ('🪴', 'Stůl v pokoji', 'bc-ok', 'Ideální. Suchý pokoj bez přímého tepla, do rána všechno uschne.'),
-             ('☀️', 'Okno na slunci', 'bc-no', 'Ne. V létě se rukojeť na přímém slunci zahřeje a lepidlo může povolit.')])),
+''' + towel(alt='Štětce rozložené na ručníku střídavě hlavou k patě', cap='Střídavě hlavou k patě, aby se štětiny nedotýkaly.') + '''
+<p class="lbl red">Kam ručník se štětci odnést?</p>
+''' + rows([('Koupelna', 'v-sw', 'Ne', 'V koupelně bývá vlhko. Ručník opatrně složím a odnesu do pokoje.'),
+             ('Parapet nad topením', 'v-dep', 'Pozor', 'Horký radiátor pod oknem může štětiny přesušit. Raději je dejte na stůl.'),
+             ('Stůl v pokoji', 'v-yes', 'Ano', 'Suchý pokoj bez přímého tepla, do rána všechno uschne.'),
+             ('Okno na slunci', 'v-sw', 'Ne', 'V létě se rukojeť na přímém slunci zahřeje a lepidlo může povolit.')])),
         ('praxe', 'Tipy z praxe', '''<h3>Expresní čistič jen na suché textury</h3>
 <p>Když mám klientky za sebou, používám expresní čistič, ale jen na štětce na stíny. Krémové textury jím nikdy nečistím: je to moc práce a vysušuje štětiny. Jednodušší je mít prostě víc štětců.</p>
 <h3>Gelové linky smyjte hned</h3>
 <p>Nenechávejte gelovou linku zaschnout na štětci. Vysuší ho a štětiny se zkroutí.</p>
 <h3>Ze zkušenosti: s jakými štětci začít</h3>
 <p>Pokud si teprve skládáte kufr, víc se vyplatí pár kvalitních štětců než krabice levných. Jak vybrat ty, které vám opravdu sednou, procházíme na <a href="/kurzy-liceni/">individuálním kurzu líčení</a>.</p>'''),
-        ('myty', 'Mýtus, nebo fakt?', '<p>Tipněte si a rozklikněte.</p>\n' + myths([
-            ('Štětce je dobré nechat odmočit ve vodě.', 'Mýtus, nebo fakt?', 'v-sw', 'Mýtus', 'Voda se dostane do lepidla v objímce a štětec se časem rozpadne.'),
-            ('Kvalitní přírodní štětec můžete mýt obyčejným mýdlem.', 'Mýtus, nebo fakt?', 'v-yes', 'Fakt', 'Dobré štětce to snesou. Kdyby přece jen ztvrdly, pomůže krátce kondicionér.'),
-            ('Čím teplejší voda, tím čistší štětec.', 'Mýtus, nebo fakt?', 'v-sw', 'Mýtus', 'Horká voda škodí lepidlu. Ideální je vlažná.'),
-            ('Štětce nejlépe uschnou zavěšené.', 'Mýtus, nebo fakt?', 'v-sw', 'Mýtus', 'Není to potřeba. Naplocho na ručníku s rozestupy přes noc úplně stačí.')])),
+        ('myty', 'Mýtus, nebo fakt?', '<p>Tipněte si a rozklikněte.</p>\n' + rows([
+            ('Štětce je dobré nechat odmočit ve vodě.', 'v-sw', 'Mýtus', 'Voda se dostane do lepidla v objímce a štětec se časem rozpadne.'),
+            ('Kvalitní přírodní štětec můžete mýt obyčejným mýdlem.', 'v-yes', 'Fakt', 'Dobré štětce to snesou. Kdyby přece jen ztvrdly, pomůže krátce kondicionér.'),
+            ('Čím teplejší voda, tím čistší štětec.', 'v-sw', 'Mýtus', 'Horká voda škodí lepidlu. Ideální je vlažná.'),
+            ('Štětce nejlépe uschnou zavěšené.', 'v-sw', 'Mýtus', 'Není to potřeba. Naplocho na ručníku s rozestupy přes noc úplně stačí.')], 'serif')),
     ],
     verdict_h='Co dělat a co ne',
     verdict=[('Dělejte', 'vtag v-yes', ['Tuhé antibakteriální mýdlo', 'Kulaté krouživě, ploché tahy', 'Olej na make-up a rtěnku', 'Sušení naplocho na ručníku', 'Gelové linky smýt hned']),
@@ -215,10 +243,10 @@ _FINDER_EN = dict(
     ])
 _TABS_EN = [
     ('round', 'Round brushes', 'circle', 'Circles',
-     "<p>Wet the brush and move it over the soap bar in circles. Round brush, round motion. Don't press hard, there's no need. Go gently but properly, so the soap works its way inside and lathers.</p>"
-     '<p class="bc-batch"><span>🧼 ×10</span>→<span>💧 ×10</span>→<span>towel</span></p>'
+     "<p>Wet the brush and move it over the soap bar in circles. Round brush, round motion. Don't press hard, there's no need. Go gently but properly, so the soap works its way inside and lathers.</p>" +
+     flow(['Lather 10', 'Rinse 10', 'Onto the towel']) +
      '<p class="fs-16">I sort brushes into groups: I lather ten medium or small round ones in a row, rinse all ten, then lay them on the towel.</p>'),
-    ('flat', 'Flat brushes', 'stroke', 'Strokes and "cat paw"',
+    ('flat', 'Flat brushes', 'pat', 'Strokes and "cat paw"',
      "<p>Never swirl a flat brush. It's bad for the bristles, because you never work with it in circles, only in strokes. So wash it in strokes too. Tap it into the soap like a cat's paw, stroke back and forth, set it down and let it sit for a moment. The makeup loosens while it rests.</p>"),
     ('fine', 'Fine liner brushes', 'gentle', 'Very gently',
      '<p>Their whole value is in the fine bristles that draw precise lines. Squash them while washing and they fluff out and are hard to get back into shape.</p>'
@@ -254,13 +282,13 @@ C['en'] = dict(
 ''' + finder(_FINDER_EN) + '''
 <aside class="note"><p class="lbl red">Why not special cleansers?</p><p>Brush soaps and shampoos work; they just aren't as economical as a plain bar. And express cleansers dry the bristles out, so I keep them for when I really need them. Investing in a good brush pays you back one hundred percent.</p></aside>'''),
         ('rules', 'Three golden rules', '''<p>The technique is simple, but these rules are non-negotiable. Everything in a brush is held together by glue, and that's what we're protecting.</p>
-''' + RULE_FIG.format(bad='Bristles up', good='Bristles down') + '''
+''' + rule_fig(('Wrong', 'Water runs into the ferrule glue.'), ('Right', 'Water runs off the tip.')) + '''
 <ol class="lessons">
 <li><span class="n" aria-hidden="true">1</span><div><p><strong>Never hold a wet brush bristles-up.</strong></p><p class="fs-16">Water runs into the glue in the ferrule and softens it over time. The bristles start shedding or the brush falls apart.</p></div></li>
 <li><span class="n" aria-hidden="true">2</span><div><p><strong>Never soak your brushes.</strong></p><p class="fs-16">Don't pile them in the sink or leave them sitting in water. Same reason: the glue.</p></div></li>
 <li><span class="n" aria-hidden="true">3</span><div><p><strong>Warm water only.</strong></p><p class="fs-16">Cold water won't wash the product out; hot water damages the glue.</p></div></li>
 </ol>
-''' + temp(['Cold', 'Warm ✓', 'Hot'])),
+''' + temp(['Cold', 'Warm', 'Hot'])),
         ('technique', 'Technique by brush shape', '<p>Your washing motion should mirror how you use the brush. Pick a shape:</p>\n' + tabs(_TABS_EN)),
         ('oil', "Foundation or lipstick that won't wash out", '''<p>A dense synthetic brush for cream textures with foundation packed deep inside? Or red lipstick? Cleansing oil or micellar water work too, but my most tried-and-tested method is plain kitchen oil.</p>
 ''' + oil_steps([('A drop of oil', 'Olive or sunflower. Really just a tiny drop, and not deep into the brush.'),
@@ -268,23 +296,23 @@ C['en'] = dict(
                  ('Finish with soap', 'Soap removes the oil and any leftovers. Rinse, press, done.')]) + '''
 <aside class="note"><p class="lbl red">How I found out</p><p>By pure accident. I once ran out of soap, only noticed late at night, and had to leave for work with those brushes in the morning. I washed them out with oil and finished with dish soap. Ever since, I always keep a spare bar on hand.</p></aside>'''),
         ('drying', 'Drying: flat and spaced out', '''<p>After each batch, lay the brushes on a <b>flat towel</b>. Don't stand them up and don't hang them; there's no need. You can press a flat brush lightly into the towel, but don't squeeze it. Space them out, alternating head-to-toe so the bristles don't touch. They dry overnight.</p>
-''' + TOWEL.format(alt='Brushes laid head-to-toe on a towel', cap="Head-to-toe, so the bristles don't touch.") + '''
-<p class="lbl red">Where should the towel go? Tap to check:</p>
-''' + spots([('🛁', 'The bathroom', 'bc-no', 'Better not: bathrooms are usually humid. I fold the towel carefully and carry it to my room.'),
-             ('🔥', 'A sill above the radiator', 'bc-warn', 'Careful: a hot radiator under the window can overdry the bristles. Put them on a table instead.'),
-             ('🪴', 'A table in a room', 'bc-ok', 'Perfect. A dry room with no direct heat, and everything is dry by morning.'),
-             ('☀️', 'A sunny window', 'bc-no', 'No. In summer the handle heats up in direct sun and the glue can come loose.')])),
+''' + towel(alt='Brushes laid head-to-toe on a towel', cap="Head-to-toe, so the bristles don't touch.") + '''
+<p class="lbl red">Where should the towel go?</p>
+''' + rows([('The bathroom', 'v-sw', 'No', 'Bathrooms are usually humid. I fold the towel carefully and carry it to my room.'),
+             ('A sill above the radiator', 'v-dep', 'Careful', 'A hot radiator under the window can overdry the bristles. Put them on a table instead.'),
+             ('A table in a room', 'v-yes', 'Yes', 'A dry room with no direct heat, and everything is dry by morning.'),
+             ('A sunny window', 'v-sw', 'No', 'In summer the handle heats up in direct sun and the glue can come loose.')])),
         ('pro-tips', 'Pro tips from the job', '''<h3>Express cleanser for dry textures only</h3>
 <p>When I have clients back to back, I use an express cleanser, but only on eyeshadow brushes. I never clean cream textures with it: it's too much hassle and it dries the bristles. It's easier to simply own more brushes.</p>
 <h3>Clean gel liner off straight away</h3>
 <p>Don't let gel liner dry on the brush. It dries the brush out and twists the bristles.</p>
 <h3>From experience: which brushes to start with</h3>
 <p>If you're only building your kit, a few good brushes are worth more than a box of cheap ones. We go through choosing the ones that really suit you in my <a href="/en/courses/">one-on-one makeup courses</a>.</p>'''),
-        ('myths', 'Myth or fact?', '<p>Make your guess, then tap.</p>\n' + myths([
-            ('Soaking brushes in water helps loosen makeup.', 'Myth or fact?', 'v-sw', 'Myth', 'Water gets into the ferrule glue and the brush falls apart over time.'),
-            ('A good natural brush can be washed with plain bar soap.', 'Myth or fact?', 'v-yes', 'Fact', 'Good brushes cope fine. If they ever stiffen, a short conditioner treatment helps.'),
-            ('The hotter the water, the cleaner the brush.', 'Myth or fact?', 'v-sw', 'Myth', 'Hot water damages the glue. Warm is ideal.'),
-            ('Brushes dry best hanging up.', 'Myth or fact?', 'v-sw', 'Myth', 'No need. Flat on a towel, spaced out, overnight is all it takes.')])),
+        ('myths', 'Myth or fact?', '<p>Make your guess, then tap.</p>\n' + rows([
+            ('Soaking brushes in water helps loosen makeup.', 'v-sw', 'Myth', 'Water gets into the ferrule glue and the brush falls apart over time.'),
+            ('A good natural brush can be washed with plain bar soap.', 'v-yes', 'Fact', 'Good brushes cope fine. If they ever stiffen, a short conditioner treatment helps.'),
+            ('The hotter the water, the cleaner the brush.', 'v-sw', 'Myth', 'Hot water damages the glue. Warm is ideal.'),
+            ('Brushes dry best hanging up.', 'v-sw', 'Myth', 'No need. Flat on a towel, spaced out, overnight is all it takes.')], 'serif')),
     ],
     verdict_h="Dos and don'ts",
     verdict=[('Do', 'vtag v-yes', ['Antibacterial bar soap', 'Round in circles, flat in strokes', 'Oil for foundation and lipstick', 'Dry flat on a towel', 'Clean gel liner off straight away']),

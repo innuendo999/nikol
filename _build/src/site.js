@@ -96,4 +96,25 @@
     btns.forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.tab); }); });
     show(btns[0].dataset.tab);
   });
+
+  // Blog (brush care): reveal once in view; SMIL animations play only while visible
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reveal = document.querySelectorAll('[data-reveal]');
+  var anims = document.querySelectorAll('svg[data-anim]');
+  anims.forEach(function (s) { if (s.pauseAnimations) { s.pauseAnimations(); if (still) s.setCurrentTime(1.4); } });
+  if ('IntersectionObserver' in window) {
+    reveal.forEach(function (el) { el.classList.add('is-armed'); });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var t = e.target;
+        if (t.hasAttribute('data-reveal')) { if (e.isIntersecting) { t.classList.add('is-in'); io.unobserve(t); } return; }
+        if (still || !t.pauseAnimations) return;
+        if (e.isIntersecting) t.unpauseAnimations(); else t.pauseAnimations();
+      });
+    }, { threshold: 0.25 });
+    reveal.forEach(function (el) { io.observe(el); });
+    anims.forEach(function (s) { io.observe(s); });
+  } else if (!still) {
+    anims.forEach(function (s) { if (s.unpauseAnimations) s.unpauseAnimations(); });
+  }
 })();

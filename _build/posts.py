@@ -2,6 +2,19 @@
 from lib import img, sec_head
 
 POSTS = {
+    'brushes': {
+        'date': '2026-11-16', 'img': 'brushes-hero', 'video': 'gc_bq04a_G0',
+        'cs': dict(path='/blog/jak-myt-stetce-na-make-up/', crumb='Jak mýt štětce', tag='Tutoriál',
+                   title='Jak mýt štětce na make-up: postup vizážistky',
+                   seo_title='Jak mýt štětce na make-up: rychle, levně a šetrně | Nikol Pavlova',
+                   desc='Vizážistka Nikol Pavlova z Prahy ukazuje, jak myje štětce na make-up: tuhé mýdlo, technika podle tvaru štětce, olej na make-up a rtěnku a správné sušení, aby štětce vydržely roky.',
+                   card='Jak myju desítky štětců denně: tuhé mýdlo, krouživě nebo tahy podle tvaru, olej na rtěnku a sušení naplocho. A proč nikdy štětinami nahoru.'),
+        'en': dict(path='/en/blog/how-to-wash-makeup-brushes/', crumb='How to wash makeup brushes', tag='Tutorial',
+                   title='How to Wash Makeup Brushes: A Makeup Artist\'s Routine',
+                   seo_title='How to Wash Makeup Brushes: Fast, Cheap and Gentle | Nikol Pavlova',
+                   desc='Prague makeup artist Nikol Pavlova shows how she washes makeup brushes: bar soap, technique by brush shape, oil for foundation and lipstick, and drying them right so they last for years.',
+                   card='How I wash dozens of brushes a day: bar soap, circles or strokes by shape, oil for lipstick and drying flat. And why never bristles-up.'),
+    },
     'catrice': {
         'date': '2026-10-28', 'img': 'nikol-portrait', 'video': 'lJGqeU8JfXA',
         'cs': dict(path='/blog/recenze-catrice-cely-oblicej/', crumb='Celý obličej Catrice', tag='Recenze',
@@ -55,7 +68,7 @@ POSTS = {
                    card='I tested a full face of NYX and wore it through a working day: what earned a place in my kit and what I would skip.'),
     },
 }
-ORDER = ['catrice', 'empties', 'summer', 'nyx']   # newest first
+ORDER = ['brushes', 'catrice', 'empties', 'summer', 'nyx']   # newest first
 
 MONTHS = {
     'cs': ['ledna', 'února', 'března', 'dubna', 'května', 'června', 'července', 'srpna', 'září', 'října', 'listopadu', 'prosince'],

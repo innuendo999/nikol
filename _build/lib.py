@@ -1,5 +1,5 @@
 """Shared components for the static site generator. Pure Python, no dependencies."""
-import json, os, html as _html
+import json, os, re, html as _html
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://nikolmakeup.cz'
@@ -352,11 +352,13 @@ def hero_split(lang, tone, crumb_items, big, sub, desc, buttons, imgname, imgalt
         else:
             cls = 'btn btn--ghost' if tone in ('tone-ox', 'tone-ink') else 'btn btn--outline'
         btns += f'<a class="{cls}" href="{href}"{" rel=" + chr(34) + "noopener" + chr(34) if href.startswith("http") else ""}>{label}</a>'
+    words = re.sub(r'<[^>]+>|&\w+;', ' ', big).split()
+    big_cls = 'big big--long' if words and max(len(w) for w in words) >= 9 else 'big'
     return f'''<section class="hero-split" aria-labelledby="page-h1">
 <div class="panel {tone}">
 {crumbs(lang, crumb_items)}
 <div style="display:flex;flex-direction:column;gap:24px">
-<h1 class="h1" id="page-h1"><span class="big">{big}</span><span class="sub">{sub}</span></h1>
+<h1 class="h1" id="page-h1"><span class="{big_cls}">{big}</span><span class="sub">{sub}</span></h1>
 <p class="desc">{desc}</p>
 <p style="display:flex;gap:12px;flex-wrap:wrap">{btns}</p>
 </div>

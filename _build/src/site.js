@@ -67,4 +67,54 @@
     if (moreBtn) moreBtn.addEventListener('click', function () { limit += STEP; render(); });
     render();
   }
+
+  // Blog (brush care): bristle finder – show only the answer for the picked pair
+  document.querySelectorAll('[data-finder]').forEach(function (box) {
+    var ans = box.querySelectorAll('[data-ans]');
+    var pick = function () {
+      var f = box.querySelector('input[name="bc-fiber"]:checked');
+      var q = box.querySelector('input[name="bc-quality"]:checked');
+      var key = (f ? f.value : '') + '-' + (q ? q.value : '');
+      ans.forEach(function (a) { a.classList.toggle('is-on', a.dataset.ans === key); });
+    };
+    box.classList.add('is-on');
+    box.addEventListener('change', pick);
+    pick();
+  });
+
+  // Blog (brush care): technique tabs – panes are stacked without JS
+  document.querySelectorAll('[data-tabs]').forEach(function (box) {
+    var list = box.querySelector('[role="tablist"]');
+    var btns = list.querySelectorAll('[data-tab]');
+    var panes = box.querySelectorAll('[data-pane]');
+    var show = function (k) {
+      btns.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.tab === k)); });
+      panes.forEach(function (p) { p.hidden = p.dataset.pane !== k; });
+    };
+    list.hidden = false;
+    box.classList.add('is-on');
+    btns.forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.tab); }); });
+    show(btns[0].dataset.tab);
+  });
+
+  // Blog (brush care): reveal once in view; SMIL animations play only while visible
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reveal = document.querySelectorAll('[data-reveal]');
+  var anims = document.querySelectorAll('svg[data-anim]');
+  anims.forEach(function (s) { if (s.pauseAnimations) { s.pauseAnimations(); if (still) s.setCurrentTime(1.4); } });
+  if ('IntersectionObserver' in window) {
+    reveal.forEach(function (el) { el.classList.add('is-armed'); });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var t = e.target;
+        if (t.hasAttribute('data-reveal')) { if (e.isIntersecting) { t.classList.add('is-in'); io.unobserve(t); } return; }
+        if (still || !t.pauseAnimations) return;
+        if (e.isIntersecting) t.unpauseAnimations(); else t.pauseAnimations();
+      });
+    }, { threshold: 0.25 });
+    reveal.forEach(function (el) { io.observe(el); });
+    anims.forEach(function (s) { io.observe(s); });
+  } else if (!still) {
+    anims.forEach(function (s) { if (s.unpauseAnimations) s.unpauseAnimations(); });
+  }
 })();

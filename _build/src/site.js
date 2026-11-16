@@ -67,4 +67,33 @@
     if (moreBtn) moreBtn.addEventListener('click', function () { limit += STEP; render(); });
     render();
   }
+
+  // Blog (brush care): bristle finder – show only the answer for the picked pair
+  document.querySelectorAll('[data-finder]').forEach(function (box) {
+    var ans = box.querySelectorAll('[data-ans]');
+    var pick = function () {
+      var f = box.querySelector('input[name="bc-fiber"]:checked');
+      var q = box.querySelector('input[name="bc-quality"]:checked');
+      var key = (f ? f.value : '') + '-' + (q ? q.value : '');
+      ans.forEach(function (a) { a.classList.toggle('is-on', a.dataset.ans === key); });
+    };
+    box.classList.add('is-on');
+    box.addEventListener('change', pick);
+    pick();
+  });
+
+  // Blog (brush care): technique tabs – panes are stacked without JS
+  document.querySelectorAll('[data-tabs]').forEach(function (box) {
+    var list = box.querySelector('[role="tablist"]');
+    var btns = list.querySelectorAll('[data-tab]');
+    var panes = box.querySelectorAll('[data-pane]');
+    var show = function (k) {
+      btns.forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.tab === k)); });
+      panes.forEach(function (p) { p.hidden = p.dataset.pane !== k; });
+    };
+    list.hidden = false;
+    box.classList.add('is-on');
+    btns.forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.tab); }); });
+    show(btns[0].dataset.tab);
+  });
 })();

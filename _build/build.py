@@ -7,7 +7,7 @@ from lib import *
 from utilities import css as utility_css
 import pages_cs, pages_en, pages_blog
 
-LASTMOD = '2026-11-11'
+LASTMOD = '2026-11-16'
 
 # (cs path, en path) pairs; None = single-language page
 PAIRS = [
@@ -21,6 +21,7 @@ PAIRS = [
     ('/kurzy-liceni/', '/en/courses/', '0.8'),
     ('/portfolio/', '/en/portfolio/', '0.7'),
     ('/blog/', '/en/blog/', '0.6'),
+    ('/blog/jak-myt-stetce-na-make-up/', '/en/blog/how-to-wash-makeup-brushes/', '0.6'),
     ('/blog/recenze-catrice-cely-oblicej/', '/en/blog/full-face-of-catrice-review/', '0.6'),
     ('/blog/dopotrebovana-kosmetika/', '/en/blog/beauty-empties-repurchase/', '0.6'),
     ('/blog/letni-make-up-bez-make-upu/', '/en/blog/summer-no-makeup-makeup/', '0.6'),
@@ -88,6 +89,7 @@ Key facts for accurate reference:
 ## Blog
 
 - [Blog (CZ)]({s}/blog/) · [Blog (EN)]({s}/en/blog/): Makeup tutorials, honest reviews and pro tips.
+- [Jak mýt štětce na make-up]({s}/blog/jak-myt-stetce-na-make-up/) · [How to wash makeup brushes]({s}/en/blog/how-to-wash-makeup-brushes/): A makeup artist's brush-washing routine: bar soap, technique by brush shape, oil for foundation and lipstick, drying flat; why glue and water don't mix.
 - [Celý obličej Catrice]({s}/blog/recenze-catrice-cely-oblicej/) · [Full Face of Catrice]({s}/en/blog/full-face-of-catrice-review/): Full-face test of Catrice (HD Liquid Coverage, Melted Sun bronzer, Twinkling Treasures advent calendar) with a rating for each product.
 - [Dopotřebovaná kosmetika]({s}/blog/dopotrebovana-kosmetika/) · [Beauty empties]({s}/en/blog/beauty-empties-repurchase/): 25 used-up products (skincare, SPF, hair, body, makeup) with an honest repurchase verdict for each.
 - [Letní make-up bez make-upu]({s}/blog/letni-make-up-bez-make-upu/) · [Summer no-makeup makeup]({s}/en/blog/summer-no-makeup-makeup/): Light summer routine: SPF prep, foundation shade for freckled skin, blur instead of shine, setting sprays compared.

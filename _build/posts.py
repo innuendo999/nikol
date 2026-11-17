@@ -2,6 +2,19 @@
 from lib import img, sec_head
 
 POSTS = {
+    'travel': {
+        'date': '2026-11-17', 'img': 'travel-hero', 'video': 'Sb-Sg-GVoVM',
+        'cs': dict(path='/blog/jak-sbalit-kosmeticku-na-cesty/', crumb='Jak sbalit kosmetičku na cesty', tag='Návod',
+                   title='Jak sbalit kosmetičku na cesty: návod vizážistky',
+                   seo_title='Jak sbalit kosmetičku na cesty: návod vizážistky | Nikol Pavlova',
+                   desc='Jak sbalit kosmetičku na cesty: co si vzít, pět štětců, které stačí, a jak z malé kosmetičky udělat denní i večerní make-up. Návod krok za krokem od vizážistky Nikol Pavlové.',
+                   card='Co si sbalit do kosmetičky na cesty, aby z ní šel denní i večerní make-up: seznam na odškrtání, pět štětců a interaktivní návod krok za krokem.'),
+        'en': dict(path='/en/blog/how-to-pack-a-makeup-bag-for-travel/', crumb='How to pack a makeup bag', tag='How-to',
+                   title="How to Pack a Makeup Bag for Travel: A Makeup Artist's Guide",
+                   seo_title='How to Pack a Makeup Bag for Travel | Nikol Pavlova, Makeup Artist',
+                   desc='How to pack a makeup bag for travel: what to take, the five brushes you need and how to turn one small bag into a day or evening look. A step-by-step guide by makeup artist Nikol Pavlova.',
+                   card='What to pack in a travel makeup bag so it covers a day and an evening look: a tick-off list, five brushes and an interactive step-by-step guide.'),
+    },
     'brushes': {
         'date': '2026-11-16', 'img': 'brushes-hero', 'video': 'gc_bq04a_G0',
         'cs': dict(path='/blog/jak-myt-stetce-na-make-up/', crumb='Jak mýt štětce', tag='Tutoriál',
@@ -68,7 +81,7 @@ POSTS = {
                    card='I tested a full face of NYX and wore it through a working day: what earned a place in my kit and what I would skip.'),
     },
 }
-ORDER = ['brushes', 'catrice', 'empties', 'summer', 'nyx']   # newest first
+ORDER = ['travel', 'brushes', 'catrice', 'empties', 'summer', 'nyx']   # newest first
 
 MONTHS = {
     'cs': ['ledna', 'února', 'března', 'dubna', 'května', 'června', 'července', 'srpna', 'září', 'října', 'listopadu', 'prosince'],

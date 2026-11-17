@@ -7,6 +7,7 @@ from posts import POSTS, ORDER, fmt_date, cards, teaser
 import post_empties
 import post_catrice
 import post_brushes
+import post_travel
 
 L_BLOG = {
     'cs': dict(home=('Domů', '/'), blog='Blog', blog_path='/blog/', read='min čtení', by='Autorka', role='vizážistka, Praha',
@@ -331,8 +332,8 @@ NYX['cs'] = dict(
     bio='Vizážistka v Praze, kde žiji od roku 2021. Věnuji se svatebnímu, večernímu a editoriálnímu líčení a učím individuální kurzy. Na YouTube každý týden ukazuji, jak líčím a které produkty opravdu používám.',
 )
 
-CONTENT = {'brushes': post_brushes.C, 'summer': SUMMER, 'nyx': NYX, 'empties': post_empties.C, 'catrice': post_catrice.C}
-EXTRA = {'brushes': post_brushes.EXTRA, 'catrice': post_catrice.EXTRA, 'empties': post_empties.EXTRA, 'summer': dict(products=SUMMER_PRODUCTS, brands=SUMMER_BRANDS, about=('Make-up bez make-upu', 'No-makeup makeup'), video_name='Summer makeup 2.0'),
+CONTENT = {'travel': post_travel.C, 'brushes': post_brushes.C, 'summer': SUMMER, 'nyx': NYX, 'empties': post_empties.C, 'catrice': post_catrice.C}
+EXTRA = {'travel': post_travel.EXTRA, 'brushes': post_brushes.EXTRA, 'catrice': post_catrice.EXTRA, 'empties': post_empties.EXTRA, 'summer': dict(products=SUMMER_PRODUCTS, brands=SUMMER_BRANDS, about=('Make-up bez make-upu', 'No-makeup makeup'), video_name='Summer makeup 2.0'),
          'nyx': dict(products=[], brands=NYX_BRANDS, about=('Recenze NYX', 'NYX makeup review'), video_name='Все обличчя NYX',
                      upload='2026-03-20', video_desc='Nikol Pavlova applies a complete look using only NYX products and tests how it wears over a full day.')}
 
@@ -361,6 +362,14 @@ def article(key, lang):
               'url': SITE + ('/' if lang == 'cs' else '/en/'), 'sameAs': [IG, FB, TH, 'https://www.youtube.com/@nikolpavlova_mua']},
              S.breadcrumb(path, [t['home'], (t['blog'], t['blog_path']), (meta['crumb'], path)]),
              S.faq(path, lang, c['faq'])]
+    if ex.get('howto'):
+        hw = ex['howto']
+        anchor = 'krok' if lang == 'cs' else 'step'
+        graph.append({'@type': 'HowTo', '@id': url + '#howto', 'name': meta['title'], 'description': meta['desc'], 'inLanguage': lang, 'image': og,
+                      'supply': [{'@type': 'HowToSupply', 'name': n} for n in hw['supply']],
+                      'tool': [{'@type': 'HowToTool', 'name': n} for n in hw['tools'][lang]],
+                      'step': [{'@type': 'HowToStep', 'position': i + 1, 'name': n, 'text': tx, 'url': f'{url}#{anchor}-{i + 1:02d}'}
+                               for i, (n, tx) in enumerate(hw['steps'][lang])]})
     if ex.get('upload'):
         art['video'] = {'@id': url + '#video'}
         graph.append({'@type': 'VideoObject', '@id': url + '#video', 'name': ex['video_name'], 'description': ex['video_desc'], 'inLanguage': 'uk',
@@ -396,8 +405,8 @@ def article(key, lang):
                      + ''.join(f'<li><a href="{u}" rel="nofollow sponsored">{n}</a></li>' for n, u in ex['products']) + '</ul>\n')
     verdict_top = key in ('nyx', 'catrice')
     grid_html = ''
-    if ex.get('grid'):
-        gid = 'produkty' if lang == 'cs' else 'products'
+    if ex.get('grid') and any('prod-' + g[0] in IMG for g in ex['grid']):
+        gid = ('produkty' if lang == 'cs' else 'products') + ('-foto' if ex['products'] and lang == 'cs' else '-photos' if ex['products'] else '')
         items = ''
         for slug, name, vcls, vcs, ven in ex['grid']:
             iname = 'prod-' + slug
@@ -461,7 +470,7 @@ def index(lang):
         h1, sub = 'Blog', '– tutoriály, recenze a tipy vizážistky z Prahy'
         lead = 'Postupy, které používám na klientkách i na sobě, a poctivé recenze produktů. Psáno tak, abyste si vybrali lepší kosmetiku a vytvořili look, který vám sedí.'
         latest, more, topics_h, topics_sub, read_btn = 'Nejnovější článek', 'Další články', 'Témata', 'o čem píšu', 'Číst článek →'
-        topics = [('Tutoriály', 'Krok za krokem: přirozený, letní i večerní make-up a péče o štětce.', '2 články', True),
+        topics = [('Tutoriály', 'Krok za krokem: přirozený, letní, cestovní i večerní make-up a péče o štětce.', '3 články', True),
                   ('Recenze produktů', 'Testuji kosmetiku na sobě i v práci a říkám, co se vyplatí.', '3 články', True),
                   ('Svatby a akce', 'Jak se připravit na make-up, který vydrží celý den.', 'Připravujeme', False)]
         alt = [('cs', path), ('en', '/en/blog/'), ('x-default', path)]
@@ -471,7 +480,7 @@ def index(lang):
         h1, sub = 'The Blog', '– makeup tutorials, reviews &amp; tips from Prague'
         lead = 'Routines I use on clients and on myself, plus honest product reviews, written to help you choose better products and create looks that suit you.'
         latest, more, topics_h, topics_sub, read_btn = 'Latest article', 'More articles', 'Topics', 'what I write about', 'Read the article →'
-        topics = [('Tutorials', 'Step by step: natural, summer and evening makeup, plus brush care.', '2 articles', True),
+        topics = [('Tutorials', 'Step by step: natural, summer, travel and evening makeup, plus brush care.', '3 articles', True),
                   ('Product reviews', 'I test products on myself and at work and tell you what is worth it.', '3 articles', True),
                   ('Bridal &amp; events', 'How to prepare for makeup that lasts all day.', 'Coming soon', False)]
         alt = [('cs', '/blog/'), ('en', path), ('x-default', '/blog/')]

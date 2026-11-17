@@ -97,7 +97,7 @@ def home():
 </section>
 '''
     h += reviews(LANG, 'what clients say', pick('zoe', 'nelli', 'glenn', 'polina', 'shirley', 'darya', 'beata', 'marie', 'lena'), top=False)
-    h += teaser(LANG, ['brushes', 'catrice', 'summer'], 'From the blog', 'tutorials &amp; honest reviews')
+    h += teaser(LANG, ['travel', 'brushes', 'catrice'], 'From the blog', 'tutorials &amp; honest reviews')
     h += faq(LANG, 'popular questions', faq_items)
     h += footer(LANG, 'Contact me', 'Do you need help with creative make-up?',
                 "I'm committed to ensuring your satisfaction with bridal, event, or editorial makeup services. Reach out to plan your requirements.")
@@ -390,7 +390,7 @@ def courses():
 </article></div></section>
 '''
     h += faq(LANG, 'makeup course questions', faq_items)
-    h += teaser(LANG, ['brushes', 'summer', 'nyx'], 'Practise at home', 'tutorials from the blog')
+    h += teaser(LANG, ['travel', 'brushes', 'summer'], 'Practise at home', 'tutorials from the blog')
     h += tiles(LANG, [('Wedding makeup', '/en/wedding/', 'wedding-5'), ('Nude makeup', '/en/nude-makeup/', 'nude-1')])
     h += footer(LANG, 'Book your makeup course', 'Get in touch', 'Lessons held in Prague, Czech Republic · In English or Czech. Personalised quote within 24 hours.', (CAL, 'Book your course online +'))
     write(path, h)

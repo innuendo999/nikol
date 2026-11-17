@@ -68,13 +68,11 @@
     render();
   }
 
-  // Blog (brush care): bristle finder – show only the answer for the picked pair
+  // Blog: pickers (radio groups) – show only the answer for the picked combination
   document.querySelectorAll('[data-finder]').forEach(function (box) {
     var ans = box.querySelectorAll('[data-ans]');
     var pick = function () {
-      var f = box.querySelector('input[name="bc-fiber"]:checked');
-      var q = box.querySelector('input[name="bc-quality"]:checked');
-      var key = (f ? f.value : '') + '-' + (q ? q.value : '');
+      var key = Array.prototype.map.call(box.querySelectorAll('input[type="radio"]:checked'), function (i) { return i.value; }).join('-');
       ans.forEach(function (a) { a.classList.toggle('is-on', a.dataset.ans === key); });
     };
     box.classList.add('is-on');
@@ -117,4 +115,82 @@
   } else if (!still) {
     anims.forEach(function (s) { if (s.unpauseAnimations) s.unpauseAnimations(); });
   }
+
+  // Blog (travel): step-by-step guide with face zones and Minimal / Day / Evening switch
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-guide]').forEach(function (g) {
+    var steps = Array.prototype.slice.call(g.querySelectorAll('.tg-step'));
+    var zones = g.querySelectorAll('.tg-z');
+    var cap = g.querySelector('.tg-cap');
+    var count = g.querySelector('.tg-count');
+    var modeBtns = g.querySelectorAll('[data-mode]:not(li)');
+    var allow = { min: ['base'], day: ['base', 'opt'], eve: ['base', 'opt', 'eve'] };
+    var mode = 'day', cur = 0;
+    var visible = function () { return steps.filter(function (s) { return !s.hidden; }); };
+    var open = function (i, scroll) {
+      cur = i;
+      var v = visible();
+      steps.forEach(function (s, k) {
+        var on = k === i;
+        s.classList.toggle('is-on', on);
+        s.querySelector('.tg-step-h').setAttribute('aria-expanded', String(on));
+        s.querySelector('.tg-step-b').hidden = !on;
+      });
+      var z = (steps[i].dataset.zones || '').split(' ');
+      zones.forEach(function (el) { el.classList.toggle('on', z.indexOf(el.dataset.z) >= 0); });
+      cap.textContent = steps[i].querySelector('.tg-num').textContent + ' · ' + steps[i].querySelector('.tg-title').textContent;
+      count.textContent = (v.indexOf(steps[i]) + 1) + ' / ' + v.length;
+      if (scroll) steps[i].scrollIntoView({ block: 'nearest', behavior: calm ? 'auto' : 'smooth' });
+    };
+    var apply = function () {
+      steps.forEach(function (s) { s.hidden = allow[mode].indexOf(s.dataset.mode) < 0; });
+      var v = visible();
+      v.forEach(function (s, k) { s.querySelector('.tg-num').textContent = (k < 9 ? '0' : '') + (k + 1); });
+      open(v.indexOf(steps[cur]) >= 0 ? cur : steps.indexOf(v[0]), false);
+    };
+    steps.forEach(function (s, k) { s.querySelector('.tg-step-h').addEventListener('click', function () { open(k, false); }); });
+    modeBtns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        mode = b.dataset.mode;
+        modeBtns.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+        apply();
+      });
+    });
+    var go = function (d) {
+      var v = visible(), p = v.indexOf(steps[cur]);
+      var n = v[Math.max(0, Math.min(v.length - 1, p + d))];
+      open(steps.indexOf(n), true);
+    };
+    g.querySelector('[data-prev]').addEventListener('click', function () { go(-1); });
+    g.querySelector('[data-next]').addEventListener('click', function () { go(1); });
+    g.querySelector('.tg-modes').hidden = false;
+    g.querySelector('.tg-ctrl').hidden = false;
+    g.classList.add('is-on');
+    apply();
+  });
+
+  // Blog (travel): packing checklist counter
+  document.querySelectorAll('[data-pack]').forEach(function (box) {
+    var out = box.querySelector('[data-tpl]');
+    var boxes = box.querySelectorAll('input[type="checkbox"]');
+    var upd = function () {
+      var n = box.querySelectorAll('input:checked').length;
+      out.textContent = out.dataset.tpl.replace('{n}', n).replace('{t}', boxes.length);
+    };
+    out.hidden = false;
+    box.addEventListener('change', upd);
+    upd();
+  });
+
+  // Blog (travel): dry vs damp sponge
+  document.querySelectorAll('[data-sponge]').forEach(function (f) {
+    var r = f.querySelector('input[type="range"]'), cov = f.querySelector('.tg-cover'), out = f.querySelector('[data-out]');
+    var upd = function () {
+      var v = +r.value / 100;
+      cov.setAttribute('opacity', String(0.92 - v * 0.55));
+      out.textContent = v < 0.5 ? out.dataset.dry : out.dataset.wet;
+    };
+    r.addEventListener('input', upd);
+    upd();
+  });
 })();

@@ -405,8 +405,8 @@ def article(key, lang):
                      + ''.join(f'<li><a href="{u}" rel="nofollow sponsored">{n}</a></li>' for n, u in ex['products']) + '</ul>\n')
     verdict_top = key in ('nyx', 'catrice')
     grid_html = ''
-    if ex.get('grid'):
-        gid = 'produkty' if lang == 'cs' else 'products'
+    if ex.get('grid') and any('prod-' + g[0] in IMG for g in ex['grid']):
+        gid = ('produkty' if lang == 'cs' else 'products') + ('-foto' if ex['products'] and lang == 'cs' else '-photos' if ex['products'] else '')
         items = ''
         for slug, name, vcls, vcs, ven in ex['grid']:
             iname = 'prod-' + slug

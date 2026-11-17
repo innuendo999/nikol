@@ -14,6 +14,7 @@ SRC = {
   'course': ('img/courses/IMG_7417.jpg', [600, 1000, 1400]),
   'brushes-hero': ('img/blog/brushes-hero.png', [640, 1280]),
   'travel-hero': ('img/blog/travel-hero.png', [640, 1280]),
+  'travel-face': ('img/blog/travel-face.jpg', [320, 640]),
 }
 for i in range(1, 16): SRC[f'wedding-{i}'] = (f'img/wedding/wedding-{i}.png', [400, 800])
 for i in range(1, 18): SRC[f'evening-{i}'] = (f'img/evening/evening-{i}.png', [400, 800])

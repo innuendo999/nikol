@@ -28,38 +28,31 @@ PRODUCTS = [
     ('Davydenko Beauty lip pencil 05', 'https://prom.ua/p2616999622-davydenko-beauty-olivets.html'),
 ]
 
-# ---------------------------------------------------------------- line-art face with zones
-_Z = f'fill="{RED}" fill-opacity=".16" stroke="{RED}" stroke-width="1.2" stroke-dasharray="3 3" vector-effect="non-scaling-stroke"'
-OVAL = 'M120 34C72 34 54 80 56 130c2 58 32 104 64 106 32-2 62-48 64-106 2-50-16-96-64-96z'
+# ---------------------------------------------------------------- real face photo (portfolio, natural day look) with zones
+# Zone coordinates are in the original 800x800 photo (img/nude/nude-1.png); the crop starts at x=100, hence the viewBox.
+_Z = 'fill="#fff" fill-opacity=".22" stroke="#fff" stroke-width="1.6" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"'
+OVAL = 'M410 74C266 74 198 170 194 330c-2 140 70 300 216 358 148-40 230-208 228-358-3-160-84-256-228-256z'
 ZONES = {
     'face': f'<path d="{OVAL}"/>',
-    'neck': '<path d="M96 226h48l4 60H92z"/>',
-    'tzone': '<path d="M78 68h84v24h-30l-3 78h-18l-3-78H78z"/>',
-    'under': '<path d="M80 129q14 22 30 0-15 11-30 0z"/><path d="M130 129q16 22 30 0-15 11-30 0z"/>',
-    'contour': '<path d="M60 116q4 44 32 54-24-18-28-56z"/><path d="M180 116q-4 44-32 54 24-18 28-56z"/><path d="M66 66q-10 18-8 40l10-4q0-20 8-34z"/><path d="M174 66q10 18 8 40l-10-4q0-20-8-34z"/>',
-    'cheeks': '<ellipse cx="86" cy="160" rx="15" ry="9"/><ellipse cx="154" cy="160" rx="15" ry="9"/>',
-    'lids': '<path d="M78 121q16-24 32 0-16-9-32 0z"/><path d="M130 121q16-24 32 0-16-9-32 0z"/>',
-    'outer': '<path d="M80 122q-10-10-18-20l6-3q8 10 16 18z"/><path d="M160 122q10-10 18-20l-6-3q-8 10-16 18z"/>',
-    'lashes': '<path d="M79 121q15-14 30 0-15-6-30 0z"/><path d="M131 121q15-14 30 0-15-6-30 0z"/>',
-    'brows': '<path d="M74 106q18-15 36-4v5q-18-9-34 2z"/><path d="M166 106q-18-15-36-4v5q18-9 34 2z"/>',
-    'lips': '<path d="M100 192q10-8 20-3 10-5 20 3-6 16-20 16t-20-16z"/>',
+    'neck': '<path d="M300 700l240-10 22 110H280z"/>',
+    'tzone': '<path d="M270 118h290v96h-110l-4 250h-74l-4-250H270z"/>',
+    'under': '<path d="M255 326q50 50 105 4-52 22-105-4z"/><path d="M490 340q55 46 110-4-55 24-110 4z"/>',
+    'contour': '<path d="M208 396q16 84 102 128-76-56-84-130z"/><path d="M628 404q-12 84-94 120 68-56 76-122z"/><path d="M218 190q-14 50-8 108l20-4q-4-54 10-98z"/><path d="M616 196q16 50 12 108l-20-4q2-54-12-98z"/>',
+    'cheeks': '<ellipse cx="292" cy="440" rx="54" ry="34"/><ellipse cx="562" cy="442" rx="52" ry="36"/>',
+    'lids': '<path d="M254 306q52-40 108-4-54-16-108 4z"/><path d="M490 313q56-36 116-2-58-14-116 2z"/>',
+    'outer': '<path d="M258 306q-28-22-44-50l14-6q16 28 40 48z"/><path d="M604 314q24-22 36-50l-14-6q-12 28-34 48z"/>',
+    'lashes': '<path d="M256 304q50-30 104-2-52-12-104 2z"/><path d="M492 312q54-28 112-2-56-12-112 2z"/>',
+    'brows': '<path d="M228 268q72-46 144-8v12q-72-30-140 6z"/><path d="M478 278q74-40 150-4l-2 12q-74-28-146 4z"/>',
+    'lips': '<path d="M335 560q40-22 80-12 40-10 80 12-30 46-80 46t-80-46z"/>',
 }
 
 
-def face():
+def face(alt, credit):
+    from lib import img
     zones = ''.join(f'<g class="tg-z" data-z="{k}" {_Z}>{v}</g>' for k, v in ZONES.items())
-    return f'''<svg class="tg-face" viewBox="0 0 240 300" aria-hidden="true">
-<path d="M70 300q4-40 26-56M170 300q-4-40-26-56" fill="none" {_S}/>
-<path d="M96 222v34M144 222v34" fill="none" {_S}/>
-<path d="{OVAL}" fill="{PAPER}" {_S}/>
-<path d="M56 128c-8-62 26-108 64-108 42 0 74 40 66 108-6-44-30-74-66-76-36 2-60 30-64 76z" fill="{OX}"/>
-<path d="M76 104q16-9 32-2M132 102q16-7 32 2" fill="none" stroke="{INK}" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
-<path d="M80 122q14-10 28 0-14 8-28 0zM132 122q14-10 28 0-14 8-28 0z" fill="#fff" {_S}/>
-<circle cx="94" cy="122" r="3.6" fill="{INK}"/><circle cx="146" cy="122" r="3.6" fill="{INK}"/>
-<path d="M120 132l-6 32q6 5 12 0" fill="none" {_S}/>
-<path d="M100 192q10-8 20-3 10-5 20 3-6 16-20 16t-20-16z" fill="#E3A497" {_S}/><path d="M100 192q20 4 40 0" fill="none" {_S}/>
-{zones}
-</svg>'''
+    return (f'<div class="tg-photo">{img("travel-face", alt, sizes="(max-width: 900px) 112px, 280px")}'
+            f'<svg class="tg-ov" viewBox="100 0 640 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">{zones}</svg></div>'
+            f'<p class="tg-credit fine-print">{credit}</p>')
 
 
 def guide(L, steps):
@@ -74,7 +67,7 @@ def guide(L, steps):
     return f'''<div class="tg-guide" data-guide>
 <div class="tg-modes" role="group" aria-label="{L['modes_label']}" hidden>{modes}</div>
 <div class="tg-grid">
-<div class="tg-aside"><div class="tg-face-wrap">{face()}<p class="tg-cap lbl" aria-live="polite"></p></div>
+<div class="tg-aside"><div class="tg-face-wrap">{face(L["alt"], L["credit"])}<p class="tg-cap lbl" aria-live="polite"></p></div>
 <div class="tg-ctrl" hidden><button type="button" data-prev aria-label="{L['prev']}">←</button><span class="tg-count lbl"></span><button type="button" data-next aria-label="{L['next']}">→</button></div></div>
 <ol class="tg-steps">{items}</ol>
 </div></div>'''
@@ -152,7 +145,8 @@ STEPS_CS = [
      '<p>Hodně známá studená růžová tužka. Mám ji v kosmetičce pro případ, že večer chci jiné rty.</p>'),
 ]
 _GUIDE_CS = dict(modes=[('min', 'Minimum'), ('day', 'Den'), ('eve', 'Večer')], modes_label='Varianta make-upu', opt='Volitelné ve dne', eve='Na večer',
-                 anchor='krok', prev='Předchozí krok', next='Další krok')
+                 anchor='krok', prev='Předchozí krok', next='Další krok',
+                 alt='Přirozený denní make-up, foto z mého portfolia', credit='Foto z mého portfolia: přirozený denní look')
 _PACK_CS = [('Tonikum', 'přelité do malé lahvičky: je lehčí a zabere méně místa než sklo'), ('Sérum s vitaminem C', ''), ('SPF 50+', ''), ('Glow filtr', ''),
             ('Fixační sprej', ''), ('Korektor', 'pod oči, plus světlý na večer'), ('Lehký make-up', ''), ('Krémový bronzer', 'zároveň kontura i stíny'),
             ('Glow Maximizer a tvářenka', ''), ('Paleta na obličej', 'pudr, tvářenky, rozjasňovač i stíny v jednom'), ('Krémové stíny v tyčince', ''),
@@ -206,6 +200,7 @@ C['cs'] = dict(
          ('Jak zajistit, aby make-up vydržel v horku?', 'Fixovat po vrstvách: sprej po podkladu, pudr na krémové stíny a přes místa s krémovým bronzerem a na konci znovu sprej. Hydratační produkty v létě vydrží o něco kratší dobu.'),
          ('Proč zahřívat krémový bronzer na dlani?', 'Na dlani se produkt rychleji rozpustí a lépe se roztírá. Vnitřní strana dlaně je teplejší než hřbet ruky a nevysušuje se tolik.'),
          ('Jakou hnědou řasenku vybrat?', 'Na kontrastní typ tmavě hnědou, třeba Eveline Variété Lashes Show Brown. Na světlé a zrzavé vlasy rezavě hnědou, třeba od Essence.')],
+    grid_h='Produkty krok za krokem',
     bio='Vizážistka v Praze, kde žiji od roku 2021. Věnuji se svatebnímu, večernímu a komerčnímu líčení a učím individuální kurzy. Na YouTube každý týden ukazuji, jak líčím a které produkty opravdu používám.',
 )
 
@@ -247,7 +242,8 @@ STEPS_EN = [
      '<p>A well-known cool pink pencil. It lives in my bag in case I want different lips in the evening.</p>'),
 ]
 _GUIDE_EN = dict(modes=[('min', 'Minimal'), ('day', 'Day'), ('eve', 'Evening')], modes_label='Makeup version', opt='Optional by day', eve='Evening',
-                 anchor='step', prev='Previous step', next='Next step')
+                 anchor='step', prev='Previous step', next='Next step',
+                 alt='Natural day makeup, photo from my portfolio', credit='Photo from my portfolio: a natural day look')
 _PACK_EN = [('Toner', 'decanted into a small bottle: lighter and smaller than glass'), ('Vitamin C serum', ''), ('SPF 50+', ''), ('Glow filter', ''),
             ('Setting spray', ''), ('Concealer', 'for under the eyes, plus a light one for evenings'), ('Light foundation', ''), ('Cream bronzer', 'contour and eyeshadow in one'),
             ('Glow Maximizer and blush', ''), ('Face palette', 'powder, blushes, highlighter and eyeshadow in one'), ('Cream eyeshadow stick', ''),
@@ -300,6 +296,7 @@ C['en'] = dict(
          ('How do I make makeup last in the heat?', 'Set it in layers: spray after the base, powder over cream eyeshadow and over the cream bronzer, and spray again at the end. Hydrating products wear a little shorter in summer.'),
          ('Why warm cream bronzer on the palm?', 'The product melts faster on the palm and blends more easily. The inside of the palm is warmer than the back of the hand and doesn\'t dry out as much.'),
          ('Which brown mascara should I choose?', 'Dark brown for high-contrast colouring, such as Eveline Variété Lashes Show Brown. Reddish brown for fair or red hair, such as the Essence brown mascara.')],
+    grid_h='The products, step by step',
     bio='Makeup artist based in Prague since 2021. I do bridal, evening and commercial makeup and teach one-on-one courses. Every week on YouTube I show how I do makeup and which products I genuinely use.',
 )
 
@@ -307,5 +304,27 @@ HOWTO = {lang: [(t, ' '.join(__import__('re').sub(r'<aside.*?</aside>|<[^>]+>', 
 SUPPLY = [n for n, _ in PRODUCTS]
 TOOLS = {'cs': ['Pět štětců (čtyři zkosené, jeden plochý)', 'Houbička na make-up', 'Vatové tamponky'], 'en': ['Five brushes (four angled, one flat)', 'Makeup sponge', 'Cotton pads']}
 
+
+# Product photos: drop packshots into img/products/travel/<slug>.jpg|png|webp, run python3 _build/images.py, then build.
+# The grid appears as soon as at least one photo exists; products without a photo are listed by name only.
+GRID = [
+    ('medi-peel-toner', 'Medi-Peel Hyal Kombucha Tea-Tox Toner', 'v-yes', 'Krok 01', 'Step 01'),
+    ('image-vital-c', 'Image Skincare Vital C', 'v-yes', 'Krok 02', 'Step 02'),
+    ('round-lab-spf', 'Round Lab Birch Juice SPF 50+', 'v-yes', 'Krok 03', 'Step 03'),
+    ('dior-glow-star-filter', 'Dior Forever Glow Star Filter 2', 'v-yes', 'Krok 04', 'Step 04'),
+    ('ct-setting-spray', 'Charlotte Tilbury Airbrush Flawless Setting Spray', 'v-yes', 'Krok 05 a 13', 'Steps 05 and 13'),
+    ('note-bb-concealer', 'Note Cosmetique BB Concealer 03', 'v-yes', 'Krok 06', 'Step 06'),
+    ('el-double-wear-sheer', 'Estée Lauder Double Wear Sheer 2N1', 'v-yes', 'Krok 07', 'Step 07'),
+    ('eveline-choco-glamour', 'Eveline Choco Glamour 02', 'v-yes', 'Krok 08', 'Step 08'),
+    ('dior-glow-maximizer', 'Dior Forever Glow Maximizer Nude', 'v-yes', 'Krok 09', 'Step 09'),
+    ('ysl-make-me-blush', 'YSL Make Me Blush 44', 'v-yes', 'Krok 09', 'Step 09'),
+    ('hourglass-unlocked-leopard', 'Hourglass Ambient Lighting Edit Unlocked Leopard', 'v-dep', 'Krok 10 a 15', 'Steps 10 and 15'),
+    ('eveline-variete', 'Eveline Variété Lashes Show Brown', 'v-yes', 'Krok 11', 'Step 11'),
+    ('patricia-ledo-brow', 'Patricia Ledo Absolute Eyebrow 01', 'v-yes', 'Krok 12', 'Step 12'),
+    ('physicians-formula-liner', 'Physicians Formula Butter Palm Feathered', 'v-yes', 'Krok 12', 'Step 12'),
+    ('benefit-brow-setter', 'Benefit 24-Hour Brow Setter', 'v-yes', 'Krok 12', 'Step 12'),
+    ('davydenko-lip-05', 'Davydenko Beauty, tužka na rty 05', 'v-dep', 'Krok 14', 'Step 14'),
+]
+
 EXTRA = dict(products=PRODUCTS, brands=BRANDS, about=('Cestovní kosmetička', 'Travel makeup bag'),
-             video_name='Моя косметичка в подорож', howto=dict(steps=HOWTO, supply=SUPPLY, tools=TOOLS))
+             video_name='Моя косметичка в подорож', grid=GRID, howto=dict(steps=HOWTO, supply=SUPPLY, tools=TOOLS))

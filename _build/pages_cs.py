@@ -103,7 +103,7 @@ def home():
 </section>
 '''
     h += reviews(LANG, 'co říkají klientky', pick('nelli', 'zoe', 'polinashu', 'erika', 'darya', 'marie', 'stepanka', 'beata', 'lena'), top=False)
-    h += teaser(LANG, ['brushes', 'catrice', 'summer'], 'Z blogu', 'tutoriály a poctivé recenze')
+    h += teaser(LANG, ['travel', 'brushes', 'catrice'], 'Z blogu', 'tutoriály a poctivé recenze')
     h += faq(LANG, 'nejčastější otázky', faq_items)
     h += footer(LANG, 'Kontaktujte mě', 'Máte dotaz nebo si přejete rezervovat termín?',
                 'Ráda vám pomohu vytvořit dokonalý look na váš speciální den. Neváhejte mě kontaktovat a společně naplánujeme vše potřebné.')
@@ -515,7 +515,7 @@ def courses():
 </article></div></section>
 '''
     h += faq(LANG, 'otázky o kurzu líčení', faq_items)
-    h += teaser(LANG, ['brushes', 'summer', 'nyx'], 'Procvičte si doma', 'tutoriály z blogu')
+    h += teaser(LANG, ['travel', 'brushes', 'summer'], 'Procvičte si doma', 'tutoriály z blogu')
     h += tiles(LANG, [('Svatební líčení', '/svatebni-liceni/', 'wedding-5'), ('Nude makeup', '/nude-liceni/', 'nude-1')])
     h += footer(LANG, 'Rezervujte si kurz líčení', 'Kontaktujte mě', 'Lekce probíhají v Praze, ČR · Česky nebo anglicky. Osobní cenová nabídka do 24 hodin.',
                 (CAL, 'Rezervovat kurz online +'))

@@ -2,6 +2,19 @@
 from lib import img, sec_head
 
 POSTS = {
+    'travel': {
+        'date': '2026-11-17', 'img': 'travel-hero', 'video': 'Sb-Sg-GVoVM',
+        'cs': dict(path='/blog/cestovni-kosmeticka-make-up-navod/', crumb='Cestovní kosmetička', tag='Návod',
+                   title='Cestovní kosmetička: make-up krok za krokem',
+                   seo_title='Cestovní kosmetička vizážistky: make-up krok za krokem | Nikol Pavlova',
+                   desc='Návod od vizážistky Nikol Pavlové: co zabalit do cestovní kosmetičky a jak z ní udělat denní i večerní make-up. Pět štětců, suchá houbička, fixace v horku.',
+                   card='Co mám v cestovní kosmetičce a jak z ní udělám denní i večerní make-up: interaktivní návod krok za krokem, pět štětců a proč suchá houbička.'),
+        'en': dict(path='/en/blog/travel-makeup-bag-how-to/', crumb='Travel makeup bag', tag='How-to',
+                   title='Travel Makeup Bag: A Step-by-Step Makeup Guide',
+                   seo_title="Travel Makeup Bag: A Makeup Artist's Step-by-Step Guide | Nikol Pavlova",
+                   desc="Makeup artist Nikol Pavlova's guide to packing a travel makeup bag and turning it into a day or evening look: five brushes, a dry sponge and setting makeup for the heat.",
+                   card="What's in my travel makeup bag and how I turn it into a day or evening look: an interactive step-by-step guide, five brushes and why a dry sponge."),
+    },
     'brushes': {
         'date': '2026-11-16', 'img': 'brushes-hero', 'video': 'gc_bq04a_G0',
         'cs': dict(path='/blog/jak-myt-stetce-na-make-up/', crumb='Jak mýt štětce', tag='Tutoriál',
@@ -68,7 +81,7 @@ POSTS = {
                    card='I tested a full face of NYX and wore it through a working day: what earned a place in my kit and what I would skip.'),
     },
 }
-ORDER = ['brushes', 'catrice', 'empties', 'summer', 'nyx']   # newest first
+ORDER = ['travel', 'brushes', 'catrice', 'empties', 'summer', 'nyx']   # newest first
 
 MONTHS = {
     'cs': ['ledna', 'února', 'března', 'dubna', 'května', 'června', 'července', 'srpna', 'září', 'října', 'listopadu', 'prosince'],

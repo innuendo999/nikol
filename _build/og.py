@@ -28,6 +28,8 @@ PAGES = {
     '/en/courses/': ('course-1000', 'sand', '50% 15%', 'One-on-one lessons', None),
     '/en/portfolio/': ('collage', 'paper', '', 'Bridal · evening · nude · commercial', None),
     '/blog/': ('nude-3-800', 'blush', '50% 30%', 'Tutoriály · recenze · tipy', None),
+    '/blog/cestovni-kosmeticka-make-up-navod/': ('travel-hero-1280', 'blush', '50% 50%', 'Návod · cestovní kosmetička', 'Denní i večerní make-up z jedné malé kosmetičky'),
+    '/en/blog/travel-makeup-bag-how-to/': ('travel-hero-1280', 'blush', '50% 50%', 'How-to · travel makeup bag', 'A day or evening look from one small bag'),
     '/blog/jak-myt-stetce-na-make-up/': ('brushes-hero-1280', 'blush', '40% 60%', 'Tutoriál · péče o štětce', 'Tuhé mýdlo, technika podle tvaru, olej a správné sušení'),
     '/en/blog/how-to-wash-makeup-brushes/': ('brushes-hero-1280', 'blush', '40% 60%', 'Tutorial · brush care', 'Bar soap, technique by shape, oil and drying right'),
     '/blog/recenze-catrice-cely-oblicej/': ('nikol-portrait-800', 'ox', '50% 22%', 'Recenze · celý obličej', 'Make-up, bronzer, pečená tvářenka a rty z adventního kalendáře'),

@@ -584,3 +584,33 @@ h1,h2,h3{overflow-wrap:break-word}
   .tg-brushes{grid-template-columns:repeat(5,minmax(0,1fr))}
   .tg-b{padding:16px 4px 12px}.tg-b svg{width:28px;height:104px}.tg-b .lbl{font-size:10px;letter-spacing:.06em}
 }
+
+/* blog: transition blush (.tb-*) */
+.tb-time{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding-top:28px}
+.tb-time::before{content:"";position:absolute;left:0;right:0;top:8px;height:1px;background:var(--ink);transform-origin:left;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.tb-time li{position:relative;display:flex;flex-direction:column;gap:8px;transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.tb-time li.d1{transition-delay:.25s}.tb-time li.d2{transition-delay:.5s}
+.tb-dot{position:absolute;top:-25px;left:0;width:11px;height:11px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px var(--paper)}
+.tb-t-h{font:500 22px/1.2 var(--f-serif);color:var(--ink)}
+.tb-time.is-armed:not(.is-in)::before{transform:scaleX(0)}
+.tb-time.is-armed:not(.is-in) li{opacity:0;transform:translateY(14px)}
+.tb-mix{display:flex;flex-direction:column;gap:16px;border:1px solid var(--ink);padding:24px}
+.tb-mix-ui{display:flex;flex-wrap:wrap;gap:20px 32px;align-items:flex-end;justify-content:space-between}
+.tb-mix-ui fieldset{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tb-mix-ui legend{margin-bottom:10px;color:var(--muted2)}
+.tb-sw span{display:inline-flex;align-items:center;gap:8px}
+.tb-sw svg{width:12px;height:12px}
+.tb-steps-n{display:flex;align-items:center;gap:12px}
+.tb-steps-n input{width:140px;accent-color:var(--red)}
+.tb-strip{width:100%;height:auto;display:block}
+.tb-strip rect{transition:fill .5s ease}
+.tb-strip text{font:600 13px var(--f-sans);letter-spacing:.06em;fill:var(--muted)}
+.tb-brush{display:flex;flex-direction:column;gap:12px}
+.tb-brush svg{width:100%;height:220px;display:block}
+@media (max-width:760px){
+  .tb-time{grid-template-columns:1fr;padding:0 0 0 26px;gap:22px}
+  .tb-time::before{left:5px;right:auto;top:0;bottom:0;width:1px;height:auto;transform-origin:top}
+  .tb-time.is-armed:not(.is-in)::before{transform:scaleY(0)}
+  .tb-dot{top:4px;left:-26px}
+  .tb-strip text{font-size:18px}
+}

@@ -8,6 +8,7 @@ import post_empties
 import post_catrice
 import post_brushes
 import post_travel
+import post_blush
 
 L_BLOG = {
     'cs': dict(home=('Domů', '/'), blog='Blog', blog_path='/blog/', read='min čtení', by='Autorka', role='vizážistka, Praha',
@@ -87,7 +88,7 @@ SUMMER['cs'] = dict(
 <p>Na zarudnutí stačí prstem poklepat, jemný kontur pod lícní kosti a trochu světla na čelo přidají objem. Místo palety poslouží jakýkoli lehký, nemastný make-up na silikonové bázi; já jsem <b>Estée Lauder Double Wear Sheer</b> dala jen na zarudnutí, ne pod oči. Pro detaily používám sérum korektor <b>NYX Bare With Me</b> v odstínu Vanilla, který jsem testovala ve <a href="/blog/recenze-nyx-cely-oblicej/">velké recenzi NYX</a>. Modřinu pod okem každý den úplně nezakrývám, s plným krytím se necítím tak živě.</p>'''),
         ('oboci', 'Krok 7: obočí', '<p>Mezery doplňuji suchou, pudrovou tužkou <b>ZOLA Powder Brow Pencil v odstínu Blond</b>, která má skvělý pigment, a fixuji gelem <b>NYX The Brow Glue</b>. Víc nedělám.</p>'),
         ('tvare', 'Krok 8: tváře a rty prsty', '''<p>Pro efekt „políbené sluncem“ přidávám jen kapku bronzeru. Tvářenku a bronzer zároveň moc nenosím. Krémový produkt nanáším jedním prstem a čistým prstem roztírám. Na pleti není make-up, takže se všechno krásně prolne. Stejný produkt dávám prsty i na rty.</p>
-<p>Když je něco moc výrazné, přejdu to zbytkem korektoru.</p>'''),
+<p>Když je něco moc výrazné, přejdu to zbytkem korektoru. Jak udělat výraznější tvářenku s měkkým přechodem, najdete v návodu na <a href="/blog/transition-blush-jak-na-to/">transition blush</a>.</p>'''),
         ('oci', 'Krok 9: řasy', '<p>Mám dlouhé, rovné řasy, takže je natáčím. Natočím jedno oko, udělám make-up a pak natočím druhé, protože řasy rychle padají. Používám hnědou řasenku <b>Lancôme Lash Idôle</b>, která se na rozdíl od mnoha jiných nikdy nedrolí. Nanáším ji i na spodní řasy. Některé dny řasy vynechám úplně.</p>'),
         ('pudr', 'Krok 10: pudr jen tam, kde je potřeba, a rty', '''<p>Fixační pudr <b>e.l.f. High Definition Powder</b> v odstínu Sheer je neuvěřitelný a stačí ho opravdu málo. Naberu ho na štětec, skoro všechno oklepu a vtisknu jen tam, kde nechci lesk: pod oči, na bradu, kolem nosu a na čelo. Hlavně ho tisknu na místa s korektorem, aby se nekrčil. Pleť je rozmazaná a zafixovaná, ale nevypadá napudrovaně ani vysušeně. Pokud chcete jemné světlo pudrem, druhá věc z masterclassu je <b>Hourglass Ambient Lighting Palette Volume 3</b>.</p>
 <p>Na rty jsem si vzala konturovací tužku v odstínu 01 a navrch rtěnku <b>Chanel Rouge Coco Flash v odstínu 54 Boy</b>, kterou jsem objevila nedávno a zamilovala si ji. Nanáším ji schválně trochu neuspořádaně, aby působila přirozeně. Jako alternativu mám lesk <b>unico Lip Gloss With Menthol</b> v odstínu Crush.</p>'''),
@@ -161,7 +162,7 @@ SUMMER['en'] = dict(
 <p>Tap the redness with a finger, add a soft contour under the cheekbones and a little light on the forehead for dimension. Any light, non-greasy silicone-based foundation can replace the palette; I used <b>Estée Lauder Double Wear Sheer</b> only on redness, not under the eyes. For details I use the <b>NYX Bare With Me</b> serum concealer in Vanilla, which I tested in my <a href="/en/blog/full-face-of-nyx-review/">full NYX review</a>. I don't fully cover the bruise under my eye every day; with full coverage I don't feel as lively.</p>'''),
         ('brows', 'Step 7: brows', '<p>I fill the gaps with the dry, powdery <b>ZOLA Powder Brow Pencil in Blond</b>, which has great pigment, and set them with <b>NYX The Brow Glue</b>. That\'s all.</p>'),
         ('cheeks', 'Step 8: cheeks and lips with fingers', '''<p>For a sun-kissed effect I add just a touch of bronzer; I rarely wear blush and bronzer together. I apply the cream with one finger and blend with a clean one. There's no foundation on the skin, so everything melts in easily. I put the same product on my lips with my fingers.</p>
-<p>If something looks too strong, I go over it with what's left of the concealer.</p>'''),
+<p>If something looks too strong, I go over it with what's left of the concealer. For a bolder blush with a soft transition, see my <a href="/en/blog/transition-blush-how-to/">transition blush guide</a>.</p>'''),
         ('lashes', 'Step 9: lashes', '<p>My lashes are long and straight, so I curl them. I curl one eye, do my makeup, then curl the other, because the curl drops quickly. I use <b>Lancôme Lash Idôle</b> in brown, which unlike many mascaras never flakes. I apply it to the lower lashes too. Some days I skip lashes altogether.</p>'),
         ('powder', 'Step 10: powder only where you need it, and lips', '''<p>The <b>e.l.f. High Definition Powder</b> in Sheer is incredible and you need very little. I pick it up with a brush, tap almost all of it off and press it only where I don't want shine: under the eyes, on the chin, around the nose and on the forehead. Above all I press it over concealer so it doesn't crease. The skin looks blurred and set, but not powdery or dry. If you want a soft powder glow, the second thing I bought at the masterclass is the <b>Hourglass Ambient Lighting Palette Volume 3</b>.</p>
 <p>On the lips I used lip pencil 01 and on top <b>Chanel Rouge Coco Flash in 54 Boy</b>, which I discovered recently and fell in love with. I apply it slightly messy on purpose so it looks natural. As an alternative I like the <b>unico Lip Gloss With Menthol</b> in Crush.</p>'''),
@@ -332,8 +333,8 @@ NYX['cs'] = dict(
     bio='Vizážistka v Praze, kde žiji od roku 2021. Věnuji se svatebnímu, večernímu a editoriálnímu líčení a učím individuální kurzy. Na YouTube každý týden ukazuji, jak líčím a které produkty opravdu používám.',
 )
 
-CONTENT = {'travel': post_travel.C, 'brushes': post_brushes.C, 'summer': SUMMER, 'nyx': NYX, 'empties': post_empties.C, 'catrice': post_catrice.C}
-EXTRA = {'travel': post_travel.EXTRA, 'brushes': post_brushes.EXTRA, 'catrice': post_catrice.EXTRA, 'empties': post_empties.EXTRA, 'summer': dict(products=SUMMER_PRODUCTS, brands=SUMMER_BRANDS, about=('Make-up bez make-upu', 'No-makeup makeup'), video_name='Summer makeup 2.0'),
+CONTENT = {'blush': post_blush.C, 'travel': post_travel.C, 'brushes': post_brushes.C, 'summer': SUMMER, 'nyx': NYX, 'empties': post_empties.C, 'catrice': post_catrice.C}
+EXTRA = {'blush': post_blush.EXTRA, 'travel': post_travel.EXTRA, 'brushes': post_brushes.EXTRA, 'catrice': post_catrice.EXTRA, 'empties': post_empties.EXTRA, 'summer': dict(products=SUMMER_PRODUCTS, brands=SUMMER_BRANDS, about=('Make-up bez make-upu', 'No-makeup makeup'), video_name='Summer makeup 2.0'),
          'nyx': dict(products=[], brands=NYX_BRANDS, about=('Recenze NYX', 'NYX makeup review'), video_name='Все обличчя NYX',
                      upload='2026-03-20', video_desc='Nikol Pavlova applies a complete look using only NYX products and tests how it wears over a full day.')}
 
@@ -470,7 +471,7 @@ def index(lang):
         h1, sub = 'Blog', '– tutoriály, recenze a tipy vizážistky z Prahy'
         lead = 'Postupy, které používám na klientkách i na sobě, a poctivé recenze produktů. Psáno tak, abyste si vybrali lepší kosmetiku a vytvořili look, který vám sedí.'
         latest, more, topics_h, topics_sub, read_btn = 'Nejnovější článek', 'Další články', 'Témata', 'o čem píšu', 'Číst článek →'
-        topics = [('Tutoriály', 'Krok za krokem: přirozený, letní, cestovní i večerní make-up a péče o štětce.', '3 články', True),
+        topics = [('Tutoriály', 'Krok za krokem: přirozený, letní, cestovní i večerní make-up, tvářenka a péče o štětce.', '4 články', True),
                   ('Recenze produktů', 'Testuji kosmetiku na sobě i v práci a říkám, co se vyplatí.', '3 články', True),
                   ('Svatby a akce', 'Jak se připravit na make-up, který vydrží celý den.', 'Připravujeme', False)]
         alt = [('cs', path), ('en', '/en/blog/'), ('x-default', path)]
@@ -480,7 +481,7 @@ def index(lang):
         h1, sub = 'The Blog', '– makeup tutorials, reviews &amp; tips from Prague'
         lead = 'Routines I use on clients and on myself, plus honest product reviews, written to help you choose better products and create looks that suit you.'
         latest, more, topics_h, topics_sub, read_btn = 'Latest article', 'More articles', 'Topics', 'what I write about', 'Read the article →'
-        topics = [('Tutorials', 'Step by step: natural, summer, travel and evening makeup, plus brush care.', '3 articles', True),
+        topics = [('Tutorials', 'Step by step: natural, summer, travel and evening makeup, blush, plus brush care.', '4 articles', True),
                   ('Product reviews', 'I test products on myself and at work and tell you what is worth it.', '3 articles', True),
                   ('Bridal &amp; events', 'How to prepare for makeup that lasts all day.', 'Coming soon', False)]
         alt = [('cs', '/blog/'), ('en', path), ('x-default', '/blog/')]

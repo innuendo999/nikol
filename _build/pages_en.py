@@ -97,7 +97,7 @@ def home():
 </section>
 '''
     h += reviews(LANG, 'what clients say', pick('zoe', 'nelli', 'glenn', 'polina', 'shirley', 'darya', 'beata', 'marie', 'lena'), top=False)
-    h += teaser(LANG, ['travel', 'brushes', 'catrice'], 'From the blog', 'tutorials &amp; honest reviews')
+    h += teaser(LANG, ['blush', 'travel', 'brushes'], 'From the blog', 'tutorials &amp; honest reviews')
     h += faq(LANG, 'popular questions', faq_items)
     h += footer(LANG, 'Contact me', 'Do you need help with creative make-up?',
                 "I'm committed to ensuring your satisfaction with bridal, event, or editorial makeup services. Reach out to plan your requirements.")
@@ -207,7 +207,7 @@ def service(cfg):
 
 
 EVENING = dict(
-    posts=['catrice', 'nyx'],
+    posts=['blush', 'catrice'],
     path='/en/evening-makeup/', cs='/vecerni-liceni/', crumb='Evening makeup', tone='tone-ox',
     title='Evening & Ball Makeup Prague | Cocktail Makeup – Nikol Pavlova',
     desc='Evening, cocktail and ball makeup in Prague. Glamorous looks for galas, proms and parties – smoky eyes, statement lips and makeup that lasts all night.',
@@ -247,7 +247,7 @@ EVENING = dict(
     f_label='Book your evening makeup', f_text='Based in Prague, Czech Republic · Available for travel. Personalised quote within 24 hours.')
 
 NUDE = dict(
-    posts=['summer', 'empties'],
+    posts=['blush', 'summer'],
     path='/en/nude-makeup/', cs='/nude-liceni/', crumb='Nude makeup', tone='tone-blush',
     title='Natural Nude Makeup Prague | Makeup Artist Nikol Pavlova',
     desc='Natural nude makeup in Prague. Soft, skin-first looks for engagement shoots, portraits and civil ceremonies – healthy glowing skin without a heavy finish.',
@@ -285,7 +285,7 @@ NUDE = dict(
     f_label='Book your nude makeup', f_text='Based in Prague, Czech Republic · Available for travel. Personalised quote within 24 hours.')
 
 COMMERCIAL = dict(
-    posts=['summer', 'nyx'],
+    posts=['blush', 'nyx'],
     path='/en/commercial-makeup/', cs='/komercni-liceni/', crumb='Commercial makeup', tone='tone-ink',
     title='Commercial & Editorial Makeup Artist Prague | Nikol Pavlova',
     desc='Commercial and editorial makeup in Prague for photo shoots, campaigns, lookbooks and video. Makeup adapted to light and concept, with on-set touch-ups all day.',
@@ -390,7 +390,7 @@ def courses():
 </article></div></section>
 '''
     h += faq(LANG, 'makeup course questions', faq_items)
-    h += teaser(LANG, ['travel', 'brushes', 'summer'], 'Practise at home', 'tutorials from the blog')
+    h += teaser(LANG, ['blush', 'travel', 'brushes'], 'Practise at home', 'tutorials from the blog')
     h += tiles(LANG, [('Wedding makeup', '/en/wedding/', 'wedding-5'), ('Nude makeup', '/en/nude-makeup/', 'nude-1')])
     h += footer(LANG, 'Book your makeup course', 'Get in touch', 'Lessons held in Prague, Czech Republic · In English or Czech. Personalised quote within 24 hours.', (CAL, 'Book your course online +'))
     write(path, h)

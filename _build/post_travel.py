@@ -47,15 +47,15 @@ ZONES = {
 }
 
 
-def face(alt, credit):
+def face(alt, credit, zones_map=None):
     from lib import img
-    zones = ''.join(f'<g class="tg-z" data-z="{k}" {_Z}>{v}</g>' for k, v in ZONES.items())
+    zones = ''.join(f'<g class="tg-z" data-z="{k}" {_Z}>{v}</g>' for k, v in (zones_map or ZONES).items())
     return (f'<div class="tg-photo">{img("travel-face", alt, sizes="(max-width: 900px) 112px, 280px")}'
             f'<svg class="tg-ov" viewBox="100 0 640 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">{zones}</svg></div>'
             f'<p class="tg-credit fine-print">{credit}</p>')
 
 
-def guide(L, steps):
+def guide(L, steps, zones_map=None):
     """Steps list + sticky face. Each step: (zones, mode, title, products, body). Mode: base / opt / eve."""
     modes = ''.join(f'<button type="button" data-mode="{k}"{" aria-pressed=" + chr(34) + "true" + chr(34) if k == "day" else ""}>{n}</button>' for k, n in L['modes'])
     items = ''
@@ -67,7 +67,7 @@ def guide(L, steps):
     return f'''<div class="tg-guide" data-guide>
 <div class="tg-modes" role="group" aria-label="{L['modes_label']}" hidden>{modes}</div>
 <div class="tg-grid">
-<div class="tg-aside"><div class="tg-face-wrap">{face(L["alt"], L["credit"])}<p class="tg-cap lbl" aria-live="polite"></p></div>
+<div class="tg-aside"><div class="tg-face-wrap">{face(L["alt"], L["credit"], zones_map)}<p class="tg-cap lbl" aria-live="polite"></p></div>
 <div class="tg-ctrl" hidden><button type="button" data-prev aria-label="{L['prev']}">←</button><span class="tg-count lbl"></span><button type="button" data-next aria-label="{L['next']}">→</button></div></div>
 <ol class="tg-steps">{items}</ol>
 </div></div>'''
@@ -126,7 +126,7 @@ STEPS_CS = [
     (['contour'], 'base', 'Krémový bronzer', _P('Eveline Choco Glamour 02'),
      '<p>Chladnější odstín. Naberu ho na ruku a zahřeji: dřív na hřbetu ruky, ale ten mám od práce vysušený, tak teď používám vnitřní stranu dlaně. Je i teplejší, produkt se rozpustí rychleji. Snadno se roztírá a míchá s jinými produkty, a když ho naberete moc, jde lehce setřít. Pak si ruku otřu odloženým tamponkem.</p>'),
     (['cheeks'], 'base', 'Tváře: mix 1 : 1', _P('Dior Forever Glow Maximizer Nude', 'YSL Make Me Blush 44'),
-     '<p>Moje nové kombo. Glow Maximizer je napůl tvářenka, napůl rozjasňovač, a umí se zafixovat. Smíchám ho s tvářenkou YSL zhruba jedna ku jedné, takže zafixuje i ji a nic dalšího už tváře nepotřebují: je tam barva i lesk.</p>'),
+     '<p>Moje nové kombo. Glow Maximizer je napůl tvářenka, napůl rozjasňovač, a umí se zafixovat. Smíchám ho s tvářenkou YSL zhruba jedna ku jedné, takže zafixuje i ji a nic dalšího už tváře nepotřebují: je tam barva i lesk. Jak udělat tvářenku s měkkým přechodem, ukazuji v návodu na <a href="/blog/transition-blush-jak-na-to/">transition blush</a>.</p>'),
     (['lids', 'outer'], 'opt', 'Oči', _P('Krémové stíny v tyčince', 'Hourglass Ambient Lighting Edit', 'plochý štětec Davydenko č. 7'),
      '<p>Krémové stíny v teplém zlatorůžovém odstínu rozetřu prstem: tenká vrstva, nesrolují se a je to rychlé. Tmavým pudrem z palety a plochým štětcem zafixuji nepohyblivou část víčka, protože každý krémový produkt během dne mizí. Tmavším odstínem bronzeru přidám vnější koutek s výběhem ke spánku a kousek pod spodní víčko.</p><p>Když se ruka zachvěje, projedu místo štětcem se zbytkem korektoru a doťuknu houbičkou.</p>'),
     (['lashes'], 'base', 'Řasy', _P('Eveline Variété Lashes Show Brown'),
@@ -223,7 +223,7 @@ STEPS_EN = [
     (['contour'], 'base', 'Cream bronzer', _P('Eveline Choco Glamour 02'),
      "<p>A cooler shade. I pick it up on my hand and warm it: I used to use the back of my hand, but it's dry from work, so now I use the inside of my palm. It's warmer too, so the product melts faster. It blends easily, mixes with other products, and if you take too much it wipes off easily. Then I wipe my hand on the saved cotton pad.</p>"),
     (['cheeks'], 'base', 'Cheeks: a 1 : 1 mix', _P('Dior Forever Glow Maximizer Nude', 'YSL Make Me Blush 44'),
-     "<p>My new combo. Glow Maximizer is half blush, half highlighter, and it sets. I mix it with the YSL blush roughly one to one, so it sets the blush too and the cheeks need nothing else: colour and glow in one.</p>"),
+     "<p>My new combo. Glow Maximizer is half blush, half highlighter, and it sets. I mix it with the YSL blush roughly one to one, so it sets the blush too and the cheeks need nothing else: colour and glow in one. For a blush with a soft transition, see my <a href=\"/en/blog/transition-blush-how-to/\">transition blush guide</a>.</p>"),
     (['lids', 'outer'], 'opt', 'Eyes', _P('Cream eyeshadow stick', 'Hourglass Ambient Lighting Edit', 'Davydenko flat brush no. 7'),
      "<p>I blend a warm golden-rose cream shadow with a finger: a thin layer, it doesn't crease, and it's fast. With the dark powder from the palette and a flat brush I set the fixed part of the lid, because any cream product fades during the day. A deeper shade of bronzer goes on the outer corner, swept towards the temple, and a little under the lower lash line.</p><p>If your hand slips, go over it with a brush that still has some concealer on it and pat with the sponge.</p>"),
     (['lashes'], 'base', 'Lashes', _P('Eveline Variété Lashes Show Brown'),

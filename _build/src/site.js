@@ -193,4 +193,41 @@
     r.addEventListener('input', upd);
     upd();
   });
+
+  // Blog (transition blush): concealer + blush mixer builds the gradient strip
+  document.querySelectorAll('[data-mix]').forEach(function (f) {
+    var svg = f.querySelector('.tb-strip'), range = f.querySelector('input[type="range"]'), out = f.querySelector('output');
+    var hex = function (h) { return [1, 3, 5].map(function (i) { return parseInt(h.substr(i, 2), 16); }); };
+    var gcd = function (a, b) { return b ? gcd(b, a % b) : a; };
+    var draw = function () {
+      var n = +range.value, col = f.querySelector('input[name="tb-blush"]:checked').value;
+      var a = hex(f.dataset.con), b = hex(col), w = 600 / n, html = '';
+      out.textContent = n;
+      for (var i = 0; i < n; i++) {
+        var t = i / (n - 1);
+        var c = 'rgb(' + a.map(function (x, k) { return Math.round(x + (b[k] - x) * t); }).join(',') + ')';
+        var lab = i === 0 ? f.dataset.lCon : i === n - 1 ? f.dataset.lBlush : (function () { var p = n - 1 - i, q = i, g = gcd(p, q); return (p / g) + ' : ' + (q / g); })();
+        html += '<rect x="' + (i * w + 3).toFixed(1) + '" y="4" width="' + (w - 6).toFixed(1) + '" height="84" rx="2" fill="' + c + '"></rect>' +
+          '<text x="' + (i * w + w / 2).toFixed(1) + '" y="114" text-anchor="middle">' + lab + '</text>';
+      }
+      svg.innerHTML = html;
+    };
+    f.addEventListener('input', draw);
+    f.addEventListener('change', draw);
+  });
+
+  // Blog (transition blush): dense vs fluffy brush softness
+  document.querySelectorAll('[data-blur]').forEach(function (f) {
+    var r = f.querySelector('input[type="range"]'), blur = f.querySelector('feGaussianBlur'), el = f.querySelector('ellipse'), out = f.querySelector('[data-out]');
+    var upd = function () {
+      var v = +r.value / 100;
+      blur.setAttribute('stdDeviation', String(2 + v * 22));
+      el.setAttribute('fill-opacity', String(0.85 - v * 0.35));
+      el.setAttribute('rx', String(80 + v * 40));
+      el.setAttribute('ry', String(36 + v * 16));
+      out.textContent = v < 0.5 ? out.dataset.a : out.dataset.b;
+    };
+    r.addEventListener('input', upd);
+    upd();
+  });
 })();

@@ -7,7 +7,7 @@ from lib import *
 from utilities import css as utility_css
 import pages_cs, pages_en, pages_blog
 
-LASTMOD = '2026-11-17'
+LASTMOD = '2026-11-23'
 
 # (cs path, en path) pairs; None = single-language page
 PAIRS = [
@@ -21,6 +21,7 @@ PAIRS = [
     ('/kurzy-liceni/', '/en/courses/', '0.8'),
     ('/portfolio/', '/en/portfolio/', '0.7'),
     ('/blog/', '/en/blog/', '0.6'),
+    ('/blog/transition-blush-jak-na-to/', '/en/blog/transition-blush-how-to/', '0.6'),
     ('/blog/jak-sbalit-kosmeticku-na-cesty/', '/en/blog/how-to-pack-a-makeup-bag-for-travel/', '0.6'),
     ('/blog/jak-myt-stetce-na-make-up/', '/en/blog/how-to-wash-makeup-brushes/', '0.6'),
     ('/blog/recenze-catrice-cely-oblicej/', '/en/blog/full-face-of-catrice-review/', '0.6'),
@@ -90,6 +91,7 @@ Key facts for accurate reference:
 ## Blog
 
 - [Blog (CZ)]({s}/blog/) · [Blog (EN)]({s}/en/blog/): Makeup tutorials, honest reviews and pro tips.
+- [Transition blush: jak na to]({s}/blog/transition-blush-jak-na-to/) · [Transition blush: how-to]({s}/en/blog/transition-blush-how-to/): What transition blush is, its history (Kevyn Aucoin, Paint By Ester, Patrick Ta), mixing concealer with blush, a step-by-step guide and placement by face shape.
 - [Jak sbalit kosmetičku na cesty]({s}/blog/jak-sbalit-kosmeticku-na-cesty/) · [How to pack a makeup bag for travel]({s}/en/blog/how-to-pack-a-makeup-bag-for-travel/): What a makeup artist packs for travel and how she turns it into a day or evening look; five brushes, dry vs damp sponge, setting makeup for the heat.
 - [Jak mýt štětce na make-up]({s}/blog/jak-myt-stetce-na-make-up/) · [How to wash makeup brushes]({s}/en/blog/how-to-wash-makeup-brushes/): A makeup artist's brush-washing routine: bar soap, technique by brush shape, oil for foundation and lipstick, drying flat; why glue and water don't mix.
 - [Celý obličej Catrice]({s}/blog/recenze-catrice-cely-oblicej/) · [Full Face of Catrice]({s}/en/blog/full-face-of-catrice-review/): Full-face test of Catrice (HD Liquid Coverage, Melted Sun bronzer, Twinkling Treasures advent calendar) with a rating for each product.

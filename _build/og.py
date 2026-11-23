@@ -28,6 +28,8 @@ PAGES = {
     '/en/courses/': ('course-1000', 'sand', '50% 15%', 'One-on-one lessons', None),
     '/en/portfolio/': ('collage', 'paper', '', 'Bridal · evening · nude · commercial', None),
     '/blog/': ('nude-3-800', 'blush', '50% 30%', 'Tutoriály · recenze · tipy', None),
+    '/blog/transition-blush-jak-na-to/': ('commercial-4-800', 'blush', '50% 35%', 'Návod · tvářenka', 'Přechod z korektoru a tvářenky, kterou už máte'),
+    '/en/blog/transition-blush-how-to/': ('commercial-4-800', 'blush', '50% 35%', 'How-to · blush', 'A transition from the concealer and blush you already own'),
     '/blog/jak-sbalit-kosmeticku-na-cesty/': ('travel-hero-1280', 'blush', '50% 50%', 'Návod · na cesty', 'Co si vzít a jak z toho udělat denní i večerní make-up'),
     '/en/blog/how-to-pack-a-makeup-bag-for-travel/': ('travel-hero-1280', 'blush', '50% 50%', 'How-to · travel', 'What to take and how to turn it into a day or evening look'),
     '/blog/jak-myt-stetce-na-make-up/': ('brushes-hero-1280', 'blush', '40% 60%', 'Tutoriál · péče o štětce', 'Tuhé mýdlo, technika podle tvaru, olej a správné sušení'),

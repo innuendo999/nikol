@@ -2,6 +2,19 @@
 from lib import img, sec_head
 
 POSTS = {
+    'blush': {
+        'date': '2026-11-23', 'img': 'commercial-4', 'video': 'qIsRGQgTsOk',
+        'cs': dict(path='/blog/transition-blush-jak-na-to/', crumb='Transition blush', tag='Návod',
+                   title='Transition blush: jak na rozmazanou tvářenku bez nové kolekce',
+                   seo_title='Transition blush: jak na to krok za krokem | Nikol Pavlova',
+                   desc='Co je transition blush, kdo ho vymyslel (Kevyn Aucoin, Paint By Ester, Patrick Ta) a jak ho udělat z korektoru a tvářenky, které už máte. Interaktivní návod od vizážistky.',
+                   card='Transition blush bez kolekce za 120 dolarů: kdo techniku vymyslel, jak si namíchat přechod z korektoru a tvářenky a kam ji dát podle tvaru obličeje.'),
+        'en': dict(path='/en/blog/transition-blush-how-to/', crumb='Transition blush', tag='How-to',
+                   title='Transition Blush: How to Get the Blurred Blush Without a New Kit',
+                   seo_title='Transition Blush: How to Do It Step by Step | Nikol Pavlova',
+                   desc='What transition blush is, who came up with it (Kevyn Aucoin, Paint By Ester, Patrick Ta) and how to do it with the concealer and blush you already own. An interactive guide by a makeup artist.',
+                   card='Transition blush without a $120 kit: who came up with the technique, how to mix the transition from concealer and blush, and where to place it for your face shape.'),
+    },
     'travel': {
         'date': '2026-11-17', 'img': 'travel-hero', 'video': 'Sb-Sg-GVoVM',
         'cs': dict(path='/blog/jak-sbalit-kosmeticku-na-cesty/', crumb='Jak sbalit kosmetičku na cesty', tag='Návod',
@@ -81,7 +94,7 @@ POSTS = {
                    card='I tested a full face of NYX and wore it through a working day: what earned a place in my kit and what I would skip.'),
     },
 }
-ORDER = ['travel', 'brushes', 'catrice', 'empties', 'summer', 'nyx']   # newest first
+ORDER = ['blush', 'travel', 'brushes', 'catrice', 'empties', 'summer', 'nyx']   # newest first
 
 MONTHS = {
     'cs': ['ledna', 'února', 'března', 'dubna', 'května', 'června', 'července', 'srpna', 'září', 'října', 'listopadu', 'prosince'],

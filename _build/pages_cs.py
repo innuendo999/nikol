@@ -103,7 +103,7 @@ def home():
 </section>
 '''
     h += reviews(LANG, 'co říkají klientky', pick('nelli', 'zoe', 'polinashu', 'erika', 'darya', 'marie', 'stepanka', 'beata', 'lena'), top=False)
-    h += teaser(LANG, ['travel', 'brushes', 'catrice'], 'Z blogu', 'tutoriály a poctivé recenze')
+    h += teaser(LANG, ['blush', 'travel', 'brushes'], 'Z blogu', 'tutoriály a poctivé recenze')
     h += faq(LANG, 'nejčastější otázky', faq_items)
     h += footer(LANG, 'Kontaktujte mě', 'Máte dotaz nebo si přejete rezervovat termín?',
                 'Ráda vám pomohu vytvořit dokonalý look na váš speciální den. Neváhejte mě kontaktovat a společně naplánujeme vše potřebné.')
@@ -228,7 +228,7 @@ def service(cfg):
 BOOK_FAQ = ('Jak si mohu rezervovat termín?', f'Rezervovat můžete <a href="{CAL}">online přes Calendly</a>, telefonicky nebo SMS na <a href="tel:{TEL}">{TEL_H}</a>, e-mailem na <a href="mailto:{MAIL}">{MAIL}</a> nebo přes Instagram <a href="{IG}">@nikol__mua</a>. Obvykle odpovídám do několika hodin.')
 
 EVENING = dict(
-    posts=['catrice', 'nyx'],
+    posts=['blush', 'catrice'],
     path='/vecerni-liceni/', en='/en/evening-makeup/', crumb='Večerní líčení', tone='tone-ox',
     title='Večerní líčení Praha | Glam make-up a smoky eyes – Nikol Pavlova',
     desc='Večerní líčení v Praze: soft glam, smoky eyes, výrazné rty i Hollywood glam. Make-up 2 500 Kč, s účesem 4 500 Kč. Look, který vydrží celý večer.',
@@ -272,7 +272,7 @@ EVENING = dict(
 PRICE_NOTE = 'Výjezd se účtuje zvlášť podle lokace.'
 
 PLESY = dict(
-    posts=['catrice', 'nyx'],
+    posts=['blush', 'catrice'],
     path='/plesove-liceni/', en=None, lang_switch='/en/evening-makeup/', crumb='Plesové líčení',
     parent=('Večerní líčení', '/vecerni-liceni/'), tone='tone-ox',
     title='Plesové líčení a účes Praha | Make-up na maturitní ples',
@@ -371,7 +371,7 @@ AKCE = dict(
     f_label='Plánujete akci?', f_text='Pošlete datum, místo a počet osob – nebo si rovnou vyberte termín online.')
 
 NUDE = dict(
-    posts=['summer', 'empties'],
+    posts=['blush', 'summer'],
     path='/nude-liceni/', en='/en/nude-makeup/', crumb='Nude makeup', tone='tone-blush',
     title='Nude make-up Praha | Přirozené líčení – vizážistka Nikol Pavlova',
     desc='Přirozený nude make-up v Praze. Jemné líčení zaměřené na pleť pro zásnubní focení, portréty a civilní obřady – zdravá, zářivá pleť bez efektu „nalíčenosti“.',
@@ -409,7 +409,7 @@ NUDE = dict(
     f_label='Rezervujte si nude makeup', f_text='Působím v Praze, ČR · Možnost dojezdu. Osobní nabídka do 24 hodin.')
 
 COMMERCIAL = dict(
-    posts=['summer', 'nyx'],
+    posts=['blush', 'nyx'],
     path='/komercni-liceni/', en='/en/commercial-makeup/', crumb='Komerční líčení', tone='tone-ink',
     title='Komerční a editoriální líčení Praha | Make-up na focení – Nikol Pavlova',
     desc='Komerční a editoriální make-up v Praze pro focení, kampaně, lookbooky a video. Líčení přizpůsobené světlu a konceptu s on-set retušemi během celého dne.',
@@ -515,7 +515,7 @@ def courses():
 </article></div></section>
 '''
     h += faq(LANG, 'otázky o kurzu líčení', faq_items)
-    h += teaser(LANG, ['travel', 'brushes', 'summer'], 'Procvičte si doma', 'tutoriály z blogu')
+    h += teaser(LANG, ['blush', 'travel', 'brushes'], 'Procvičte si doma', 'tutoriály z blogu')
     h += tiles(LANG, [('Svatební líčení', '/svatebni-liceni/', 'wedding-5'), ('Nude makeup', '/nude-liceni/', 'nude-1')])
     h += footer(LANG, 'Rezervujte si kurz líčení', 'Kontaktujte mě', 'Lekce probíhají v Praze, ČR · Česky nebo anglicky. Osobní cenová nabídka do 24 hodin.',
                 (CAL, 'Rezervovat kurz online +'))

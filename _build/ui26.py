@@ -192,3 +192,32 @@ def hero_from_split(lang, tone, crumb_items, big, sub, desc, buttons, imgname, i
     n2, c2 = SECOND_PHOTO.get(imgname, (imgname, 'u-c2'))
     return hero_svc(lang, crumb_items, big.replace('<br>', ' '), sub, desc, (buttons[0][1], buttons[0][0]),
                     [(imgname, imgalt, 'u-c3'), (n2, '', c2)])
+
+
+# ---------------------------------------------------------------- new photos in the portfolio (shown first in their category)
+NEW_PF = {
+    'wedding': [('bride-window', 'nevěsta u okna, zámecká svatba', 'bride by the window, château wedding'),
+                ('castle-couple', 'novomanželé v zámeckém sále', 'newlyweds in a château hall'),
+                ('veil-kiss', 'polibek pod závojem', 'kiss under the veil'),
+                ('wedding-walk', 'odchod z obřadu', 'leaving the ceremony'),
+                ('bride-calla', 'nevěsta s kalami', 'bride with calla lilies'),
+                ('stairs-bride', 'nevěsta na schodišti', 'bride on the staircase'),
+                ('couple-bouquet', 'novomanželé s kyticí', 'newlyweds with the bouquet'),
+                ('bridesmaids', 'nevěsta a družičky', 'bride and bridesmaids'),
+                ('couple-garden', 'focení v zahradě', 'garden portrait'),
+                ('couple-field', 'focení při západu slunce', 'sunset portrait'),
+                ('window-ready-2', 'ranní příprava nevěsty', 'bride getting ready'),
+                ('bride-mothers', 'líčení maminek nevěsty a ženicha', 'makeup for the mothers')],
+    'evening': [('ev-black', 'přirozená pleť a dlouhé vlasy', 'natural skin and long hair'),
+                ('ev-gold', 'zlaté šaty a drdol', 'gold dress and updo'),
+                ('ev-red', 'zrzavé vlasy a drdol', 'red hair and updo'),
+                ('ev-green-gown', 'plesové šaty a vysoký culík', 'ball gown and high ponytail'),
+                ('ev-stairs', 'sametové šaty a glam', 'velvet gown and glam'),
+                ('ev-pink-gown', 'pudrové šaty a drdol', 'blush gown and updo'),
+                ('hair-waves', 'velké vlny a večerní make-up', 'big waves and evening makeup'),
+                ('hair-red', 'zrzavé vlny a jemný glam', 'red waves and soft glam'),
+                ('hair-curls', 'objemné kudrliny', 'voluminous curls'),
+                ('hair-updo', 'elegantní drdol', 'elegant updo')],
+    'commercial': [('ev-cap', 'editorial – výrazné oči a čepice', 'editorial – bold eyes and cap'),
+                   ('ev-green-emb', 'editorial – vyšívané šaty', 'editorial – embroidered dress')],
+}

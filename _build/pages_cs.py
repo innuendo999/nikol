@@ -467,38 +467,47 @@ NOSCRIPT = '<noscript><style>.pgrid figure[hidden]{display:block}.more-wrap{disp
 
 
 def portfolio_grid(lang, items_def, all_label, shown_tpl, more_tpl):
-    figs, pills = '', f'<button class="pill" type="button" data-filter="all" aria-pressed="true">{all_label} <small>{sum(len(v[2]) for v in items_def.values())}</small></button>'
-    n = 0
+    """Filterable grid; new photos (ui26.NEW_PF) come first in their category."""
+    from ui26 import NEW_PF
+    k = 1 if lang == 'en' else 0
+    entries = {}
     for cat, (label, cap, descs) in items_def.items():
-        pills += f'<button class="pill" type="button" data-filter="{cat}" aria-pressed="false">{label} <small>{len(descs)}</small></button>'
+        lst = [(n, f'{cap} – {d[k]}', cap, d[k]) for n, *d in NEW_PF.get(cat, [])]
         for i, d in enumerate(descs):
             name = 'course' if cat == 'courses' else f'{cat}-{i + 1}'
             c = cap if cat == 'courses' else f'{cap} {i + 1}'
+            lst.append((name, f'{c} – {d}', c, d))
+        entries[cat] = (label, lst)
+    total = sum(len(v[1]) for v in entries.values())
+    figs, pills = '', f'<button class="pill" type="button" data-filter="all" aria-pressed="true">{all_label} <small>{total}</small></button>'
+    n = 0
+    for cat, (label, lst) in entries.items():
+        pills += f'<button class="pill" type="button" data-filter="{cat}" aria-pressed="false">{label} <small>{len(lst)}</small></button>'
+        for name, alt, c, d in lst:
             hid = ' hidden' if n >= 16 else ''
             n += 1
-            figs += f'<figure data-cat="{cat}"{hid}>{I(name, f"{c} – {d}", sizes="(max-width: 900px) 50vw, 25vw")}<figcaption class="glass"><b>{c}</b><span>{d}</span></figcaption></figure>'
-    return pills, figs
+            figs += f'<figure data-cat="{cat}"{hid}>{I(name, alt, sizes="(max-width: 900px) 50vw, 25vw")}<figcaption class="glass"><b>{c}</b><span>{d}</span></figcaption></figure>'
+    return pills, figs, total
 
 
 def portfolio():
     path = '/portfolio/'
     title = 'Portfolio líčení Praha – Svatební, Večerní a Komerční Looky | Nikol Pavlova'
     desc = 'Portfolio profesionální vizážistky Nikol Pavlové z Prahy. Prohlédněte si svatební, večerní, nude a komerční líčení pro klientky v České republice i v Evropě.'
-    total = sum(len(v[2]) for v in (PORTFOLIO_ITEMS if LANG == 'cs' else EN_ITEMS).values())
-    pills, figs = portfolio_grid(LANG, PORTFOLIO_ITEMS, 'Vše', '', '')
+    pills, figs, total = portfolio_grid(LANG, PORTFOLIO_ITEMS, 'Vše', '', '')
     h = head(LANG, title, desc, path, alts(path, '/en/portfolio/'), SITE + '/img/wedding/wedding-1.png', S.load('cs-portfolio'), extra=NOSCRIPT)
     h += header(LANG, 'portfolio', '/en/portfolio/')
-    h += f'''<section class="page-head" aria-labelledby="page-h1"><div class="wrap">
+    h += f'''<section class="page-head u u-pf-head" aria-labelledby="page-h1"><div class="wrap">
 {crumbs(LANG, [HOME, ('Portfolio', None)])}
 <div class="top"><h1 class="h1" id="page-h1"><span class="big wide">Portfolio</span><span class="sub serif">líčení – Nikol Pavlova, vizážistka Praha</span></h1>
 <p class="body">Toto je pečlivě vybraná ukázka prací od <b>Nikol Pavlové</b>, profesionální vizážistky se sídlem v <b>Praze</b>. Portfolio zahrnuje svatební líčení pro svatby v Praze i napříč Evropou, glamour večerní a koktejlový make-up, jemné přirozené nude looky, komerční a editoriální práce pro focení a snímky z osobních kurzů líčení. Každý look je navržen tak, aby zdůraznil přirozenou krásu klientky a odrážel její osobitý styl i charakter dané příležitosti.</p></div>
 </div></section>
-<section class="sec--tight" aria-labelledby="looks-h">
+<section class="sec--tight u u-pf" aria-labelledby="looks-h">
 <div class="wrap">{sec_head('Vyberte si look', 'filtrovat podle kategorie', f'<div class="filters" role="group" aria-label="Kategorie">{pills}</div>', hid='looks-h')}</div>
 <div class="pgrid" data-portfolio data-label-shown="Zobrazeno {{n}} z {{t}}" data-label-more="Zobrazit další ({{n}}) ↓" aria-live="polite">{figs}</div>
 <div class="more-wrap"><p class="serif muted2" data-status>Zobrazeno {min(16, total)} z {total}</p><button class="pill btn--lg" type="button" data-more>Zobrazit další ({max(0, total - 16)}) ↓</button></div>
 </section>
-<section class="sec sec--blush" aria-labelledby="cats-h"><div class="wrap">
+<section class="sec u u-cats" aria-labelledby="cats-h"><div class="wrap">
 {sec_head('O každé kategorii', 'uvnitř portfolia', hid='cats-h')}
 <div class="cat-rows">
 <a href="/svatebni-liceni/"><h3>Svatební líčení →</h3><p>Svatební looky navržené tak, aby vydržely od prvního polibku až po závěrečný tanec. Každá svatební služba zahrnuje předsvatební zkoušku v Praze, líčení v den svatby s dlouhotrvajícími produkty vhodnými pro české letní i zimní podmínky, individuální řasy a osobní touch-up kit. K dispozici pro obřady na Praze 1 (Staré Město), Vinohradech, zámeckých svatbách za Prahou i pro destination svatby po celé Evropě.</p></a>
@@ -507,7 +516,7 @@ def portfolio():
 <a href="/komercni-liceni/"><h3>Komerční a editoriální →</h3><p>Líčení pro focení, brandové kampaně, lookbooky, magazínové editorialy a video obsah. Přizpůsobeno světlu a konceptu každého focení – od čisté beauty práce až po výrazný editoriální styling – s on-set retušemi v průběhu celého produkčního dne.</p></a>
 <a href="/kurzy-liceni/"><h3>Osobní kurzy líčení →</h3><p>Individuální (one-on-one) kurzy líčení přizpůsobené vaší úrovni – od klientek, které si chtějí osvojit běžné looky, až po začínající vizážistky budující profesionální dovednosti. Konají se v Praze a pokrývají přípravu pleti, teorii barev, aplikační techniky, výběr nástrojů a doporučení produktů přímo na vaší tváři.</p></a>
 </div></div></section>
-<section class="sec sec--ox" aria-labelledby="like-h"><div class="wrap ox-split" style="align-items:end">
+<section class="sec u u-like" aria-labelledby="like-h"><div class="wrap ox-split" style="align-items:end">
 <div style="display:flex;flex-direction:column;gap:22px"><p class="lbl pink">Líbí se vám?</p><h2 class="big-h" id="like-h">Vytvořme společně váš look</h2><p class="serif ox-note">Napište mi a probereme detaily vaší svatby, akce nebo focení. Do 24 hodin vám pošlu osobní cenovou nabídku a dostupnost termínů.</p>
 <p style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn--pink" href="{CAL}">Rezervovat termín +</a><a class="btn btn--ghost" href="mailto:{MAIL}">{MAIL}</a></p></div>
 <dl class="kv"><div><dt class="lbl">Lokace</dt><dd>Praha, Česká republika</dd></div><div><dt class="lbl">Telefon</dt><dd><a href="tel:{TEL}">{TEL_H}</a></dd></div><div><dt class="lbl">Instagram</dt><dd><a href="{IG}">@nikol__mua</a></dd></div><div><dt class="lbl">Dojezd</dt><dd>ČR i Evropa</dd></div></dl>

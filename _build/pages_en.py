@@ -347,21 +347,20 @@ def portfolio():
     path = '/en/portfolio/'
     title = 'Makeup Portfolio Prague – Bridal, Evening & Commercial Looks | Nikol Pavlova'
     desc = 'Portfolio of Nikol Pavlova, professional makeup artist in Prague. Browse bridal, evening, nude, commercial and editorial makeup looks for clients in the Czech Republic and Europe.'
-    total = sum(len(v[2]) for v in (PORTFOLIO_ITEMS if LANG == 'cs' else EN_ITEMS).values())
-    pills, figs = portfolio_grid(LANG, EN_ITEMS, 'All', '', '')
+    pills, figs, total = portfolio_grid(LANG, EN_ITEMS, 'All', '', '')
     h = head(LANG, title, desc, path, alts('/portfolio/', path), SITE + '/img/wedding/wedding-1.png', S.load('en-portfolio'), extra=NOSCRIPT)
     h += header(LANG, 'portfolio', '/portfolio/')
-    h += f'''<section class="page-head" aria-labelledby="page-h1"><div class="wrap">
+    h += f'''<section class="page-head u u-pf-head" aria-labelledby="page-h1"><div class="wrap">
 {crumbs(LANG, [HOME, ('Portfolio', None)])}
 <div class="top"><h1 class="h1" id="page-h1"><span class="big wide">Portfolio</span><span class="sub serif">makeup – Nikol Pavlova, makeup artist Prague</span></h1>
 <p class="body">This is a curated selection of makeup work created by <b>Nikol Pavlova</b>, a professional makeup artist based in <b>Prague, Czech Republic</b>. The portfolio covers bridal looks for weddings across Prague and Europe, glamorous evening and cocktail makeup, soft natural nude styling, commercial and editorial work for photo shoots, and behind-the-scenes images from one-on-one makeup courses. Each look is designed to enhance the client's natural features while reflecting their personal style and the occasion.</p></div>
 </div></section>
-<section class="sec--tight" aria-labelledby="looks-h">
+<section class="sec--tight u u-pf" aria-labelledby="looks-h">
 <div class="wrap">{sec_head('Choose a look', 'browse by category', f'<div class="filters" role="group" aria-label="Category">{pills}</div>', hid='looks-h')}</div>
 <div class="pgrid" data-portfolio data-label-shown="Showing {{n}} of {{t}}" data-label-more="Show more ({{n}}) ↓" aria-live="polite">{figs}</div>
 <div class="more-wrap"><p class="serif muted2" data-status>Showing {min(16, total)} of {total}</p><button class="pill btn--lg" type="button" data-more>Show more ({max(0, total - 16)}) ↓</button></div>
 </section>
-<section class="sec sec--blush" aria-labelledby="cats-h"><div class="wrap">
+<section class="sec u u-cats" aria-labelledby="cats-h"><div class="wrap">
 {sec_head('About each category', 'inside the portfolio', hid='cats-h')}
 <div class="cat-rows">
 <a href="/en/wedding/"><h3>Wedding makeup →</h3><p>Bridal looks designed to last from the first kiss to the final dance. Each wedding service includes a pre-wedding trial in Prague, day-of application with long-wear products suited to Czech summer and winter conditions, individual lashes, and a personal touch-up kit. Available for ceremonies in Prague Old Town, Vinohrady, château weddings outside the city, and destination weddings across Europe.</p></a>
@@ -370,7 +369,7 @@ def portfolio():
 <a href="/en/commercial-makeup/"><h3>Commercial &amp; editorial →</h3><p>Makeup for photo shoots, brand campaigns, lookbooks, magazine editorials and video content. Adapted to the lighting and concept of each shoot – from clean beauty work to bold editorial styling – with on-set touch-ups across the production day.</p></a>
 <a href="/en/courses/"><h3>Personalized makeup courses →</h3><p>One-on-one makeup courses tailored to your level – from clients who want to master everyday looks to aspiring makeup artists building professional skills. Held in Prague, covering skin prep, color theory, application techniques, tool selection and product recommendations using your own face as the canvas.</p></a>
 </div></div></section>
-<section class="sec sec--ox" aria-labelledby="like-h"><div class="wrap ox-split" style="align-items:end">
+<section class="sec u u-like" aria-labelledby="like-h"><div class="wrap ox-split" style="align-items:end">
 <div style="display:flex;flex-direction:column;gap:22px"><p class="lbl pink">Like what you see?</p><h2 class="big-h" id="like-h">Let's create your own makeup look</h2><p class="serif ox-note">Get in touch to discuss your wedding, event or shoot. I'll send a personalized quote and availability within 24 hours.</p>
 <p style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn--pink" href="{CAL}">Book online +</a><a class="btn btn--ghost" href="mailto:{MAIL}">{MAIL}</a></p></div>
 <dl class="kv"><div><dt class="lbl">Location</dt><dd>Prague, Czech Republic</dd></div><div><dt class="lbl">Phone</dt><dd><a href="tel:{TEL}">{TEL_H}</a></dd></div><div><dt class="lbl">Instagram</dt><dd><a href="{IG}">@nikol__mua</a></dd></div><div><dt class="lbl">Travel</dt><dd>Czechia &amp; Europe</dd></div></dl>

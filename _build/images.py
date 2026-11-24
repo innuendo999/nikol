@@ -22,6 +22,9 @@ for i in range(1, 18): SRC[f'evening-{i}'] = (f'img/evening/evening-{i}.png', [4
 for i in range(1, 4): SRC[f'nude-{i}'] = (f'img/nude/nude-{i}.png', [400, 800])
 for i in range(1, 7): SRC[f'commercial-{i}'] = (f'img/commercial/commercial-{i}.png', [400, 800])
 import glob
+# new photos (2026-11): sources resized to 2000 px in img/new
+for f in sorted(glob.glob(os.path.join(ROOT, 'img', 'new', '*.jpg'))):
+    SRC[os.path.splitext(os.path.basename(f))[0]] = (os.path.relpath(f, ROOT), [400, 800, 1600])
 for f in sorted(glob.glob(os.path.join(ROOT, 'img', 'products', '*', '*'))):
     if f.lower().endswith(('.jpg', '.jpeg', '.png', '.webp')):
         SRC['prod-' + os.path.splitext(os.path.basename(f))[0]] = (os.path.relpath(f, ROOT), [300, 600])

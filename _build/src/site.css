@@ -1137,3 +1137,53 @@ h1,h2,h3{overflow-wrap:break-word}
   .u-hero-txt{padding:120px var(--gut) 32px;flex-basis:100%}
   .u-hero-ph{flex-basis:100%;padding:0 var(--gut) 48px;min-height:560px}
 }
+/* old course banner shown in the new style on service pages */
+.u-bw .sec--tight{padding:130px 0 0}
+.u-bw .banner{border-radius:28px;color:#111;background-color:#FBF5F2;background-image:radial-gradient(50% 70% at 0% 0%,rgba(247,217,191,.95),transparent 70%),radial-gradient(45% 70% at 60% 100%,rgba(239,198,217,.9),transparent 70%),radial-gradient(40% 60% at 100% 20%,rgba(220,207,240,.8),transparent 70%)}
+.u-bw .banner .lbl{font:400 13px/1.3 var(--f-tight);color:#6E6E6E;text-transform:none;letter-spacing:0;font-stretch:100%}
+.u-bw .banner .mid-h{font:500 clamp(30px,3.2vw,48px)/1.05 var(--f-tight);letter-spacing:-.035em;text-transform:none;font-stretch:100%;color:#111}
+.u-bw .banner .serif{font:400 17px/1.6 var(--f-tight)!important;color:#3A3A3A!important}
+.u-bw .banner .btn{background:#111;color:#fff;font:500 15px/1 var(--f-tight);text-transform:none;letter-spacing:0;font-stretch:100%;min-height:48px;padding:0 24px}
+.u-bw .banner .img{height:auto;min-height:380px;position:relative}.u-bw .banner img{position:absolute;inset:0}
+.u-gallery--3{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(260px,32vw,460px)}
+.u-pcs>li:only-child{max-width:760px}
+.u-c3{object-position:50% 15%}
+.u-intro--solo .u-intro-txt{max-width:820px}
+/* old section heads and cards inside new-style wrappers */
+.u .sec-title{font:500 clamp(34px,4vw,60px)/1.02 var(--f-tight);letter-spacing:-.04em;text-transform:none;font-stretch:100%;color:#111}
+.u .sec-title .serif{font-family:var(--f-disp);font-style:italic;font-size:.9em;color:#6E6E6E}
+.u .link-arrow{font:500 15px/1 var(--f-tight);color:#111;text-transform:none;letter-spacing:0;font-stretch:100%}
+.u .sec-head .btn{background:#111;color:#fff;font:500 15px/1 var(--f-tight);text-transform:none;letter-spacing:0;font-stretch:100%;min-height:48px;padding:0 24px}
+.u-insp{padding-top:130px}.u-insp .pcard .ph{border-radius:18px;overflow:hidden;height:clamp(300px,28vw,420px)}
+.u-insp figcaption{font:500 19px/1.3 var(--f-tight)!important;text-transform:none!important;letter-spacing:-.01em!important;font-stretch:100%!important}
+.u-students{padding-top:130px;background-color:#FBF5F2;background-image:radial-gradient(45% 55% at 5% 10%,rgba(247,217,191,.9),transparent 70%),radial-gradient(40% 50% at 95% 15%,rgba(239,198,217,.85),transparent 70%)}
+.u-students .quotes3 figure{background:rgba(255,255,255,.62);border:1px solid #fff;border-radius:20px;padding:28px;box-shadow:0 18px 50px rgba(120,70,80,.08)}
+.u-students .quotes3 blockquote p{font:400 18px/1.55 var(--f-tight);color:#222}
+.u-students figcaption{font:500 14px/1.3 var(--f-tight);text-transform:none;letter-spacing:0;font-stretch:100%}
+/* portfolio in the new style */
+.u-pf-head .h1 .big{font:500 clamp(72px,12vw,190px)/.9 var(--f-tight)!important;letter-spacing:-.055em!important;text-transform:none!important;font-stretch:100%!important}
+.u-pf-head .h1 .sub{font-family:var(--f-disp)!important;font-style:italic;color:#3A3A3A}
+.u-pf-head .top{border-bottom-color:#E6E6E6}
+.u-pf-head .body{font-family:var(--f-tight);color:#3A3A3A}.u-pf-head .body b{font-weight:600}
+.u-pf-head .crumbs{font:400 13px/1.3 var(--f-tight);text-transform:none;letter-spacing:0;font-stretch:100%}
+.u .pill{font:500 14px/1 var(--f-tight);letter-spacing:0;text-transform:none;font-stretch:100%;border-color:#E6E6E6}
+.u .pill small{font-family:var(--f-tight);color:#8A8A8A}.u .pill[aria-pressed="true"] small{color:#ddd}
+.u .pill[aria-pressed="true"]{background:#111;border-color:#111;color:#fff}.u .pill:hover{background:#F3F0EE}.u .pill[aria-pressed="true"]:hover{background:#111}
+.u-pf .pgrid{gap:14px;padding:0 var(--gut);max-width:1440px;margin-left:auto;margin-right:auto}
+.u-pf .pgrid figure{border-radius:18px;height:clamp(300px,30vw,440px)}
+.u-pf .pgrid figcaption{background:rgba(255,255,255,.75)!important;color:#111;font-family:var(--f-tight)}
+.u-pf .pgrid figcaption b{font:600 14px/1.2 var(--f-tight);text-transform:none;font-stretch:100%}
+.u-pf .more-wrap .serif{font-family:var(--f-tight)}
+.u-cats{background-color:#FBF5F2;background-image:radial-gradient(45% 55% at 5% 10%,rgba(247,217,191,.9),transparent 70%),radial-gradient(40% 50% at 95% 15%,rgba(239,198,217,.85),transparent 70%)}
+.u-cats .cat-rows{border-top-color:#111}.u-cats .cat-rows a{border-bottom-color:#E6D9D4}
+.u-cats .cat-rows h3{font:500 clamp(24px,2.6vw,36px)/1.1 var(--f-tight);text-transform:none;font-stretch:100%;letter-spacing:-.03em}
+.u-cats .cat-rows a:hover h3{color:#C98A8F}.u-cats .cat-rows p{font-family:var(--f-tight);color:#555}
+.u-like{background:#fff;color:#111}
+.u-like .lbl{font:400 13px/1.3 var(--f-tight);color:#6E6E6E;text-transform:none;letter-spacing:0;font-stretch:100%}
+.u-like .big-h{font:500 clamp(40px,5vw,80px)/1 var(--f-tight);letter-spacing:-.04em;text-transform:none;font-stretch:100%;color:#111}
+.u-like .ox-note{font-family:var(--f-tight)!important;color:#555!important}
+.u-like .btn{font:500 15px/1 var(--f-tight);text-transform:none;letter-spacing:0;font-stretch:100%;min-height:48px;padding:0 24px}
+.u-like .btn--pink{background:#111;color:#fff}.u-like .btn--ghost{color:#111;border-color:#E6E6E6}
+.u-like .kv dt{color:#6E6E6E}.u-like .kv dd{font-family:var(--f-tight);color:#111}.u-like .kv div{border-color:#E6E6E6}.u-like .kv a{color:#111}
+@media (max-width:900px){.u-pf .pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.u-pf .pgrid figure{height:260px}}
+@media (max-width:900px){.u-pf .pgrid figcaption{left:8px;right:auto;bottom:8px;padding:6px 10px;border-radius:999px}.u-pf .pgrid figcaption span{display:none}.u-pf .pgrid figcaption b{font-size:12px}}

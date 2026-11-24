@@ -19,6 +19,8 @@ PAGES = {
     '/nude-liceni/': ('nude-1-800', 'blush', '50% 30%', 'Přirozený look', None),
     '/komercni-liceni/': ('commercial-4-800', 'ink', '50% 30%', 'Focení · kampaně · editorial', None),
     '/kurzy-liceni/': ('course-1000', 'sand', '50% 15%', 'Individuální lekce', None),
+    '/o-mne/': ('nikol-hero-1280', 'ox', '62% 28%', 'O mně · vizážistka Praha', 'Svatby, večery, editorial a kurzy'),
+    '/en/about/': ('nikol-hero-1280', 'ox', '62% 28%', 'About · makeup artist Prague', 'Weddings, evenings, editorial and courses'),
     '/portfolio/': ('collage', 'paper', '', 'Svatební · večerní · nude · komerční', None),
     '/en/': ('nikol-hero-1280', 'paper', '50% 28%', 'Makeup artist · Prague', None),
     '/en/wedding/': ('wedding-5-800', 'paper', '50% 30%', 'Weddings · Prague & Europe', None),

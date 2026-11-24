@@ -57,7 +57,7 @@ L = {
             ('Svatební líčení', '/svatebni-liceni/'), ('Večerní líčení', '/vecerni-liceni/'),
             ('Plesové líčení', '/plesove-liceni/'), ('Líčení na akce', '/liceni-na-akce/'), ('Nude makeup', '/nude-liceni/'),
             ('Komerční líčení', '/komercni-liceni/'), ('Kurzy líčení', '/kurzy-liceni/')],
-        blog_href='/blog/', home_href='/', portfolio_href='/portfolio/',
+        blog_href='/blog/', home_href='/', portfolio_href='/portfolio/', about_href='/o-mne/',
         f_services='Služby', f_location='Lokace', f_write='Napište mi', f_call='Telefon / WhatsApp', f_site='Web', f_contact='Kontakt', reviews='Recenze', f_travel='Dojíždím po Praze, ČR i Evropě', f_reply='Odpovídám obvykle během pár hodin.', f_addr='Prvního pluku 8a<br>180 00 Praha 8 – Karlín', social='Sociální sítě',
         f_loc_text='Prvního pluku 8a, 180 00 Praha 8 – Karlín<br>Česká republika<br>(Možnost dojezdu po Praze, ČR i Evropě)',
         rights='Všechna práva vyhrazena', top='Nahoru ↑', online='Rezervace online +', email='E-mail',
@@ -70,7 +70,7 @@ L = {
         crumbs='Breadcrumb', services_list=[
             ('Wedding makeup', '/en/wedding/'), ('Evening makeup', '/en/evening-makeup/'), ('Nude makeup', '/en/nude-makeup/'),
             ('Commercial makeup', '/en/commercial-makeup/'), ('Makeup courses', '/en/courses/')],
-        blog_href='/en/blog/', home_href='/en/', portfolio_href='/en/portfolio/',
+        blog_href='/en/blog/', home_href='/en/', portfolio_href='/en/portfolio/', about_href='/en/about/',
         f_services='Services', f_location='Location', f_write='Write to me', f_call='Phone / WhatsApp', f_site='Site', f_contact='Contact', reviews='Reviews', f_travel='Available across Prague, Czechia &amp; Europe', f_reply='I usually reply within a few hours.', f_addr='Prvního pluku 8a<br>180 00 Prague 8 – Karlín', social='Social media',
         f_loc_text='Prvního pluku 8a, 180 00 Prague 8 – Karlín<br>Czech Republic<br>(Available across Prague, Czechia &amp; Europe)',
         rights='All rights reserved', top='Back to top ↑', online='Book online +', email='Email',
@@ -156,7 +156,7 @@ def header(lang, active, other_href):
 <nav class="nav" id="site-nav" aria-label="{t['main_nav']}">
 <ul>
 {cur('home', t['home_href'], t['home'])}
-<li><a class="nav-link" href="{t['home_href']}#about">{t['about']}</a></li>
+{cur('about', t['about_href'], t['about'])}
 {cur('portfolio', t['portfolio_href'], t['portfolio'])}
 <li class="dd"><button class="nav-link dd-btn{svc_active}" type="button" aria-expanded="false" aria-controls="dd-services">{t['services']} {ICON_CHEV}</button>
 <ul class="dd-menu glass" id="dd-services">{svc_items}</ul></li>
@@ -199,7 +199,7 @@ def footer(lang, cta_label, cta_title, cta_text, primary=None, pre=''):
     primary = primary or (CAL, t['online'])
     svc = ''.join(f'<a href="{u}">{n}</a>' for n, u in t['services_list'])
     h = t['home_href']
-    site = ''.join(f'<a href="{u}">{n}</a>' for n, u in [(t['about'], h + '#about'), (t['portfolio'], t['portfolio_href']),
+    site = ''.join(f'<a href="{u}">{n}</a>' for n, u in [(t['about'], t['about_href']), (t['portfolio'], t['portfolio_href']),
                                                           (t['reviews'], h + '#reviews-h'), (t['blog'], t['blog_href']), (t['contact'], '#contact')])
     open_zone, close_zone = '<div class="grad-zone">' + pre, '</div>'   # gradient footer on every page
     return f'''</main>

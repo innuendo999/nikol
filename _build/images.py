@@ -9,6 +9,7 @@ SRC = {
   'nikol-portrait': ('img/nikol-pavlova.jpg', [400, 800]),
   'nikol-header': ('img/nikol-header.webp', [400, 800]),
   'nikol-footer': ('img/nikol-footer.webp', [800, 1080]),
+  'nikol-about': ('img/nikol-about.jpg', [400, 720]),
   'contact': ('img/portfolio/commercial-2-min.jpg', [800, 1600]),
   'wedding-prague': ('img/wedding/wedding-prague-1.png', [800, 1200]),
   'course': ('img/courses/IMG_7417.jpg', [600, 1000, 1400]),

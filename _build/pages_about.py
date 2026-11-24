@@ -52,9 +52,9 @@ T = {
 
 # (image, crop class, colour class) — photos from the home page hero for now
 CARD_IMG = [('nikol-hero', 'ab-pos-a', 'ab-gel--1'), ('nikol-portrait', 'ab-pos-b', 'ab-gel--2'),
-            ('nikol-header', 'ab-pos-c', 'ab-gel--3'), ('nikol-hero', 'ab-pos-d', 'ab-gel--4')]
-GALLERY = [('nikol-hero', 'ab-pos-a', 1), ('nikol-portrait', 'ab-pos-b', 2), ('nikol-header', 'ab-pos-c', 3), ('nikol-hero', 'ab-pos-d', 4),
-           ('nikol-portrait', 'ab-pos-c', 5), ('nikol-header', 'ab-pos-b', 6), ('nikol-hero', 'ab-pos-a', 7), ('nikol-portrait', 'ab-pos-b', 8)]
+            ('nikol-header', 'ab-pos-c', 'ab-gel--3'), ('nikol-about', 'ab-pos-e', 'ab-gel--4')]
+GALLERY = [('nikol-hero', 'ab-pos-a', 1), ('nikol-portrait', 'ab-pos-b', 2), ('nikol-header', 'ab-pos-c', 3), ('nikol-about', 'ab-pos-e', 4),
+           ('nikol-portrait', 'ab-pos-c', 5), ('nikol-header', 'ab-pos-b', 6), ('nikol-about', 'ab-pos-e', 7), ('nikol-portrait', 'ab-pos-b', 8)]
 
 
 def build_lang(lang):
@@ -92,7 +92,9 @@ def build_lang(lang):
 </section>
 <div class="ab-strip" aria-label="{t['crumb']}"><div class="ab-mq">{strip}<span class="ab-dup" aria-hidden="true">{strip}</span></div></div>
 <section class="wrap ab-story" aria-labelledby="story-h">
-<div class="ab-story-l"><h2 class="ab-h2 ab-rv" id="story-h">{t['story_h'][0]} <em>{t['story_h'][1]}</em></h2><p class="ab-meta">{t['story_meta']}</p></div>
+<div class="ab-story-l"><h2 class="ab-h2 ab-rv" id="story-h">{t['story_h'][0]} <em>{t['story_h'][1]}</em></h2>
+<figure class="ab-portrait">{I('nikol-about', 'Nikol Pavlova', sizes='(max-width: 700px) 100vw, 420px', cls='ab-pos-e')}<span class="ab-pgel" aria-hidden="true"></span></figure>
+<p class="ab-meta">{t['story_meta']}</p></div>
 <div class="ab-story-r">{story}</div>
 </section>
 <section class="ab-do" aria-labelledby="do-h">

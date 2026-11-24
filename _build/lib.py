@@ -14,7 +14,7 @@ GBP = 'https://g.page/r/CVT7YlUrAr22EBM/'          # Google Business Profile
 GBP_REVIEW = GBP + 'review'
 YT = 'https://www.youtube.com/@nikolpavlova_mua'
 WA = 'https://wa.me/420608178390'
-VERSION = '20261124'
+VERSION = '20261124b'
 IMG = json.load(open(os.path.join(ROOT, '_build', 'images.json')))
 
 
@@ -88,7 +88,7 @@ def og_tags(path, og_image, title):
     slug = og_slug(path) if os.path.exists(os.path.join(ROOT, 'assets', 'og', og_slug(path) + '.jpg')) else 'home'
     f = os.path.join(ROOT, 'assets', 'og', slug + '.jpg')
     if os.path.exists(f):
-        url = f'{SITE}/assets/og/{slug}.jpg'
+        url = f'{SITE}/assets/og/{slug}.jpg?v={VERSION}'   # version busts social-network preview caches
         return (f'<meta property="og:image" content="{url}">\n<meta property="og:image:type" content="image/jpeg">\n'
                 f'<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
                 f'<meta property="og:image:alt" content="{a(title)}">\n<meta name="twitter:image" content="{url}">')
@@ -194,14 +194,14 @@ def social_icons(lang):
 
 
 def footer(lang, cta_label, cta_title, cta_text, primary=None, pre=''):
-    """Site footer. `pre` (blog pages) is rendered above it on the shared gradient."""
+    """Site footer on the gradient. `pre` (blog pages: services block) is rendered above it on the same gradient."""
     t = L[lang]
     primary = primary or (CAL, t['online'])
     svc = ''.join(f'<a href="{u}">{n}</a>' for n, u in t['services_list'])
     h = t['home_href']
     site = ''.join(f'<a href="{u}">{n}</a>' for n, u in [(t['about'], h + '#about'), (t['portfolio'], t['portfolio_href']),
                                                           (t['reviews'], h + '#reviews-h'), (t['blog'], t['blog_href']), (t['contact'], '#contact')])
-    open_zone, close_zone = ('<div class="grad-zone">' + pre, '</div>') if pre else ('', '')
+    open_zone, close_zone = '<div class="grad-zone">' + pre, '</div>'   # gradient footer on every page
     return f'''</main>
 {open_zone}<footer class="site-footer" id="contact">
 <div class="wrap">

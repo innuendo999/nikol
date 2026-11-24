@@ -126,7 +126,7 @@ def teaser(lang, keys, title=None, sub=None, hid='blog-h'):
     sub = sub or ('tipy k tomuto tématu' if lang == 'cs' else 'tips on this topic')
     allp = ('/blog/', 'Všechny články →') if lang == 'cs' else ('/en/blog/', 'All articles →')
     return f'''<section class="sec--tight" aria-labelledby="{hid}"><div class="wrap">
-{sec_head(title, sub, f'<a class="link-arrow" href="{allp[0]}">{allp[1]}</a>', hid=hid)}
+<div class="tz-head"><div><p class="tz-label">({sub})</p><h2 class="tz-h2" id="{hid}">{title.split(' ', 1)[0]} <em>{title.split(' ', 1)[1] if ' ' in title else ''}</em></h2></div><a class="tz-link" href="{allp[0]}">{allp[1]}</a></div>
 {cards(lang, keys)}
 </div></section>
 '''

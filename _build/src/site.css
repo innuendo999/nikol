@@ -736,6 +736,7 @@ h1,h2,h3{overflow-wrap:break-word}
 .cv--summer{--tint:#D98A55;--glow:#FFD2A6}.cv--summer:not(.bcover--big){aspect-ratio:4/5}
 .cv--nyx{--tint:#5E2A5C;--glow:#fff}.cv--nyx:not(.bcover--big){aspect-ratio:1/1}.cv--nyx .cv-bar i{width:50%}
 .bl-related .bl-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.bl-card--teaser{gap:18px}.bl-card--teaser .bcover{aspect-ratio:auto!important;height:clamp(300px,30vw,420px)}.bl-card--teaser h3{margin-top:0;font-size:clamp(20px,1.8vw,24px);line-height:1.2}
 .cv--travel{--dim:rgba(8,16,48,.55)}.cv--brushes{--dim:rgba(70,10,35,.32)}
 @media (max-width:640px){.site-footer .cols-f{grid-template-columns:1fr 1fr;gap:40px 24px}.site-footer .cta-f,.site-footer .cols-f>.f-col:last-child{grid-column:1/-1}}
 

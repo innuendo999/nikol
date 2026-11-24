@@ -109,12 +109,12 @@ def fmt_date(lang, iso):
 
 
 def cards(lang, keys):
+    """Blog teaser on service pages: blog cover + article title only."""
     out = ''
     for k in keys:
-        p, m = POSTS[k], POSTS[k][lang]
-        out += (f'<li><article><a class="pcard" href="{m["path"]}"><div class="ph">{img(p["img"], m["title"], sizes="(max-width: 900px) 100vw, 33vw")}'
-                f'<span class="tag lbl glass">{m["tag"]}</span></div><div class="row"><h3>{m["title"]}</h3></div>'
-                f'<p class="body"><time datetime="{p["date"]}">{fmt_date(lang, p["date"])}</time> · {m["card"]}</p></a></article></li>')
+        m = POSTS[k][lang]
+        out += (f'<li><article><a class="bl-card bl-card--teaser" href="{m["path"]}">'
+                f'{cover(k, lang, "(max-width: 900px) 100vw, 33vw")}<h3>{m["title"]}</h3></a></article></li>')
     return f'<ul class="cards3" role="list">{out}</ul>'
 
 

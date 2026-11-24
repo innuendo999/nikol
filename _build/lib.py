@@ -260,21 +260,22 @@ def faq(lang, title_sub, items, hid='faq'):
 
 
 def reviews(lang, sub, items, top=True):
+    """Google reviews: glass cards on a soft pastel field (2026-11 style)."""
     t = L[lang]
     figs = ''
     for r in items:
         figs += (f'<figure class="rv"><span class="st" role="img" aria-label="{t["stars"]}">★★★★★</span>'
                  f'<blockquote lang="{r["lang"]}"><p>{r["text"]}</p></blockquote>'
-                 f'<figcaption><span class="av" aria-hidden="true">{r["ini"]}</span><span><cite class="lbl">{r["name"]}</cite><br><span class="src">{t["g_review"]}{r.get("extra", "")}</span></span></figcaption></figure>\n')
-    pad = 'sec' if top else 'sec--tight'
-    right = (f'<p class="actions"><a class="btn" href="{GBP}">{t["reviews_all"]}</a>'
-             f'<a class="btn btn--outline" href="{GBP_REVIEW}">{t["review_write"]}</a></p>')
-    return f'''<section class="{pad}" aria-labelledby="reviews-h">
+                 f'<figcaption><span class="av" aria-hidden="true">{r["ini"]}</span><span><cite>{r["name"]}</cite><br><span class="src">{t["g_review"]}{r.get("extra", "")}</span></span></figcaption></figure>\n')
+    first, rest = t['reviews_title'].split(' ', 1)
+    return f'''<section class="rv-sec" aria-labelledby="reviews-h">
 <div class="wrap">
-{sec_head(t['reviews_title'], sub, right, hid='reviews-h')}
+<div class="rv-head"><div><p class="rv-label">({sub})</p><h2 class="rv-h2" id="reviews-h">{first} <em>{rest}</em></h2>
+<p class="rv-score"><b>{"5,0" if lang == "cs" else "5.0"}</b> ★★★★★ <span>Google</span></p></div>
+<p class="rv-actions"><a class="rv-btn" href="{GBP}">{t["reviews_all"]}</a><a class="rv-btn rv-btn--ghost" href="{GBP_REVIEW}">{t["review_write"]}</a></p></div>
 <div class="rvs" role="region" aria-label="{t['reviews_title']}" tabindex="0">
 {figs}</div>
-<p class="rvs-hint serif" aria-hidden="true">{t['swipe']}</p>
+<p class="rvs-hint" aria-hidden="true">{t['swipe']}</p>
 </div>
 </section>
 '''

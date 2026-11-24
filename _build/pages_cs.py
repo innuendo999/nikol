@@ -2,6 +2,7 @@ from lib import *
 from lib import img as I
 import schema as S
 from pages_home import home_body
+from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2, gallery2, related2
 from posts import teaser
 from reviews import pick
 
@@ -62,26 +63,20 @@ def wedding():
         ('Jak si rezervovat svatební konzultaci?', f'Rezervujte si termín online přes <a href="{CAL}">Calendly</a>, nebo zavolejte/napište na <a href="tel:{TEL}">{TEL_H}</a>, e-mail <a href="mailto:{MAIL}">{MAIL}</a>, případně napište na Instagram <a href="{IG}">@nikol__mua</a>. Obvykle odpovídám během několika hodin. Konzultace mohou probíhat osobně v Praze nebo přes videohovor pro zahraniční klienty.'),
     ]
     h = head(LANG, title, desc, path, alts(path, '/en/wedding/'), SITE + '/img/wedding/wedding-prague-1.png', S.load('cs-wedding'),
-             preload('wedding-prague', '100vw'))
+             preload('wedding-15', '(max-width: 900px) 60vw, 30vw'))
     h += header(LANG, path, '/en/wedding/')
-    h += f'''<section class="hero-full hero-full--svc" aria-labelledby="page-h1">
-{I('wedding-prague', 'Svatební líčení Praha – nevěsta a ženich', sizes='100vw', priority=True, style='object-position:60% 30%')}
-<div class="wrap inner">
-<div>{crumbs(LANG, [HOME, SVC, ('Svatební líčení', None)], cls='lbl glass crumbs-glass')}</div>
-<div style="display:flex;flex-direction:column;gap:20px">
-<div class="hero-row"><p>Váš svatební den si zaslouží vzhled stejně jedinečný jako váš příběh. Vytvářím dlouhotrvající a zářivé svatební líčení, které zvýrazní vaši přirozenou krásu – vždy na míru vám, vašim šatům a vaší představě.</p><a class="btn btn--light" href="{CAL}">Rezervovat termín online +</a></div>
-<h1 class="h1" id="page-h1"><span class="big">Svatební líčení</span><span class="sub">v Praze – líčení, které vydrží celý den</span></h1>
-</div>
-</div>
-</section>
-'''
-    h += marquee(['Vydrží celý den', 'Zkušební líčení v ceně', 'Anglicky mluvící', 'Destinační svatby', 'Nevěsta, družičky i maminka'])
-    h += intro('O službě', 'Svatební líčení přesně podle vašich představ', 'krásné, připravené pro fotografie a jedinečně vaše',
+    h += hero_svc(LANG, [HOME, SVC, ('Svatební líčení', None)], 'Svatební líčení', 'v Praze – líčení, které vydrží celý den',
+                  'Váš svatební den si zaslouží vzhled stejně jedinečný jako váš příběh. Vytvářím dlouhotrvající a zářivé svatební líčení, které zvýrazní vaši přirozenou krásu – vždy na míru vám, vašim šatům a vaší představě.',
+                  (CAL, 'Rezervovat termín online +'),
+                  [('wedding-15', 'Svatební líčení Praha – nevěsta v bílých rukavicích', 'u-c1'), ('wedding-1', 'Svatební líčení – jemný glam', 'u-c2')],
+                  ('„Líčení vydrželo až do večera.“', '5,0 na Googlu'))
+    h += strip(['Vydrží celý den', 'Zkušební líčení v ceně', 'Anglicky mluvící', 'Destinační svatby', 'Nevěsta, družičky i maminka'])
+    h += intro2('O službě', 'Svatební líčení přesně podle vašich představ', 'krásné, připravené pro fotografie a jedinečně vaše',
                [('wedding-2', 'Svatební líčení Praha – nevěsta a družičky'), ('wedding-4', 'Svatební líčení – nevěsta a ženich')],
                'Jako profesionální <b>svatební vizážistka v Praze</b> pracuji s nevěstami na looku, který je krásný, připravený pro fotografie a – co je nejdůležitější – jedinečně jejich. Ať už se vdáváte na Staroměstském náměstí, na zámku za Prahou, nebo plánujete destinační svatbu kdekoli v Evropě, přijedu za vámi. Každá služba začíná podrobnou konzultací o vaší představě, typu pleti, šatech a stylu svatby. <b>Zkušební líčení</b> je součástí každého svatebního balíčku, abyste do svatebního dne šli zcela sebejistě.',
                ['Anglicky mluvící – ideální pro zahraniční nevěsty a expaty', 'Zkušební líčení v ceně každého svatebního balíčku', 'Nevěsta, družičky i maminka nevěsty', 'Destinační svatby po České republice i Evropě'],
                (CAL, 'Rezervovat svatební konzultaci +'))
-    h += checker('Čím se služba odlišuje', 'proč si nevěsty vybírají Nikol', [
+    h += features2('Čím se služba |odlišuje', 'proč si nevěsty vybírají Nikol', [
         ('img', 'wedding-15', 'Svatební look – soft glam'),
         ('panel', '01', 'Anglicky mluvící vizážistka', 'Plynně anglicky, česky a ukrajinsky – žádná jazyková bariéra pro zahraniční nevěsty ani destinační svatby v Praze.', False),
         ('img', 'wedding-3', 'Svatební look – dlouhotrvající líčení'),
@@ -91,23 +86,23 @@ def wedding():
         ('panel', '04', 'Dlouhotrvající výsledek', 'Profesionální produkty a techniky udrží váš svatební look svěží a připravený na fotografie od obřadu až po poslední tanec.', False),
         ('img', 'wedding-12', 'Styling nevěsty a družiček'),
     ])
-    h += ox_pricing('Ceník a služby', 'Balíčky svatebního líčení', 'Cena se odvíjí od data, místa a rozsahu. Osobní nabídku pošlu do 24 hodin.', [
+    h += pricing2('Ceník a služby', 'Balíčky |svatebního líčení', 'Cena se odvíjí od data, místa a rozsahu. Osobní nabídku pošlu do 24 hodin.', [
         ('Kompletní svatební balíček', 'Na vyžádání', ['Osobní zkušební líčení', 'Líčení v den svatby', 'Umělé řasy v ceně', 'Sada na dotyky', 'Výjezd se účtuje zvlášť'], 'Poptat balíček +'),
         ('Svatební doprovod &amp; cestování', 'Na vyžádání', ['Líčení družiček', 'Maminka nevěsty', 'Sladěný look doprovodu', 'Cestování po ČR', 'Evropské destinace'], 'Poptat doprovod +'),
-    ])
-    h += steps('Průběh svatebního líčení', 'jak to probíhá', [
+    ], imgs=[('wedding-4', 'Svatební balíček'), ('wedding-2', 'Svatební doprovod')])
+    h += steps2('Průběh |svatebního líčení', 'jak to probíhá', [
         ('Úvodní konzultace', 'Probereme vaši představu, šaty a místo konání – osobně, telefonicky nebo přes videohovor, což je ideální pro zahraniční nevěsty plánující destinační svatbu v Praze.'),
         ('Zkušební líčení', 'Obvykle 4–8 týdnů před svatbou. Vyzkoušíme kompletní look, doladíme odstíny a techniky a vše zdokumentujeme zkušebními fotografiemi.'),
         ('Líčení v den svatby', 'Přijedu do hotelu, na místo konání či domů. Doprovod líčím jako první, nevěstu jako poslední, aby byl její look co nejsvěžejší pro obřad i fotografie.'),
         ('Sada na dotyky a finální kontrola', 'Dostanete osobní sadu na dotyky s klíčovými produkty použitými na vaši pleť, takže váš look zůstane perfektní až do posledního tance.'),
     ], 'Od první konzultace až po finální dotyky ve svatební den – přesně takto vypadá spolupráce, když si jako svou svatební vizážistku v Praze zarezervujete Nikol Pavlovou.')
-    h += gallery('Nedávné svatební looky', 'vybrané práce', 'Zobrazit celé portfolio', '/portfolio/', [
+    h += gallery2('Nedávné |svatební looky', 'vybrané práce', 'Zobrazit celé portfolio', '/portfolio/', [
         ('wedding-5', 'Svatební líčení – jemný svatební glow, Praha'), ('wedding-7', 'Svatební líčení – klasická svatební krása'),
         ('wedding-9', 'Svatební líčení – destinační svatba Praha'), ('wedding-11', 'Svatební líčení – zářivá svatební pleť'),
         ('wedding-12', 'Líčení svatebního doprovodu – nevěsta a družičky'), ('wedding-13', 'Svatební líčení – přirozená svatební krása'),
         ('wedding-14', 'Svatební líčení – jemný glamour, Praha'), ('wedding-15', 'Svatební líčení od Nikol Pavlové')])
     h += reviews(LANG, 'nevěsty a svatební focení', pick('shirley', 'polinashu', 'erika_w'), top=False)
-    h += f'''<section class="sec" aria-labelledby="guide-h">
+    h += f'''<section class="sec u u-guide" aria-labelledby="guide-h">
 <div class="wrap guide">
 <aside><p class="lbl red">Průvodce svatebním líčením</p><h2 class="big-h" id="guide-h">Svatební líčení v Praze</h2>
 <nav class="toc" aria-label="Obsah průvodce"><a href="#g1">Co nabízí svatební vizážistka</a><a href="#g2">Jak dlouho dopředu rezervovat</a><a href="#g3">Zkušební líčení</a><a href="#g4">Anglicky mluvící vizážistka</a><a href="#g5">Styly svatebního líčení</a></nav></aside>
@@ -125,8 +120,8 @@ def wedding():
 </section>
 '''
     h += faq(LANG, 'otázky o svatebním líčení', faq_items)
-    h += teaser(LANG, ['nyx', 'empties'])
-    h += tiles(LANG, [('Večerní líčení', '/vecerni-liceni/', 'evening-5'), ('Kurzy líčení', '/kurzy-liceni/', 'course')])
+    h += teaser(LANG, ['blush', 'travel'])
+    h += related2(LANG, [('Večerní líčení', '/vecerni-liceni/', 'evening-5'), ('Kurzy líčení', '/kurzy-liceni/', 'course')])
     h += footer(LANG, 'Rezervujte si svatební konzultaci', 'Kontaktujte mě', 'Působím v Praze, ČR · K dispozici pro cestování po Evropě. Osobní nabídka do 24 hodin.',
                 (CAL, 'Rezervovat termín online +'))
     write(path, h)

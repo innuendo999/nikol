@@ -191,6 +191,32 @@ def card_home(path):
 </body></html>'''
 
 
+NEW_SVC = {  # service pages already in the 2026-11 design: path -> (photo, object-position)
+    '/svatebni-liceni/': ('wedding-15-800', '45% 30%'),
+    '/en/wedding/': ('wedding-15-800', '45% 30%'),
+}
+
+
+def card_svc(path):
+    """Service pages in the new design: H1 on the left, the hero photo with soft pastel light on the right."""
+    lang, title, sub = page_text(path)
+    cs = lang == 'cs'
+    photo, pos = NEW_SVC[path]
+    e = html.escape
+    cta = 'Rezervovat termín +' if cs else 'Book online +'
+    return f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><link rel="stylesheet" href="/assets/css/site.css"><style>{BLOG_CSS}
+.og-ph{{position:relative;overflow:hidden;border-radius:24px;height:574px}}.og-ph img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{pos}}}
+.og-ph i{{position:absolute;inset:0;background:linear-gradient(150deg,#F7D9BF,#F2CDD6 55%,#DCCFF0);mix-blend-mode:soft-light;opacity:.45}}
+.og h1{{font-size:80px;line-height:.95}}</style></head>
+<body><div class="og"><div class="og-l">
+<div class="og-top"><span>Nikol <em>Pavlova</em></span><small>{'5,0' if cs else '5.0'} ★ Google</small></div>
+<div><h1 id="t">{e(title)}</h1><p class="og-sub" style="font-family:var(--f-disp);font-style:italic;font-size:30px;color:#3A3A3A">{e(sub)}</p></div>
+<div class="og-bot"><span>nikolmakeup.cz{e(path)}</span><b>{e(cta)}</b></div>
+</div><div class="og-ph"><img src="/assets/img/{photo}.webp"><i></i></div></div>
+<script>Promise.all([document.fonts.ready,document.images[0].decode().catch(function(){{}})]).then(function(){{var t=document.getElementById('t'),s=80;while(t.offsetHeight>250&&s>40){{s-=2;t.style.fontSize=s+'px'}}document.body.dataset.ready=1}})</script>
+</body></html>'''
+
+
 def main():
     tmp = os.path.join(ROOT, '_build', 'og_tmp')
     os.makedirs(tmp, exist_ok=True)
@@ -198,10 +224,11 @@ def main():
     jobs = []
     only = sys.argv[1] if len(sys.argv) > 1 else ''          # e.g. "blog" renders only the blog cards
     for path in PAGES:
-        if only and not (only == 'home' and path in ('/', '/en/')) and (only == 'home' or only not in path):
+        if only and not (only == 'home' and path in ('/', '/en/')) and not (only == 'new' and path in NEW_SVC) and (only in ('home', 'new') or only not in path):
             continue
         slug = og_slug(path)
-        html_ = card_blog(path) if '/blog/' in path else card_home(path) if path in ('/', '/en/') else card(path)
+        html_ = (card_blog(path) if '/blog/' in path else card_home(path) if path in ('/', '/en/')
+                 else card_svc(path) if path in NEW_SVC else card(path))
         open(os.path.join(tmp, slug + '.html'), 'w', encoding='utf-8').write(html_)
         jobs.append([f'http://localhost:8765/_build/og_tmp/{slug}.html', os.path.join(ROOT, 'assets', 'og', slug + '.png')])
     subprocess.run(['node', os.path.join(ROOT, '_build', 'og.js'), json.dumps(jobs)], check=True)

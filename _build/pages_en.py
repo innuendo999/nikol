@@ -2,7 +2,7 @@ from lib import *
 from lib import img as I
 import schema as S
 from pages_home import home_body
-from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2, gallery2, related2
+from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2, gallery2, related2, svc_photos, review_quote, banner2
 from reviews import pick
 from posts import teaser
 from pages_cs import PORTFOLIO_ITEMS, portfolio_grid, NOSCRIPT
@@ -121,26 +121,27 @@ def wedding():
 # ---------------------------------------------------------------- GENERIC SERVICE (EN)
 def service(cfg):
     path = cfg['path']
+    hero_ph, price_ph, gal = svc_photos(cfg, LANG)
     sch = S.service_page(LANG, path, cfg['title'], cfg['desc'], cfg['service_name'], cfg['service_type'],
-                         f"/assets/img/{cfg['hero_img']}-800.webp", [('Home', '/en/'), ('Services', '/en/#services'), (cfg['crumb'], path)], cfg['faq'], cfg['offers'])
-    h = head(LANG, cfg['title'], cfg['desc'], path, alts(cfg['cs'], path), SITE + f"/assets/img/{cfg['hero_img']}-800.webp", sch,
-             preload(cfg['hero_img'], '(max-width: 900px) 100vw, 50vw'))
+                         f"/assets/img/{hero_ph[0][0]}-800.webp", [('Home', '/en/'), ('Services', '/en/#services'), (cfg['crumb'], path)], cfg['faq'], cfg['offers'])
+    h = head(LANG, cfg['title'], cfg['desc'], path, alts(cfg['cs'], path), SITE + f"/assets/img/{hero_ph[0][0]}-800.webp", sch,
+             preload(hero_ph[0][0], '(max-width: 900px) 60vw, 30vw'))
     h += header(LANG, path, cfg['cs'])
-    h += hero_split(LANG, cfg['tone'], [HOME, SVC, (cfg['crumb'], None)], cfg['big'], cfg['sub'], cfg['lead'], cfg['buttons'], cfg['hero_img'], cfg['hero_alt'])
-    h += marquee(cfg['marquee'])
-    h += intro('About the service', cfg['intro_title'], cfg['intro_tag'], cfg['intro_imgs'], cfg['intro_body'], cfg['chips'])
-    h += checker(cfg['grid_title'], cfg['grid_sub'], cfg['grid'])
-    h += ox_pricing('Rates', cfg['price_title'], cfg['price_note'], [cfg['price_col']])
-    h += steps(cfg['steps_title'], 'how it works', cfg['steps'])
-    h += gallery(cfg['gal_title'], 'selected work', 'View full portfolio', '/en/portfolio/', cfg['gallery'], c3=len(cfg['gallery']) < 8)
-    h += cfg.get('banner', '')
+    h += hero_svc(LANG, [HOME, SVC, (cfg['crumb'], None)], cfg['big'].replace('<br>', ' '), cfg['sub'], cfg['lead'], (cfg['buttons'][0][1], cfg['buttons'][0][0]),
+                  hero_ph, review_quote(cfg['reviews'], LANG))
+    h += strip(cfg['marquee'])
+    h += intro2('About the service', cfg['intro_title'], cfg['intro_tag'], cfg['intro_imgs'], cfg['intro_body'], cfg['chips'])
+    h += features2(cfg['grid_title'], cfg['grid_sub'], cfg['grid'])
+    h += pricing2('Rates', cfg['price_title'], cfg['price_note'], [cfg['price_col']], imgs=price_ph)
+    h += steps2(cfg['steps_title'], 'how it works', cfg['steps'])
+    h += gallery2(cfg['gal_title'], 'selected work', 'View full portfolio', '/en/portfolio/', gal)
+    h += banner2(cfg.get('banner', ''))
     h += reviews(LANG, cfg['rv_sub'], cfg['reviews'], top=False)
     h += faq(LANG, cfg['faq_sub'], cfg['faq'])
     h += teaser(LANG, cfg.get('posts', []))
-    h += tiles(LANG, cfg['related'])
+    h += related2(LANG, cfg['related'])
     h += footer(LANG, cfg['f_label'], 'Get in touch', cfg['f_text'], cfg.get('f_primary'))
     write(path, h)
-
 
 EVENING = dict(
     posts=['blush', 'catrice'],

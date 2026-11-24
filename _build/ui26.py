@@ -107,7 +107,7 @@ def gallery2(title, sub, right_label, right_href, items):
     imgs = ''.join(f'<span class="u-gl u-gl--{k + 1}">{I(n, alt, sizes="(max-width: 900px) 50vw, 25vw")}</span>' for k, (n, alt) in enumerate(items))
     return f'''<section class="u wrap u-sec" aria-labelledby="gal-h">
 <div class="u-head"><div>{_h2(title, 'gal-h', sub)}</div><a class="u-link" href="{right_href}">{right_label} →</a></div>
-<div class="u-gallery">{imgs}</div>
+<div class="u-gallery{" u-gallery--3" if len(items) < 4 or (len(items) % 4 and len(items) % 3 == 0) else ""}">{imgs}</div>
 </section>
 '''
 
@@ -121,3 +121,63 @@ def related2(lang, items):
 <ul class="u-rels" role="list">{out}</ul>
 </section>
 '''
+
+
+# ---------------------------------------------------------------- photos per service page (new photos 2026-11)
+ALT = {  # name: (cs, en)
+    'ev-cap': ('Editorial look – výrazné oči a čepice', 'Editorial look – bold eyes and cap'),
+    'ev-black': ('Večerní look – přirozená pleť a dlouhé vlasy', 'Evening look – natural skin and long hair'),
+    'ev-gold': ('Večerní look – zlaté šaty a drdol', 'Evening look – gold dress and updo'),
+    'ev-red': ('Večerní look – zrzavé vlasy a drdol', 'Evening look – red hair and updo'),
+    'ev-green-emb': ('Večerní look – vyšívané šaty a kudrliny', 'Evening look – embroidered dress and curls'),
+    'ev-green-gown': ('Plesový look – zelené šaty a vysoký culík', 'Ball look – green gown and high ponytail'),
+    'ev-stairs': ('Plesový look – sametové šaty na schodech', 'Ball look – velvet gown on the stairs'),
+    'ev-pink-gown': ('Večerní look – pudrové šaty a drdol', 'Evening look – blush gown and updo'),
+    'hair-waves-back': ('Účes – hollywoodské vlny', 'Hairstyle – Hollywood waves'),
+    'hair-waves': ('Účes – velké vlny a večerní make-up', 'Hairstyle – big waves and evening makeup'),
+    'hair-red': ('Účes – zrzavé vlny a jemný glam', 'Hairstyle – red waves and soft glam'),
+    'hair-brown-waves': ('Účes – lesklé hnědé vlny', 'Hairstyle – glossy brown waves'),
+    'hair-curls': ('Účes – objemné kudrliny', 'Hairstyle – voluminous curls'),
+    'hair-updo': ('Účes – elegantní drdol', 'Hairstyle – elegant updo'),
+}
+
+SVC_PHOTOS = {  # cs path / en path -> hero pair, pricing photos, optional new gallery
+    'evening': dict(hero=['ev-black', 'ev-pink-gown'], price=['ev-red', 'hair-waves'],
+                    gallery=['ev-cap', 'ev-black', 'ev-gold', 'ev-red', 'ev-green-emb', 'ev-green-gown', 'ev-stairs', 'ev-pink-gown']),
+    'plesy': dict(hero=['ev-green-gown', 'hair-updo'], price=['ev-stairs', 'hair-curls'],
+                  gallery=['hair-waves-back', 'hair-waves', 'hair-red', 'hair-brown-waves', 'hair-curls', 'hair-updo', 'ev-gold', 'ev-green-emb']),
+    'akce': dict(hero=['ev-gold', 'ev-stairs'], price=['ev-red', 'hair-brown-waves']),
+    'nude': dict(hero=['nude-1', 'nude-3'], price=['nude-2']),
+    'commercial': dict(hero=['ev-cap', 'commercial-6'], price=['commercial-4']),
+}
+PATH_KEY = {'/vecerni-liceni/': 'evening', '/en/evening-makeup/': 'evening', '/plesove-liceni/': 'plesy', '/liceni-na-akce/': 'akce',
+            '/nude-liceni/': 'nude', '/en/nude-makeup/': 'nude', '/komercni-liceni/': 'commercial', '/en/commercial-makeup/': 'commercial'}
+
+
+def _alt(name, lang, fallback):
+    return ALT[name][0 if lang == 'cs' else 1] if name in ALT else fallback
+
+
+def review_quote(revs, lang):
+    """First sentence of the first review, unchanged words; cut at a word if long."""
+    import re as _re
+    t = _re.sub(r'<[^>]+>', '', revs[0]['text']).strip('„“”"’‘ ')
+    t = t.replace('&amp;', '&')
+    first = _re.split(r'(?<=[.!?])\s', t)[0]
+    if len(first) > 90:
+        first = first[:88].rsplit(' ', 1)[0] + '…'
+    q = f'„{first}“' if lang == 'cs' else f'“{first}”'
+    return q.replace('&', '&amp;'), ('5,0 na Googlu' if lang == 'cs' else '5.0 on Google')
+
+
+def svc_photos(cfg, lang):
+    p = SVC_PHOTOS[PATH_KEY[cfg['path']]]
+    hero = [(n, _alt(n, lang, cfg['hero_alt'] if k == 0 else ''), 'u-c2') for k, n in enumerate(p['hero'])]
+    price = [(n, _alt(n, lang, '')) for n in p['price']]
+    gal = [(n, _alt(n, lang, '')) for n in p['gallery']] if p.get('gallery') else cfg['gallery']
+    return hero, price, gal
+
+
+def banner2(html):
+    """Old banner markup, shown in the new style (see .u-bw in site.css)."""
+    return f'<div class="u u-bw">{html}</div>\n' if html else ''

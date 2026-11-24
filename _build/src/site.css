@@ -1137,3 +1137,13 @@ h1,h2,h3{overflow-wrap:break-word}
   .u-hero-txt{padding:120px var(--gut) 32px;flex-basis:100%}
   .u-hero-ph{flex-basis:100%;padding:0 var(--gut) 48px;min-height:560px}
 }
+/* old course banner shown in the new style on service pages */
+.u-bw .sec--tight{padding:130px 0 0}
+.u-bw .banner{border-radius:28px;color:#111;background-color:#FBF5F2;background-image:radial-gradient(50% 70% at 0% 0%,rgba(247,217,191,.95),transparent 70%),radial-gradient(45% 70% at 60% 100%,rgba(239,198,217,.9),transparent 70%),radial-gradient(40% 60% at 100% 20%,rgba(220,207,240,.8),transparent 70%)}
+.u-bw .banner .lbl{font:400 13px/1.3 var(--f-tight);color:#6E6E6E;text-transform:none;letter-spacing:0;font-stretch:100%}
+.u-bw .banner .mid-h{font:500 clamp(30px,3.2vw,48px)/1.05 var(--f-tight);letter-spacing:-.035em;text-transform:none;font-stretch:100%;color:#111}
+.u-bw .banner .serif{font:400 17px/1.6 var(--f-tight)!important;color:#3A3A3A!important}
+.u-bw .banner .btn{background:#111;color:#fff;font:500 15px/1 var(--f-tight);text-transform:none;letter-spacing:0;font-stretch:100%;min-height:48px;padding:0 24px}
+.u-bw .banner .img{height:auto;min-height:380px;position:relative}.u-bw .banner img{position:absolute;inset:0}
+.u-gallery--3{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(260px,32vw,460px)}
+.u-pcs>li:only-child{max-width:760px}

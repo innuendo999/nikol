@@ -2,7 +2,7 @@ from lib import *
 from lib import img as I
 import schema as S
 from pages_home import home_body
-from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2, gallery2, related2
+from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2, gallery2, related2, svc_photos, review_quote, banner2
 from posts import teaser
 from reviews import pick
 
@@ -133,28 +133,28 @@ def service(cfg):
     faq_items = cfg['faq']
     parent = [cfg['parent']] if cfg.get('parent') else []
     crumb_items = [HOME, SVC] + parent + [(cfg['crumb'], None)]
+    hero_ph, price_ph, gal = svc_photos(cfg, LANG)
     sch = S.service_page(LANG, path, cfg['title'], cfg['desc'], cfg['service_name'], cfg['service_type'],
-                         f"/assets/img/{cfg['hero_img']}-800.webp", [('Domů', '/'), ('Služby', '/#services')] + parent + [(cfg['crumb'], path)], faq_items, cfg['offers'])
-    h = head(LANG, cfg['title'], cfg['desc'], path, alts(path, cfg['en']), SITE + f"/assets/img/{cfg['hero_img']}-800.webp", sch,
-             preload(cfg['hero_img'], '(max-width: 900px) 100vw, 50vw'))
+                         f"/assets/img/{hero_ph[0][0]}-800.webp", [('Domů', '/'), ('Služby', '/#services')] + parent + [(cfg['crumb'], path)], faq_items, cfg['offers'])
+    h = head(LANG, cfg['title'], cfg['desc'], path, alts(path, cfg['en']), SITE + f"/assets/img/{hero_ph[0][0]}-800.webp", sch,
+             preload(hero_ph[0][0], '(max-width: 900px) 60vw, 30vw'))
     # pages without an English version switch to the closest English page
     h += header(LANG, path, cfg['en'] or cfg['lang_switch'])
-    h += hero_split(LANG, cfg['tone'], crumb_items, cfg['big'], cfg['sub'], cfg['lead'], cfg['buttons'], cfg['hero_img'], cfg['hero_alt'])
-    h += marquee(cfg['marquee'])
-    h += intro('O službě', cfg['intro_title'], cfg['intro_tag'], cfg['intro_imgs'], cfg['intro_body'], cfg['chips'])
-    h += checker(cfg['grid_title'], cfg['grid_sub'], cfg['grid'])
-    h += ox_pricing('Ceník', cfg['price_title'], cfg['price_note'], cfg.get('price_cols') or [cfg['price_col']], cfg.get('price_href', '#contact'))
-    h += steps(cfg['steps_title'], 'jak to probíhá', cfg['steps'])
-    h += gallery(cfg['gal_title'], 'vybrané práce', 'Zobrazit celé portfolio', '/portfolio/', cfg['gallery'], c3=len(cfg['gallery']) < 8)
-    if cfg.get('banner'):
-        h += cfg['banner']
+    h += hero_svc(LANG, crumb_items, cfg['big'].replace('<br>', ' '), cfg['sub'], cfg['lead'], (cfg['buttons'][0][1], cfg['buttons'][0][0]),
+                  hero_ph, review_quote(cfg['reviews'], LANG))
+    h += strip(cfg['marquee'])
+    h += intro2('O službě', cfg['intro_title'], cfg['intro_tag'], cfg['intro_imgs'], cfg['intro_body'], cfg['chips'])
+    h += features2(cfg['grid_title'], cfg['grid_sub'], cfg['grid'])
+    h += pricing2('Ceník', cfg['price_title'], cfg['price_note'], cfg.get('price_cols') or [cfg['price_col']], cfg.get('price_href', '#contact'), imgs=price_ph)
+    h += steps2(cfg['steps_title'], 'jak to probíhá', cfg['steps'])
+    h += gallery2(cfg['gal_title'], 'vybrané práce', 'Zobrazit celé portfolio', '/portfolio/', gal)
+    h += banner2(cfg.get('banner', ''))
     h += reviews(LANG, cfg['rv_sub'], cfg['reviews'], top=False)
     h += faq(LANG, cfg['faq_sub'], faq_items)
     h += teaser(LANG, cfg.get('posts', []))
-    h += tiles(LANG, cfg['related'])
+    h += related2(LANG, cfg['related'])
     h += footer(LANG, cfg['f_label'], 'Kontaktujte mě', cfg['f_text'], cfg.get('f_primary'))
     write(path, h)
-
 
 BOOK_FAQ = ('Jak si mohu rezervovat termín?', f'Rezervovat můžete <a href="{CAL}">online přes Calendly</a>, telefonicky nebo SMS na <a href="tel:{TEL}">{TEL_H}</a>, e-mailem na <a href="mailto:{MAIL}">{MAIL}</a> nebo přes Instagram <a href="{IG}">@nikol__mua</a>. Obvykle odpovídám do několika hodin.')
 

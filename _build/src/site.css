@@ -413,6 +413,27 @@ a.tile-panel:hover .more{transform:translateX(4px)}
 }
 @media (max-width:380px){.tile-panel h3{font-size:16px;overflow-wrap:anywhere}}
 .rvs-hint{display:none;margin-top:12px;font-size:15px;color:var(--muted2)}
+/* reviews (2026-11): glass cards on a soft pastel field */
+.rv-sec{position:relative;padding:120px 0;font-family:var(--f-tight);color:#111;background-color:#FBF5F2;background-image:radial-gradient(45% 55% at 5% 10%,rgba(247,217,191,.9),transparent 70%),radial-gradient(40% 50% at 95% 15%,rgba(239,198,217,.85),transparent 70%),radial-gradient(50% 55% at 60% 100%,rgba(220,207,240,.8),transparent 70%),radial-gradient(35% 45% at 20% 95%,rgba(211,228,242,.8),transparent 70%)}
+.rv-sec em{font-family:var(--f-disp);font-style:italic;font-weight:400;font-size:1.1em;letter-spacing:-.01em}
+.rv-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px}
+.rv-label{font-size:13px;color:#6E6E6E;margin-bottom:10px}
+.rv-h2{font:500 clamp(36px,4vw,60px)/1.02 var(--f-tight);letter-spacing:-.04em}
+.rv-score{margin-top:14px;font-size:15px;color:#B07A3B;letter-spacing:.05em}.rv-score b{color:#111;font-size:20px;letter-spacing:-.01em;margin-right:6px}.rv-score span{color:#6E6E6E;letter-spacing:0;margin-left:6px}
+.rv-actions{display:flex;flex-wrap:wrap;gap:10px}
+.rv-btn{display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;background:#111;color:#fff;font:500 14px/1 var(--f-tight);text-decoration:none;transition:background .2s}
+.rv-btn:hover{background:#3A3A3A}.rv-btn--ghost{background:rgba(255,255,255,.55);color:#111;border:1px solid rgba(17,17,17,.15)}.rv-btn--ghost:hover{background:#fff}
+.rv-sec .rv{background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2);border:1px solid rgba(255,255,255,.9);border-radius:20px;box-shadow:0 18px 50px rgba(120,70,80,.08);padding:28px;gap:18px;position:relative;transition:transform .3s,box-shadow .3s}
+.rv-sec .rv:hover{transform:translateY(-3px);box-shadow:0 24px 60px rgba(120,70,80,.14)}
+.rv-sec .rv::before{content:"\201C";position:absolute;right:22px;top:6px;font:italic 400 84px/1 var(--f-disp);color:rgba(176,122,59,.22)}
+.rv-sec .st{font-size:14px;letter-spacing:.12em;color:#B07A3B}
+.rv-sec .rv blockquote p{font:400 17px/1.6 var(--f-tight);color:#222}
+.rv-sec .av{width:42px;height:42px;background:linear-gradient(135deg,#F7D9BF,#EFC6D9 55%,#DCCFF0);color:#3A2A2E;font:600 13px/1 var(--f-tight)}
+.rv-sec cite{font:600 15px/1.3 var(--f-tight);font-style:normal;color:#111}
+.rv-sec .src{font-size:13px;color:#6E6E6E}
+.rv-sec .rvs-hint{font-family:var(--f-tight);color:#6E6E6E}
+@media (max-width:700px){.rv-sec{padding:80px 0}}
+
 .author .lbl{display:inline-block;padding:8px 0}
 .rows dd{margin:0}
 .f-bar a{padding:8px 0}

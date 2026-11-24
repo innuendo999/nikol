@@ -63,44 +63,40 @@ def wedding():
         ('Jak si rezervovat svatební konzultaci?', f'Rezervujte si termín online přes <a href="{CAL}">Calendly</a>, nebo zavolejte/napište na <a href="tel:{TEL}">{TEL_H}</a>, e-mail <a href="mailto:{MAIL}">{MAIL}</a>, případně napište na Instagram <a href="{IG}">@nikol__mua</a>. Obvykle odpovídám během několika hodin. Konzultace mohou probíhat osobně v Praze nebo přes videohovor pro zahraniční klienty.'),
     ]
     h = head(LANG, title, desc, path, alts(path, '/en/wedding/'), SITE + '/img/wedding/wedding-prague-1.png', S.load('cs-wedding'),
-             preload('wedding-15', '(max-width: 900px) 60vw, 30vw'))
+             preload('bride-window', '(max-width: 900px) 60vw, 30vw'))
     h += header(LANG, path, '/en/wedding/')
     h += hero_svc(LANG, [HOME, SVC, ('Svatební líčení', None)], 'Svatební líčení', 'v Praze – líčení, které vydrží celý den',
                   'Váš svatební den si zaslouží vzhled stejně jedinečný jako váš příběh. Vytvářím dlouhotrvající a zářivé svatební líčení, které zvýrazní vaši přirozenou krásu – vždy na míru vám, vašim šatům a vaší představě.',
                   (CAL, 'Rezervovat termín online +'),
-                  [('wedding-15', 'Svatební líčení Praha – nevěsta v bílých rukavicích', 'u-c1'), ('wedding-1', 'Svatební líčení – jemný glam', 'u-c2')],
+                  [('bride-window', 'Svatební líčení Praha – nevěsta u okna', 'u-c2'), ('bride-calla', 'Svatební líčení – nevěsta s kalami', 'u-c2')],
                   ('„Líčení vydrželo až do večera.“', '5,0 na Googlu'))
     h += strip(['Vydrží celý den', 'Zkušební líčení v ceně', 'Anglicky mluvící', 'Destinační svatby', 'Nevěsta, družičky i maminka'])
     h += intro2('O službě', 'Svatební líčení přesně podle vašich představ', 'krásné, připravené pro fotografie a jedinečně vaše',
-               [('wedding-2', 'Svatební líčení Praha – nevěsta a družičky'), ('wedding-4', 'Svatební líčení – nevěsta a ženich')],
+               [('stairs-couple', 'Svatební líčení – novomanželé na schodišti'), ('window-ready-2', 'Ranní příprava nevěsty')],
                'Jako profesionální <b>svatební vizážistka v Praze</b> pracuji s nevěstami na looku, který je krásný, připravený pro fotografie a – co je nejdůležitější – jedinečně jejich. Ať už se vdáváte na Staroměstském náměstí, na zámku za Prahou, nebo plánujete destinační svatbu kdekoli v Evropě, přijedu za vámi. Každá služba začíná podrobnou konzultací o vaší představě, typu pleti, šatech a stylu svatby. <b>Zkušební líčení</b> je součástí každého svatebního balíčku, abyste do svatebního dne šli zcela sebejistě.',
                ['Anglicky mluvící – ideální pro zahraniční nevěsty a expaty', 'Zkušební líčení v ceně každého svatebního balíčku', 'Nevěsta, družičky i maminka nevěsty', 'Destinační svatby po České republice i Evropě'],
                (CAL, 'Rezervovat svatební konzultaci +'))
     h += features2('Čím se služba |odlišuje', 'proč si nevěsty vybírají Nikol', [
-        ('img', 'wedding-15', 'Svatební look – soft glam'),
+        ('img', 'mother-makeup', 'Líčení maminky nevěsty'),
         ('panel', '01', 'Anglicky mluvící vizážistka', 'Plynně anglicky, česky a ukrajinsky – žádná jazyková bariéra pro zahraniční nevěsty ani destinační svatby v Praze.', False),
-        ('img', 'wedding-3', 'Svatební look – dlouhotrvající líčení'),
+        ('img', 'bride-mirror', 'Nevěsta kontroluje look v zrcátku'),
         ('panel', '02', 'Zkušební líčení v ceně', 'Každý svatební balíček obsahuje zkušební líčení, abyste si vzhled doladili a do svatebního dne šli zcela sebejistě.', True),
         ('panel', '03', 'Destinační svatby', 'K dispozici po celé České republice i Evropě – přijedu na vaše místo konání, do hotelu či kamkoli si přejete.', True),
-        ('img', 'wedding-6', 'Svatební look – romantický styling'),
+        ('img', 'castle-couple', 'Svatba na zámku'),
         ('panel', '04', 'Dlouhotrvající výsledek', 'Profesionální produkty a techniky udrží váš svatební look svěží a připravený na fotografie od obřadu až po poslední tanec.', False),
-        ('img', 'wedding-12', 'Styling nevěsty a družiček'),
+        ('img', 'couple-field', 'Svatební look při západu slunce'),
     ])
     h += pricing2('Ceník a služby', 'Balíčky |svatebního líčení', 'Cena se odvíjí od data, místa a rozsahu. Osobní nabídku pošlu do 24 hodin.', [
         ('Kompletní svatební balíček', 'Na vyžádání', ['Osobní zkušební líčení', 'Líčení v den svatby', 'Umělé řasy v ceně', 'Sada na dotyky', 'Výjezd se účtuje zvlášť'], 'Poptat balíček +'),
         ('Svatební doprovod &amp; cestování', 'Na vyžádání', ['Líčení družiček', 'Maminka nevěsty', 'Sladěný look doprovodu', 'Cestování po ČR', 'Evropské destinace'], 'Poptat doprovod +'),
-    ], imgs=[('wedding-4', 'Svatební balíček'), ('wedding-2', 'Svatební doprovod')])
+    ], imgs=[('couple-bouquet', 'Svatební balíček'), ('bridesmaids', 'Svatební doprovod – nevěsta a družičky')])
     h += steps2('Průběh |svatebního líčení', 'jak to probíhá', [
         ('Úvodní konzultace', 'Probereme vaši představu, šaty a místo konání – osobně, telefonicky nebo přes videohovor, což je ideální pro zahraniční nevěsty plánující destinační svatbu v Praze.'),
         ('Zkušební líčení', 'Obvykle 4–8 týdnů před svatbou. Vyzkoušíme kompletní look, doladíme odstíny a techniky a vše zdokumentujeme zkušebními fotografiemi.'),
         ('Líčení v den svatby', 'Přijedu do hotelu, na místo konání či domů. Doprovod líčím jako první, nevěstu jako poslední, aby byl její look co nejsvěžejší pro obřad i fotografie.'),
         ('Sada na dotyky a finální kontrola', 'Dostanete osobní sadu na dotyky s klíčovými produkty použitými na vaši pleť, takže váš look zůstane perfektní až do posledního tance.'),
     ], 'Od první konzultace až po finální dotyky ve svatební den – přesně takto vypadá spolupráce, když si jako svou svatební vizážistku v Praze zarezervujete Nikol Pavlovou.')
-    h += gallery2('Nedávné |svatební looky', 'vybrané práce', 'Zobrazit celé portfolio', '/portfolio/', [
-        ('wedding-5', 'Svatební líčení – jemný svatební glow, Praha'), ('wedding-7', 'Svatební líčení – klasická svatební krása'),
-        ('wedding-9', 'Svatební líčení – destinační svatba Praha'), ('wedding-11', 'Svatební líčení – zářivá svatební pleť'),
-        ('wedding-12', 'Líčení svatebního doprovodu – nevěsta a družičky'), ('wedding-13', 'Svatební líčení – přirozená svatební krása'),
-        ('wedding-14', 'Svatební líčení – jemný glamour, Praha'), ('wedding-15', 'Svatební líčení od Nikol Pavlové')])
+    h += gallery2('Nedávné |svatební looky', 'vybrané práce', 'Zobrazit celé portfolio', '/portfolio/', [('veil-kiss', 'Svatební líčení – polibek pod závojem'), ('bride-dress', 'Svatební líčení – nevěsta před oblékáním šatů'), ('stairs-bride', 'Svatební líčení – nevěsta na schodišti'), ('wedding-walk', 'Svatební líčení – odchod z obřadu'), ('couple-garden', 'Svatební líčení – focení v zahradě'), ('terrace-toast', 'Svatební líčení – přípitek na terase'), ('church-bw', 'Svatební líčení – odchod z kostela'), ('bride-back', 'Svatební líčení – detail šatů a účesu')])
     h += reviews(LANG, 'nevěsty a svatební focení', pick('shirley', 'polinashu', 'erika_w'), top=False)
     h += f'''<section class="sec u u-guide" aria-labelledby="guide-h">
 <div class="wrap guide">

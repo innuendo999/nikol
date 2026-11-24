@@ -191,9 +191,14 @@ def card_home(path):
 </body></html>'''
 
 
-NEW_SVC = {  # service pages already in the 2026-11 design: path -> (photo, object-position)
-    '/svatebni-liceni/': ('wedding-15-800', '45% 30%'),
-    '/en/wedding/': ('wedding-15-800', '45% 30%'),
+NEW_SVC = {  # pages in the 2026-11 design: path -> (photo, object-position)
+    '/svatebni-liceni/': ('bride-window-800', '50% 25%'), '/en/wedding/': ('bride-window-800', '50% 25%'),
+    '/vecerni-liceni/': ('ev-black-800', '50% 25%'), '/en/evening-makeup/': ('ev-black-800', '50% 25%'),
+    '/plesove-liceni/': ('ev-green-gown-800', '50% 20%'), '/liceni-na-akce/': ('ev-gold-800', '50% 20%'),
+    '/nude-liceni/': ('nude-1-800', '50% 30%'), '/en/nude-makeup/': ('nude-1-800', '50% 30%'),
+    '/komercni-liceni/': ('ev-cap-800', '50% 25%'), '/en/commercial-makeup/': ('ev-cap-800', '50% 25%'),
+    '/kurzy-liceni/': ('course-1000', '50% 15%'), '/en/courses/': ('course-1000', '50% 15%'),
+    '/portfolio/': ('castle-couple-800', '50% 30%'), '/en/portfolio/': ('castle-couple-800', '50% 30%'),
 }
 
 

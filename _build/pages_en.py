@@ -60,42 +60,38 @@ def wedding():
         ('What bridal makeup styles do you offer?', "Nikol specialises in all bridal styles – soft natural glow, glamorous evening bridal, classic nude, Old Hollywood and bohemian romantic. Each look is tailored to the bride's skin, features, dress and theme, and the trial is the perfect time to explore directions."),
         ('How can I book a bridal consultation?', f'Book instantly online via the <a href="https://calendly.com/pavlovanikol/makeup-appointment">Calendly scheduling page</a>, or call/text <a href="tel:{TEL}">{TEL_H}</a>, email <a href="mailto:{MAIL}">{MAIL}</a>, or send a direct message on Instagram <a href="{IG}">@nikol__mua</a>. Nikol typically replies within a few hours. Consultations can be held in person in Prague or by video call for international clients.'),
     ]
-    h = head(LANG, title, desc, path, alts('/svatebni-liceni/', path), SITE + '/img/wedding/wedding-prague-1.png', S.load('en-wedding'), preload('wedding-15', '(max-width: 900px) 60vw, 30vw'))
+    h = head(LANG, title, desc, path, alts('/svatebni-liceni/', path), SITE + '/img/wedding/wedding-prague-1.png', S.load('en-wedding'), preload('bride-window', '(max-width: 900px) 60vw, 30vw'))
     h += header(LANG, '/en/wedding/', '/svatebni-liceni/')
     h += hero_svc(LANG, [HOME, SVC, ('Wedding makeup', None)], 'Bridal makeup', 'in Prague – makeup that lasts all day',
                   'Your wedding day deserves a look as unique as your love story. I create long-lasting, radiant bridal makeup that enhances your natural beauty – tailored entirely to you, your dress and your vision.',
                   (CAL, 'Book appointment online +'),
-                  [('wedding-15', 'Bridal makeup Prague – bride in white gloves', 'u-c1'), ('wedding-1', 'Bridal look – soft glam', 'u-c2')],
+                  [('bride-window', 'Bridal makeup Prague – bride by the window', 'u-c2'), ('bride-calla', 'Bridal makeup – bride with calla lilies', 'u-c2')],
                   ('“…a flawless look that held up perfectly for over 15 hours.”', '5.0 on Google'))
     h += strip(['Lasts all day', 'Bridal trial included', 'English-speaking', 'Destination weddings', 'Bride, bridesmaids &amp; mother'])
     h += intro2('About the service', 'Your bridal look, exactly as you imagined', 'beautiful, camera-ready and uniquely yours',
-               [('wedding-2', 'Bridal makeup Prague – bride and bridesmaids'), ('wedding-4', 'Bridal makeup – bride and groom')],
+               [('stairs-couple', 'Bridal makeup – newlyweds on the stairs'), ('window-ready-2', 'Bride getting ready')],
                "As a professional <b>wedding makeup artist based in Prague</b>, I work with brides to create looks that are beautiful, camera-ready, and – most importantly – uniquely theirs. Whether you are getting married in Prague's Old Town, a château outside the city, or planning a destination wedding anywhere in Europe, I will travel to you. Every bridal service begins with a detailed consultation about your vision, skin type, dress and wedding aesthetic. A <b>bridal trial</b> is included in every wedding package so you arrive on your wedding day fully confident.",
                ['English-speaking – ideal for international &amp; expat brides', 'Bridal trial included in every wedding package', 'Bride, bridesmaids &amp; mother of the bride', 'Destination weddings across Czech Republic &amp; Europe'],
                (CAL, 'Book your bridal consultation +'))
     h += features2('What sets the experience |apart', 'why brides choose Nikol', [
-        ('img', 'wedding-15', 'Bridal look – soft glam'),
+        ('img', 'mother-makeup', 'Makeup for the mother of the bride'),
         ('panel', '01', 'English-speaking MUA', 'Fluent in English, Czech and Ukrainian – no communication barriers for international brides or destination weddings in Prague.', False),
-        ('img', 'wedding-3', 'Bridal look – long-lasting makeup'),
+        ('img', 'bride-mirror', 'Bride checking her look in the mirror'),
         ('panel', '02', 'Bridal trial included', 'Every wedding package includes a dedicated trial session so you refine your look and arrive on the day with complete confidence.', True),
         ('panel', '03', 'Destination weddings', 'Available throughout the Czech Republic and across Europe – I come to your venue, hotel or location of choice.', True),
-        ('img', 'wedding-6', 'Bridal look – romantic styling'),
+        ('img', 'castle-couple', 'Château wedding'),
         ('panel', '04', 'Long-lasting finish', 'Professional products and techniques keep your bridal look fresh and photo-ready from the ceremony to the last dance.', False),
-        ('img', 'wedding-12', 'Bride and bridesmaids styling')])
+        ('img', 'couple-field', 'Bridal look at sunset')])
     h += pricing2('Rates &amp; services', 'Wedding makeup |packages', 'Pricing varies by date, location and scope. Personalised quote within 24 hours.', [
         ('Full bridal package', 'Request', ['Personalised Bridal Trial', 'Wedding-Day Application', 'False Lashes Included', 'Touch-Up Kit for the Day', 'Travel to Venue (Prague)'], 'Request a quote +'),
-        ('Bridal party &amp; travel', 'Request', ['Bridesmaids Makeup', 'Mother of the Bride', 'Coordinated Party Look', 'Travel Across Czech Republic', 'European Destinations'], 'Request a quote +')], imgs=[('wedding-4', 'Wedding makeup package'), ('wedding-2', 'Bridal party makeup')])
+        ('Bridal party &amp; travel', 'Request', ['Bridesmaids Makeup', 'Mother of the Bride', 'Coordinated Party Look', 'Travel Across Czech Republic', 'European Destinations'], 'Request a quote +')], imgs=[('couple-bouquet', 'Wedding makeup package'), ('bridesmaids', 'Bridal party – bride and bridesmaids')])
     h += steps2('The bridal |process', 'how it works', [
         ('Initial consultation', 'We discuss your vision, dress and venue – in person, by phone or video call, convenient for international brides planning a destination wedding in Prague.'),
         ('Bridal trial session', 'Typically 4–8 weeks before the wedding. We test the full look, adjust colours and techniques, and finalise every detail with trial photos.'),
         ('Wedding morning makeup', "Nikol arrives at your hotel, venue or home. Bridal party makeup is scheduled first; the bride's look is applied last so it is freshest for the ceremony and photos."),
         ('Touch-up kit &amp; final check', 'You receive a personalised touch-up kit with the key products used on your skin, so your look stays perfect through to the last dance.')],
         'From your first consultation to the final touch-up on your wedding day – here is exactly what to expect when you book Nikol Pavlova as your wedding makeup artist in Prague.')
-    h += gallery2('Recent |bridal looks', 'selected work', 'View full portfolio', '/en/portfolio/', [
-        ('wedding-5', 'Bridal makeup look – soft bridal glow, Prague wedding'), ('wedding-7', 'Bridal makeup look – classic bridal beauty'),
-        ('wedding-9', 'Bridal makeup look – Prague destination wedding'), ('wedding-11', 'Bridal makeup look – luminous wedding skin'),
-        ('wedding-12', 'Bridal party makeup – bride and bridesmaids, Prague'), ('wedding-13', 'Bridal makeup look – natural bridal beauty'),
-        ('wedding-14', 'Bridal makeup look – soft glam bridal, Prague'), ('wedding-15', 'Bridal makeup look by Nikol Pavlova, Prague')])
+    h += gallery2('Recent |bridal looks', 'selected work', 'View full portfolio', '/en/portfolio/', [('veil-kiss', 'Bridal makeup – kiss under the veil'), ('bride-dress', 'Bridal makeup – bride before putting on the dress'), ('stairs-bride', 'Bridal makeup – bride on the staircase'), ('wedding-walk', 'Bridal makeup – leaving the ceremony'), ('couple-garden', 'Bridal makeup – garden portrait'), ('terrace-toast', 'Bridal makeup – toast on the terrace'), ('church-bw', 'Bridal makeup – leaving the church'), ('bride-back', 'Bridal makeup – dress and hair detail')])
     h += reviews(LANG, 'brides &amp; wedding shoots', pick('shirley', 'polinashu', 'erika_w'), top=False)
     h += f'''<section class="sec u u-guide" aria-labelledby="guide-h"><div class="wrap guide">
 <aside><p class="lbl red">Bridal makeup guide</p><h2 class="big-h" id="guide-h">Wedding makeup in Prague</h2>

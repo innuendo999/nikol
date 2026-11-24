@@ -1,6 +1,6 @@
 """Open Graph images (1200x630) for every page.
 
-    python3 _build/og.py          # needs a local server on :8765 and Playwright (node)
+    python3 _build/og.py [blog]   # needs a local server on :8765 and Playwright (node); 'blog' = blog cards only
 
 Writes one HTML card per page to _build/og_tmp/, screenshots them with _build/og.js
 and saves /assets/og/<slug>.jpg. Titles come from each page's H1.
@@ -116,14 +116,69 @@ def card(path):
 </body></html>'''
 
 
+BLOG_CSS = '''
+html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#fff}
+.og{display:grid;grid-template-columns:1fr 520px;gap:28px;height:630px;padding:28px;box-sizing:border-box;font-family:var(--f-tight);color:#111}
+.og-l{display:flex;flex-direction:column;justify-content:space-between;padding:28px 8px 20px 28px;min-width:0}
+.og-top{display:flex;justify-content:space-between;align-items:baseline;font-size:26px;font-weight:600;letter-spacing:-.02em}
+.og-top em{font-family:var(--f-disp);font-style:italic;font-weight:400;font-size:31px}
+.og-top small{font-size:16px;font-weight:400;color:#6E6E6E;letter-spacing:0}
+.og-lab{font-size:20px;margin-bottom:18px}
+.og h1{font-weight:500;font-size:64px;line-height:1.04;letter-spacing:-.035em;margin:0}
+.og h1 em{font-family:var(--f-disp);font-style:italic;font-weight:400;font-size:1.12em;letter-spacing:-.01em}
+.og-sub{font-size:22px;line-height:1.35;color:#6E6E6E;margin-top:18px;max-width:560px}
+.og-bot{display:flex;justify-content:space-between;align-items:center;font-size:18px;color:#6E6E6E}
+.og-bot b{background:#111;color:#fff;font-weight:500;padding:12px 20px;border-radius:999px;font-size:17px}
+.og .cvover,.og .bcover{height:574px;border-radius:24px;aspect-ratio:auto!important}
+.og .cv-panel{left:8%;right:8%;padding:24px 26px;border-radius:28px;gap:18px}
+.og .cv-k b{font-size:21px}.og .cv-k small{font-size:13px}.og .cv-big{font-size:42px}.og .cv-bar{height:13px}
+.og .cv-stats small{font-size:12px}.og .cv-stats b{font-size:17px}
+.og .cv-pill{left:22%;right:22%;top:12%;bottom:12%;border-radius:56px}.og .cv-pill small{font-size:17px}.og .cv-pill b{font-size:44px}
+'''
+
+
+def card_blog(path):
+    """Blog index and articles: same look as the blog (title left, tinted cover with glass card right)."""
+    from posts import POSTS, ORDER, cover
+    lang = 'en' if path.startswith('/en/') else 'cs'
+    cs = lang == 'cs'
+    key = next((k for k in POSTS if POSTS[k][lang]['path'] == path), None)
+    e = html.escape
+    if key:
+        m = POSTS[key][lang]
+        lab, title_html, sub = m['tag'], e(m['title']), PAGES[path][4] or ''
+        art = cover(key, lang, '520px', priority=True)
+    else:
+        lab = 'Blog'
+        title_html = 'Líčení, které <em>vydrží.</em>' if cs else 'Makeup that <em>lasts.</em>'
+        sub = ('Návody, recenze a zkušenosti z praxe pražské vizážistky.' if cs
+               else 'How-tos, reviews and lessons from a Prague makeup artist.')
+        art = cover('nyx', lang, '520px', priority=True)
+    loc = 'vizážistka · Praha' if cs else 'makeup artist · Prague'
+    cta = 'Číst na blogu' if cs else 'Read on the blog'
+    maxh = 300 if sub else 380
+    return f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><link rel="stylesheet" href="/assets/css/site.css"><style>{BLOG_CSS}</style></head>
+<body><div class="og"><div class="og-l">
+<div class="og-top"><span>Nikol <em>Pavlova</em></span><small>{e(loc)}</small></div>
+<div><p class="og-lab">({e(lab)})</p><h1 id="t">{title_html}</h1>{f'<p class="og-sub">{e(sub)}</p>' if sub else ''}</div>
+<div class="og-bot"><span>nikolmakeup.cz/{'blog' if cs else 'en/blog'}</span><b>{e(cta)} →</b></div>
+</div>{art}</div>
+<script>Promise.all([document.fonts.ready].concat([].map.call(document.images,function(i){{return i.decode().catch(function(){{}})}}))).then(function(){{var t=document.getElementById('t'),s=64;while(t.offsetHeight>{maxh}&&s>36){{s-=2;t.style.fontSize=s+'px'}}document.body.dataset.ready=1}})</script>
+</body></html>'''
+
+
 def main():
     tmp = os.path.join(ROOT, '_build', 'og_tmp')
     os.makedirs(tmp, exist_ok=True)
     os.makedirs(os.path.join(ROOT, 'assets', 'og'), exist_ok=True)
     jobs = []
+    only = sys.argv[1] if len(sys.argv) > 1 else ''          # e.g. "blog" renders only the blog cards
     for path in PAGES:
+        if only and only not in path:
+            continue
         slug = og_slug(path)
-        open(os.path.join(tmp, slug + '.html'), 'w', encoding='utf-8').write(card(path))
+        html_ = card_blog(path) if '/blog/' in path else card(path)
+        open(os.path.join(tmp, slug + '.html'), 'w', encoding='utf-8').write(html_)
         jobs.append([f'http://localhost:8765/_build/og_tmp/{slug}.html', os.path.join(ROOT, 'assets', 'og', slug + '.png')])
     subprocess.run(['node', os.path.join(ROOT, '_build', 'og.js'), json.dumps(jobs)], check=True)
     from PIL import Image

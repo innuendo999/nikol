@@ -2,7 +2,7 @@ from lib import *
 from lib import img as I
 import schema as S
 from pages_home import home_body
-from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2, gallery2, related2, svc_photos, review_quote, banner2
+from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2, gallery2, related2, svc_photos, review_quote, banner2, hero_from_split
 from reviews import pick
 from posts import teaser
 from pages_cs import PORTFOLIO_ITEMS, portfolio_grid, NOSCRIPT
@@ -277,29 +277,29 @@ def courses():
     ]
     h = head(LANG, title, desc, path, alts('/kurzy-liceni/', path), SITE + '/img/courses/IMG_7417.jpg', S.load('en-courses'), preload('course', '(max-width: 900px) 100vw, 50vw'))
     h += header(LANG, path, '/kurzy-liceni/')
-    h += hero_split(LANG, 'tone-sand', [HOME, SVC, ('Makeup courses', None)], 'Makeup<br>courses', 'in Prague – learn to create your own looks',
+    h += hero_from_split(LANG, 'tone-sand', [HOME, SVC, ('Makeup courses', None)], 'Makeup<br>courses', 'in Prague – learn to create your own looks',
                     'Personalised one-on-one makeup lessons in Prague – whether you want to master everyday makeup for yourself or build professional skills as an aspiring makeup artist. We work on your own face, at your own pace.',
                     [('Book a course online +', CAL), ('Course options', '#packages')], 'course', 'One-on-one makeup course in Prague with Nikol Pavlova', '50% 15%')
-    h += marquee(['One-on-one', 'On your own face', 'English &amp; Czech', 'Beginners &amp; aspiring MUAs', 'Product list to take home'])
-    h += intro('About the course', 'Makeup lessons tailored entirely to you', 'no fixed script, just what you want to learn', [],
+    h += strip(['One-on-one', 'On your own face', 'English &amp; Czech', 'Beginners &amp; aspiring MUAs', 'Product list to take home'])
+    h += intro2('About the course', 'Makeup lessons tailored entirely to you', 'no fixed script, just what you want to learn', [],
                'As a professional <b>makeup artist and instructor in Prague</b>, I teach personalised one-on-one <b>makeup courses</b> built around your level and goals. There is no fixed script – we focus on exactly what you want to learn, using your own face as the canvas so you can recreate every look at home. Whether you have never held a brush or you are an aspiring MUA refining professional technique, every lesson is hands-on, relaxed and practical – and you leave with a personalised product and tool list.',
                ['One-on-one – the whole session is about you', 'Beginners and aspiring professionals welcome', 'Taught in English &amp; Czech', 'Personalised product &amp; tool list to take home'],
                (CAL, 'Book your lesson +'))
-    h += checker("What you'll learn", 'the curriculum', [
+    h += features2("What you'll learn", 'the curriculum', [
         ('img', 'nude-1', 'Natural everyday makeup'), ('panel', '01', 'Skin prep &amp; base', 'Skincare prep, priming and flawless foundation, concealer and base techniques for your skin type.', False),
         ('img', 'nude-2', 'Soft natural glow'), ('panel', '02', 'Colour theory', 'Face mapping and colour theory so you choose shades that flatter your features and tone.', True),
         ('panel', '03', 'Eyes &amp; lashes', 'Eyeshadow blending, liner, and false-lash application – from soft daytime to defined evening looks.', True), ('img', 'evening-7', 'Defined eye makeup'),
         ('panel', '04', 'Tools &amp; products', 'Contour, blush and highlight, plus how to choose the right brushes and build your own makeup kit.', False), ('img', 'evening-5', 'Evening glam look')])
-    h += ox_pricing('Course options', 'Choose your course', "Course length and price are tailored to your level and goals. Personalised quote within 24 hours.", [
+    h += pricing2('Course options', 'Choose your course', "Course length and price are tailored to your level and goals. Personalised quote within 24 hours.", [
         ('Personal makeup lesson', 'Request', ['Learn Everyday Self-Makeup', 'Skin Prep &amp; Base', 'Eyes, Lashes &amp; Finish', 'Personalised Product List', 'One-on-One in Prague'], 'Request a course +'),
         ('Pro / aspiring MUA course', 'Request', ['Professional Techniques', 'Colour Theory &amp; Face Mapping', 'Hygiene &amp; Kit Building', 'Working on Clients', 'Tailored to Your Goals'], 'Request a course +')])
-    h += steps('How the course runs', 'how it works', [
+    h += steps2('How the course runs', 'how it works', [
         ('Goal-setting chat', 'We discuss your level, what you want to learn and the looks you love – in person, by phone or video call for international students.'),
         ('Personalised plan', 'I prepare a lesson plan around your goals, skin type and the products you already own, so every minute is relevant to you.'),
         ('Hands-on session', 'We work step by step on your own face. You do the application with guidance, so the techniques truly stick.'),
         ('Product list &amp; follow-up', 'You leave with a personalised product and tool list and notes, so you can confidently recreate everything at home.')],
         'Each makeup course in Prague is built around you. Here is what to expect from first message to follow-up.')
-    h += f'''<section class="sec--tight" aria-labelledby="insp-h"><div class="wrap">
+    h += f'''<section class="sec--tight u u-insp" aria-labelledby="insp-h"><div class="wrap">
 {sec_head('Looks you can learn to create', 'inspiration', '<a class="link-arrow" href="/en/portfolio/">View full portfolio →</a>', hid='insp-h')}
 <ul class="cards3" role="list" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))">
 <li><figure class="pcard"><div class="ph">{I('nude-1', 'Natural everyday makeup look taught in Prague makeup course')}</div><figcaption class="wide" style="font-size:15px;font-weight:600">Natural daytime look</figcaption></figure></li>
@@ -307,14 +307,14 @@ def courses():
 <li><figure class="pcard"><div class="ph">{I('evening-5', 'Evening glam makeup look taught in Prague course')}</div><figcaption class="wide" style="font-size:15px;font-weight:600">Evening glam</figcaption></figure></li>
 <li><figure class="pcard"><div class="ph">{I('evening-7', 'Defined eye makeup technique, Prague makeup lesson')}</div><figcaption class="wide" style="font-size:15px;font-weight:600">Defined eyes</figcaption></figure></li>
 </ul></div></section>
-<section class="sec sec--blush" aria-labelledby="students-h"><div class="wrap">
+<section class="sec u u-students" aria-labelledby="students-h"><div class="wrap">
 {sec_head('Happy students', 'what they say about the lessons', f'<a class="btn" href="{CAL}">Book your lesson +</a>', hid='students-h')}
 <div class="quotes3">
 <figure><blockquote><p>“I finally understand how to do my own makeup. Nikol explained everything so clearly and let me do it myself – now I actually use these techniques every day.”</p></blockquote><figcaption class="lbl"><cite>Tereza H.</cite> <span class="muted2">· Personal lesson</span></figcaption></figure>
 <figure><blockquote><p>“As someone starting out as an MUA, the pro session was exactly what I needed – real technique, hygiene and product advice you can't get from videos.”</p></blockquote><figcaption class="lbl"><cite>Marta S.</cite> <span class="muted2">· Pro course</span></figcaption></figure>
 <figure><blockquote><p>“Booked a lesson in English as an expat in Prague. Relaxed, personal and so practical – I left with a product list I actually use.”</p></blockquote><figcaption class="lbl"><cite>Olivia R.</cite> <span class="muted2">· Personal lesson</span></figcaption></figure>
 </div></div></section>
-<section class="sec" aria-labelledby="guide-h"><div class="wrap guide">
+<section class="sec u u-guide" aria-labelledby="guide-h"><div class="wrap guide">
 <aside><p class="lbl red">Makeup course guide</p><h2 class="big-h" id="guide-h">Makeup courses in Prague</h2></aside>
 <article>
 <p class="opener">Looking for a makeup course in Prague? Whether you want to finally master your own everyday look or take your first steps as a professional, a personalised one-on-one lesson is the fastest way to learn techniques that actually work for your face.</p>
@@ -328,7 +328,7 @@ def courses():
 '''
     h += faq(LANG, 'makeup course questions', faq_items)
     h += teaser(LANG, ['blush', 'travel', 'brushes'], 'Practise at home', 'tutorials from the blog')
-    h += tiles(LANG, [('Wedding makeup', '/en/wedding/', 'wedding-5'), ('Nude makeup', '/en/nude-makeup/', 'nude-1')])
+    h += related2(LANG, [('Wedding makeup', '/en/wedding/', 'wedding-5'), ('Nude makeup', '/en/nude-makeup/', 'nude-1')])
     h += footer(LANG, 'Book your makeup course', 'Get in touch', 'Lessons held in Prague, Czech Republic · In English or Czech. Personalised quote within 24 hours.', (CAL, 'Book your course online +'))
     write(path, h)
 

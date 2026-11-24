@@ -2,7 +2,7 @@ from lib import *
 from lib import img as I
 import schema as S
 from pages_home import home_body
-from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2, gallery2, related2, svc_photos, review_quote, banner2
+from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2, gallery2, related2, svc_photos, review_quote, banner2, hero_from_split
 from posts import teaser
 from reviews import pick
 
@@ -396,29 +396,29 @@ def courses():
     h = head(LANG, title, desc, path, alts(path, '/en/courses/'), SITE + '/img/courses/IMG_7417.jpg', S.load('cs-courses'),
              preload('course', '(max-width: 900px) 100vw, 50vw'))
     h += header(LANG, path, '/en/courses/')
-    h += hero_split(LANG, 'tone-sand', [HOME, SVC, ('Kurzy líčení', None)], 'Kurzy<br>líčení', 'v Praze – naučte se líčit jako profesionál',
+    h += hero_from_split(LANG, 'tone-sand', [HOME, SVC, ('Kurzy líčení', None)], 'Kurzy<br>líčení', 'v Praze – naučte se líčit jako profesionál',
                     'Individuální kurzy líčení v Praze – ať už se chcete naučit líčit samy sebe na každý den, nebo budovat profesionální dovednosti jako budoucí vizážistka. Pracujeme na vašem vlastním obličeji, vaším tempem.',
                     [('Rezervovat kurz online +', CAL), ('Varianty kurzu', '#packages')], 'course', 'Individuální kurz líčení v Praze s Nikol Pavlovou', '50% 15%')
-    h += marquee(['Individuálně', 'Na vlastní tváři', 'Česky i anglicky', 'Pro začátečnice i profíky', 'Seznam produktů s sebou'])
-    h += intro('O kurzu', 'Kurz líčení přesně na míru vám', 'žádný pevný scénář, jen to, co se chcete naučit', [],
+    h += strip(['Individuálně', 'Na vlastní tváři', 'Česky i anglicky', 'Pro začátečnice i profíky', 'Seznam produktů s sebou'])
+    h += intro2('O kurzu', 'Kurz líčení přesně na míru vám', 'žádný pevný scénář, jen to, co se chcete naučit', [],
                'Jako profesionální <b>vizážistka a lektorka v Praze</b> vedu individuální <b>kurzy líčení</b> postavené na vaší úrovni a cílech. Věnujeme se přesně tomu, co se chcete naučit, a pracujeme na vašem vlastním obličeji, abyste každý look zvládli i doma. Ať už jste štětec nikdy nedržela, nebo jste budoucí vizážistka pilující techniku, každá lekce je praktická, uvolněná a konkrétní – a odcházíte s osobním seznamem produktů a nástrojů.',
                ['Individuálně – celá lekce je jen o vás', 'Pro začátečnice i budoucí profesionálky', 'Výuka česky i anglicky', 'Osobní seznam produktů a nástrojů s sebou'],
                (CAL, 'Rezervovat lekci +'))
-    h += checker('Co se naučíte', 'náplň kurzu', [
+    h += features2('Co se naučíte', 'náplň kurzu', [
         ('img', 'nude-1', 'Přirozené denní líčení'), ('panel', '01', 'Příprava pleti &amp; podklad', 'Péče před líčením, podklad a dokonalý make-up, korektor a báze pro váš typ pleti.', False),
         ('img', 'nude-2', 'Jemný přirozený glow'), ('panel', '02', 'Teorie barev', 'Mapování obličeje a teorie barev, abyste volili odstíny, které sluší vašim rysům a tónu.', True),
         ('panel', '03', 'Oči &amp; řasy', 'Roztírání stínů, linka a aplikace umělých řas – od jemného denního po výrazný večerní look.', True), ('img', 'evening-7', 'Výrazné líčení očí'),
         ('panel', '04', 'Nástroje &amp; produkty', 'Kontura, tvářenka a rozjasnění a jak vybrat správné štětce a sestavit vlastní kosmetickou tašku.', False), ('img', 'evening-5', 'Večerní glamour look')])
-    h += ox_pricing('Varianty kurzu', 'Vyberte si svůj kurz', 'Délka i cena kurzu se odvíjí od vaší úrovně a cílů. Osobní nabídku pošlu do 24 hodin.', [
+    h += pricing2('Varianty kurzu', 'Vyberte si svůj kurz', 'Délka i cena kurzu se odvíjí od vaší úrovně a cílů. Osobní nabídku pošlu do 24 hodin.', [
         ('Osobní kurz líčení', 'Na vyžádání', ['Líčení pro sebe na každý den', 'Příprava pleti a podklad', 'Oči, řasy a finální look', 'Osobní seznam produktů', 'Individuálně v Praze'], 'Poptat kurz +'),
         ('Kurz pro budoucí vizážistky', 'Na vyžádání', ['Profesionální techniky', 'Teorie barev &amp; mapování', 'Hygiena &amp; kosmetická taška', 'Práce na klientech', 'Na míru vašim cílům'], 'Poptat kurz +')])
-    h += steps('Průběh kurzu', 'jak to probíhá', [
+    h += steps2('Průběh kurzu', 'jak to probíhá', [
         ('Úvodní konzultace', 'Probereme vaši úroveň, co se chcete naučit a looky, které máte rádi – osobně, telefonicky nebo přes videohovor pro zahraniční studenty.'),
         ('Plán na míru', 'Připravím plán lekce podle vašich cílů, typu pleti a produktů, které už máte, aby byla každá minuta relevantní.'),
         ('Praktická lekce', 'Pracujeme krok za krokem na vašem vlastním obličeji. Líčíte sami s mým vedením, aby vám techniky skutečně zůstaly.'),
         ('Seznam produktů &amp; podpora', 'Odcházíte s osobním seznamem produktů a nástrojů a poznámkami, abyste vše s jistotou zvládli i doma.')],
         'Každý kurz líčení v Praze je postavený na vás. Takto vypadá spolupráce od první zprávy až po následnou podporu.')
-    h += f'''<section class="sec--tight" aria-labelledby="insp-h"><div class="wrap">
+    h += f'''<section class="sec--tight u u-insp" aria-labelledby="insp-h"><div class="wrap">
 {sec_head('Looky, které se naučíte vytvořit', 'inspirace', '<a class="link-arrow" href="/portfolio/">Zobrazit celé portfolio →</a>', hid='insp-h')}
 <ul class="cards3" role="list" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))">
 <li><figure class="pcard"><div class="ph">{I('nude-1', 'Přirozené denní líčení – kurz líčení Praha')}</div><figcaption class="wide" style="font-size:15px;font-weight:600">Přirozený denní look</figcaption></figure></li>
@@ -426,14 +426,14 @@ def courses():
 <li><figure class="pcard"><div class="ph">{I('evening-5', 'Večerní glamour look – kurz líčení Praha')}</div><figcaption class="wide" style="font-size:15px;font-weight:600">Večerní glamour</figcaption></figure></li>
 <li><figure class="pcard"><div class="ph">{I('evening-7', 'Výrazné líčení očí – technika z lekce líčení')}</div><figcaption class="wide" style="font-size:15px;font-weight:600">Výrazné oči</figcaption></figure></li>
 </ul></div></section>
-<section class="sec sec--blush" aria-labelledby="students-h"><div class="wrap">
+<section class="sec u u-students" aria-labelledby="students-h"><div class="wrap">
 {sec_head('Spokojené studentky', 'co říkají o lekcích', f'<a class="btn" href="{CAL}">Rezervovat lekci +</a>', hid='students-h')}
 <div class="quotes3">
 <figure><blockquote><p>„Konečně rozumím tomu, jak se nalíčit. Nikol vše srozumitelně vysvětlila a nechala mě líčit samotnou – teď tyhle techniky používám každý den.“</p></blockquote><figcaption class="lbl"><cite>Tereza H.</cite> <span class="muted2">· Osobní lekce</span></figcaption></figure>
 <figure><blockquote><p>„Jako začínající vizážistka jsem ocenila profesionální lekci – reálná technika, hygiena a rady ohledně produktů, které z videí nezískáte.“</p></blockquote><figcaption class="lbl"><cite>Marta S.</cite> <span class="muted2">· Profi kurz</span></figcaption></figure>
 <figure><blockquote><p>„Jako expatka v Praze jsem si zarezervovala lekci v angličtině. Uvolněné, osobní a praktické – odešla jsem se seznamem produktů, který fakt používám.“</p></blockquote><figcaption class="lbl"><cite>Olivia R.</cite> <span class="muted2">· Osobní lekce</span></figcaption></figure>
 </div></div></section>
-<section class="sec" aria-labelledby="guide-h"><div class="wrap guide">
+<section class="sec u u-guide" aria-labelledby="guide-h"><div class="wrap guide">
 <aside><p class="lbl red">Průvodce kurzem líčení</p><h2 class="big-h" id="guide-h">Kurzy líčení v Praze</h2></aside>
 <article>
 <p class="opener">Hledáte kurz líčení v Praze? Ať už chcete konečně zvládnout svůj každodenní look, nebo udělat první kroky jako profesionál, individuální lekce je nejrychlejší cesta, jak se naučit techniky, které fungují právě na vašem obličeji.</p>
@@ -447,7 +447,7 @@ def courses():
 '''
     h += faq(LANG, 'otázky o kurzu líčení', faq_items)
     h += teaser(LANG, ['blush', 'travel', 'brushes'], 'Procvičte si doma', 'tutoriály z blogu')
-    h += tiles(LANG, [('Svatební líčení', '/svatebni-liceni/', 'wedding-5'), ('Nude makeup', '/nude-liceni/', 'nude-1')])
+    h += related2(LANG, [('Svatební líčení', '/svatebni-liceni/', 'wedding-5'), ('Nude makeup', '/nude-liceni/', 'nude-1')])
     h += footer(LANG, 'Rezervujte si kurz líčení', 'Kontaktujte mě', 'Lekce probíhají v Praze, ČR · Česky nebo anglicky. Osobní cenová nabídka do 24 hodin.',
                 (CAL, 'Rezervovat kurz online +'))
     write(path, h)

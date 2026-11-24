@@ -44,8 +44,9 @@ def intro2(label, title, tag, imgs, body, chips, cta=None):
     phs = ''.join(f'<span class="u-ph u-ph--i{k}">{I(n, alt, sizes="(max-width: 900px) 50vw, 25vw")}</span>' for k, (n, alt) in enumerate(imgs or []))
     ticks = ''.join(f'<li><span class="u-tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg></span>{c}</li>' for c in chips or [])
     cta_html = f'<p><a class="u-btn u-btn--dark" href="{cta[0]}">{cta[1]}</a></p>' if cta else ''
-    return f'''<section class="u wrap u-intro" aria-labelledby="intro-h">
-<div class="u-intro-ph">{phs}</div>
+    ph_html = f'<div class="u-intro-ph">{phs}</div>' if phs else ''
+    return f'''<section class="u wrap u-intro{'' if phs else ' u-intro--solo'}" aria-labelledby="intro-h">
+{ph_html}
 <div class="u-intro-txt">
 <p class="u-label">({label})</p>
 <h2 class="u-h2" id="intro-h">{title}</h2>
@@ -181,3 +182,13 @@ def svc_photos(cfg, lang):
 def banner2(html):
     """Old banner markup, shown in the new style (see .u-bw in site.css)."""
     return f'<div class="u u-bw">{html}</div>\n' if html else ''
+
+
+SECOND_PHOTO = {'course': ('nude-2', 'u-c2')}
+
+
+def hero_from_split(lang, tone, crumb_items, big, sub, desc, buttons, imgname, imgalt, obj_pos='50% 30%'):
+    """Drop-in for lib.hero_split: same arguments, new split hero with a second photo."""
+    n2, c2 = SECOND_PHOTO.get(imgname, (imgname, 'u-c2'))
+    return hero_svc(lang, crumb_items, big.replace('<br>', ' '), sub, desc, (buttons[0][1], buttons[0][0]),
+                    [(imgname, imgalt, 'u-c3'), (n2, '', c2)])

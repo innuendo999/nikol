@@ -245,13 +245,21 @@ def crumbs(lang, items, cls='lbl'):
 
 
 def faq(lang, title_sub, items, hid='faq'):
+    """FAQ: heading + contact nudge on the left, a narrow accordion on the right (2026-11 style)."""
+    cs = lang == 'cs'
     det = ''
     for i, (q, ans) in enumerate(items):
         op = ' open' if i == 0 else ''
-        det += f'<details{op}><summary><h3>{q}</h3><span class="pm" aria-hidden="true">+</span></summary><div><p>{ans}</p></div></details>\n'
-    return f'''<section class="sec sec--blush" aria-labelledby="{hid}-h">
-<div class="wrap">
-{sec_head(L[lang]['faq_title'], title_sub, hid=hid + '-h')}
+        det += f'<details{op}><summary><h3>{q}</h3><span class="pm" aria-hidden="true"></span></summary><div><p>{ans}</p></div></details>\n'
+    first, rest = ('Časté', 'dotazy') if cs else ('Questions', '&amp; answers')
+    return f'''<section class="faq-sec" aria-labelledby="{hid}-h">
+<div class="wrap faq-lay">
+<div class="faq-side">
+<p class="faq-label">({title_sub})</p>
+<h2 class="faq-h2" id="{hid}-h">{first} <em>{rest}</em></h2>
+<p class="faq-note">{'Nenašli jste odpověď? Napište mi, odpovídám obvykle během pár hodin.' if cs else 'Didn’t find your answer? Message me, I usually reply within a few hours.'}</p>
+<p class="faq-links"><a class="faq-btn" href="{WA}">WhatsApp</a><a class="faq-btn faq-btn--ghost" href="mailto:{MAIL}">{'E-mail' if cs else 'Email'}</a></p>
+</div>
 <div class="faq">
 {det}</div>
 </div>

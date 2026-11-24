@@ -413,6 +413,7 @@ a.tile-panel:hover .more{transform:translateX(4px)}
 }
 @media (max-width:380px){.tile-panel h3{font-size:16px;overflow-wrap:anywhere}}
 .rvs-hint{display:none;margin-top:12px;font-size:15px;color:var(--muted2)}
+
 /* reviews (2026-11): glass cards on a soft pastel field */
 .rv-sec{position:relative;padding:120px 0;font-family:var(--f-tight);color:#111;background-color:#FBF5F2;background-image:radial-gradient(45% 55% at 5% 10%,rgba(247,217,191,.9),transparent 70%),radial-gradient(40% 50% at 95% 15%,rgba(239,198,217,.85),transparent 70%),radial-gradient(50% 55% at 60% 100%,rgba(220,207,240,.8),transparent 70%),radial-gradient(35% 45% at 20% 95%,rgba(211,228,242,.8),transparent 70%)}
 .rv-sec em{font-family:var(--f-disp);font-style:italic;font-weight:400;font-size:1.1em;letter-spacing:-.01em}
@@ -435,6 +436,29 @@ a.tile-panel:hover .more{transform:translateX(4px)}
 @media (max-width:700px){.rv-sec{padding:80px 0}}
 
 .author .lbl{display:inline-block;padding:8px 0}
+/* FAQ (2026-11): side heading + narrow accordion */
+.faq-sec{padding:120px 0;font-family:var(--f-tight);color:#111;background:#fff}
+.faq-sec em{font-family:var(--f-disp);font-style:italic;font-weight:400;font-size:1.1em;letter-spacing:-.01em}
+.faq-lay{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,760px);gap:64px;align-items:start}
+.faq-side{position:sticky;top:120px;display:flex;flex-direction:column;gap:16px;max-width:380px}
+.faq-label{font-size:13px;color:#6E6E6E}
+.faq-h2{font:500 clamp(36px,4vw,60px)/1.02 var(--f-tight);letter-spacing:-.04em}
+.faq-note{font-size:16px;line-height:1.55;color:#6E6E6E}
+.faq-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.faq-sec .faq{border-top:1px solid #E6E6E6}
+.faq-sec .faq details{border-bottom:1px solid #E6E6E6;padding:20px 0}
+.faq-sec .faq h3{font:500 19px/1.35 var(--f-tight);text-transform:none;letter-spacing:-.01em;font-stretch:100%}
+.faq-sec .faq .pm{position:relative;width:32px;height:32px;border-radius:50%;background:#F3F0EE;flex:none;transition:background .2s,transform .3s}
+.faq-sec .faq .pm::before,.faq-sec .faq .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:#111;transform:translate(-50%,-50%)}
+.faq-sec .faq .pm::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-sec .faq details[open] .pm{background:#111;transform:rotate(45deg)}
+.faq-sec .faq details[open] .pm::before,.faq-sec .faq details[open] .pm::after{background:#fff}
+.faq-sec .faq summary:hover .pm{background:#E9E3E0}
+.faq-sec .faq details>div{padding-top:12px;max-width:640px;font-size:16px;line-height:1.65;color:#555}
+.faq-sec .faq a{color:#111;text-decoration-thickness:1px;text-underline-offset:3px}
+@media (max-width:900px){.faq-sec{padding:80px 0}.faq-lay{grid-template-columns:1fr;gap:32px}.faq-side{position:static}}
+.faq-btn{display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;background:#111;color:#fff;font:500 14px/1 var(--f-tight);text-decoration:none}
+.faq-btn:hover{background:#3A3A3A}.faq-btn--ghost{background:#fff;color:#111;border:1px solid rgba(17,17,17,.15)}.faq-btn--ghost:hover{background:#F3F0EE}
 .rows dd{margin:0}
 .f-bar a{padding:8px 0}
 /* blog: video split, summary steps, image pair */

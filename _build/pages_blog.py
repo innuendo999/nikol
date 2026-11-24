@@ -3,7 +3,7 @@ import re
 from lib import *
 from lib import img as I
 import schema as S
-from posts import POSTS, ORDER, fmt_date, cards, teaser
+from posts import POSTS, ORDER, fmt_date, cards, teaser, cover, bl_grid
 import post_empties
 import post_catrice
 import post_brushes
@@ -339,6 +339,40 @@ EXTRA = {'blush': post_blush.EXTRA, 'travel': post_travel.EXTRA, 'brushes': post
                      upload='2026-03-20', video_desc='Nikol Pavlova applies a complete look using only NYX products and tests how it wears over a full day.')}
 
 
+# ---------------------------------------------------------------- blog shell (2026-11 redesign)
+BL_FONTS = '\n'.join(f'<link rel="preload" href="/assets/fonts/{f}.woff2" as="font" type="font/woff2" crossorigin>'
+                     for f in ('intertight-latin', 'instrumentserif-italic-latin'))
+
+
+def bl_services(lang):
+    """Services block shown above the footer on blog pages (shares the footer's gradient)."""
+    cs = lang == 'cs'
+    items = ([('Svatební balíček', 'Zkouška, den D, řasy, kit na opravy', 'Nabídka do 24 h', '/svatebni-liceni/'),
+              ('Ples a akce', 'S účesem 4 500 Kč', 'Od 2 500 Kč', '/plesove-liceni/'),
+              ('Kurz 1 na 1', 'Na vaší tváři, s vaší kosmetikou', 'Cena na dotaz', '/kurzy-liceni/'),
+              ('5,0 ★ Google', '9 recenzí · CZ, EN, UA', 'Přečíst recenze', GBP)] if cs else
+             [('Wedding package', 'Trial, wedding day, lashes, touch-up kit', 'Quote within 24 h', '/en/wedding/'),
+              ('Balls &amp; events', 'With hairstyling CZK 4,500', 'From CZK 2,500', '/en/evening-makeup/'),
+              ('1:1 makeup course', 'On your face, with your own kit', 'Price on request', '/en/courses/'),
+              ('5.0 ★ Google', '9 reviews · English spoken', 'Read reviews', GBP)])
+    cards_ = ''.join(f'<li><a class="bl-svc" href="{u}"><b>{n}</b><small>{d}</small><span>{c} ↗</span></a></li>' for n, d, c, u in items)
+    return f'''<section class="bl-svcs" aria-labelledby="svc-h"><div class="wrap">
+<div class="bl-center"><p class="bl-label">({'Služby' if cs else 'Services'})</p>
+<h2 class="bl-h2" id="svc-h">{'Máte velký den?' if cs else 'Got a big day coming?'}<br><em>{'Postarám se o něj.' if cs else 'I’ve got you covered.'}</em></h2>
+<p class="bl-lead">{'Svatby, plesy, akce a kurzy v Praze. Na dotaz odpovídám obvykle během pár hodin.' if cs else 'Weddings, balls, events and courses in Prague. I usually reply within a few hours.'}</p></div>
+<ul class="bl-svc-grid" role="list">{cards_}</ul>
+<p class="bl-center"><a class="bl-btn bl-btn--light" href="{CAL}">{'Ověřit volný termín' if cs else 'Check my date'}</a></p>
+</div></section>
+'''
+
+
+def bl_footer(lang):
+    return footer(lang, 'Kontaktujte mě' if lang == 'cs' else 'Contact me',
+                  'Potřebujete pomoc s líčením?' if lang == 'cs' else 'Do you need help with creative make-up?',
+                  'Profesionální vizážistka v Praze.' if lang == 'cs' else 'Professional makeup artist based in Prague.',
+                  pre=bl_services(lang))
+
+
 def words(s):
     return len(re.sub(r'<[^>]+>', ' ', s).split())
 
@@ -353,14 +387,14 @@ def article(key, lang):
     url = SITE + path
     og = f'{SITE}/assets/og/{og_slug(path)}.jpg'
     art = {'@type': 'BlogPosting', '@id': url + '#article', 'headline': meta['title'], 'description': meta['desc'], 'inLanguage': lang,
-           'url': url, 'mainEntityOfPage': url, 'image': og, 'datePublished': date, 'dateModified': '2026-10-21',
+           'url': url, 'mainEntityOfPage': url, 'image': og, 'datePublished': date, 'dateModified': P.get('modified', date),
            'wordCount': n_words, 'author': {'@id': SITE + '/#person'}, 'publisher': {'@id': SITE + '/#business'},
            'isPartOf': {'@type': 'Blog', '@id': SITE + t['blog_path'] + '#blog', 'name': f'Nikol Pavlova – {t["blog"]}', 'url': SITE + t['blog_path']},
            'about': {'@type': 'Thing', 'name': ex['about'][0 if lang == 'cs' else 1]},
            'mentions': [{'@type': 'Brand', 'name': b} for b in ex['brands']]}
     graph = [art,
-             {'@type': 'Person', '@id': SITE + '/#person', 'name': 'Nikol Pavlova', 'jobTitle': 'Vizážistka' if lang == 'cs' else 'Makeup artist',
-              'url': SITE + ('/' if lang == 'cs' else '/en/'), 'sameAs': [IG, FB, TH, 'https://www.youtube.com/@nikolpavlova_mua']},
+             S.person(lang),
+             S.business_ref(lang),
              S.breadcrumb(path, [t['home'], (t['blog'], t['blog_path']), (meta['crumb'], path)]),
              S.faq(path, lang, c['faq'])]
     if ex.get('howto'):
@@ -373,15 +407,22 @@ def article(key, lang):
                                for i, (n, tx) in enumerate(hw['steps'][lang])]})
     if ex.get('upload'):
         art['video'] = {'@id': url + '#video'}
-        graph.append({'@type': 'VideoObject', '@id': url + '#video', 'name': ex['video_name'], 'description': ex['video_desc'], 'inLanguage': 'uk',
-                      'thumbnailUrl': f'https://i.ytimg.com/vi/{vid}/maxresdefault.jpg', 'uploadDate': ex['upload'],
-                      'contentUrl': f'https://www.youtube.com/watch?v={vid}', 'embedUrl': f'https://www.youtube.com/embed/{vid}'})
+        vo = {'@type': 'VideoObject', '@id': url + '#video', 'name': ex['video_name'],
+              'description': ex.get('video_desc') or meta['desc'], 'inLanguage': 'uk',
+              'thumbnailUrl': [f'https://i.ytimg.com/vi/{vid}/maxresdefault.jpg', f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg'],
+              'uploadDate': ex['upload'], 'contentUrl': f'https://www.youtube.com/watch?v={vid}',
+              'embedUrl': f'https://www.youtube.com/embed/{vid}', 'author': {'@id': SITE + '/#person'},
+              'publisher': {'@id': SITE + '/#business'}, 'isPartOf': {'@id': url + '#article'}}
+        if ex.get('duration'):
+            vo['duration'] = ex['duration']          # ISO 8601, e.g. PT12M34S
+        graph.append(vo)
     else:
+        print(f'  ! {key}: no upload date for video {vid} -> VideoObject skipped (set upload= and duration= in EXTRA)')
         art['subjectOf'] = {'@type': 'CreativeWork', 'url': f'https://www.youtube.com/watch?v={vid}', 'name': ex['video_name'] + ' (YouTube)'}
     alt = [('cs', POSTS[key]['cs']['path']), ('en', POSTS[key]['en']['path']), ('x-default', POSTS[key]['cs']['path'])]
     himg = P['img']
     h = head(lang, meta['seo_title'], meta['desc'], path, alt, og, [{'@context': 'https://schema.org', '@graph': graph}],
-             preload(himg, '(max-width: 900px) 100vw, 50vw'), og_type='article',
+             preload(himg, '100vw') + '\n' + BL_FONTS, og_type='article',
              extra=f'<meta property="article:published_time" content="{date}">')
     h += header(lang, 'blog', other['path'])
     vid_id = 'verdict' if lang == 'en' else 'verdikt'
@@ -394,7 +435,12 @@ def article(key, lang):
         f'<div><p class="{cls}">{lab}</p><ul>{"".join(f"<li>{x}</li>" for x in items)}</ul></div>' for lab, cls, items in c['verdict']) + '</div>\n'
     if c.get('verdict_foot'):
         verdict_html += f'<p class="fine-print">{c["verdict_foot"]}</p>\n'
-    secs = ''.join(f'<h2 id="{i}">{ti}</h2>\n{ht}\n' for i, ti, ht in c['sections'])
+    video_html = (f'<figure class="bl-video" id="video"><a href="https://www.youtube.com/watch?v={vid}" rel="noopener">{cover(key, lang, "(max-width: 900px) 100vw, 800px")}'
+                  f'<span class="bl-play glass" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5l12 7-12 7z"/></svg></span>'
+                  f'<span class="visually-hidden">{ex["video_name"]} – YouTube</span></a><figcaption>{t["watch"]}</figcaption></figure>\n')
+    ids = [i for i, _, _ in c['sections']]
+    v_at = next((n for n, i in enumerate(ids) if i in ('navod', 'how-to')), min(2, len(ids)))
+    secs = ''.join((video_html if n == v_at else '') + f'<h2 id="{i}">{ti}</h2>\n{ht}\n' for n, (i, ti, ht) in enumerate(c['sections']))
     lessons_id = 'lessons' if lang == 'en' else 'lekce'
     lessons = ''.join(f'<li><span class="n" aria-hidden="true">{k + 1}</span><div><p><strong>{a_}</strong></p><p class="fs-16">{b_}</p></div></li>' for k, (a_, b_) in enumerate(c['lessons']))
     faq_html = ''.join(f'<details{" open" if k == 0 else ""}><summary><h3>{q}</h3><span class="pm" aria-hidden="true">+</span></summary><div><p>{a_}</p></div></details>' for k, (q, a_) in enumerate(c['faq']))
@@ -421,18 +467,31 @@ def article(key, lang):
             fname, fcs, fen = ex['figure']
             cap = fcs if lang == 'cs' else fen
             grid_html += f'<figure class="art-figure">{I(fname, cap, sizes="(max-width: 900px) 100vw, 760px")}<figcaption class="fine-print">{cap}</figcaption></figure>\n'
-    h += f'''<article aria-labelledby="page-h1">
-<header class="page-head post-head pb-48"><div class="wrap stack-28">
-{crumbs(lang, [t['home'], (t['blog'], t['blog_path']), (meta['crumb'], None)])}
-<p class="lbl muted meta-row"><span class="red">{meta['tag']}</span><time datetime="{date}">{fmt_date(lang, date)}</time><span>{mins} {t['read']}</span></p>
-<h1 class="wide big mw-1180" id="page-h1">{meta['title']}</h1>
-<div class="byline-bar">
-<p class="byline">{I('nikol-portrait', '', sizes='52px', cls='avatar')}<span class="body">{t['by']} <a rel="author" href="{t['home'][1]}#about"><b>Nikol Pavlova</b></a> <span class="serif fs-18">– {t['role']}</span></span></p>
-<a class="link-arrow" href="#{vid_id}">{t['jump']}</a></div>
+    cs = lang == 'cs'
+    modified = P.get('modified', date)
+    share_url = SITE + path
+    share = (f'<a class="soc soc--ink" href="https://www.facebook.com/sharer/sharer.php?u={share_url}" aria-label="{"Sdílet na Facebooku" if cs else "Share on Facebook"}" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 8H17V4.5h-2.5a4 4 0 0 0-4 4V11H8v3.5h2.5V21H14v-6.5h2.6l.6-3.5H14V8.9c0-.5.3-.9.5-.9z"/></svg></a>'
+             f'<a class="soc soc--ink" href="https://wa.me/?text={share_url}" aria-label="{"Poslat přes WhatsApp" if cs else "Send via WhatsApp"}" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.8z"/></svg></a>'
+             f'<button class="soc soc--ink" type="button" data-copy="{share_url}" data-done="{"Odkaz zkopírován" if cs else "Link copied"}" aria-label="{"Kopírovat odkaz" if cs else "Copy link"}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></button>')
+    upd = f'<div><dt>({"Aktualizováno" if cs else "Updated"})</dt><dd><time datetime="{modified}">{fmt_date(lang, modified)}</time></dd></div>' if modified != date else ''
+    h += f'''<div class="bl">
+<article aria-labelledby="page-h1">
+<header class="bl-post-head"><div class="wrap bl-center">
+{crumbs(lang, [t['home'], (t['blog'], t['blog_path']), (meta['crumb'], None)], cls='bl-crumbs')}
+<p class="bl-label">({meta['tag']})</p>
+<h1 class="bl-h1 bl-h1--post" id="page-h1">{meta['title']}</h1>
 </div></header>
-<a class="video-split" href="https://www.youtube.com/watch?v={vid}">{I(himg, meta['title'], sizes='(max-width: 900px) 100vw, 50vw', priority=True)}<span class="vs-panel"><span class="play glass" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24" fill="#A8232F"><path d="M8 5l12 7-12 7z"/></svg></span><span class="lbl">{t['watch']}</span><span class="serif vs-title">{ex['video_name']}</span></span></a>
-<div class="sec"><div class="wrap post-layout">
-<aside class="post-toc"><p class="lbl red">{t['toc']}</p><nav class="toc bt-ink" aria-label="{t['toc']}">{toc}</nav></aside>
+<div class="wrap">{cover(key, lang, '100vw', big=True, priority=True)}
+<div class="bl-metarow">
+<dl class="bl-facts"><div><dt>({t['by']})</dt><dd><a rel="author" href="#autor">Nikol Pavlova</a></dd></div>
+<div><dt>({'Publikováno' if cs else 'Published'})</dt><dd><time datetime="{date}">{fmt_date(lang, date)}</time></dd></div>{upd}
+<div><dt>({'Čtení' if cs else 'Read'})</dt><dd>{mins} min</dd></div>
+<div><dt>(Video)</dt><dd><a href="#video">▶ {'Přehrát v článku' if cs else 'Play in article'} ↓</a></dd></div></dl>
+<div class="bl-share">{share}</div>
+</div></div>
+<div class="sec bl-body"><div class="wrap post-layout">
+'''
+    h += f'''<aside class="post-toc"><p class="lbl red">{t['toc']}</p><nav class="toc bt-ink" aria-label="{t['toc']}">{toc}</nav></aside>
 <div class="art">
 <p class="opener">{c['opener']}</p>
 {c.get('pre', '')}
@@ -448,14 +507,19 @@ def article(key, lang):
 </section>
 {prod_html}<h2 id="faq">{c['faq_h']}</h2>
 <div class="faq bt-0">{faq_html}</div>
-<div class="author">{I('nikol-portrait', 'Nikol Pavlova', sizes='112px')}<div class="author-body"><p class="wide author-name">Nikol Pavlova</p><p class="serif muted2 fs-18">{'Vizážistka · Praha' if lang == 'cs' else 'Makeup Artist · Prague'}</p><p class="small-copy">{c['bio']}</p><p class="actions-sm"><a class="lbl" href="{IG}">Instagram</a><a class="lbl" href="https://www.youtube.com/@nikolpavlova_mua">YouTube</a></p></div></div>
+<div class="author" id="autor">{I('nikol-portrait', 'Nikol Pavlova', sizes='112px')}<div class="author-body"><p class="wide author-name">Nikol Pavlova</p><p class="serif muted2 fs-18">{'Vizážistka · Praha' if lang == 'cs' else 'Makeup Artist · Prague'}</p><p class="small-copy">{c['bio']}</p><p class="actions-sm"><a class="lbl" href="{IG}">Instagram</a><a class="lbl" href="https://www.youtube.com/@nikolpavlova_mua">YouTube</a></p></div></div>
 </div></div></div>
 </article>
 '''
-    h += teaser(lang, [k for k in ORDER if k != key], 'Další články' if lang == 'cs' else 'More articles', 'z blogu' if lang == 'cs' else 'from the blog', hid='more-h')
-    h += footer(lang, 'Kontaktujte mě' if lang == 'cs' else 'Contact me',
-                'Potřebujete pomoc s líčením?' if lang == 'cs' else 'Do you need help with creative make-up?',
-                'Profesionální vizážistka v Praze. Líčení, které zvýrazní vaši přirozenou krásu.' if lang == 'cs' else 'Professional makeup artist based in Prague. Designing bespoke beauty looks that reflect your distinct personality.')
+    rel = [k for k in ORDER[ORDER.index(key) + 1:] + ORDER[:ORDER.index(key)]][:3]
+    h += f'''<section class="bl-related" aria-labelledby="more-h"><div class="wrap">
+<div class="bl-related-head"><div><p class="bl-label">(Blog)</p><h2 class="bl-h2" id="more-h">{'Další <em>články</em>' if cs else 'More <em>articles</em>'}</h2></div>
+<a class="bl-pillbtn" href="{t['blog_path']}"><span aria-hidden="true">→</span>{'Všechny články' if cs else 'All articles'}</a></div>
+{bl_grid(lang, rel)}
+</div></section>
+</div>
+'''
+    h += bl_footer(lang)
     write(path, h)
 
 
@@ -489,33 +553,23 @@ def index(lang):
               'author': {'@id': SITE + '/#person'}, 'publisher': {'@id': SITE + '/#business'},
               'blogPost': [{'@id': SITE + POSTS[k][lang]['path'] + '#article'} for k in ORDER]},
              S.breadcrumb(path, [t['home'], (t['blog'], path)])]
-    h = head(lang, title, desc, path, alt, '', [{'@context': 'https://schema.org', '@graph': graph}])
+    h = head(lang, title, desc, path, alt, '', [{'@context': 'https://schema.org', '@graph': graph}], BL_FONTS)
     h += header(lang, 'blog', '/en/blog/' if lang == 'cs' else '/blog/')
-    topic_html = ''.join(f'<li><h3>{a_}</h3><p>{b_}</p><span class="lbl {"red" if live else "muted2"}">{n}</span></li>' for a_, b_, n, live in topics)
-    h += f'''<section class="page-head" aria-labelledby="page-h1"><div class="wrap">
-{crumbs(lang, [t['home'], (t['blog'], None)])}
-<div class="top"><h1 class="h1" id="page-h1"><span class="big wide">{h1}</span><span class="sub serif">{sub}</span></h1>
-<p class="body">{lead}</p></div>
+    cs = lang == 'cs'
+    h += f'''<div class="bl">
+<section class="bl-hero" aria-labelledby="page-h1"><div class="wrap bl-center">
+{crumbs(lang, [t['home'], (t['blog'], None)], cls='bl-crumbs')}
+<p class="bl-label">(Blog)</p>
+<h1 class="bl-h1" id="page-h1">{'Líčení, které <em>vydrží.</em>' if cs else 'Makeup that <em>lasts.</em>'}</h1>
+<p class="bl-lead">{'Návody, recenze a zkušenosti z praxe pražské vizážistky. Pro nevěsty, plesy i každý den.' if cs else 'How-tos, reviews and lessons from a Prague makeup artist’s kit. For brides, events and every day.'}</p>
 </div></section>
-<section class="sec--tight" aria-labelledby="latest-h"><div class="wrap">
-<h2 class="visually-hidden" id="latest-h">{latest}</h2>
-<article><a class="feat" href="{p['path']}">{I(P['img'], p['title'], sizes='(max-width: 900px) 100vw, 1280px', cls='fp-30', priority=True)}<span class="badge lbl glass">{latest}</span>
-<div class="card glass"><p class="lbl muted meta-row-sm"><span class="red">{p['tag']}</span><time datetime="{P['date']}">{fmt_date(lang, P['date'])}</time></p>
-<h3 class="wide feat-title">{p['title']}</h3>
-<p class="c-text">{p['card']}</p>
-<span class="btn self-start">{read_btn}</span></div></a></article>
+<section class="bl-list" aria-labelledby="all-h"><div class="wrap">
+<h2 class="bl-count" id="all-h">{'Všechny články' if cs else 'All articles'}<sup>{len(ORDER):02d}</sup></h2>
+{bl_grid(lang, ORDER)}
 </div></section>
-<section class="sec--tight" aria-labelledby="more-h"><div class="wrap">
-{sec_head(more, '', hid='more-h')}
-{cards(lang, ORDER[1:])}
-</div></section>
-<section class="sec sec--blush" aria-labelledby="topics-h"><div class="wrap">
-{sec_head(topics_h, topics_sub, hid='topics-h')}
-<ul class="topic-rows">{topic_html}</ul></div></section>
+</div>
 '''
-    h += footer(lang, 'Kontaktujte mě' if lang == 'cs' else 'Contact me',
-                'Potřebujete pomoc s líčením?' if lang == 'cs' else 'Do you need help with creative make-up?',
-                'Profesionální vizážistka v Praze.' if lang == 'cs' else 'Professional makeup artist based in Prague.')
+    h += bl_footer(lang)
     write(path, h)
 
 

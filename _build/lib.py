@@ -12,7 +12,9 @@ FB = 'https://www.facebook.com/nikki.yumi'
 TH = 'https://www.threads.net/@nikol_pavlova_mua'
 GBP = 'https://g.page/r/CVT7YlUrAr22EBM/'          # Google Business Profile
 GBP_REVIEW = GBP + 'review'
-VERSION = '20261019'
+YT = 'https://www.youtube.com/@nikolpavlova_mua'
+WA = 'https://wa.me/420608178390'
+VERSION = '20261124'
 IMG = json.load(open(os.path.join(ROOT, '_build', 'images.json')))
 
 
@@ -56,7 +58,7 @@ L = {
             ('Plesové líčení', '/plesove-liceni/'), ('Líčení na akce', '/liceni-na-akce/'), ('Nude makeup', '/nude-liceni/'),
             ('Komerční líčení', '/komercni-liceni/'), ('Kurzy líčení', '/kurzy-liceni/')],
         blog_href='/blog/', home_href='/', portfolio_href='/portfolio/',
-        f_services='Služby', f_location='Lokace', f_write='Napište mi', f_call='Telefon / WhatsApp',
+        f_services='Služby', f_location='Lokace', f_write='Napište mi', f_call='Telefon / WhatsApp', f_site='Web', f_contact='Kontakt', reviews='Recenze', f_travel='Dojíždím po Praze, ČR i Evropě', f_reply='Odpovídám obvykle během pár hodin.', f_addr='Prvního pluku 8a<br>180 00 Praha 8 – Karlín', social='Sociální sítě',
         f_loc_text='Prvního pluku 8a, 180 00 Praha 8 – Karlín<br>Česká republika<br>(Možnost dojezdu po Praze, ČR i Evropě)',
         rights='Všechna práva vyhrazena', top='Nahoru ↑', online='Rezervace online +', email='E-mail',
         reviews_title='Recenze z Google', reviews_all='Všechny recenze na Google →', stars='Hodnocení 5 z 5', g_review='Recenze Google', review_write='Napsat recenzi', swipe='Posuňte pro další recenze →', f_gbp='Google profil',
@@ -69,7 +71,7 @@ L = {
             ('Wedding makeup', '/en/wedding/'), ('Evening makeup', '/en/evening-makeup/'), ('Nude makeup', '/en/nude-makeup/'),
             ('Commercial makeup', '/en/commercial-makeup/'), ('Makeup courses', '/en/courses/')],
         blog_href='/en/blog/', home_href='/en/', portfolio_href='/en/portfolio/',
-        f_services='Services', f_location='Location', f_write='Write to me', f_call='Phone / WhatsApp',
+        f_services='Services', f_location='Location', f_write='Write to me', f_call='Phone / WhatsApp', f_site='Site', f_contact='Contact', reviews='Reviews', f_travel='Available across Prague, Czechia &amp; Europe', f_reply='I usually reply within a few hours.', f_addr='Prvního pluku 8a<br>180 00 Prague 8 – Karlín', social='Social media',
         f_loc_text='Prvního pluku 8a, 180 00 Prague 8 – Karlín<br>Czech Republic<br>(Available across Prague, Czechia &amp; Europe)',
         rights='All rights reserved', top='Back to top ↑', online='Book online +', email='Email',
         reviews_title='Google reviews', reviews_all='All reviews on Google →', stars='Rated 5 out of 5', g_review='Google review', review_write='Write a review', swipe='Swipe for more reviews →', f_gbp='Google profile',
@@ -174,29 +176,51 @@ def header(lang, active, other_href):
 '''
 
 
-def footer(lang, cta_label, cta_title, cta_text, primary=None):
+_SOC = {
+    'ig': '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/>',
+    'yt': '<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/>',
+    'fb': '<path d="M14.5 8H17V4.5h-2.5a4 4 0 0 0-4 4V11H8v3.5h2.5V21H14v-6.5h2.6l.6-3.5H14V8.9c0-.5.3-.9.5-.9z"/>',
+    'th': '<path d="M16.5 11.2c-.3-2.6-2-3.9-4.4-3.9-2.6 0-4.1 1.8-4.1 4.7 0 3 1.6 4.8 4.3 4.8 2 0 3.4-1 3.4-2.6 0-1.7-1.5-2.5-3.6-2.5-1.5 0-2.5.6-2.5 1.6s.9 1.6 2.1 1.6c1.9 0 2.9-1.5 2.9-3.9"/><path d="M19.5 7.5A8.5 8.5 0 1 0 20.5 12"/>',
+    'g': '<path d="M20.5 12.2c0-.6-.1-1.2-.2-1.7H12v3.3h4.8a4.2 4.2 0 0 1-1.8 2.7"/><path d="M15 16.5A6 6 0 1 1 16.2 7.6"/>',
+}
+
+
+def social_icons(lang):
+    t = L[lang]
+    items = [('Instagram', IG, 'ig'), ('YouTube', YT, 'yt'), ('Facebook', FB, 'fb'), ('Threads', TH, 'th'), (t['f_gbp'], GBP, 'g')]
+    lis = ''.join(f'<li><a class="soc" href="{u}" aria-label="{n}" rel="me noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+                  f'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{_SOC[k]}</svg></a></li>' for n, u, k in items)
+    return f'<ul class="soc-row" aria-label="{t["social"]}">{lis}</ul>'
+
+
+def footer(lang, cta_label, cta_title, cta_text, primary=None, pre=''):
+    """Site footer. `pre` (blog pages) is rendered above it on the shared gradient."""
     t = L[lang]
     primary = primary or (CAL, t['online'])
     svc = ''.join(f'<a href="{u}">{n}</a>' for n, u in t['services_list'])
+    h = t['home_href']
+    site = ''.join(f'<a href="{u}">{n}</a>' for n, u in [(t['about'], h + '#about'), (t['portfolio'], t['portfolio_href']),
+                                                          (t['reviews'], h + '#reviews-h'), (t['blog'], t['blog_href']), (t['contact'], '#contact')])
+    open_zone, close_zone = ('<div class="grad-zone">' + pre, '</div>') if pre else ('', '')
     return f'''</main>
-<footer class="site-footer" id="contact">
+{open_zone}<footer class="site-footer" id="contact">
 <div class="wrap">
 <div class="cols-f">
 <div class="cta-f">
 <p class="lbl pink">{cta_label}</p>
 <h2 class="mid-h">{cta_title}</h2>
-<p>{cta_text}</p>
-<p style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn--pink" href="{primary[0]}">{primary[1]}</a><a class="btn btn--ghost" href="mailto:{MAIL}">{t['email']}</a></p>
+<p>{cta_text} {t['f_reply']}</p>
+<p class="f-btns"><a class="btn btn--pink" href="{primary[0]}">{primary[1]}</a><a class="btn btn--ghost" href="{WA}">WhatsApp</a></p>
+{social_icons(lang)}
 </div>
 <nav class="f-col" aria-label="{t['f_services']}"><h3 class="lbl">{t['f_services']}</h3>{svc}</nav>
-<div class="f-col"><h3 class="lbl">{t['f_location']}</h3><address>{t['f_loc_text']}</address></div>
-<div class="f-col"><h3 class="lbl">{t['f_write']}</h3><a href="mailto:{MAIL}">{MAIL}</a><a href="{IG}">Instagram @nikol__mua</a><a href="{FB}">Facebook</a><a href="{TH}">Threads</a><a href="{GBP}">{t['f_gbp']}</a></div>
-<div class="f-col"><h3 class="lbl">{t['f_call']}</h3><a class="tel" href="tel:{TEL}">{TEL_H}</a></div>
+<nav class="f-col" aria-label="{t['f_site']}"><h3 class="lbl">{t['f_site']}</h3>{site}</nav>
+<div class="f-col"><h3 class="lbl">{t['f_contact']}</h3><a class="tel" href="tel:{TEL}">{TEL_H}</a><a href="mailto:{MAIL}">{MAIL}</a><address>{t['f_addr']}</address><p class="f-note">{t['f_travel']}</p></div>
 </div>
-<div class="f-bar lbl"><span>Nikol Pavlova · {'vizážistka Praha' if lang == 'cs' else 'makeup artist Prague'}</span><span>2026 © {t['rights']}</span><a href="{t['portfolio_href']}">{t['portfolio']}</a><a href="{t['blog_href']}">{t['blog']}</a><a href="#main">{t['top']}</a></div>
+<div class="f-bar lbl"><span>2026 © Nikol Pavlova · {'vizážistka Praha' if lang == 'cs' else 'makeup artist Prague'}</span><a href="#main">{t['top']}</a></div>
 </div>
 <div class="f-name" aria-hidden="true">{img('nikol-footer', '', sizes='100vw')}<div class="mesh"></div><span>Nikol Pavlova</span></div>
-</footer>
+</footer>{close_zone}
 </body>
 </html>
 '''

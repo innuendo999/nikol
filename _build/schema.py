@@ -3,6 +3,8 @@ new pages get WebPage + BreadcrumbList + Service + FAQPage that reference the sa
 import json, os, re
 from lib import ROOT, SITE, CAL, GBP, IG, FB, TH
 
+YT = 'https://www.youtube.com/@nikolpavlova_mua'
+
 BUSINESS = {'@id': SITE + '/#business'}
 PERSON = {'@id': SITE + '/#person'}
 
@@ -18,7 +20,8 @@ def strip(html):
 
 BUSINESS_NAME = 'Vizážistka Nikol Pavlova'          # exactly as on the Google Business Profile
 ALT_NAMES = ['Nikol Pavlova – vizážistka Praha', 'Nikol Pavlova – makeup artist Prague', 'Nikol Pavlova MUA']
-SAME_AS = [GBP, IG, FB, TH]
+SAME_AS = [GBP, IG, FB, TH, YT]
+PERSON_SAME_AS = [IG, FB, TH, YT]
 
 
 def patch(obj):
@@ -47,7 +50,8 @@ def _fix(node):
         node['sameAs'] = SAME_AS
         node['hasMap'] = GBP
     if node.get('@id') == SITE + '/#person' and len(node) > 1:
-        node['sameAs'] = [IG, FB, TH]
+        node['sameAs'] = PERSON_SAME_AS
+        node['worksFor'] = BUSINESS
     return node
 
 
@@ -87,3 +91,21 @@ def service_page(lang, path, title, desc, service_name, service_type, image, cru
         faq(path, lang, faq_items),
     ]
     return [{'@context': 'https://schema.org', '@graph': graph}]
+
+
+def person(lang):
+    """The one Person node every page uses: same @id, sameAs and employer everywhere."""
+    return {'@type': 'Person', '@id': SITE + '/#person', 'name': 'Nikol Pavlova',
+            'jobTitle': 'Vizážistka' if lang == 'cs' else 'Makeup artist',
+            'image': SITE + '/img/nikol.jpg', 'url': SITE + ('/' if lang == 'cs' else '/en/'),
+            'worksFor': BUSINESS, 'knowsLanguage': ['cs', 'en', 'uk'], 'sameAs': PERSON_SAME_AS}
+
+
+def business_ref(lang):
+    """Compact business node for pages that do not carry the full LocalBusiness block,
+    so publisher/worksFor resolve on the page itself (same @id as the home page)."""
+    return {'@type': ['LocalBusiness', 'BeautySalon'], '@id': SITE + '/#business', 'name': BUSINESS_NAME,
+            'url': SITE + '/', 'telephone': '+420608178390', 'image': SITE + '/img/nikol.jpg',
+            'address': {'@type': 'PostalAddress', 'streetAddress': 'Prvního pluku 8a', 'postalCode': '180 00',
+                        'addressLocality': 'Praha' if lang == 'cs' else 'Prague', 'addressCountry': 'CZ'},
+            'hasMap': GBP, 'founder': PERSON, 'sameAs': SAME_AS}

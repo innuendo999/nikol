@@ -230,4 +230,12 @@
     r.addEventListener('input', upd);
     upd();
   });
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (!navigator.clipboard) return;
+      navigator.clipboard.writeText(b.dataset.copy).then(function () {
+        b.classList.add('is-done'); b.setAttribute('aria-label', b.dataset.done);
+      });
+    });
+  });
 })();

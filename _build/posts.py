@@ -130,3 +130,57 @@ def teaser(lang, keys, title=None, sub=None, hid='blog-h'):
 {cards(lang, keys)}
 </div></section>
 '''
+
+
+# ---------------------------------------------------------------- blog covers (tinted photo + glass card)
+# kind: 'panel' (wide card with bar and two stats) or 'pill' (tall card); texts per language, facts from the articles only
+COVERS = {
+    'blush': dict(tint='#C8701E', ratio='10/9', kind='panel', pct=64,
+                  cs=dict(k='Tvářenka', sub='korektor → tvářenka', big='Přechod', s1='Umístění', v1='podle tvaru tváře', s2='Nová kolekce', v2='netřeba'),
+                  en=dict(k='Blush', sub='concealer → blush', big='Blend', s1='Placement', v1='by face shape', s2='New kit', v2='not needed')),
+    'travel': dict(tint='#14244F', ratio='4/5', kind='pill', glow='#3B7BFF',
+                   cs=dict(k='kosmetička<br>na cesty', big='5 štětců', sub='den · večer'),
+                   en=dict(k='travel<br>makeup bag', big='5 brushes', sub='day · night')),
+    'brushes': dict(tint='#D9708F', ratio='1/1', kind='panel', pct=82,
+                    cs=dict(k='Mytí štětců', sub='sušení', big='Naplocho', s1='Mýdlo', v1='tuhé', s2='Na rtěnku', v2='olej'),
+                    en=dict(k='Brush care', sub='drying', big='Flat', s1='Soap', v1='bar', s2='For lipstick', v2='oil')),
+    'catrice': dict(tint='#C9473F', ratio='3/4', kind='pill', glow='#FF8A7A',
+                    cs=dict(k='Recenze<br>Catrice', big='6 / 10', sub='make-up'),
+                    en=dict(k='Catrice<br>review', big='6 / 10', sub='foundation')),
+    'empties': dict(tint='#2F5FA8', ratio='4/5', kind='panel', pct=100,
+                    cs=dict(k='Dopotřebováno', sub='do poslední kapky', big='25', s1='Péče · SPF', v1='vlasy · tělo', s2='Make-up', v2='znovu / ne'),
+                    en=dict(k='Used up', sub='to the last drop', big='25', s1='Skin · SPF', v1='hair · body', s2='Makeup', v2='again / no')),
+    'summer': dict(tint='#D98A55', ratio='4/5', kind='pill', glow='#FFD2A6',
+                   cs=dict(k='letní rutina', big='Bez<br>make-upu', sub='odolá horku'),
+                   en=dict(k='summer routine', big='No-makeup<br>makeup', sub='heat-proof')),
+    'nyx': dict(tint='#5E2A5C', ratio='1/1', kind='panel', pct=50,
+                cs=dict(k='Celý obličej NYX', sub='jeden pracovní den', big='1 den', s1='Do kufru', v1='ano', s2='Vynechat', v2='v článku'),
+                en=dict(k='Full face NYX', sub='one working day', big='1 day', s1='In my kit', v1='yes', s2='Skip', v2='see article')),
+}
+
+
+def cover(key, lang, sizes, big=False, priority=False):
+    """Tinted, blurred photo with a glass card. Decorative: the card text repeats facts from the title/excerpt."""
+    cv, p = COVERS[key], POSTS[key]
+    t = cv[lang]
+    pic = img(p['img'], '', sizes=sizes, cls='cv-img', priority=priority)
+    ghost = img(p['img'], '', sizes=sizes, cls='cv-ghost')
+    if cv['kind'] == 'panel':
+        card = (f'<span class="cv-panel"><span class="cv-top"><span class="cv-k"><b>{t["k"]}</b><small>{t["sub"]}</small></span><span class="cv-big">{t["big"]}</span></span>'
+                f'<span class="cv-bar"><i></i></span>'
+                f'<span class="cv-stats"><span><small>{t["s1"]}</small><b>{t["v1"]}</b></span><span><small>{t["s2"]}</small><b>{t["v2"]}</b></span></span></span>')
+    else:
+        card = f'<span class="cv-pill"><small>{t["k"]}</small><b>{t["big"]}</b><small>{t["sub"]}</small></span>'
+    return (f'<span class="bcover cv--{key}{" bcover--big" if big else ""}">{pic}{ghost}'
+            f'<span class="cv-wash" aria-hidden="true"></span><span class="cv-glass" aria-hidden="true">{card}</span></span>')
+
+
+def bl_grid(lang, keys, excerpt=True):
+    out = ''
+    for k in keys:
+        p, m = POSTS[k], POSTS[k][lang]
+        ex = f'<p class="bl-ex">{m["card"]}</p>' if excerpt else ''
+        out += (f'<li><article><a class="bl-card" href="{m["path"]}">{cover(k, lang, "(max-width: 700px) 100vw, (max-width: 1200px) 50vw, 25vw")}'
+                f'<p class="bl-meta">{m["tag"]} • <time datetime="{p["date"]}">{fmt_date(lang, p["date"])}</time></p>'
+                f'<h3>{m["title"]}</h3>{ex}</a></article></li>')
+    return f'<ul class="bl-grid" role="list">{out}</ul>'

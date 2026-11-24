@@ -1,6 +1,7 @@
 from lib import *
 from lib import img as I
 import schema as S
+from pages_home import home_body
 from reviews import pick
 from posts import teaser
 from pages_cs import PORTFOLIO_ITEMS, portfolio_grid, NOSCRIPT
@@ -34,68 +35,7 @@ def home():
     ]
     h = head(LANG, title, desc, path, alts('/', '/en/'), SITE + '/img/nikol.jpg', S.load('en-home'), preload('nikol-hero', '100vw'))
     h += header(LANG, 'home', '/')
-    h += f'''<section class="hero-full" aria-labelledby="page-h1">
-{I('nikol-hero', 'Nikol Pavlova – professional makeup artist in Prague', sizes='100vw', priority=True, style='object-position:50% 30%')}
-<div class="wrap inner"><div></div>
-<div style="display:flex;flex-direction:column;gap:20px">
-<div class="hero-row"><p>Hi beautiful! I love designing beautiful makeup looks which enhance your natural features and distinctive style. Let's create stunning makeup transformations together!</p><a class="btn btn--light" href="#services">My services <span aria-hidden="true">↓</span></a></div>
-<h1 class="h1" id="page-h1"><span class="big">Nikol Pavlova</span><span class="sub">– English-speaking makeup artist in Prague</span></h1>
-</div></div>
-</section>
-'''
-    h += marquee(['Wedding makeup', 'Nude makeup', 'Evening makeup', 'Commercial', 'Makeup courses', 'Prague 8 – Karlín · available for travel'])
-    h += f'''<section class="wrap intro" id="about" aria-labelledby="about-h">
-<div class="head"><p class="lbl red">About me</p><h2 class="mid-h" id="about-h">Nikol Pavlova is a makeup artist in Prague</h2><p class="serif tag">creating makeup that still feels like you</p></div>
-<div class="pair">{I('nikol-portrait', 'Nikol Pavlova – makeup artist portrait', sizes='260px', style='object-position:50% 25%')}{I('nikol-header', 'Nikol Pavlova – makeup artist in Prague', sizes='260px', style='object-position:50% 20%')}</div>
-<div class="rule" aria-hidden="true"><span class="serif">precision</span><hr><span class="serif">natural beauty.</span></div>
-<p class="body">My name is Nikol Pavlova and I work as your dedicated makeup artist based in Prague. I love designing beautiful makeup looks which enhance your natural features and distinctive style. I will transform your vision into reality whether you dream of a soft bridal glow or glamorous evening makeup or something boldly creative. My commitment lies in precision and creativity.</p>
-<ul class="chips"><li>Bridal Specialist</li><li>Editorial &amp; Commercial</li><li>Personalized Courses</li><li>English · Česky · Українська</li></ul>
-{I('signature', 'Nikol Pavlova signature', sizes='220px', style='width:220px')}
-</section>
-<section id="services" aria-labelledby="services-h">
-<div class="wrap">{sec_head('What I do', 'my services', '<a class="link-arrow" href="/en/portfolio/">Full portfolio →</a>', hid='services-h')}</div>
-<ul class="g4" role="list">
-<li>{I('wedding-5', 'Wedding makeup Prague')}</li>
-<li><a class="tile-panel center" href="/en/wedding/"><h3>Wedding makeup</h3><p class="serif">Long-lasting &amp; radiant</p><span class="lbl more">Details →</span></a></li>
-<li>{I('nude-1', 'Nude makeup Prague')}</li>
-<li><a class="tile-panel center alt" href="/en/nude-makeup/"><h3>Nude makeup</h3><p class="serif">Enhancing natural beauty</p><span class="lbl more">Details →</span></a></li>
-<li><a class="tile-panel center alt" href="/en/evening-makeup/"><h3>Evening makeup</h3><p class="serif">Elegant &amp; glamorous</p><span class="lbl more">Details →</span></a></li>
-<li>{I('evening-5', 'Evening makeup Prague')}</li>
-<li><a class="tile-panel center" href="/en/commercial-makeup/"><h3>Commercial</h3><p class="serif">Photo shoots &amp; media</p><span class="lbl more">Details →</span></a></li>
-<li>{I('commercial-4', 'Commercial makeup for a beauty brand shoot')}</li>
-<li>{I('course', 'Makeup courses Prague', style='object-position:50% 15%')}</li>
-<li><a class="tile-panel center" href="/en/courses/"><h3>Makeup courses</h3><p class="serif">Learn professional techniques</p><span class="lbl more">Details →</span></a></li>
-<li class="span2"><a class="tile-panel center dark" style="height:100%" href="{CAL}"><p class="serif" style="font-size:28px">Your look, your day.</p><h3 style="font-size:30px">Book an appointment +</h3></a></li>
-</ul>
-</section>
-<section class="mos-sec" aria-labelledby="mos-h">
-<div class="wrap"><div class="mos">
-<h2 class="m-t big-h" id="mos-h" style="font-size:clamp(24px,2.4vw,30px);line-height:1.15">I create looks that enhance your <span class="accent">natural beauty</span></h2>
-{I('wedding-1', 'Bridal look – soft glam', cls='m1')}
-{I('wedding-15', 'Bridal look – soft glam', sizes='(max-width: 900px) 50vw, 33vw', cls='m2')}
-{I('evening-3', 'Evening look – bold lip and clean skin', sizes='(max-width: 900px) 50vw, 33vw', cls='m3')}
-{I('nude-3', 'Nude look – fresh dewy skin', cls='m4')}
-{I('commercial-6', 'Commercial look – editorial', cls='m5')}
-{I('wedding-9', 'Bridal look – Prague destination wedding', cls='m6')}
-{I('evening-13', 'Evening look – soft glam', cls='m7')}
-<div class="m-s"><p class="lbl pink">Bridal Specialist · Editorial &amp; Commercial · Personalized Courses</p><p class="serif" style="font-size:clamp(22px,2.2vw,28px);line-height:1.2">From a soft bridal glow to a bold editorial look.</p><a class="btn btn--pink" href="/en/portfolio/">View portfolio →</a></div>
-{I('wedding-14', 'Bridal look – soft glam bridal makeup', cls='m8')}
-</div></div>
-</section>
-<section class="phrase" aria-label="My approach">
-{I('contact', '', sizes='100vw', style='object-position:50% 30%')}<div class="mesh"></div>
-<div class="wrap"><p><span>Precise</span><span>technique</span></p><p><span>Creativity</span><span>and feeling</span></p><p><span>For colour</span><span>&amp; texture</span></p></div>
-</section>
-<section class="sec" id="pricing" aria-labelledby="pricing-h">
-<div class="wrap">
-{sec_head('Rates', 'pricing packages', '<p class="serif muted2">*Please contact me for a personalised quote.</p>', hid='pricing-h')}
-<ul class="cards3" role="list">
-<li><a class="pcard" href="/en/wedding/"><div class="ph">{I('wedding-4', 'Wedding makeup package', sizes='(max-width: 900px) 100vw, 33vw')}<span class="tag lbl glass">Wedding</span></div><div class="row"><h3>Wedding package</h3><span class="lbl red">Request</span></div><p class="body">Bridal Trial · Wedding Day Makeup · Lashes Included · Touch-up Kit</p></a></li>
-<li><a class="pcard" href="/en/evening-makeup/"><div class="ph">{I('evening-7', 'Special occasion makeup', sizes='(max-width: 900px) 100vw, 33vw')}<span class="tag lbl glass">Special occasions</span></div><div class="row"><h3>Evening &amp; events</h3><span class="lbl red">Request</span></div><p class="body">Cocktail Makeup · Evening Styling · Prom / Ball Makeup · Photo Shoots</p></a></li>
-<li><a class="pcard" href="/en/courses/"><div class="ph">{I('nude-2', 'Makeup courses', sizes='(max-width: 900px) 100vw, 33vw')}<span class="tag lbl glass">Courses</span></div><div class="row"><h3>Personal makeup lesson</h3><span class="lbl red">Request</span></div><p class="body">Skin Prep · Colour Theory · Eyes &amp; Lashes · Tools &amp; Products</p></a></li>
-</ul></div>
-</section>
-'''
+    h += home_body(LANG)
     h += reviews(LANG, 'what clients say', pick('zoe', 'nelli', 'glenn', 'polina', 'shirley', 'darya', 'beata', 'marie', 'lena'), top=False)
     h += teaser(LANG, ['blush', 'travel', 'brushes'], 'From the blog', 'tutorials &amp; honest reviews')
     h += faq(LANG, 'popular questions', faq_items)

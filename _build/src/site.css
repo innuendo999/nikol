@@ -1121,3 +1121,19 @@ h1,h2,h3{overflow-wrap:break-word}
 .tz-h2{font:500 clamp(34px,4vw,60px)/1.02 var(--f-tight);letter-spacing:-.04em;color:#111}
 .tz-h2 em{font-family:var(--f-disp);font-style:italic;font-weight:400;font-size:1.1em}
 .tz-link{font:500 15px/1 var(--f-tight);color:#111;text-decoration:none}.tz-link:hover{text-decoration:underline;text-underline-offset:4px}
+/* service hero: everything incl. the CTA fits the first screen on desktop */
+@media (min-width:1100px){
+  .u-hero{height:min(100svh,920px);min-height:600px}
+  .u-hero-txt{justify-content:center;gap:clamp(14px,2.4vh,26px);padding-top:clamp(96px,13vh,130px);padding-bottom:clamp(24px,5vh,56px)}
+  .u-h1 .big{font-size:clamp(52px,min(7.4vw,12vh),140px)}
+  .u-h1 .sub{font-size:clamp(20px,min(2.2vw,4vh),34px)}
+  .u-lead{font-size:clamp(15px,2.2vh,18px)}
+  .u-hero-ph{min-height:0;padding-top:clamp(96px,13vh,110px);padding-bottom:clamp(20px,4vh,40px)}
+  .u-hero-col{padding-top:clamp(40px,10vh,120px)}
+  .u-ph--b{min-height:0}
+  .u-quote{padding:14px 18px}
+}
+@media (min-width:701px) and (max-width:1099px){
+  .u-hero-txt{padding:120px var(--gut) 32px;flex-basis:100%}
+  .u-hero-ph{flex-basis:100%;padding:0 var(--gut) 48px;min-height:560px}
+}

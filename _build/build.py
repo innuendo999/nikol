@@ -5,9 +5,9 @@ import hashlib
 import lib
 from lib import *
 from utilities import css as utility_css
-import pages_cs, pages_en, pages_blog
+import pages_cs, pages_en, pages_blog, pages_about
 
-LASTMOD = '2026-11-23'
+LASTMOD = '2026-11-24'
 
 # (cs path, en path) pairs; None = single-language page
 PAIRS = [
@@ -20,6 +20,7 @@ PAIRS = [
     ('/komercni-liceni/', '/en/commercial-makeup/', '0.8'),
     ('/kurzy-liceni/', '/en/courses/', '0.8'),
     ('/portfolio/', '/en/portfolio/', '0.7'),
+    ('/o-mne/', '/en/about/', '0.7'),
     ('/blog/', '/en/blog/', '0.6'),
     ('/blog/transition-blush-jak-na-to/', '/en/blog/transition-blush-how-to/', '0.6'),
     ('/blog/jak-sbalit-kosmeticku-na-cesty/', '/en/blog/how-to-pack-a-makeup-bag-for-travel/', '0.6'),
@@ -76,6 +77,7 @@ Key facts for accurate reference:
 
 - [Domů (Czech home)]({s}/): Vizážistka Praha – overview of services, about, pricing, Google reviews and FAQ.
 - [Home (English)]({s}/en/): English-speaking makeup artist in Prague – services, about, pricing, reviews and FAQ.
+- [O mně]({s}/o-mne/) · [About]({s}/en/about/): Who Nikol Pavlova is – makeup artist in Prague since 2021, her style, services and how she works.
 - [Portfolio (CZ)]({s}/portfolio/) · [Portfolio (EN)]({s}/en/portfolio/): Bridal, evening, nude, commercial and course work.
 
 ## Services
@@ -152,5 +154,6 @@ if __name__ == '__main__':
     pages_cs.build()
     pages_en.build()
     pages_blog.build()
+    pages_about.build()
     sitemap(); robots(); llms(); not_found()
     print('built')

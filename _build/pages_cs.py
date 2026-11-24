@@ -1,6 +1,7 @@
 from lib import *
 from lib import img as I
 import schema as S
+from pages_home import home_body
 from posts import teaser
 from reviews import pick
 
@@ -36,72 +37,7 @@ def home():
     h = head(LANG, title, desc, path, alts('/', '/en/'), SITE + '/img/nikol.jpg', S.load('cs-home'),
              preload('nikol-hero', '100vw'))
     h += header(LANG, 'home', '/en/')
-    h += f'''<section class="hero-full" aria-labelledby="page-h1">
-{I('nikol-hero', 'Nikol Pavlova – profesionální vizážistka v Praze', sizes='100vw', priority=True, style='object-position:50% 30%')}
-<div class="wrap inner">
-<div></div>
-<div style="display:flex;flex-direction:column;gap:20px">
-<div class="hero-row"><p>Ahoj! Jmenuji se Nikol a miluju tvořit krásné a jedinečné líčení, které zdůrazní to nejlepší v tobě. Pojďme společně vytvořit něco výjimečného!</p><a class="btn btn--light" href="#services">Moje služby <span aria-hidden="true">↓</span></a></div>
-<h1 class="h1" id="page-h1"><span class="big">Nikol Pavlova</span><span class="sub">– profesionální vizážistka v Praze</span></h1>
-</div>
-</div>
-</section>
-'''
-    h += marquee(['Svatební líčení', 'Nude makeup', 'Večerní líčení', 'Komerční líčení', 'Kurzy líčení', 'Praha 8 – Karlín · možnost dojezdu'])
-    h += f'''<section class="wrap intro" id="about" aria-labelledby="about-h">
-<div class="head"><p class="lbl red">O mně</p><h2 class="mid-h" id="about-h">Nikol Pavlova je vizážistka v Praze</h2><p class="serif tag">tvořící líčení, ve kterém se cítíš jako ty</p></div>
-<div class="pair">{I('nikol-portrait', 'Nikol Pavlova – portrét vizážistky', sizes='260px', style='object-position:50% 25%')}{I('nikol-header', 'Nikol Pavlova – profesionální vizážistka v Praze', sizes='260px', style='object-position:50% 20%')}</div>
-<div class="rule" aria-hidden="true"><span class="serif">precizní technika</span><hr><span class="serif">přirozená krása.</span></div>
-<p class="body">Ahoj, jsem Nikol, profesionální vizážistka v Praze. Můj styl spojuje precizní techniku, kreativitu a cit pro barvy i textury, díky čemuž vytvářím make-up looky, které dokonale zvýrazní tvou přirozenou krásu. Ať už toužíš po jemném svatebním vzhledu, odvážném večerním make-upu nebo originálním editoriálním looku, vždycky mě baví společně s tebou proměnit tvou vizi ve skutečnost.</p>
-<ul class="chips"><li>Svatební specialistka</li><li>Editorial &amp; Komerce</li><li>Osobní kurzy líčení</li><li>Česky · English · Українська</li></ul>
-{I('signature', 'Podpis Nikol Pavlova', sizes='220px', style='width:220px')}
-</section>
-<section id="services" aria-labelledby="services-h">
-<div class="wrap">{sec_head('Co nabízím', 'služby', '<a class="link-arrow" href="/portfolio/">Celé portfolio →</a>', hid='services-h')}</div>
-<ul class="g4" role="list">
-<li>{I('wedding-5', 'Svatební líčení Praha')}</li>
-<li><a class="tile-panel center" href="/svatebni-liceni/"><h3>Svatební líčení</h3><p class="serif">Dlouhotrvající &amp; zářivé</p><span class="lbl more">Detail →</span></a></li>
-<li>{I('nude-1', 'Nude makeup Praha')}</li>
-<li><a class="tile-panel center alt" href="/nude-liceni/"><h3>Nude makeup</h3><p class="serif">Přirozená krása</p><span class="lbl more">Detail →</span></a></li>
-<li><a class="tile-panel center alt" href="/vecerni-liceni/"><h3>Večerní líčení</h3><p class="serif">Plesy a večírky</p><span class="lbl more">Detail →</span></a></li>
-<li>{I('evening-5', 'Večerní líčení Praha')}</li>
-<li><a class="tile-panel center" href="/komercni-liceni/"><h3>Komerční líčení</h3><p class="serif">Focení a reklama</p><span class="lbl more">Detail →</span></a></li>
-<li>{I('commercial-4', 'Komerční líčení – focení pro beauty značku')}</li>
-<li>{I('course', 'Kurzy líčení Praha', style='object-position:50% 15%')}</li>
-<li><a class="tile-panel center" href="/kurzy-liceni/"><h3>Kurzy líčení</h3><p class="serif">Naučte se líčit jako profík</p><span class="lbl more">Detail →</span></a></li>
-<li class="span2"><a class="tile-panel center dark" style="height:100%" href="{CAL}"><p class="serif" style="font-size:28px">Váš look, váš den.</p><h3 style="font-size:30px">Rezervovat termín +</h3></a></li>
-</ul>
-</section>
-{season_banner()}
-<section class="mos-sec" aria-labelledby="mos-h">
-<div class="wrap"><div class="mos">
-<h2 class="m-t big-h" id="mos-h" style="font-size:clamp(24px,2.4vw,30px);line-height:1.15">Tvořím looky, které zdůrazní tvou <span class="accent">přirozenou krásu</span></h2>
-{I('wedding-1', 'Svatební look – jemný glam', cls='m1')}
-{I('wedding-15', 'Svatební look – soft glam', sizes='(max-width: 900px) 50vw, 33vw', cls='m2')}
-{I('evening-3', 'Večerní look – výrazný ret a čistá pleť', sizes='(max-width: 900px) 50vw, 33vw', cls='m3')}
-{I('nude-3', 'Nude look – svěží dewy pleť', cls='m4')}
-{I('commercial-6', 'Komerční look – editorial', cls='m5')}
-{I('wedding-9', 'Svatební look – destination svatba v Praze', cls='m6')}
-{I('evening-13', 'Večerní look – soft glam', cls='m7')}
-<div class="m-s"><p class="lbl pink">Svatební specialistka · Editorial &amp; Komerce · Osobní kurzy líčení</p><p class="serif" style="font-size:clamp(22px,2.2vw,28px);line-height:1.2">Od jemného svatebního glow po výrazný editoriální look.</p><a class="btn btn--pink" href="/portfolio/">Zobrazit portfolio →</a></div>
-{I('wedding-14', 'Svatební look – soft glam svatební líčení', cls='m8')}
-</div></div>
-</section>
-<section class="phrase" aria-label="Můj přístup">
-{I('contact', '', sizes='100vw', style='object-position:50% 30%')}<div class="mesh"></div>
-<div class="wrap"><p><span>Precizní</span><span>technika</span></p><p><span>Kreativita</span><span>a cit</span></p><p><span>Pro barvy</span><span>i textury</span></p></div>
-</section>
-<section class="sec" id="pricing" aria-labelledby="pricing-h">
-<div class="wrap">
-{sec_head('Ceník', 'balíčky služeb', '<p class="serif muted2">*Pro konkrétní cenovou nabídku mě prosím kontaktujte.</p>', hid='pricing-h')}
-<ul class="cards3" role="list">
-<li><a class="pcard" href="/svatebni-liceni/"><div class="ph">{I('wedding-4', 'Svatební balíček', sizes='(max-width: 900px) 100vw, 33vw')}<span class="tag lbl glass">Svatba</span></div><div class="row"><h3>Svatební balíček</h3><span class="lbl red">Info</span></div><p class="body">Zkouška líčení · Svatební make-up · Umělé řasy v ceně · Touch-up kit</p></a></li>
-<li><a class="pcard" href="/plesove-liceni/"><div class="ph">{I('evening-7', 'Speciální příležitosti – plesové a večerní líčení', sizes='(max-width: 900px) 100vw, 33vw')}<span class="tag lbl glass">Speciální příležitosti</span></div><div class="row"><h3>Ples, večer &amp; akce</h3><span class="lbl red">od 2 500 Kč</span></div><p class="body">Plesové líčení · Večerní make-up · Účes · Líčení na akce</p></a></li>
-<li><a class="pcard" href="/kurzy-liceni/"><div class="ph">{I('nude-2', 'Kurzy líčení', sizes='(max-width: 900px) 100vw, 33vw')}<span class="tag lbl glass">Kurzy</span></div><div class="row"><h3>Osobní kurz líčení</h3><span class="lbl red">Na vyžádání</span></div><p class="body">Příprava pleti · Teorie barev · Oči &amp; řasy · Nástroje &amp; produkty</p></a></li>
-</ul>
-</div>
-</section>
-'''
+    h += home_body(LANG)
     h += reviews(LANG, 'co říkají klientky', pick('nelli', 'zoe', 'polinashu', 'erika', 'darya', 'marie', 'stepanka', 'beata', 'lena'), top=False)
     h += teaser(LANG, ['blush', 'travel', 'brushes'], 'Z blogu', 'tutoriály a poctivé recenze')
     h += faq(LANG, 'nejčastější otázky', faq_items)

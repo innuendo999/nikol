@@ -169,6 +169,28 @@ def card_blog(path):
 </body></html>'''
 
 
+def card_home(path):
+    """Home pages: same layout as the blog cards, Nikol's photo with soft pastel light on the right."""
+    cs = path == '/'
+    e = html.escape
+    sub = 'profesionální vizážistka v Praze' if cs else 'English-speaking makeup artist in Prague'
+    chips = (['Svatby', 'Večery', 'Editorial', 'Kurzy'] if cs else ['Weddings', 'Evenings', 'Editorial', 'Courses'])
+    cta = 'Rezervovat termín +' if cs else 'Book online +'
+    chip_html = ''.join(f'<span class="og-chip">{c}</span>' for c in chips)
+    return f'''<!doctype html><html lang="{'cs' if cs else 'en'}"><head><meta charset="utf-8"><link rel="stylesheet" href="/assets/css/site.css"><style>{BLOG_CSS}
+.og-ph{{position:relative;overflow:hidden;border-radius:24px;height:574px}}.og-ph img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 28%}}
+.og-ph i{{position:absolute;inset:0;background:linear-gradient(120deg,#F6C9C2,#EBC7DA 50%,#F7D9BF);mix-blend-mode:soft-light;opacity:.7}}
+.og-chips{{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}}.og-chip{{border:1px solid #E6E6E6;border-radius:999px;padding:8px 14px;font-size:17px}}
+.og h1{{font-size:84px;line-height:.95}}</style></head>
+<body><div class="og"><div class="og-l">
+<div class="og-top"><span>{'5,0' if cs else '5.0'} ★ Google</span><small>{'Praha 8 – Karlín' if cs else 'Prague 8 – Karlín'}</small></div>
+<div><p class="og-lab">({e(sub)})</p><h1 id="t">Nikol <em>Pavlova</em></h1><div class="og-chips">{chip_html}</div></div>
+<div class="og-bot"><span>nikolmakeup.cz{'' if cs else '/en'}</span><b>{e(cta)}</b></div>
+</div><div class="og-ph"><img src="/assets/img/nikol-hero-1280.webp"><i></i></div></div>
+<script>Promise.all([document.fonts.ready,document.images[0].decode().catch(function(){{}})]).then(function(){{document.body.dataset.ready=1}})</script>
+</body></html>'''
+
+
 def main():
     tmp = os.path.join(ROOT, '_build', 'og_tmp')
     os.makedirs(tmp, exist_ok=True)
@@ -176,10 +198,10 @@ def main():
     jobs = []
     only = sys.argv[1] if len(sys.argv) > 1 else ''          # e.g. "blog" renders only the blog cards
     for path in PAGES:
-        if only and only not in path:
+        if only and not (only == 'home' and path in ('/', '/en/')) and (only == 'home' or only not in path):
             continue
         slug = og_slug(path)
-        html_ = card_blog(path) if '/blog/' in path else card(path)
+        html_ = card_blog(path) if '/blog/' in path else card_home(path) if path in ('/', '/en/') else card(path)
         open(os.path.join(tmp, slug + '.html'), 'w', encoding='utf-8').write(html_)
         jobs.append([f'http://localhost:8765/_build/og_tmp/{slug}.html', os.path.join(ROOT, 'assets', 'og', slug + '.png')])
     subprocess.run(['node', os.path.join(ROOT, '_build', 'og.js'), json.dumps(jobs)], check=True)

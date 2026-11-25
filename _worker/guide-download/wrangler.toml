@@ -14,6 +14,6 @@ bucket_name = "nikol-guides"
 SITE_URL = "https://nikolmakeup.cz"
 MAX_AGE_DAYS = "30"
 # Stripe Price ID -> PDF in the R2 bucket. Replace price_XXX with the real IDs from Stripe.
-FILES = '{"price_CS_XXX": {"key": "brush-guide-cs.pdf", "name": "Pruvodce-stetci-Nikol-Pavlova.pdf"}, "price_EN_XXX": {"key": "brush-guide-en.pdf", "name": "Makeup-Brush-Guide-Nikol-Pavlova.pdf"}}'
+FILES = '{"price_CS_XXX": {"key": "brush-guide-cs.pdf", "name": "Pruvodce-stetci-Nikol-Pavlova.pdf"}, "price_EN_XXX": {"key": "brush-guide-en.pdf", "name": "Makeup-Brush-Guide-Nikol-Pavlova.pdf"}, "price_UK_XXX": {"key": "brush-guide-uk.pdf", "name": "Gaid-po-penzlykakh-Nikol-Pavlova.pdf"}}'
 
 # Secret (not in this file):  npx wrangler secret put STRIPE_SECRET_KEY

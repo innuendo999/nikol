@@ -1,7 +1,7 @@
 # Brush guide: payment and download
 
-Pages: `/pruvodce-stetci/` (CZ) and `/en/brush-guide/` (EN), built by `_build/pages_guide.py`.
-Thank-you pages: `/pruvodce-stetci/dekuji/` and `/en/brush-guide/thank-you/` (noindex).
+Pages: `/pruvodce-stetci/` (CZ), `/en/brush-guide/` (EN) and `/uk/gaid-penzlyky/` (UA), built by `_build/pages_guide.py`.
+Thank-you pages: `/pruvodce-stetci/dekuji/`, `/en/brush-guide/thank-you/` and `/uk/gaid-penzlyky/dyakuyu/` (noindex).
 
 ```
 Buy button ──► Stripe Payment Link ──► paid ──► thank-you page ?session_id=cs_…
@@ -16,12 +16,13 @@ The PDFs are never in this repository (it is public).
 ## Setup, once
 
 1. **Stripe**
-   - Create a product for each guide with a one-time price: "Průvodce štětci (CZ)" in CZK and "Makeup Brush Guide (EN)" in EUR. Note both **Price IDs** (`price_…`).
+   - One product per guide with a one-time price: CZ in CZK, EN in EUR, UA in UAH. Note the **Price IDs** (`price_…`).
    - Create a **Payment Link** for each price. Under *After payment*, choose *Don't show confirmation page* and redirect to:
      - CZ: `https://nikolmakeup.cz/pruvodce-stetci/dekuji/?session_id={CHECKOUT_SESSION_ID}`
      - EN: `https://nikolmakeup.cz/en/brush-guide/thank-you/?session_id={CHECKOUT_SESSION_ID}`
+     - UA: `https://nikolmakeup.cz/uk/gaid-penzlyky/dyakuyu/?session_id={CHECKOUT_SESSION_ID}`
    - Create a **restricted API key** with *Checkout Sessions: Read*. The Worker needs nothing else.
-2. **Cloudflare R2**: create the bucket `nikol-guides` and upload `brush-guide-cs.pdf` and `brush-guide-en.pdf`.
+2. **Cloudflare R2**: create the bucket `nikol-guides` and upload `brush-guide-cs.pdf`, `brush-guide-en.pdf` and `brush-guide-uk.pdf`.
 3. **Worker**, from this folder:
    ```
    npx wrangler secret put STRIPE_SECRET_KEY     # paste the restricted key

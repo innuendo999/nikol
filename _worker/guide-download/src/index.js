@@ -1,6 +1,6 @@
 // Paid guide download – Cloudflare Worker.
 //
-// GET /download?session_id=cs_...&lang=cs|en
+// GET /download?session_id=cs_...&lang=cs|en|uk
 //   1. Asks Stripe for the Checkout Session (with line items).
 //   2. Checks that it is paid and not older than MAX_AGE_DAYS.
 //   3. Maps the bought Price ID to a PDF in the private R2 bucket (FILES) and streams it.
@@ -30,6 +30,14 @@ const TEXT = {
     help: (mail) => `Email me at <a href="mailto:${mail}">${mail}</a> from the address you used at checkout and I’ll send you the guide.`,
     back: 'Back to the site',
   },
+  uk: {
+    unpaid: 'Оплата ще не підтверджена. Спробуй, будь ласка, ще раз за хвилину.',
+    expired: 'Термін дії посилання на завантаження минув.',
+    invalid: 'Посилання на завантаження недійсне.',
+    error: 'Не вдалося завантажити файл.',
+    help: (mail) => `Напиши мені на <a href="mailto:${mail}">${mail}</a> з адреси, яку вказала під час оплати, і я надішлю гайд.`,
+    back: 'Повернутися на сайт',
+  },
 };
 const MAIL = 'pavlovanikol@gmail.com';
 
@@ -40,14 +48,14 @@ function page(env, lang, status, msg) {
 <meta name="robots" content="noindex"><title>Nikol Pavlova</title>
 <style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#FBF7F5;font:17px/1.6 system-ui,sans-serif;color:#111}
 main{max-width:520px;padding:32px}h1{font-size:28px;line-height:1.2;margin:0 0 12px}a{color:#8E2A3A}</style></head>
-<body><main><h1>${msg}</h1><p>${t.help(MAIL)}</p><p><a href="${site}${lang === 'cs' ? '/' : '/en/'}">${t.back}</a></p></main></body></html>`;
+<body><main><h1>${msg}</h1><p>${t.help(MAIL)}</p><p><a href="${site}${lang === 'en' ? '/en/' : '/'}">${t.back}</a></p></main></body></html>`;
   return new Response(html, { status, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } });
 }
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const lang = url.searchParams.get('lang') === 'cs' ? 'cs' : 'en';
+    const lang = ['cs', 'uk'].includes(url.searchParams.get('lang')) ? url.searchParams.get('lang') : 'en';
     const t = TEXT[lang];
     if (request.method !== 'GET' || url.pathname !== '/download') return page(env, lang, 404, t.invalid);
 

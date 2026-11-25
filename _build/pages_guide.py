@@ -18,12 +18,17 @@ from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2
 DOWNLOAD_API = ''   # e.g. 'https://guide.nikolmakeup.cz' (the Worker's URL, no trailing slash)
 GUIDE = {
     'cs': dict(path='/pruvodce-stetci/', thanks='/pruvodce-stetci/dekuji/',
-               stripe_link='',      # e.g. 'https://buy.stripe.com/xxxx' (Payment Link for the CZ guide)
-               price='', price_num=None, currency='CZK'),   # price shown on the page, e.g. '390 Kč'; price_num=390
+               stripe_link='https://buy.stripe.com/5kQ9AVfrYaGr27uaFp2Nq03',
+               price='499 Kč', price_num=499, currency='CZK'),
     'en': dict(path='/en/brush-guide/', thanks='/en/brush-guide/thank-you/',
-               stripe_link='',      # Payment Link for the EN guide
-               price='', price_num=None, currency='EUR'),   # e.g. '€15'; price_num=15
+               stripe_link='https://buy.stripe.com/6oU4gB4Nk4i36nKaFp2Nq02',
+               price='€19', price_num=19, currency='EUR'),
+    'uk': dict(path='/uk/gaid-penzlyky/', thanks='/uk/gaid-penzlyky/dyakuyu/',
+               stripe_link='https://buy.stripe.com/bJe5kF93A8yj6nK00L2Nq01',
+               price='699 грн', price_num=699, currency='UAH'),
 }
+LANGS = ('cs', 'en', 'uk')
+OTHER = {'cs': 'en', 'en': 'cs', 'uk': 'cs'}   # target of the header language switch
 
 
 def ready(lang):
@@ -31,8 +36,8 @@ def ready(lang):
     return bool(g['stripe_link'] and g['price'] and DOWNLOAD_API)
 
 
-def pair_ready():
-    return ready('cs') and ready('en')
+def all_ready():
+    return all(ready(l) for l in LANGS)
 
 
 # ---------------------------------------------------------------- copy (taken from the guide itself)
@@ -72,7 +77,7 @@ T = {
             ('V jakém formátu průvodce je?', 'Je to PDF o 23 stranách. Otevřete ho v telefonu, tabletu i počítači.'),
             ('Jak průvodce dostanu?', 'Hned po zaplacení vás Stripe vrátí na můj web na stránku s tlačítkem ke stažení PDF.'),
             ('Musím si koupit stejné štětce?', 'Ne. Seznam štětců není povinný – průvodce vás naučí, jaký tvar a vlas štětce potřebujete. Na konci jsou i alternativy k zakoupení v Česku (Notino, Douglas).'),
-            ('Je průvodce i v angličtině?', 'Ano, anglickou verzi najdete na stránce <a href="/en/brush-guide/">Makeup brush guide</a>.'),
+            ('Je průvodce i v jiných jazycích?', 'Ano: anglicky – <a href="/en/brush-guide/">Makeup brush guide</a>, ukrajinsky – <a href="/uk/gaid-penzlyky/">Гайд по пензликах</a>.'),
             ('Stažení nefunguje, co teď?', f'Napište mi na <a href="mailto:{MAIL}">{MAIL}</a> e-mail, který jste zadali při platbě, a průvodce vám pošlu.')],
         foot=('Máte dotaz k průvodci?', 'Kontaktujte mě', 'Napište mi, ráda poradím, jestli je průvodce pro vás.'),
         # thank-you page
@@ -118,7 +123,7 @@ T = {
             ('What format is the guide?', 'It’s a 23-page PDF. It opens on a phone, tablet or computer.'),
             ('How do I get the guide?', 'Right after payment Stripe sends you back to my site, to a page with the PDF download button.'),
             ('Do I need to buy the same brushes?', 'No. The brush list isn’t mandatory – the guide teaches you which brush shape and bristle you need. At the end there are also alternatives you can buy in Czechia (Notino, Douglas).'),
-            ('Is the guide available in Czech?', 'Yes, the Czech version is on the <a href="/pruvodce-stetci/">Průvodce štětci</a> page.'),
+            ('Is the guide available in other languages?', 'Yes: in Czech – <a href="/pruvodce-stetci/">Průvodce štětci</a>, and in Ukrainian – <a href="/uk/gaid-penzlyky/">Гайд по пензликах</a>.'),
             ('The download doesn’t work – what now?', f'Email me at <a href="mailto:{MAIL}">{MAIL}</a> from the address you used at checkout and I’ll send you the guide.')],
         foot=('Questions about the guide?', 'Get in touch', 'Message me and I’ll help you decide whether the guide is right for you.'),
         ty_title='Thank you | Makeup Brush Guide – Nikol Pavlova',
@@ -128,9 +133,55 @@ T = {
         ty_missing=f'The download link didn’t load. Please email me at <a href="mailto:{MAIL}">{MAIL}</a> from the address you used at checkout and I’ll send you the guide.',
         ty_next='In the meantime, read on the blog', ty_next_href='/en/blog/how-to-wash-makeup-brushes/', ty_next_label='How to wash makeup brushes →',
     ),
+    'uk': dict(
+        title='Гайд по пензликах для макіяжу (PDF) | Nikol Pavlova',
+        desc='Гайд по пензликах від візажистки Ніколь Павлової: який пензлик для чого, яким рухом працювати і як доглядати. PDF на 23 сторінки, 10 розділів, 2 закриті відео і посилання на всі пензлики.',
+        crumbs=[('Головна', '/'), ('Гайд по пензликах', None)],
+        big='Гайд по пензликах', sub='для макіяжу – що обрати, як працювати і як доглядати',
+        lead='Гайд по пензликах, з якими я сама працюю: для чого кожен, яким рухом ним працювати, мої поради до кожного і як мити пензлики, щоб вони служили довше. PDF можна завантажити одразу після оплати.',
+        buy='Купити гайд', buy_soon='Скоро у продажу',
+        hero_alt=('Гайд по пензликах для макіяжу – обкладинка PDF', 'Ніколь Павлова на уроці макіяжу'),
+        marquee=['PDF на 23 сторінки', '10 розділів', 'Картки пензликів', 'Словничок рухів', 'Миття пензликів', '2 закриті відео', 'Посилання на пензлики'],
+        intro_label='Про гайд', intro_title='Який пензлик для чого і як ним працювати',
+        intro_tag='список пензликів не обов’язковий – головне розуміти, яка форма тобі потрібна',
+        intro_body='Я українка, живу в Празі; краса завжди була моїм хобі, а тепер це моя робота. У гайд я зібрала пензлики, якими справді користуюся: для тону й коректора, пудри й рум’ян, очей, брів і губ. Для кожного ти знайдеш, <b>для чого він</b>, <b>яким рухом ним працювати</b> і <b>мою пораду</b>. Не обов’язково купувати ті самі бренди – гайд навчить розуміти, яка форма й ворс пензлика тобі потрібні.',
+        chips=['Натуральний ворс чи синтетика', 'Картки пензликів з технікою й порадою', 'Мій базовий набір із 7 пензликів', 'Альтернативи, які можна купити в Чехії'],
+        feat_title='Що в |гайді', feat_sub='10 розділів, 23 сторінки',
+        feats=[('Ворс і рухи', 'Натуральний ворс чи синтетика, види ворсу і словничок рухів: набивати, розтягувати, шліфувати, відтушовувати, тягнути.'),
+               ('Картки пензликів', 'Тон і коректор, пудра й рум’яна, очі, брови й губи: для чого, техніка і моя порада до кожного пензлика.'),
+               ('Догляд і базовий набір', 'Як дбайливо мити пензлики, чого уникати, і сім пензликів, з яких варто почати.'),
+               ('Відео й посилання', 'Два закриті відео – як я мию пензлики і як працюю кожним із них – і посилання, де їх купити.')],
+        feat_alts=['Зміст гайду по пензликах', 'Картки пензликів для тону й коректора', 'Миття пензликів для макіяжу', 'Відео до гайду по пензликах'],
+        toc_label='Зміст', toc_title='Розділи гайду',
+        toc=[('Ворс: натуральний чи синтетика', '03'), ('Словничок рухів', '04'), ('Тон і коректор', '05'),
+             ('Пудра, рум’яна, скульптор, хайлайтер', '08'), ('Очі: тіні, розтушовка, підводка', '12'), ('Брови і губи', '17'),
+             ('Догляд і миття пензликів', '19'), ('Мій базовий набір', '20'), ('Відео до гайду', '21'), ('Посилання на пензлики', '22')],
+        price_label='Ціна', price_title='Гайд по |пензликах', price_note='Оплата карткою через Stripe. Посилання на завантаження – одразу після оплати.',
+        price_col='Гайд по пензликах (PDF)', price_items=['23 сторінки, 10 розділів', 'Картки пензликів з технікою й порадами', 'Мій базовий набір із 7 пензликів', '2 закриті відео', 'Посилання на всі пензлики', 'Українською'],
+        price_tbd='Ціна скоро',
+        steps_title='Як це |працює', steps_sub='покупка і завантаження', steps=[
+            ('Оплати через Stripe', 'Кнопка відкриє захищену сторінку оплати Stripe. Можна платити карткою, Apple Pay або Google Pay.'),
+            ('Відкриється сторінка завантаження', 'Одразу після оплати ти повернешся на мій сайт, на сторінку з кнопкою для завантаження PDF.'),
+            ('Збережи PDF', 'Збережи гайд у телефон чи комп’ютер – відкривай будь-коли, навіть без інтернету.'),
+            ('Дивись відео', 'Відео відкриваються кнопками прямо в PDF. Вони закриті, тож, будь ласка, не пересилай їх.')],
+        faq_title='Запитання про гайд', faq=[
+            ('У якому форматі гайд?', 'Це PDF на 23 сторінки. Він відкривається на телефоні, планшеті й комп’ютері.'),
+            ('Як я отримаю гайд?', 'Одразу після оплати Stripe поверне тебе на мій сайт, на сторінку з кнопкою для завантаження PDF.'),
+            ('Чи треба купувати ті самі пензлики?', 'Ні. Список пензликів не обов’язковий – гайд навчить розуміти, яка форма й ворс тобі потрібні. Посилання ведуть переважно в українські магазини, а в кінці є альтернативи, які можна купити в Чехії (Notino, Douglas).'),
+            ('Чи є гайд іншими мовами?', 'Так: чеською – <a href="/pruvodce-stetci/">Průvodce štětci</a>, англійською – <a href="/en/brush-guide/">Makeup brush guide</a>.'),
+            ('Завантаження не працює, що робити?', f'Напиши мені на <a href="mailto:{MAIL}">{MAIL}</a> з адреси, яку вказала під час оплати, і я надішлю гайд.')],
+        foot=('Є запитання про гайд?', 'Напиши мені', 'Напиши – підкажу, чи підійде тобі гайд.'),
+        ty_title='Дякую за покупку | Гайд по пензликах – Nikol Pavlova',
+        ty_big='Дякую!', ty_sub='твій гайд по пензликах готовий',
+        ty_text='Оплата пройшла. Завантаж PDF і збережи його в телефон чи комп’ютер.',
+        ty_btn='Завантажити гайд (PDF)', ty_note='Посилання на завантаження діє 30 днів – збережи PDF одразу.',
+        ty_missing=f'Посилання на завантаження не завантажилося. Напиши мені, будь ласка, на <a href="mailto:{MAIL}">{MAIL}</a> з адреси, яку вказала під час оплати, і я надішлю гайд.',
+        ty_next='А поки – почитай у блозі', ty_next_href='/blog/jak-myt-stetce-na-make-up/', ty_next_label='Як мити пензлики (чеською) →',
+    ),
 }
 
-FEAT_IMGS = {'cs': ['guide-cs-p02', 'guide-cs-p06', 'brushes-hero', 'guide-cs-p21'],
+FEAT_IMGS = {'uk': ['guide-uk-p02', 'guide-uk-p06', 'brushes-hero', 'guide-uk-p21'],
+             'cs': ['guide-cs-p02', 'guide-cs-p06', 'brushes-hero', 'guide-cs-p21'],
              'en': ['guide-en-p02', 'guide-en-p06', 'brushes-hero', 'guide-en-p21']}
 
 
@@ -155,11 +206,11 @@ def _schema(lang, t, g):
 
 
 def sales(lang):
-    t, g, other = T[lang], GUIDE[lang], GUIDE['en' if lang == 'cs' else 'cs']
+    t, g, other = T[lang], GUIDE[lang], GUIDE[OTHER[lang]]
     path, ok = g['path'], ready(lang)
     buy_href = g['stripe_link'] if ok else '#packages'
     buy_label = f"{t['buy']} – {g['price']} +" if ok else t['buy_soon']
-    alts = [('cs', GUIDE['cs']['path']), ('en', GUIDE['en']['path']), ('x-default', GUIDE['cs']['path'])] if pair_ready() else []
+    alts = [(l, GUIDE[l]['path']) for l in LANGS] + [('x-default', GUIDE['cs']['path'])] if all_ready() else []
     h = head(lang, t['title'], t['desc'], path, alts, SITE + f'/assets/img/guide-{lang}-p01-800.webp', _schema(lang, t, g),
              preload(f'guide-{lang}-p01', '(max-width: 900px) 60vw, 30vw'))
     if not ok:
@@ -184,7 +235,7 @@ def sales(lang):
                   [(t['price_col'], g['price'] if ok else t['price_tbd'], t['price_items'], buy_label)], buy_href,
                   imgs=[(f'guide-{lang}-p01', t['hero_alt'][0])])
     h += steps2(t['steps_title'], t['steps_sub'], t['steps'])
-    h += faq(lang, 'FAQ' if lang == 'en' else 'časté dotazy', t['faq'], title=t['faq_title'])
+    h += faq(lang, {'cs': 'časté dotazy', 'uk': 'часті запитання'}.get(lang, 'FAQ'), t['faq'], title=t['faq_title'])
     h += footer(lang, t['foot'][0], t['foot'][1], t['foot'][2], (buy_href, buy_label) if ok else None)
     write(path, h)
 
@@ -196,7 +247,7 @@ def thanks(lang):
     h = head(lang, t['ty_title'], t['ty_text'], path, [], SITE + f'/assets/img/guide-{lang}-p01-800.webp', [])
     h = _noindex(h, path)
     h = h.replace('</head>', '<meta name="referrer" content="no-referrer">\n</head>', 1)   # keep session_id out of Referer headers
-    h += header(lang, '', GUIDE['en' if lang == 'cs' else 'cs']['thanks'])
+    h += header(lang, '', GUIDE[OTHER[lang]]['thanks'])
     h += f'''<div class="u"><section class="u-hero" aria-labelledby="page-h1">
 <div class="u-hero-txt">
 <h1 class="u-h1" id="page-h1"><span class="big">{t['ty_big']}</span> <span class="sub">{t['ty_sub']}</span></h1>
@@ -219,7 +270,7 @@ if(ok)document.querySelector('[data-dl-btn]').href=api+'/download?lang={lang}&se
 
 
 def build():
-    for lang in ('cs', 'en'):
+    for lang in LANGS:
         sales(lang)
         thanks(lang)
         if not ready(lang):

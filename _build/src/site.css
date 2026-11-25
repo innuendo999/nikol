@@ -1187,3 +1187,9 @@ h1,h2,h3{overflow-wrap:break-word}
 .u-like .kv dt{color:#6E6E6E}.u-like .kv dd{font-family:var(--f-tight);color:#111}.u-like .kv div{border-color:#E6E6E6}.u-like .kv a{color:#111}
 @media (max-width:900px){.u-pf .pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.u-pf .pgrid figure{height:260px}}
 @media (max-width:900px){.u-pf .pgrid figcaption{left:8px;right:auto;bottom:8px;padding:6px 10px;border-radius:999px}.u-pf .pgrid figcaption span{display:none}.u-pf .pgrid figcaption b{font-size:12px}}
+
+/* home pricing card crops */
+.hm-pc1{object-position:50% 12%}.hm-pc2{object-position:50% 18%}.hm-pc3{object-position:50% 0%}
+
+/* about service cards */
+.ab-pos-f{object-position:50% 20%}.ab-pos-g{object-position:50% 0%}.ab-pos-h{object-position:50% 12%}

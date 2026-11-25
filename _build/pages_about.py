@@ -51,8 +51,8 @@ T = {
 }
 
 # (image, crop class, colour class) — photos from the home page hero for now
-CARD_IMG = [('nikol-hero', 'ab-pos-a', 'ab-gel--1'), ('nikol-portrait', 'ab-pos-b', 'ab-gel--2'),
-            ('nikol-header', 'ab-pos-c', 'ab-gel--3'), ('nikol-about', 'ab-pos-e', 'ab-gel--4')]
+CARD_IMG = [('couple-bouquet', 'ab-pos-f', 'ab-gel--1'), ('ev-pink-gown', 'ab-pos-g', 'ab-gel--2'),
+            ('ev-cap', 'ab-pos-h', 'ab-gel--3'), ('nikol-about', 'ab-pos-e', 'ab-gel--4')]
 GALLERY = [('nikol-hero', 'ab-pos-a', 1), ('nikol-portrait', 'ab-pos-b', 2), ('nikol-header', 'ab-pos-c', 3), ('nikol-about', 'ab-pos-e', 4),
            ('nikol-portrait', 'ab-pos-c', 5), ('nikol-header', 'ab-pos-b', 6), ('nikol-about', 'ab-pos-e', 7), ('nikol-portrait', 'ab-pos-b', 8)]
 

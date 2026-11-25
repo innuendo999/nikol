@@ -1190,3 +1190,6 @@ h1,h2,h3{overflow-wrap:break-word}
 
 /* home pricing card crops */
 .hm-pc1{object-position:50% 12%}.hm-pc2{object-position:50% 18%}.hm-pc3{object-position:50% 0%}
+
+/* about service cards */
+.ab-pos-f{object-position:50% 20%}.ab-pos-g{object-position:50% 0%}.ab-pos-h{object-position:50% 12%}

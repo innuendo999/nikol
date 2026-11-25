@@ -28,6 +28,9 @@ for f in sorted(glob.glob(os.path.join(ROOT, 'img', 'new', '*.jpg'))):
 for f in sorted(glob.glob(os.path.join(ROOT, 'img', 'products', '*', '*'))):
     if f.lower().endswith(('.jpg', '.jpeg', '.png', '.webp')):
         SRC['prod-' + os.path.splitext(os.path.basename(f))[0]] = (os.path.relpath(f, ROOT), [300, 600])
+# brush guide: page previews rendered from the PDFs (pdftoppm -r 100), see _build/pages_guide.py
+for f in sorted(glob.glob(os.path.join(ROOT, 'img', 'guide', '*.jpg'))):
+    SRC['guide-' + os.path.splitext(os.path.basename(f))[0]] = (os.path.relpath(f, ROOT), [400, 800])
 meta = {}
 for name, (src, widths) in SRC.items():
     im = Image.open(os.path.join(ROOT, src)).convert('RGB')

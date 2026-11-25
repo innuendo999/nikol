@@ -5,7 +5,7 @@ import hashlib
 import lib
 from lib import *
 from utilities import css as utility_css
-import pages_cs, pages_en, pages_blog, pages_about
+import pages_cs, pages_en, pages_blog, pages_about, pages_guide
 
 LASTMOD = '2026-11-25'
 
@@ -33,9 +33,10 @@ PAIRS = [
 
 
 def sitemap():
+    pairs = PAIRS + ([(pages_guide.GUIDE['cs']['path'], pages_guide.GUIDE['en']['path'], '0.6')] if pages_guide.pair_ready() else [])
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
-    for cs, en, pr in PAIRS:
+    for cs, en, pr in pairs:
         alts = []
         if cs and en:
             alts = [('cs', cs), ('en', en), ('x-default', cs)]
@@ -155,5 +156,6 @@ if __name__ == '__main__':
     pages_en.build()
     pages_blog.build()
     pages_about.build()
+    pages_guide.build()
     sitemap(); robots(); llms(); not_found()
     print('built')

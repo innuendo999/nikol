@@ -12,6 +12,11 @@ def _h2(title, hid, label=''):
     return f'{lab}<h2 class="u-h2" id="{hid}">{a.strip()}{em}</h2>'
 
 
+def _doc(name):
+    """PDF page previews (paid guide) are shown whole, not cropped."""
+    return 'u-doc' if name.startswith('guide-') else ''
+
+
 def hero_svc(lang, crumb_items, big, sub, desc, cta, photos, quote=None):
     """Split hero: text on a pastel field, two photos on the right. photos: [(name, alt, crop_class), ...]."""
     (p1, a1, c1), (p2, a2, c2) = photos
@@ -41,7 +46,7 @@ def strip(items):
 
 
 def intro2(label, title, tag, imgs, body, chips, cta=None):
-    phs = ''.join(f'<span class="u-ph u-ph--i{k}">{I(n, alt, sizes="(max-width: 900px) 50vw, 25vw")}</span>' for k, (n, alt) in enumerate(imgs or []))
+    phs = ''.join(f'<span class="u-ph u-ph--i{k}">{I(n, alt, sizes="(max-width: 900px) 50vw, 25vw", cls=_doc(n))}</span>' for k, (n, alt) in enumerate(imgs or []))
     ticks = ''.join(f'<li><span class="u-tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg></span>{c}</li>' for c in chips or [])
     cta_html = f'<p><a class="u-btn u-btn--dark" href="{cta[0]}">{cta[1]}</a></p>' if cta else ''
     ph_html = f'<div class="u-intro-ph">{phs}</div>' if phs else ''
@@ -66,7 +71,7 @@ def features2(title, sub, cells, hid='grid-h'):
     out = ''
     for k, (p, im) in enumerate(zip(panels, imgs)):
         _, num, h, txt, _alt = p
-        out += (f'<li class="u-ft"><span class="u-ph u-ph--ft">{I(im[1], im[2], sizes="(max-width: 700px) 100vw, 25vw")}'
+        out += (f'<li class="u-ft"><span class="u-ph u-ph--ft">{I(im[1], im[2], sizes="(max-width: 700px) 100vw, 25vw", cls=_doc(im[1]))}'
                 f'<span class="u-ph-gel u-gel--{k + 1}" aria-hidden="true"></span><span class="u-num" aria-hidden="true">{num}</span></span>'
                 f'<h3>{h}</h3><p>{txt}</p></li>')
     return f'''<section class="u wrap u-sec" aria-labelledby="{hid}">
@@ -83,7 +88,7 @@ def pricing2(label, title, note, cols, cta_href='#contact', imgs=None):
         ph = ''
         if imgs and k < len(imgs):
             n, alt = imgs[k]
-            ph = f'<span class="u-pc-ph">{I(n, alt, sizes="(max-width: 900px) 100vw, 50vw")}</span>'
+            ph = f'<span class="u-pc-ph">{I(n, alt, sizes="(max-width: 900px) 100vw, 50vw", cls=_doc(n))}</span>'
         lis = ''.join(f'<li>— {i}</li>' for i in items)
         out += (f'<li class="u-pc">{ph}<div class="u-pc-b"><div class="u-pc-row"><h3>{h}</h3><span class="u-price">{badge}</span></div>'
                 f'<ul class="u-pc-list" role="list">{lis}</ul><p><a class="u-btn u-btn--dark" href="{cta_href}">{btn}</a></p></div></li>')

@@ -52,7 +52,7 @@ def sitemap():
 
 
 def robots():
-    open(os.path.join(ROOT, 'robots.txt'), 'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
+    open(os.path.join(ROOT, 'robots.txt'), 'w').write(f'User-agent: *\nAllow: /\n# PDF guides are shared by link only (they contain unlisted videos)\nDisallow: /guides/\n\nSitemap: {SITE}/sitemap.xml\n')
 
 
 def llms():

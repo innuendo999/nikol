@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+# PDF guides are shared by link only (they contain unlisted videos)
+Disallow: /guides/
 
 Sitemap: https://nikolmakeup.cz/sitemap.xml

@@ -31,8 +31,8 @@ T = {
              ('evening-13', 'Večerní look – soft glam'), ('wedding-14', 'Svatební look – soft glam svatební líčení')],
         phrase='Precizní technika, <em>kreativita</em><br>a cit <em>pro barvy i textury</em>', phrase_label='Můj přístup',
         price_label='balíčky služeb', price_h='Ceník', price_note='*Pro konkrétní cenovou nabídku mě prosím kontaktujte.',
-        price=[('Svatba', 'Svatební balíček', 'Info', '/svatebni-liceni/', 'wedding-4', 'Svatební balíček', ['Zkouška líčení', 'Svatební make-up', 'Umělé řasy v ceně', 'Touch-up kit']),
-               ('Speciální příležitosti', 'Ples, večer &amp; akce', 'od 2 500 Kč', '/plesove-liceni/', 'evening-7', 'Speciální příležitosti – plesové a večerní líčení', ['Plesové líčení', 'Večerní make-up', 'Účes', 'Líčení na akce']),
+        price=[('Svatba', 'Svatební balíček', 'Info', '/svatebni-liceni/', 'bride-calla', 'Nevěsta s kyticí kal – svatební líčení', ['Zkouška líčení', 'Svatební make-up', 'Umělé řasy v ceně', 'Touch-up kit']),
+               ('Speciální příležitosti', 'Ples, večer &amp; akce', 'od 2 500 Kč', '/plesove-liceni/', 'ev-gold', 'Speciální příležitosti – plesové a večerní líčení', ['Plesové líčení', 'Večerní make-up', 'Účes', 'Líčení na akce']),
                ('Kurzy', 'Osobní kurz líčení', 'Na vyžádání', '/kurzy-liceni/', 'nude-2', 'Kurzy líčení', ['Příprava pleti', 'Teorie barev', 'Oči &amp; řasy', 'Nástroje &amp; produkty'])]),
     'en': dict(
         chips=['5.0 ★ Google', 'Prague 8 – Karlín', 'English · Česky · Українська'],
@@ -59,8 +59,8 @@ T = {
              ('evening-13', 'Evening look – soft glam'), ('wedding-14', 'Bridal look – soft glam bridal makeup')],
         phrase='Precise technique, <em>creativity</em><br>and a feeling <em>for colour &amp; texture</em>', phrase_label='My approach',
         price_label='pricing packages', price_h='Rates', price_note='*Please contact me for a personalised quote.',
-        price=[('Wedding', 'Wedding package', 'Request', '/en/wedding/', 'wedding-4', 'Wedding makeup package', ['Bridal Trial', 'Wedding Day Makeup', 'Lashes Included', 'Touch-up Kit']),
-               ('Special occasions', 'Evening &amp; events', 'Request', '/en/evening-makeup/', 'evening-7', 'Special occasion makeup', ['Cocktail Makeup', 'Evening Styling', 'Prom / Ball Makeup', 'Photo Shoots']),
+        price=[('Wedding', 'Wedding package', 'Request', '/en/wedding/', 'bride-calla', 'Bride with a calla bouquet – wedding makeup', ['Bridal Trial', 'Wedding Day Makeup', 'Lashes Included', 'Touch-up Kit']),
+               ('Special occasions', 'Evening &amp; events', 'Request', '/en/evening-makeup/', 'ev-gold', 'Special occasion makeup', ['Cocktail Makeup', 'Evening Styling', 'Prom / Ball Makeup', 'Photo Shoots']),
                ('Courses', 'Personal makeup lesson', 'Request', '/en/courses/', 'nude-2', 'Makeup courses', ['Skin Prep', 'Colour Theory', 'Eyes &amp; Lashes', 'Tools &amp; Products'])]),
 }
 
@@ -82,7 +82,8 @@ def home_body(lang):
     chips2 = ''.join(f'<li>{c}</li>' for c in t['chips2'])
     mos = ''.join(f'<span class="hm-mo hm-mo--{i + 1}">{I(im, alt, sizes="260px")}</span>' for i, (im, alt) in enumerate(t['mos']))
     mos_dup = ''.join(f'<span class="hm-mo hm-mo--{i + 1}">{I(im, "", sizes="260px")}</span>' for i, (im, alt) in enumerate(t['mos']))
-    price = ''.join(f'<li><a class="hm-pc" href="{u}"><span class="hm-pc-ph">{I(im, alt, sizes="(max-width: 900px) 100vw, 33vw")}<span class="hm-tag">{tag}</span></span>'
+    PC_POS = {'bride-calla': 'hm-pc1', 'ev-gold': 'hm-pc2', 'nude-2': 'hm-pc3'}
+    price = ''.join(f'<li><a class="hm-pc" href="{u}"><span class="hm-pc-ph">{I(im, alt, sizes="(max-width: 900px) 100vw, 33vw", cls=PC_POS.get(im, ""))}<span class="hm-tag">{tag}</span></span>'
                     f'<span class="hm-pc-b"><h3>{n}</h3><span class="hm-price">{p}</span><span class="hm-list">{"".join(f"<span>— {x}</span>" for x in li)}</span></span></a></li>'
                     for tag, n, p, u, im, alt, li in t['price'])
     return f'''<div class="hm">

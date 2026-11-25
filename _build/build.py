@@ -50,8 +50,8 @@ def sitemap():
             out.append('  </url>')
     if pages_guide.all_ready():   # paid guide: three languages, each listing all three
         G = pages_guide.GUIDE
-        alts = [(l, G[l]['path']) for l in pages_guide.LANGS] + [('x-default', G['cs']['path'])]
-        for l in pages_guide.LANGS:
+        alts = [(l, G[l]['path']) for l in pages_guide.LISTED] + [('x-default', G['cs']['path'])]
+        for l in pages_guide.LISTED:
             out += ['  <url>', f'    <loc>{SITE}{G[l]["path"]}</loc>', f'    <lastmod>{LASTMOD}</lastmod>', '    <priority>0.6</priority>']
             out += [f'    <xhtml:link rel="alternate" hreflang="{hl}" href="{SITE}{ap}"/>' for hl, ap in alts]
             out.append('  </url>')
@@ -100,7 +100,7 @@ Key facts for accurate reference:
 
 ## Guides
 
-- [Průvodce štětci]({s}/pruvodce-stetci/) · [Makeup brush guide]({s}/en/brush-guide/) · [Гайд по пензликах]({s}/uk/gaid-penzlyky/): Paid PDF guide to makeup brushes by Nikol Pavlova (23 pages, 10 chapters, 2 private videos) – 499 CZK / €19 / 699 UAH, bought via Stripe.
+- [Průvodce štětci]({s}/pruvodce-stetci/) · [Makeup brush guide]({s}/en/brush-guide/): Paid PDF guide to makeup brushes by Nikol Pavlova (23 pages, 10 chapters, 2 private videos) – 499 CZK / €19, bought via Stripe.
 
 ## Blog
 

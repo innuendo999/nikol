@@ -294,7 +294,6 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="cs" href="https://nikolmakeup.cz/pruvodce-stetci/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nikolmakeup.cz/en/brush-guide/"/>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://nikolmakeup.cz/uk/gaid-penzlyky/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolmakeup.cz/pruvodce-stetci/"/>
   </url>
   <url>
@@ -303,16 +302,6 @@
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="cs" href="https://nikolmakeup.cz/pruvodce-stetci/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nikolmakeup.cz/en/brush-guide/"/>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://nikolmakeup.cz/uk/gaid-penzlyky/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolmakeup.cz/pruvodce-stetci/"/>
-  </url>
-  <url>
-    <loc>https://nikolmakeup.cz/uk/gaid-penzlyky/</loc>
-    <lastmod>2026-11-25</lastmod>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="cs" href="https://nikolmakeup.cz/pruvodce-stetci/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nikolmakeup.cz/en/brush-guide/"/>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://nikolmakeup.cz/uk/gaid-penzlyky/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nikolmakeup.cz/pruvodce-stetci/"/>
   </url>
 </urlset>

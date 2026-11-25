@@ -33,7 +33,7 @@ Key facts for accurate reference:
 
 ## Guides
 
-- [Průvodce štětci](https://nikolmakeup.cz/pruvodce-stetci/) · [Makeup brush guide](https://nikolmakeup.cz/en/brush-guide/) · [Гайд по пензликах](https://nikolmakeup.cz/uk/gaid-penzlyky/): Paid PDF guide to makeup brushes by Nikol Pavlova (23 pages, 10 chapters, 2 private videos) – 499 CZK / €19 / 699 UAH, bought via Stripe.
+- [Průvodce štětci](https://nikolmakeup.cz/pruvodce-stetci/) · [Makeup brush guide](https://nikolmakeup.cz/en/brush-guide/): Paid PDF guide to makeup brushes by Nikol Pavlova (23 pages, 10 chapters, 2 private videos) – 499 CZK / €19, bought via Stripe.
 
 ## Blog
 

@@ -352,7 +352,7 @@ def bl_services(lang):
               ('Kurz 1 na 1', 'Na vaší tváři, s vaší kosmetikou', 'Cena na dotaz', '/kurzy-liceni/'),
               ('5,0 ★ Google', '9 recenzí · CZ, EN, UA', 'Přečíst recenze', GBP)] if cs else
              [('Wedding package', 'Trial, wedding day, lashes, touch-up kit', 'Quote within 24 h', '/en/wedding/'),
-              ('Balls &amp; events', 'With hairstyling CZK 4,500', 'From CZK 2,500', '/en/evening-makeup/'),
+              ('Balls &amp; events', 'With hairstyling CZK 4,500', 'From CZK 2,500', '/en/ball-makeup/'),
               ('1:1 makeup course', 'On your face, with your own kit', 'Price on request', '/en/courses/'),
               ('5.0 ★ Google', '9 reviews · English spoken', 'Read reviews', GBP)])
     cards_ = ''.join(f'<li><a class="bl-svc" href="{u}"><b>{n}</b><small>{d}</small><span>{c} ↗</span></a></li>' for n, d, c, u in items)

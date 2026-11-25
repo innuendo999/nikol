@@ -76,7 +76,7 @@ def wedding():
                'Jako profesionální <b>svatební vizážistka v Praze</b> pracuji s nevěstami na looku, který je krásný, připravený pro fotografie a – co je nejdůležitější – jedinečně jejich. Ať už se vdáváte na Staroměstském náměstí, na zámku za Prahou, nebo plánujete destinační svatbu kdekoli v Evropě, přijedu za vámi. Každá služba začíná podrobnou konzultací o vaší představě, typu pleti, šatech a stylu svatby. <b>Zkušební líčení</b> je součástí každého svatebního balíčku, abyste do svatebního dne šli zcela sebejistě.',
                ['Anglicky mluvící – ideální pro zahraniční nevěsty a expaty', 'Zkušební líčení v ceně každého svatebního balíčku', 'Nevěsta, družičky i maminka nevěsty', 'Destinační svatby po České republice i Evropě'],
                (CAL, 'Rezervovat svatební konzultaci +'))
-    h += features2('Čím se služba |odlišuje', 'proč si nevěsty vybírají Nikol', [
+    h += features2('Čím se svatební líčení |odlišuje', 'proč si nevěsty vybírají Nikol', [
         ('img', 'mother-makeup', 'Líčení maminky nevěsty'),
         ('panel', '01', 'Anglicky mluvící vizážistka', 'Plynně anglicky, česky a ukrajinsky – žádná jazyková bariéra pro zahraniční nevěsty ani destinační svatby v Praze.', False),
         ('img', 'bride-mirror', 'Nevěsta kontroluje look v zrcátku'),
@@ -97,7 +97,7 @@ def wedding():
         ('Sada na dotyky a finální kontrola', 'Dostanete osobní sadu na dotyky s klíčovými produkty použitými na vaši pleť, takže váš look zůstane perfektní až do posledního tance.'),
     ], 'Od první konzultace až po finální dotyky ve svatební den – přesně takto vypadá spolupráce, když si jako svou svatební vizážistku v Praze zarezervujete Nikol Pavlovou.')
     h += gallery2('Nedávné |svatební looky', 'vybrané práce', 'Zobrazit celé portfolio', '/portfolio/', [('veil-kiss', 'Svatební líčení – polibek pod závojem'), ('bride-dress', 'Svatební líčení – nevěsta před oblékáním šatů'), ('stairs-bride', 'Svatební líčení – nevěsta na schodišti'), ('wedding-walk', 'Svatební líčení – odchod z obřadu'), ('couple-garden', 'Svatební líčení – focení v zahradě'), ('terrace-toast', 'Svatební líčení – přípitek na terase'), ('church-bw', 'Svatební líčení – odchod z kostela'), ('bride-back', 'Svatební líčení – detail šatů a účesu')])
-    h += reviews(LANG, 'nevěsty a svatební focení', pick('shirley', 'polinashu', 'erika_w'), top=False)
+    h += reviews(LANG, 'nevěsty a svatební focení', pick('shirley', 'polinashu', 'erika_w'), top=False, title='Recenze nevěst z Google')
     h += f'''<section class="sec u u-guide" aria-labelledby="guide-h">
 <div class="wrap guide">
 <aside><p class="lbl red">Průvodce svatebním líčením</p><h2 class="big-h" id="guide-h">Svatební líčení v Praze</h2>
@@ -115,7 +115,7 @@ def wedding():
 </div>
 </section>
 '''
-    h += faq(LANG, 'otázky o svatebním líčení', faq_items)
+    h += faq(LANG, 'časté dotazy', faq_items, title='Dotazy ke svatebnímu líčení')
     h += teaser(LANG, ['blush', 'travel'])
     h += related2(LANG, [('Večerní líčení', '/vecerni-liceni/', 'evening-5'), ('Kurzy líčení', '/kurzy-liceni/', 'course')])
     h += footer(LANG, 'Rezervujte si svatební konzultaci', 'Kontaktujte mě', 'Působím v Praze, ČR · K dispozici pro cestování po Evropě. Osobní nabídka do 24 hodin.',
@@ -145,8 +145,8 @@ def service(cfg):
     h += steps2(cfg['steps_title'], 'jak to probíhá', cfg['steps'])
     h += gallery2(cfg['gal_title'], 'vybrané práce', 'Zobrazit celé portfolio', '/portfolio/', gal)
     h += banner2(cfg.get('banner', ''))
-    h += reviews(LANG, cfg['rv_sub'], cfg['reviews'], top=False)
-    h += faq(LANG, cfg['faq_sub'], faq_items)
+    h += reviews(LANG, cfg['rv_sub'], cfg['reviews'], top=False, title=cfg.get('rv_h2'))
+    h += faq(LANG, cfg['faq_sub'], faq_items, title=cfg.get('faq_h2'))
     h += teaser(LANG, cfg.get('posts', []))
     h += related2(LANG, cfg['related'])
     h += footer(LANG, cfg['f_label'], 'Kontaktujte mě', cfg['f_text'], cfg.get('f_primary'))
@@ -169,7 +169,7 @@ EVENING = dict(
     intro_imgs=[('evening-1', 'Večerní look – glamour smoky eye'), ('evening-3', 'Večerní look – výrazný ret a čistá pleť')],
     intro_body='Každé večerní líčení ladím k vašim šatům, účesu, světlu a charakteru večera. Na začátku si krátce řekneme, jak výrazný look chcete, a ve stejném termínu můžu udělat i účes. Přijedu za vámi domů, do hotelu nebo na místo konání kdekoli v Praze; výjezd se účtuje zvlášť. Chystáte se na ples? Podívejte se na <a href="/plesove-liceni/">plesové líčení</a>. Na firemní akci, galavečer nebo pro skupinu je tu <a href="/liceni-na-akce/">líčení na akce</a>.',
     chips=['Soft glam až smoky eyes', 'Líčení i účes v jednom termínu', 'Make-up na focení', 'Česky i anglicky'],
-    grid_title='Styly líčení', grid_sub='od soft glamu po smoky eyes', grid=[
+    grid_title='Styly večerního líčení', grid_sub='od soft glamu po smoky eyes', grid=[
         ('img', 'evening-13', 'Soft glam večerní look'), ('panel', '01', 'Soft glam', 'Zářivá pleť, jemně zvýrazněné oči a elegantní, nadčasový výsledek.', False),
         ('img', 'evening-12', 'Dramatický oční styling'), ('panel', '02', 'Smoky eyes', 'Kouřové oči a dramatický oční styling pro velké večery.', True),
         ('panel', '03', 'Výrazné rty', 'Čistá pleť a výrazný ret jako hlavní akcent celého looku.', True), ('img', 'evening-16', 'Výrazný kontur a rty'),
@@ -188,7 +188,7 @@ EVENING = dict(
         ('evening-11', 'Večerní look – make-up na galavečer'), ('evening-15', 'Večerní look – zářivá večerní tvář'),
         ('evening-14', 'Večerní look – moderní večerní styling'), ('evening-17', 'Večerní look – finální dotek večerního glamu')],
     rv_sub='líčení, které vydrží do večera', reviews=pick('nelli', 'stepanka', 'glenn'),
-    faq_sub='otázky o večerním líčení', faq=[
+    faq_sub='časté dotazy', faq_h2='Dotazy k večernímu líčení', faq=[
         ('Jak dlouho dopředu si rezervovat termín?', 'Pro večerní líčení a focení obvykle stačí 2–3 týdny, někdy lze zařídit i last-minute termín – stačí mě kontaktovat.'),
         ('Kolik stojí večerní líčení v Praze?', 'Večerní líčení stojí 2 500 Kč, účes 2 500 Kč a líčení i účes společně jen 4 500 Kč – ušetříte 500 Kč. Výjezd se účtuje zvlášť podle lokace.'),
         ('Přijedete za mnou?', 'Ano. Pracuji ve všech pražských čtvrtích – včetně Prahy 1 (Staré Město), Prahy 2 (Vinohrady) a Prahy 8 (Karlín) – a cestuji i do dalších měst v České republice a po Evropě.'),
@@ -200,13 +200,13 @@ PRICE_NOTE = 'Výjezd se účtuje zvlášť podle lokace.'
 
 PLESY = dict(
     posts=['blush', 'catrice'],
-    path='/plesove-liceni/', en=None, lang_switch='/en/evening-makeup/', crumb='Plesové líčení',
+    path='/plesove-liceni/', en='/en/ball-makeup/', crumb='Plesové líčení',
     parent=('Večerní líčení', '/vecerni-liceni/'), tone='tone-ox',
     title='Plesové líčení a účes Praha | Make-up na maturitní ples',
     desc='Plesové líčení a účes v Praze s výjezdem až k vám. Make-up, který vydrží do rána a skvěle vypadá na fotkách. Volné termíny na plesovou sezónu 2027.',
     service_name='Plesové líčení a účes Praha', service_type='Plesový make-up a účes',
     offers=[('Plesové líčení', 2500), ('Plesový účes', 2500), ('Plesové líčení a účes', 4500)],
-    big='Plesové<br>líčení', sub='v Praze – make-up, který vydrží do rána',
+    big='Plesové<br>líčení', sub='a účes v Praze – make-up, který vydrží do rána',
     lead='Líčení i účes na maturitní, reprezentační i firemní plesy. Přijedu za vámi domů nebo do hotelu kdekoli v Praze a připravím look, který vydrží celou noc, tanec i fotky s bleskem.',
     buttons=[('Ověřit volný termín +', CAL), ('Ceník', '#packages')], hero_img='evening-14',
     hero_alt='Plesové líčení Praha – glamour make-up a hollywoodské vlny',
@@ -238,7 +238,7 @@ PLESY = dict(
     banner=f'''<section class="sec--tight" aria-label="Kurzy líčení"><div class="wrap"><a class="banner" href="/kurzy-liceni/"><span class="txt"><span class="lbl pink">Kurzy líčení</span><span class="mid-h">Chcete se na ples nalíčit sama?</span><span class="serif" style="font-size:20px;color:#E9DCD8">V osobní lekci za 3 500 Kč se naučíte večerní look přímo na své tváři.</span><span class="btn btn--pink">Kurzy líčení →</span></span><span class="img">{I('course', '', sizes='(max-width: 900px) 100vw, 50vw', style='object-position:50% 15%')}</span></a></div></section>
 ''',
     rv_sub='líčení a účes, které vydrží', reviews=pick('zoe_c', 'shirley', 'nelli'),
-    faq_sub='otázky o plesovém líčení', faq=[
+    faq_sub='časté dotazy', faq_h2='Dotazy k plesovému líčení', faq=[
         ('Kolik stojí plesové líčení v Praze?', 'Plesové líčení stojí 2 500 Kč, plesový účes 2 500 Kč a líčení i účes společně jen 4 500 Kč – ušetříte 500 Kč. Výjezd se účtuje zvlášť podle lokace.'),
         ('Děláte i plesové účesy?', 'Ano. Připravím líčení i účes v jednom termínu – od elegantního drdolu po hollywoodské vlny. Pošlete mi fotku šatů a inspiraci.'),
         ('Jak dlouho dopředu si mám termín rezervovat?', 'V plesové sezóně (leden–únor) doporučuji 4–6 týdnů předem, soboty mizí nejrychleji. Mimo sezónu obvykle stačí 2–3 týdny.'),
@@ -253,22 +253,22 @@ PLESY = dict(
 
 AKCE = dict(
     posts=['catrice', 'empties'],
-    path='/liceni-na-akce/', en=None, lang_switch='/en/evening-makeup/', crumb='Líčení na akce',
+    path='/liceni-na-akce/', en='/en/event-makeup/', crumb='Líčení na akce',
     parent=('Večerní líčení', '/vecerni-liceni/'), tone='tone-sand',
     title='Líčení na akce Praha | Vizážistka na firemní akce a večírky',
     desc='Líčení a účes na společenské události, galavečery a firemní akce v Praze. Individuálně i pro skupiny, česky i anglicky. Rezervace online nebo telefonicky.',
     service_name='Líčení na akce Praha', service_type='Líčení a účes na společenské události',
     offers=[('Líčení na akci', 2500), ('Účes na akci', 2500), ('Líčení a účes na akci', 4500)],
-    big='Líčení<br>na akce', sub='a společenské události v Praze',
+    big='Líčení<br>na akce', sub='v Praze – firemní a společenské události',
     lead='Galavečer, firemní večírek, konference, narozeniny nebo rozlučka se svobodou. Nalíčím a učešu vás i celou skupinu – u vás, v hotelu nebo přímo na místě akce.',
     buttons=[('Rezervovat online +', CAL), (f'Zavolat {TEL_H}', f'tel:{TEL}'), ('Napsat e-mail', f'mailto:{MAIL}')], hero_img='evening-1',
     hero_alt='Líčení na akce Praha – glamour look na společenskou událost',
     marquee=['Galavečery', 'Firemní večírky', 'Konference', 'Narozeniny a oslavy', 'Skupiny', 'Česky · English'],
-    intro_title='Pro vás i pro vaši firmu', intro_tag='od galavečera po konferenci',
+    intro_title='Líčení na akce pro vás i pro vaši firmu', intro_tag='od galavečera po konferenci',
     intro_imgs=[('wedding-2', 'Skupinové líčení a účesy pro celou skupinu'), ('evening-11', 'Make-up na galavečer')],
     intro_body='Na akci chcete vypadat skvěle a nemít starosti. <b>Pro vás</b> připravím líčení i účes na galavečer, večírek, narozeniny, výročí, premiéru nebo rozlučku se svobodou. <b>Pro firmy a pořadatele</b> zajistím líčení speakerů a moderátorů před konferencí či natáčením, skupinové líčení týmu i opravy make-upu přímo během akce. Domluvíme se česky, anglicky i ukrajinsky.',
     chips=['Individuálně i pro skupiny', 'Líčení a účes v jednom termínu', 'Na místě akce v Praze', 'Česky · English · Українська'],
-    grid_title='Formáty služby', grid_sub='co pro vás můžu udělat', grid=[
+    grid_title='Formáty líčení na akce', grid_sub='co pro vás můžu udělat', grid=[
         ('panel', '01', 'Individuální líčení a účes', 'Look na míru vašim šatům a charakteru akce – u vás, v hotelu nebo ve studiu v Karlíně.', False), ('img', 'evening-7', 'Líčení na společenskou akci'),
         ('panel', '02', 'Skupinové líčení', 'Kamarádky, svatebčanky nebo celý tým – připravím časový plán, aby byli všichni hotovi včas.', True), ('img', 'wedding-3', 'Líčení a účes hosta na akci'),
         ('img', 'evening-15', 'Make-up na firemní večírek'), ('panel', '03', 'Na místě akce', 'Přijedu na místo konání a podle domluvy zůstanu na opravy make-upu během večera.', True),
@@ -288,7 +288,7 @@ AKCE = dict(
         ('evening-11', 'Make-up na galavečer'), ('evening-3', 'Look na večírek – výrazný ret a čistá pleť'),
         ('evening-4', 'Elegantní make-up na firemní akci'), ('wedding-2', 'Skupinové líčení – příprava více osob')],
     rv_sub='looky, které vydrží celý večer', reviews=pick('zoe', 'glenn', 'erika'),
-    faq_sub='otázky o líčení na akce', faq=[
+    faq_sub='časté dotazy', faq_h2='Dotazy k líčení na akce', faq=[
         ('Kolik stojí líčení na akci?', 'Za osobu: líčení 2 500 Kč, účes 2 500 Kč, líčení i účes společně jen 4 500 Kč – ušetříte 500 Kč. Výjezd se účtuje zvlášť podle lokace.'),
         ('Kolik osob zvládnete?', 'Záleží na čase, který máme. Počítejte zhruba 60–75 minut na samotné líčení a 2 hodiny na líčení s účesem na osobu – podle toho připravím časový plán.'),
         ('Můžete zůstat na akci a dělat opravy?', 'Ano, podle domluvy. Rozsah a cenu upřesníme při rezervaci.'),
@@ -304,7 +304,7 @@ NUDE = dict(
     desc='Přirozený nude make-up v Praze. Jemné líčení zaměřené na pleť pro zásnubní focení, portréty a civilní obřady – zdravá, zářivá pleť bez efektu „nalíčenosti“.',
     service_name='Nude make-up Praha', service_type='Přirozené líčení',
     offers=['Příprava pleti', 'Lehký podklad a korektor', 'Jemné zvýraznění očí a obočí', 'Přirozené tváře a rty'],
-    big='Nude<br>makeup', sub='v Praze – líčení, které zvýrazní, ne změní',
+    big='Nude<br>make-up', sub='v Praze – líčení, které zvýrazní, ne změní',
     lead='Jemné looky zaměřené na pleť, které zdůrazňují přirozené rysy bez efektu „nalíčenosti“. Ideální pro zásnubní focení, denní portréty, civilní obřady a klientky, které preferují téměř neviditelný make-up se zdravě zářivou pletí.',
     buttons=[('Rezervovat termín +', CAL), ('Pro koho', '#grid-h')], hero_img='nude-1', hero_alt='Nude makeup Praha – přirozený no-makeup look',
     marquee=['No-makeup look', 'Zdravá záře', 'Dewy pleť', 'Zásnubní focení', 'Civilní obřady'],
@@ -312,14 +312,14 @@ NUDE = dict(
     intro_imgs=[('nude-2', 'Nude look – jemná přirozená záře'), ('nude-3', 'Nude look – svěží dewy pleť')],
     intro_body='Základem nude looku je pečlivá příprava pleti a lehké vrstvy produktů, které s pletí splynou. Make-up ladím k vašemu typu pleti, tónu a příležitosti, aby výsledek působil svěže na fotografiích i naživo – od rána do večera.',
     chips=['Příprava pleti jako základ', 'Lehké krytí bez efektu masky', 'Jemně zvýrazněné oči, obočí a rty', 'Česky i anglicky'],
-    grid_title='Pro koho', grid_sub='kdy se hodí nude look', grid=[
+    grid_title='Pro koho je nude make-up', grid_sub='kdy se hodí nude look', grid=[
         ('panel', '01', 'Zásnubní focení', 'Přirozený look, který na fotografiích působí svěže a nadčasově.', False), ('img', 'wedding-13', 'Přirozená svatební krása'),
         ('panel', '02', 'Denní portréty', 'Pracovní, profilové i osobní portréty v denním světle.', True), ('img', 'nude-3', 'Svěží dewy pleť'),
         ('img', 'wedding-1', 'Jemný svatební make-up'), ('panel', '03', 'Civilní obřady', 'Jemný svatební look pro menší a civilní obřady.', True),
         ('img', 'nude-2', 'Jemná přirozená záře'), ('panel', '04', 'Téměř bez make-upu', 'Zdravě zářivá pleť a minimum produktu.', False)],
-    price_title='Přirozený look', price_note='Ceny závisí na typu služby, lokaci a termínu. Napište mi detaily a do 24 hodin vám pošlu osobní cenovou nabídku.',
+    price_title='Přirozené líčení', price_note='Ceny závisí na typu služby, lokaci a termínu. Napište mi detaily a do 24 hodin vám pošlu osobní cenovou nabídku.',
     price_col=('Nude makeup', 'Na vyžádání', ['Příprava pleti', 'Lehký podklad a korektor', 'Jemné zvýraznění očí a obočí', 'Přirozené tváře a rty'], 'Poptat cenu +'),
-    steps_title='Průběh líčení', steps=[
+    steps_title='Průběh nude líčení', steps=[
         ('Poptávka', 'Napište mi datum, místo a příležitost. Obvykle odpovídám do několika hodin.'),
         ('Příprava pleti', 'Look začíná péčí o pleť – podle jejího typu a potřeb.'),
         ('Lehké vrstvy', 'Krytí jen tam, kde je potřeba, a jemné zvýraznění vašich rysů.'),
@@ -328,7 +328,7 @@ NUDE = dict(
     banner=f'''<section class="sec--tight" aria-label="Kurzy líčení"><div class="wrap"><a class="banner" href="/kurzy-liceni/"><span class="txt"><span class="lbl pink">Kurzy líčení</span><span class="mid-h">Chcete se přirozený look naučit sama?</span><span class="serif" style="font-size:20px;color:#E9DCD8">V osobní lekci probereme přípravu pleti, teorii barev a techniky přímo na vaší tváři.</span><span class="btn btn--pink">Kurzy líčení →</span></span><span class="img">{I('course', '', sizes='(max-width: 900px) 100vw, 50vw', style='object-position:50% 15%')}</span></a></div></section>
 ''',
     rv_sub='přirozená, svěží pleť', reviews=pick('karin', 'marie', 'beata'),
-    faq_sub='otázky o nude make-upu', faq=[
+    faq_sub='časté dotazy', faq_h2='Dotazy k nude make-upu', faq=[
         ('Hodí se nude look i na svatbu?', 'Ano. Přirozený nude patří mezi styly svatebního líčení, které nabízím – ideální pro civilní obřady a nevěsty, které chtějí vypadat jako samy sebe. Více na stránce <a href="/svatebni-liceni/">Svatební líčení</a>.'),
         ('Kolik stojí nude make-up?', 'Ceny závisí na typu služby, lokaci a termínu. Napište mi prosím detaily a do 24 hodin vám pošlu osobní cenovou nabídku.'),
         ('Jak dlouho dopředu rezervovat?', 'Pro focení a běžné akce obvykle stačí 2–3 týdny, někdy lze zařídit i last-minute termín – stačí mě kontaktovat.'), BOOK_FAQ],
@@ -350,14 +350,14 @@ COMMERCIAL = dict(
     intro_imgs=[('commercial-2', 'Komerční look – kampaňové focení'), ('commercial-3', 'Komerční look – magazínový editorial styling')],
     intro_body='Spolupracuji na focení v Praze i mimo ni. Před focením si projdeme koncept, světlo a počet looků, aby make-up odpovídal zadání a vydržel celý produkční den. Během focení zůstávám na place a průběžně dělám retuše, takže každý záběr vypadá stejně čistě jako ten první.',
     chips=['Přizpůsobeno světlu a konceptu', 'On-set retuše během celého dne', 'Cestování po ČR i Evropě', 'Česky i anglicky'],
-    grid_title='Typy zakázek', grid_sub='na čem pracuji', grid=[
+    grid_title='Typy komerčních zakázek', grid_sub='na čem pracuji', grid=[
         ('img', 'commercial-1', 'Editorialové focení'), ('panel', '01', 'Beauty &amp; kampaně', 'Čistá beauty práce a brandové kampaně pro kosmetické i módní značky.', False),
         ('img', 'commercial-3', 'Magazínový editorial'), ('panel', '02', 'Editorial', 'Magazínové editorialy a výrazný styling podle konceptu.', True),
         ('panel', '03', 'Lookbooky', 'Konzistentní looky pro lookbooky a módní kolekce.', True), ('img', 'commercial-5', 'Fashion editorial líčení'),
         ('panel', '04', 'Video obsah', 'Make-up pro video a obsah ve vysokém rozlišení.', False), ('img', 'commercial-6', 'Mediální focení')],
     price_title='Komerční zakázky', price_note='Komerční zakázky cením individuálně podle rozsahu, lokace a termínu. Napište mi detaily focení a do 24 hodin vám pošlu osobní cenovou nabídku.',
     price_col=('Focení &amp; produkce', 'Na vyžádání', ['Konzultace konceptu a looků', 'Líčení podle světla a zadání', 'On-set retuše během dne', 'Cestování po ČR i Evropě'], 'Poptat focení +'),
-    steps_title='Průběh spolupráce', steps=[
+    steps_title='Průběh komerčního focení', steps=[
         ('Zadání', 'Pošlete mi datum, lokaci, koncept a počet looků. Obvykle odpovídám do několika hodin.'),
         ('Nabídka a příprava', 'Do 24 hodin pošlu nabídku a připravím looky podle konceptu a světla.'),
         ('Den focení', 'Líčení na place a změny looků podle harmonogramu produkce.'),
@@ -366,7 +366,7 @@ COMMERCIAL = dict(
         ('commercial-3', 'Komerční look – magazínový editorial styling'), ('commercial-4', 'Komerční look – focení pro beauty značku'),
         ('commercial-5', 'Komerční look – fashion editorial líčení'), ('commercial-6', 'Komerční look – mediální focení')],
     rv_sub='focení a modeling', reviews=pick('polina', 'zoe_c', 'glenn'),
-    faq_sub='otázky o komerčním líčení', faq=[
+    faq_sub='časté dotazy', faq_h2='Dotazy ke komerčnímu líčení', faq=[
         ('Kolik stojí komerční líčení?', 'Komerční zakázky cením individuálně podle typu služby, lokace a termínu. Napište mi detaily a do 24 hodin vám pošlu osobní cenovou nabídku.'),
         ('Jak dlouho dopředu rezervovat focení?', 'Pro focení obvykle stačí 2–3 týdny, někdy lze zařídit i last-minute termín – stačí mě kontaktovat.'),
         ('Jezdíte na focení mimo Prahu?', 'Ano. Působím v Praze a za focením cestuji do dalších měst v České republice i po Evropě.'),
@@ -441,7 +441,7 @@ def courses():
 <p class="body" style="margin-top:16px">Napište Nikol, čeho chcete dosáhnout, a kurz postaví přímo na to – od jedné cílené lekce po ucelenější program.</p></section>
 </article></div></section>
 '''
-    h += faq(LANG, 'otázky o kurzu líčení', faq_items)
+    h += faq(LANG, 'časté dotazy', faq_items, title='Dotazy ke kurzům líčení')
     h += teaser(LANG, ['blush', 'travel', 'brushes'], 'Procvičte si doma', 'tutoriály z blogu')
     h += related2(LANG, [('Svatební líčení', '/svatebni-liceni/', 'wedding-5'), ('Nude makeup', '/nude-liceni/', 'nude-1')])
     h += footer(LANG, 'Rezervujte si kurz líčení', 'Kontaktujte mě', 'Lekce probíhají v Praze, ČR · Česky nebo anglicky. Osobní cenová nabídka do 24 hodin.',
@@ -495,7 +495,7 @@ def portfolio():
     h += header(LANG, 'portfolio', '/en/portfolio/')
     h += f'''<section class="page-head u u-pf-head" aria-labelledby="page-h1"><div class="wrap">
 {crumbs(LANG, [HOME, ('Portfolio', None)])}
-<div class="top"><h1 class="h1" id="page-h1"><span class="big wide">Portfolio</span><span class="sub serif">líčení – Nikol Pavlova, vizážistka Praha</span></h1>
+<div class="top"><h1 class="h1" id="page-h1"><span class="big wide">Portfolio</span> <span class="sub serif">líčení – Nikol Pavlova, vizážistka Praha</span></h1>
 <p class="body">Toto je pečlivě vybraná ukázka prací od <b>Nikol Pavlové</b>, profesionální vizážistky se sídlem v <b>Praze</b>. Portfolio zahrnuje svatební líčení pro svatby v Praze i napříč Evropou, glamour večerní a koktejlový make-up, jemné přirozené nude looky, komerční a editoriální práce pro focení a snímky z osobních kurzů líčení. Každý look je navržen tak, aby zdůraznil přirozenou krásu klientky a odrážel její osobitý styl i charakter dané příležitosti.</p></div>
 </div></section>
 <section class="sec--tight u u-pf" aria-labelledby="looks-h">

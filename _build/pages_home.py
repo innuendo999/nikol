@@ -60,7 +60,7 @@ T = {
         phrase='Precise technique, <em>creativity</em><br>and a feeling <em>for colour &amp; texture</em>', phrase_label='My approach',
         price_label='pricing packages', price_h='Rates', price_note='*Please contact me for a personalised quote.',
         price=[('Wedding', 'Wedding package', 'Request', '/en/wedding/', 'bride-calla', 'Bride with a calla bouquet – wedding makeup', ['Bridal Trial', 'Wedding Day Makeup', 'Lashes Included', 'Touch-up Kit']),
-               ('Special occasions', 'Evening &amp; events', 'Request', '/en/evening-makeup/', 'ev-gold', 'Special occasion makeup', ['Cocktail Makeup', 'Evening Styling', 'Prom / Ball Makeup', 'Photo Shoots']),
+               ('Special occasions', 'Balls, evenings &amp; events', 'from CZK 2,500', '/en/ball-makeup/', 'ev-gold', 'Special occasion makeup – ball and evening makeup', ['Ball Makeup', 'Evening Makeup', 'Hairstyling', 'Event Makeup']),
                ('Courses', 'Personal makeup lesson', 'Request', '/en/courses/', 'nude-2', 'Makeup courses', ['Skin Prep', 'Colour Theory', 'Eyes &amp; Lashes', 'Tools &amp; Products'])]),
 }
 
@@ -93,7 +93,7 @@ def home_body(lang):
 <div class="wrap hm-hero-in">
 <ul class="hm-chips" role="list">{chips}</ul>
 <div class="hm-hero-row">
-<h1 class="hm-h1" id="page-h1"><span class="big">{t['h1'][0]}</span><span class="sub">{t['h1'][1]}</span></h1>
+<h1 class="hm-h1" id="page-h1"><span class="big">{t['h1'][0]}</span> <span class="sub">{t['h1'][1]}</span></h1>
 <div class="hm-hero-side"><p>{t['hero_p']}</p><p class="hm-btns"><a class="hm-btn hm-btn--light" href="{CAL}">{t['book']}</a><a class="hm-btn hm-btn--line" href="#services">{t['more']}</a></p></div>
 </div></div>
 </section>

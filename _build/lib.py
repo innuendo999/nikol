@@ -68,7 +68,8 @@ L = {
         skip='Skip to content', home='Home', about='About', portfolio='Portfolio', services='Services', blog='Blog',
         contact='Contact', book='Book online', menu='Menu', main_nav='Main navigation', other='CZ', other_label='CZ – Česká verze',
         crumbs='Breadcrumb', services_list=[
-            ('Wedding makeup', '/en/wedding/'), ('Evening makeup', '/en/evening-makeup/'), ('Nude makeup', '/en/nude-makeup/'),
+            ('Wedding makeup', '/en/wedding/'), ('Evening makeup', '/en/evening-makeup/'),
+            ('Ball makeup', '/en/ball-makeup/'), ('Event makeup', '/en/event-makeup/'), ('Nude makeup', '/en/nude-makeup/'),
             ('Commercial makeup', '/en/commercial-makeup/'), ('Makeup courses', '/en/courses/')],
         blog_href='/en/blog/', home_href='/en/', portfolio_href='/en/portfolio/', about_href='/en/about/',
         f_services='Services', f_location='Location', f_write='Write to me', f_call='Phone / WhatsApp', f_site='Site', f_contact='Contact', reviews='Reviews', f_travel='Available across Prague, Czechia &amp; Europe', f_reply='I usually reply within a few hours.', f_addr='Prvního pluku 8a<br>180 00 Prague 8 – Karlín', social='Social media',
@@ -244,14 +245,15 @@ def crumbs(lang, items, cls='lbl'):
     return f'<nav class="crumbs {cls}" aria-label="{L[lang]["crumbs"]}"><ol>{lis}</ol></nav>'
 
 
-def faq(lang, title_sub, items, hid='faq'):
+def faq(lang, title_sub, items, hid='faq', title=None):
     """FAQ: heading + contact nudge on the left, a narrow accordion on the right (2026-11 style)."""
     cs = lang == 'cs'
     det = ''
     for i, (q, ans) in enumerate(items):
         op = ' open' if i == 0 else ''
         det += f'<details{op}><summary><h3>{q}</h3><span class="pm" aria-hidden="true"></span></summary><div><p>{ans}</p></div></details>\n'
-    first, rest = ('Časté', 'dotazy') if cs else ('Questions', '&amp; answers')
+    # title: topical H2 for service pages, e.g. 'Dotazy ke svatebnímu líčení' (first word upright, rest italic)
+    first, rest = title.split(' ', 1) if title else (('Časté', 'dotazy') if cs else ('Questions', '&amp; answers'))
     return f'''<section class="faq-sec" aria-labelledby="{hid}-h">
 <div class="wrap faq-lay">
 <div class="faq-side">
@@ -267,7 +269,7 @@ def faq(lang, title_sub, items, hid='faq'):
 '''
 
 
-def reviews(lang, sub, items, top=True):
+def reviews(lang, sub, items, top=True, title=None):
     """Google reviews: glass cards on a soft pastel field (2026-11 style)."""
     t = L[lang]
     figs = ''
@@ -275,7 +277,7 @@ def reviews(lang, sub, items, top=True):
         figs += (f'<figure class="rv"><span class="st" role="img" aria-label="{t["stars"]}">★★★★★</span>'
                  f'<blockquote lang="{r["lang"]}"><p>{r["text"]}</p></blockquote>'
                  f'<figcaption><span class="av" aria-hidden="true">{r["ini"]}</span><span><cite>{r["name"]}</cite><br><span class="src">{t["g_review"]}{r.get("extra", "")}</span></span></figcaption></figure>\n')
-    first, rest = t['reviews_title'].split(' ', 1)
+    first, rest = (title or t['reviews_title']).split(' ', 1)
     return f'''<section class="rv-sec" aria-labelledby="reviews-h">
 <div class="wrap">
 <div class="rv-head"><div><p class="rv-label">({sub})</p><h2 class="rv-h2" id="reviews-h">{first} <em>{rest}</em></h2>

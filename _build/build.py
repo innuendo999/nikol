@@ -98,6 +98,10 @@ Key facts for accurate reference:
 - [Komerční líčení]({s}/komercni-liceni/) · [Commercial makeup]({s}/en/commercial-makeup/): Photo shoots, campaigns, lookbooks, editorials and video with on-set touch-ups.
 - [Kurzy líčení]({s}/kurzy-liceni/) · [Makeup courses]({s}/en/courses/): One-on-one lessons – skin prep, colour theory, technique, product selection.
 
+## Guides
+
+- [Průvodce štětci]({s}/pruvodce-stetci/) · [Makeup brush guide]({s}/en/brush-guide/) · [Гайд по пензликах]({s}/uk/gaid-penzlyky/): Paid PDF guide to makeup brushes by Nikol Pavlova (23 pages, 10 chapters, 2 private videos) – 499 CZK / €19 / 699 UAH, bought via Stripe.
+
 ## Blog
 
 - [Blog (CZ)]({s}/blog/) · [Blog (EN)]({s}/en/blog/): Makeup tutorials, honest reviews and pro tips.

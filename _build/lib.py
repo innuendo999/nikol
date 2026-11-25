@@ -63,6 +63,7 @@ L = {
         rights='Všechna práva vyhrazena', top='Nahoru ↑', online='Rezervace online +', email='E-mail',
         reviews_title='Recenze z Google', reviews_all='Všechny recenze na Google →', stars='Hodnocení 5 z 5', g_review='Recenze Google', review_write='Napsat recenzi', swipe='Posuňte pro další recenze →', f_gbp='Google profil',
         faq_title='Časté dotazy', related='Související služba',
+        guide=('Průvodce štětci', '/pruvodce-stetci/'),
     ),
     'en': dict(
         skip='Skip to content', home='Home', about='About', portfolio='Portfolio', services='Services', blog='Blog',
@@ -77,6 +78,7 @@ L = {
         rights='All rights reserved', top='Back to top ↑', online='Book online +', email='Email',
         reviews_title='Google reviews', reviews_all='All reviews on Google →', stars='Rated 5 out of 5', g_review='Google review', review_write='Write a review', swipe='Swipe for more reviews →', f_gbp='Google profile',
         faq_title='FAQ', related='Related service',
+        guide=('Brush guide', '/en/brush-guide/'),
     ),
     'uk': dict(  # only the Ukrainian brush-guide page uses this; nav links go to the Czech pages
         skip='Перейти до змісту', home='Головна', about='Про мене', portfolio='Портфоліо', services='Послуги', blog='Блог',
@@ -91,6 +93,7 @@ L = {
         rights='Усі права захищені', top='Нагору ↑', online='Записатися онлайн +', email='E-mail',
         reviews_title='Відгуки Google', reviews_all='Усі відгуки в Google →', stars='Оцінка 5 з 5', g_review='Відгук Google', review_write='Написати відгук', swipe='Гортай, щоб побачити більше →', f_gbp='Профіль Google',
         faq_title='Часті запитання', related='Пов’язана послуга',
+        guide=('Гайд по пензликах', '/uk/gaid-penzlyky/'),
     ),
 }
 
@@ -215,7 +218,7 @@ def footer(lang, cta_label, cta_title, cta_text, primary=None, pre=''):
     svc = ''.join(f'<a href="{u}">{n}</a>' for n, u in t['services_list'])
     h = t['home_href']
     site = ''.join(f'<a href="{u}">{n}</a>' for n, u in [(t['about'], t['about_href']), (t['portfolio'], t['portfolio_href']),
-                                                          (t['reviews'], h + '#reviews-h'), (t['blog'], t['blog_href']), (t['contact'], '#contact')])
+                                                          (t['reviews'], h + '#reviews-h'), (t['blog'], t['blog_href']), t['guide'], (t['contact'], '#contact')])
     open_zone, close_zone = '<div class="grad-zone">' + pre, '</div>'   # gradient footer on every page
     return f'''</main>
 {open_zone}<footer class="site-footer" id="contact">

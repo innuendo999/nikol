@@ -13,7 +13,7 @@ bucket_name = "nikol-guides"
 [vars]
 SITE_URL = "https://nikolmakeup.cz"
 MAX_AGE_DAYS = "30"
-# Stripe Price ID -> PDF in the R2 bucket. Replace price_XXX with the real IDs from Stripe.
-FILES = '{"price_CS_XXX": {"key": "brush-guide-cs.pdf", "name": "Pruvodce-stetci-Nikol-Pavlova.pdf"}, "price_EN_XXX": {"key": "brush-guide-en.pdf", "name": "Makeup-Brush-Guide-Nikol-Pavlova.pdf"}, "price_UK_XXX": {"key": "brush-guide-uk.pdf", "name": "Gaid-po-penzlykakh-Nikol-Pavlova.pdf"}}'
+# Stripe Price ID -> PDF in the R2 bucket: CZ 499 CZK, EN 19 EUR, UA 699 UAH (live prices).
+FILES = '{"price_1UfgesQrGQt4iD22GFN3peQB": {"key": "brush-guide-cs.pdf", "name": "Pruvodce-stetci-Nikol-Pavlova.pdf"}, "price_1UfgjSQrGQt4iD22x2kbxvAH": {"key": "brush-guide-en.pdf", "name": "Makeup-Brush-Guide-Nikol-Pavlova.pdf"}, "price_1UfgPHQrGQt4iD22gW5ZzlRi": {"key": "brush-guide-uk.pdf", "name": "Gaid-po-penzlykakh-Nikol-Pavlova.pdf"}}'
 
 # Secret (not in this file):  npx wrangler secret put STRIPE_SECRET_KEY

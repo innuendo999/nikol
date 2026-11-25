@@ -1228,3 +1228,23 @@ h1,h2,h3{overflow-wrap:break-word}
 }
 @media (max-width:900px){.post-promo{margin-left:0}}
 @media (max-width:560px){.pp-card{flex-direction:column;align-items:stretch}.pp-ph{flex:none;width:100%}}
+
+/* brush guide: small floating button on home and service pages */
+.g-fab{position:fixed;right:24px;bottom:24px;z-index:60;display:flex;align-items:center;
+  opacity:0;transform:translateY(16px) scale(.96);pointer-events:none;transition:opacity .45s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
+.g-fab.is-on{opacity:1;transform:none;pointer-events:auto}
+.g-fab-a{display:flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;border-radius:22px;color:#111;text-decoration:none;
+  background-color:rgba(251,245,242,.82);background-image:radial-gradient(80% 120% at 0% 0%,rgba(247,217,191,.9),transparent 70%),radial-gradient(80% 120% at 100% 100%,rgba(239,198,217,.85),transparent 70%);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 18px 40px -16px rgba(62,16,22,.4);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.g-fab-a:hover{transform:translateY(-3px);box-shadow:0 24px 48px -18px rgba(62,16,22,.5)}
+.g-fab-ph{position:relative;flex:0 0 46px;height:58px;border-radius:12px;overflow:hidden;background:rgba(255,255,255,.6)}
+.g-fab-ph img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;padding:3px}
+.g-fab-t{display:flex;flex-direction:column;gap:3px}
+.g-fab-l{font:500 10.5px/1 var(--f-tight);letter-spacing:.05em;text-transform:uppercase;color:#A8232F}
+.g-fab-n{font:400 21px/1 var(--f-disp);font-style:italic;letter-spacing:-.01em}
+.g-fab-p{font:600 13px/1.2 var(--f-tight)}
+.g-fab-x{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;border:0;background:#111;color:#fff;font:400 15px/24px var(--f-tight);cursor:pointer;opacity:.85}
+.g-fab-x:hover{opacity:1}
+@media (max-width:600px){.g-fab{right:12px;bottom:12px}.g-fab-a{padding:6px 14px 6px 6px;gap:10px}.g-fab-ph{flex-basis:38px;height:48px}.g-fab-n{font-size:18px}}
+@media (prefers-reduced-motion:reduce){.g-fab,.g-fab-a{transition:none}}

@@ -4,6 +4,7 @@ import schema as S
 from pages_home import home_body
 from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2, gallery2, related2, svc_photos, review_quote, banner2, hero_from_split
 from reviews import pick
+from pages_guide import fab as guide_fab
 from posts import teaser
 from pages_cs import PORTFOLIO_ITEMS, portfolio_grid, NOSCRIPT
 
@@ -40,6 +41,7 @@ def home():
     h += reviews(LANG, 'what clients say', pick('zoe', 'nelli', 'glenn', 'polina', 'shirley', 'darya', 'beata', 'marie', 'lena'), top=False)
     h += teaser(LANG, ['blush', 'travel', 'brushes'], 'From the blog', 'tutorials &amp; honest reviews')
     h += faq(LANG, 'popular questions', faq_items)
+    h += guide_fab(LANG)
     h += footer(LANG, 'Contact me', 'Do you need help with creative make-up?',
                 "I'm committed to ensuring your satisfaction with bridal, event, or editorial makeup services. Reach out to plan your requirements.")
     write(path, h)
@@ -110,6 +112,7 @@ def wedding():
     h += faq(LANG, 'FAQ', faq_items, title='Questions about wedding makeup')
     h += teaser(LANG, ['blush', 'travel'])
     h += related2(LANG, [('Evening makeup', '/en/evening-makeup/', 'evening-5'), ('Makeup courses', '/en/courses/', 'course')])
+    h += guide_fab(LANG)
     h += footer(LANG, 'Book your bridal consultation', 'Get in touch', 'Based in Prague, Czech Republic · Available for travel across Europe. Personalised quote within 24 hours.', (CAL, 'Book your appointment online +'))
     write(path, h)
 
@@ -137,6 +140,7 @@ def service(cfg):
     h += faq(LANG, cfg['faq_sub'], cfg['faq'], title=cfg.get('faq_h2'))
     h += teaser(LANG, cfg.get('posts', []))
     h += related2(LANG, cfg['related'])
+    h += guide_fab(LANG)
     h += footer(LANG, cfg['f_label'], 'Get in touch', cfg['f_text'], cfg.get('f_primary'))
     write(path, h)
 
@@ -423,6 +427,7 @@ def courses():
     h += faq(LANG, 'FAQ', faq_items, title='Questions about makeup courses')
     h += teaser(LANG, ['blush', 'travel', 'brushes'], 'Practise at home', 'tutorials from the blog')
     h += related2(LANG, [('Wedding makeup', '/en/wedding/', 'wedding-5'), ('Nude makeup', '/en/nude-makeup/', 'nude-1')])
+    h += guide_fab(LANG)
     h += footer(LANG, 'Book your makeup course', 'Get in touch', 'Lessons held in Prague, Czech Republic · In English or Czech. Personalised quote within 24 hours.', (CAL, 'Book your course online +'))
     write(path, h)
 

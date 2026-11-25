@@ -5,6 +5,7 @@ from pages_home import home_body
 from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2, gallery2, related2, svc_photos, review_quote, banner2, hero_from_split
 from posts import teaser
 from reviews import pick
+from pages_guide import fab as guide_fab
 
 LANG = 'cs'
 HOME = ('Domů', '/')
@@ -42,6 +43,7 @@ def home():
     h += reviews(LANG, 'co říkají klientky', pick('nelli', 'zoe', 'polinashu', 'erika', 'darya', 'marie', 'stepanka', 'beata', 'lena'), top=False)
     h += teaser(LANG, ['blush', 'travel', 'brushes'], 'Z blogu', 'tutoriály a poctivé recenze')
     h += faq(LANG, 'nejčastější otázky', faq_items)
+    h += guide_fab(LANG)
     h += footer(LANG, 'Kontaktujte mě', 'Máte dotaz nebo si přejete rezervovat termín?',
                 'Ráda vám pomohu vytvořit dokonalý look na váš speciální den. Neváhejte mě kontaktovat a společně naplánujeme vše potřebné.')
     write(path, h)
@@ -118,6 +120,7 @@ def wedding():
     h += faq(LANG, 'časté dotazy', faq_items, title='Dotazy ke svatebnímu líčení')
     h += teaser(LANG, ['blush', 'travel'])
     h += related2(LANG, [('Večerní líčení', '/vecerni-liceni/', 'evening-5'), ('Kurzy líčení', '/kurzy-liceni/', 'course')])
+    h += guide_fab(LANG)
     h += footer(LANG, 'Rezervujte si svatební konzultaci', 'Kontaktujte mě', 'Působím v Praze, ČR · K dispozici pro cestování po Evropě. Osobní nabídka do 24 hodin.',
                 (CAL, 'Rezervovat termín online +'))
     write(path, h)
@@ -149,6 +152,7 @@ def service(cfg):
     h += faq(LANG, cfg['faq_sub'], faq_items, title=cfg.get('faq_h2'))
     h += teaser(LANG, cfg.get('posts', []))
     h += related2(LANG, cfg['related'])
+    h += guide_fab(LANG)
     h += footer(LANG, cfg['f_label'], 'Kontaktujte mě', cfg['f_text'], cfg.get('f_primary'))
     write(path, h)
 
@@ -444,6 +448,7 @@ def courses():
     h += faq(LANG, 'časté dotazy', faq_items, title='Dotazy ke kurzům líčení')
     h += teaser(LANG, ['blush', 'travel', 'brushes'], 'Procvičte si doma', 'tutoriály z blogu')
     h += related2(LANG, [('Svatební líčení', '/svatebni-liceni/', 'wedding-5'), ('Nude makeup', '/nude-liceni/', 'nude-1')])
+    h += guide_fab(LANG)
     h += footer(LANG, 'Rezervujte si kurz líčení', 'Kontaktujte mě', 'Lekce probíhají v Praze, ČR · Česky nebo anglicky. Osobní cenová nabídka do 24 hodin.',
                 (CAL, 'Rezervovat kurz online +'))
     write(path, h)

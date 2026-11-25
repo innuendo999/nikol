@@ -41,14 +41,14 @@ const TEXT = {
 };
 const MAIL = 'pavlovanikol@gmail.com';
 
-function page(env, lang, status, msg) {
+function page(env, lang, status, msg, code) {
   const t = TEXT[lang];
   const site = env.SITE_URL || 'https://nikolmakeup.cz';
   const html = `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>Nikol Pavlova</title>
 <style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#FBF7F5;font:17px/1.6 system-ui,sans-serif;color:#111}
 main{max-width:520px;padding:32px}h1{font-size:28px;line-height:1.2;margin:0 0 12px}a{color:#8E2A3A}</style></head>
-<body><main><h1>${msg}</h1><p>${t.help(MAIL)}</p><p><a href="${site}${lang === 'en' ? '/en/' : '/'}">${t.back}</a></p></main></body></html>`;
+<body><main><h1>${msg}</h1><p>${t.help(MAIL)}</p>${code ? `<p style="color:#888;font-size:13px">${code}</p>` : ''}<p><a href="${site}${lang === 'en' ? '/en/' : '/'}">${t.back}</a></p></main></body></html>`;
   return new Response(html, { status, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } });
 }
 
@@ -67,11 +67,15 @@ export default {
       const r = await fetch(`https://api.stripe.com/v1/checkout/sessions/${id}?expand[]=line_items`, {
         headers: { authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
       });
-      if (r.status === 404) return page(env, lang, 404, t.invalid);
-      if (!r.ok) return page(env, lang, 502, t.error);
+      if (r.status === 404) return page(env, lang, 404, t.invalid, 'stripe-404');
+      if (!r.ok) {
+        console.log('stripe error', r.status, await r.text());
+        return page(env, lang, 502, t.error, `stripe-${r.status}`);   // 401 = no/wrong key, 403 = key lacks Checkout Sessions: Read
+      }
       session = await r.json();
     } catch (e) {
-      return page(env, lang, 502, t.error);
+      console.log('stripe fetch failed', String(e));
+      return page(env, lang, 502, t.error, 'stripe-fetch');
     }
 
     if (session.status !== 'complete' || !['paid', 'no_payment_required'].includes(session.payment_status)) {
@@ -82,11 +86,17 @@ export default {
 
     const files = JSON.parse(env.FILES || '{}');
     const item = (session.line_items?.data || []).find((li) => li.price && files[li.price.id]);
-    if (!item) return page(env, lang, 404, t.invalid);
+    if (!item) {
+      console.log('no FILES entry for prices', (session.line_items?.data || []).map((li) => li.price?.id));
+      return page(env, lang, 404, t.invalid, 'price-unknown');
+    }
     const file = files[item.price.id];
 
     const obj = await env.GUIDES.get(file.key);
-    if (!obj) return page(env, lang, 500, t.error);
+    if (!obj) {
+      console.log('R2 object missing', file.key);
+      return page(env, lang, 500, t.error, `r2-missing:${file.key}`);
+    }
     return new Response(obj.body, {
       headers: {
         'content-type': 'application/pdf',

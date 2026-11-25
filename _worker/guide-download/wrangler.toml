@@ -6,6 +6,10 @@ compatibility_date = "2026-11-01"
 # (needs the domain on Cloudflare; otherwise remove this and use the *.workers.dev URL).
 # routes = [{ pattern = "guide.nikolmakeup.cz", custom_domain = true }]
 
+# logs (console.log) visible in Cloudflare → Workers → guide-download → Logs
+[observability]
+enabled = true
+
 [[r2_buckets]]
 binding = "GUIDES"
 bucket_name = "nikol-guides"

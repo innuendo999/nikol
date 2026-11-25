@@ -240,6 +240,31 @@ def promo(lang):
 </a></aside>'''
 
 
+FAB = {
+    'cs': dict(lbl='Novinka', name='Průvodce štětci', close='Zavřít'),
+    'en': dict(lbl='New', name='Brush guide', close='Close'),
+    'uk': dict(lbl='Новинка', name='Гайд по пензликах', close='Закрити'),
+}
+
+
+def fab(lang):
+    """Small floating guide button (bottom right) for the home and service pages.
+    Slides in after a little scrolling; the × hides it for 7 days (localStorage, ignored if unavailable)."""
+    if not ready(lang):
+        return ''
+    g, t = GUIDE[lang], FAB[lang]
+    return f'''<div class="g-fab" data-fab hidden>
+<a class="g-fab-a" href="{g['path']}"><span class="g-fab-ph">{I(f'guide-{lang}-p01', '', sizes='56px', cls='u-doc')}</span>
+<span class="g-fab-t"><span class="g-fab-l">{t['lbl']} · PDF</span><span class="g-fab-n">{t['name']}</span><span class="g-fab-p">{g['price']} <span aria-hidden="true">→</span></span></span></a>
+<button class="g-fab-x" type="button" aria-label="{t['close']}" data-fab-x>×</button>
+</div>
+<script>(function(){{var k='guideFab',f=document.querySelector('[data-fab]'),n=Date.now();
+try{{if(+localStorage.getItem(k)>n)return}}catch(e){{}}
+f.hidden=false;function s(){{if(scrollY>500){{f.classList.add('is-on');removeEventListener('scroll',s)}}}}addEventListener('scroll',s,{{passive:true}});s();
+f.querySelector('[data-fab-x]').addEventListener('click',function(){{f.classList.remove('is-on');try{{localStorage.setItem(k,n+6048e5)}}catch(e){{}}}});}})();</script>
+'''
+
+
 def build():
     for lang in LANGS:
         sales(lang)

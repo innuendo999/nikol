@@ -7,15 +7,15 @@ from lib import *
 from utilities import css as utility_css
 import pages_cs, pages_en, pages_blog, pages_about
 
-LASTMOD = '2026-11-24'
+LASTMOD = '2026-11-25'
 
 # (cs path, en path) pairs; None = single-language page
 PAIRS = [
     ('/', '/en/', '1.0'),
     ('/svatebni-liceni/', '/en/wedding/', '0.9'),
     ('/vecerni-liceni/', '/en/evening-makeup/', '0.8'),
-    ('/plesove-liceni/', None, '0.8'),
-    ('/liceni-na-akce/', None, '0.8'),
+    ('/plesove-liceni/', '/en/ball-makeup/', '0.8'),
+    ('/liceni-na-akce/', '/en/event-makeup/', '0.8'),
     ('/nude-liceni/', '/en/nude-makeup/', '0.8'),
     ('/komercni-liceni/', '/en/commercial-makeup/', '0.8'),
     ('/kurzy-liceni/', '/en/courses/', '0.8'),
@@ -84,8 +84,8 @@ Key facts for accurate reference:
 
 - [Svatební líčení]({s}/svatebni-liceni/) · [Wedding makeup]({s}/en/wedding/): Bridal trial, wedding-day application, lashes, touch-up kit; bride, bridesmaids and mother of the bride; destination weddings.
 - [Večerní líčení]({s}/vecerni-liceni/) · [Evening makeup]({s}/en/evening-makeup/): Evening looks – soft glam, smoky eyes, bold lips, Hollywood glam.
-- [Plesové líčení]({s}/plesove-liceni/) (Czech only): Ball and prom (maturitní ples) makeup and hairstyling in Prague – makeup 2,500 CZK, hair 2,500 CZK, makeup + hair package 4,500 CZK; travel charged separately.
-- [Líčení na akce]({s}/liceni-na-akce/) (Czech only): Makeup and hair for galas, parties, corporate events, conferences and groups – 2,500 / 2,500 / 4,500 CZK (package) per person; travel charged separately.
+- [Plesové líčení]({s}/plesove-liceni/) · [Ball makeup]({s}/en/ball-makeup/): Ball and prom (maturitní ples) makeup and hairstyling in Prague – makeup 2,500 CZK, hair 2,500 CZK, makeup + hair package 4,500 CZK; travel charged separately.
+- [Líčení na akce]({s}/liceni-na-akce/) · [Event makeup]({s}/en/event-makeup/): Makeup and hair for galas, parties, corporate events, conferences and groups – 2,500 / 2,500 / 4,500 CZK (package) per person; travel charged separately.
 - [Nude líčení]({s}/nude-liceni/) · [Nude makeup]({s}/en/nude-makeup/): Natural skin-first looks for engagement shoots, portraits and civil ceremonies.
 - [Komerční líčení]({s}/komercni-liceni/) · [Commercial makeup]({s}/en/commercial-makeup/): Photo shoots, campaigns, lookbooks, editorials and video with on-set touch-ups.
 - [Kurzy líčení]({s}/kurzy-liceni/) · [Makeup courses]({s}/en/courses/): One-on-one lessons – skin prep, colour theory, technique, product selection.

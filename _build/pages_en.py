@@ -26,7 +26,7 @@ def home():
     desc = 'Professional English-speaking makeup artist in Prague. Specialized in bridal, evening styling and courses. Book your appointment.'
     faq_items = [
         ('Where are you based and do you travel for bookings?', 'I am a professional makeup artist based in Prague 8 – Karlín (Prvního pluku 8a), Czech Republic. I work across all districts of Prague – including Praha 1 (Old Town), Praha 2 (Vinohrady), and Praha 8 (Karlín) – and I also travel to other cities in the Czech Republic and across Europe for destination weddings, photo shoots and events.'),
-        ('What makeup services do you offer?', 'I offer wedding and bridal makeup, evening and cocktail styling, natural nude looks, prom and ball makeup, commercial and editorial makeup for photo shoots, and personalized one-on-one makeup courses for clients who want to learn professional techniques.'),
+        ('What makeup services do you offer?', 'I offer wedding and bridal makeup, evening and cocktail styling, natural nude looks, <a href="/en/ball-makeup/">ball and prom makeup with hair</a>, <a href="/en/event-makeup/">makeup for corporate and social events</a>, commercial and editorial makeup for photo shoots, and personalized one-on-one makeup courses for clients who want to learn professional techniques.'),
         ('Do you speak English?', 'Yes. I provide makeup services fluently in English and Czech, which makes me a comfortable choice for international clients, expats living in Prague, and couples planning a destination wedding in the Czech Republic.'),
         ('What is included in the wedding makeup package?', 'The wedding package includes a bridal trial before the wedding day, full wedding-day makeup application, false lashes, and a personal touch-up kit so your look stays fresh from the ceremony through the reception.'),
         ('How much does makeup in Prague cost?', 'Prices depend on the type of service, location, and timing – bridal packages, evening makeup and commercial shoots are all priced individually. Please contact me with your event details and I will send you a personalized quote within 24 hours.'),
@@ -73,7 +73,7 @@ def wedding():
                "As a professional <b>wedding makeup artist based in Prague</b>, I work with brides to create looks that are beautiful, camera-ready, and – most importantly – uniquely theirs. Whether you are getting married in Prague's Old Town, a château outside the city, or planning a destination wedding anywhere in Europe, I will travel to you. Every bridal service begins with a detailed consultation about your vision, skin type, dress and wedding aesthetic. A <b>bridal trial</b> is included in every wedding package so you arrive on your wedding day fully confident.",
                ['English-speaking – ideal for international &amp; expat brides', 'Bridal trial included in every wedding package', 'Bride, bridesmaids &amp; mother of the bride', 'Destination weddings across Czech Republic &amp; Europe'],
                (CAL, 'Book your bridal consultation +'))
-    h += features2('What sets the experience |apart', 'why brides choose Nikol', [
+    h += features2('What sets the bridal experience |apart', 'why brides choose Nikol', [
         ('img', 'mother-makeup', 'Makeup for the mother of the bride'),
         ('panel', '01', 'English-speaking MUA', 'Fluent in English, Czech and Ukrainian – no communication barriers for international brides or destination weddings in Prague.', False),
         ('img', 'bride-mirror', 'Bride checking her look in the mirror'),
@@ -92,7 +92,7 @@ def wedding():
         ('Touch-up kit &amp; final check', 'You receive a personalised touch-up kit with the key products used on your skin, so your look stays perfect through to the last dance.')],
         'From your first consultation to the final touch-up on your wedding day – here is exactly what to expect when you book Nikol Pavlova as your wedding makeup artist in Prague.')
     h += gallery2('Recent |bridal looks', 'selected work', 'View full portfolio', '/en/portfolio/', [('veil-kiss', 'Bridal makeup – kiss under the veil'), ('bride-dress', 'Bridal makeup – bride before putting on the dress'), ('stairs-bride', 'Bridal makeup – bride on the staircase'), ('wedding-walk', 'Bridal makeup – leaving the ceremony'), ('couple-garden', 'Bridal makeup – garden portrait'), ('terrace-toast', 'Bridal makeup – toast on the terrace'), ('church-bw', 'Bridal makeup – leaving the church'), ('bride-back', 'Bridal makeup – dress and hair detail')])
-    h += reviews(LANG, 'brides &amp; wedding shoots', pick('shirley', 'polinashu', 'erika_w'), top=False)
+    h += reviews(LANG, 'brides &amp; wedding shoots', pick('shirley', 'polinashu', 'erika_w'), top=False, title='Google reviews from brides')
     h += f'''<section class="sec u u-guide" aria-labelledby="guide-h"><div class="wrap guide">
 <aside><p class="lbl red">Bridal makeup guide</p><h2 class="big-h" id="guide-h">Wedding makeup in Prague</h2>
 <nav class="toc" aria-label="Guide contents"><a href="#g1">What a bridal MUA offers</a><a href="#g2">How far in advance to book</a><a href="#g3">The bridal trial</a><a href="#g4">English-speaking MUA</a><a href="#g5">Bridal makeup styles</a></nav></aside>
@@ -107,7 +107,7 @@ def wedding():
 <p class="body" style="margin-top:16px">During your consultation, Nikol helps you choose the style that best suits your skin, dress, venue and wedding theme.</p></section>
 </article></div></section>
 '''
-    h += faq(LANG, 'wedding makeup questions', faq_items)
+    h += faq(LANG, 'FAQ', faq_items, title='Questions about wedding makeup')
     h += teaser(LANG, ['blush', 'travel'])
     h += related2(LANG, [('Evening makeup', '/en/evening-makeup/', 'evening-5'), ('Makeup courses', '/en/courses/', 'course')])
     h += footer(LANG, 'Book your bridal consultation', 'Get in touch', 'Based in Prague, Czech Republic · Available for travel across Europe. Personalised quote within 24 hours.', (CAL, 'Book your appointment online +'))
@@ -118,22 +118,23 @@ def wedding():
 def service(cfg):
     path = cfg['path']
     hero_ph, price_ph, gal = svc_photos(cfg, LANG)
+    parent = [cfg['parent']] if cfg.get('parent') else []
     sch = S.service_page(LANG, path, cfg['title'], cfg['desc'], cfg['service_name'], cfg['service_type'],
-                         f"/assets/img/{hero_ph[0][0]}-800.webp", [('Home', '/en/'), ('Services', '/en/#services'), (cfg['crumb'], path)], cfg['faq'], cfg['offers'])
+                         f"/assets/img/{hero_ph[0][0]}-800.webp", [('Home', '/en/'), ('Services', '/en/#services')] + parent + [(cfg['crumb'], path)], cfg['faq'], cfg['offers'])
     h = head(LANG, cfg['title'], cfg['desc'], path, alts(cfg['cs'], path), SITE + f"/assets/img/{hero_ph[0][0]}-800.webp", sch,
              preload(hero_ph[0][0], '(max-width: 900px) 60vw, 30vw'))
     h += header(LANG, path, cfg['cs'])
-    h += hero_svc(LANG, [HOME, SVC, (cfg['crumb'], None)], cfg['big'].replace('<br>', ' '), cfg['sub'], cfg['lead'], (cfg['buttons'][0][1], cfg['buttons'][0][0]),
+    h += hero_svc(LANG, [HOME, SVC] + parent + [(cfg['crumb'], None)], cfg['big'].replace('<br>', ' '), cfg['sub'], cfg['lead'], (cfg['buttons'][0][1], cfg['buttons'][0][0]),
                   hero_ph, review_quote(cfg['reviews'], LANG))
     h += strip(cfg['marquee'])
     h += intro2('About the service', cfg['intro_title'], cfg['intro_tag'], cfg['intro_imgs'], cfg['intro_body'], cfg['chips'])
     h += features2(cfg['grid_title'], cfg['grid_sub'], cfg['grid'])
-    h += pricing2('Rates', cfg['price_title'], cfg['price_note'], [cfg['price_col']], imgs=price_ph)
+    h += pricing2('Rates', cfg['price_title'], cfg['price_note'], cfg.get('price_cols') or [cfg['price_col']], cfg.get('price_href', '#contact'), imgs=price_ph)
     h += steps2(cfg['steps_title'], 'how it works', cfg['steps'])
     h += gallery2(cfg['gal_title'], 'selected work', 'View full portfolio', '/en/portfolio/', gal)
     h += banner2(cfg.get('banner', ''))
-    h += reviews(LANG, cfg['rv_sub'], cfg['reviews'], top=False)
-    h += faq(LANG, cfg['faq_sub'], cfg['faq'])
+    h += reviews(LANG, cfg['rv_sub'], cfg['reviews'], top=False, title=cfg.get('rv_h2'))
+    h += faq(LANG, cfg['faq_sub'], cfg['faq'], title=cfg.get('faq_h2'))
     h += teaser(LANG, cfg.get('posts', []))
     h += related2(LANG, cfg['related'])
     h += footer(LANG, cfg['f_label'], 'Get in touch', cfg['f_text'], cfg.get('f_primary'))
@@ -142,23 +143,23 @@ def service(cfg):
 EVENING = dict(
     posts=['blush', 'catrice'],
     path='/en/evening-makeup/', cs='/vecerni-liceni/', crumb='Evening makeup', tone='tone-ox',
-    title='Evening & Ball Makeup Prague | Cocktail Makeup – Nikol Pavlova',
-    desc='Evening, cocktail and ball makeup in Prague. Glamorous looks for galas, proms and parties – smoky eyes, statement lips and makeup that lasts all night.',
-    service_name='Evening makeup Prague', service_type='Evening and ball makeup',
+    title='Evening Makeup Prague | Glam & Smoky Eyes – Nikol Pavlova',
+    desc='Evening makeup in Prague: soft glam, smoky eyes, statement lips and Hollywood glam for cocktail parties, dinners and celebrations. Makeup that lasts all night.',
+    service_name='Evening makeup Prague', service_type='Evening makeup',
     offers=['Cocktail Makeup', 'Evening Styling', 'Prom / Ball Makeup', 'Photo Shoots'],
-    big='Evening<br>makeup', sub='in Prague – galas, balls &amp; parties',
+    big='Evening<br>makeup', sub='in Prague – glam, smoky eyes &amp; statement lips',
     lead='Glamorous looks built for galas, cocktail parties, proms, balls and special events in Prague. Smoky eyes, sculpted cheekbones, statement lips and luminous skin – finished with techniques that hold up under both flash photography and ambient evening light.',
     buttons=[('Book appointment +', CAL), ('Makeup styles', '#grid-h')], hero_img='evening-5', hero_alt='Evening makeup Prague – elegant glamour look',
     marquee=['Balls', 'Galas', 'Cocktail parties', 'Proms', 'Smoky eyes', 'Statement lips'],
     intro_title='A bold look you feel confident in', intro_tag='from soft glam to dramatic smoky eyes',
     intro_imgs=[('evening-1', 'Evening look – glamour smoky eye'), ('evening-3', 'Evening look – bold lip and clean skin')],
-    intro_body='Every evening look is tailored to your dress, hair, lighting and the character of the event. We start with a quick chat about how bold you want to go. I come to your home, hotel or venue anywhere in Prague; travel outside Prague is available on request.',
+    intro_body='Every evening look is tailored to your dress, hair, lighting and the character of the event. We start with a quick chat about how bold you want to go. I come to your home, hotel or venue anywhere in Prague; travel outside Prague is available on request. Going to a ball? See <a href="/en/ball-makeup/">ball makeup and hair</a>. For a corporate event, gala or a group, there is <a href="/en/event-makeup/">event makeup</a>.',
     chips=['Balls, proms &amp; galas', 'Cocktail parties &amp; celebrations', 'Photo shoots', 'English &amp; Czech'],
-    grid_title='Makeup styles', grid_sub='from soft glam to smoky eyes', grid=[
+    grid_title='Evening makeup styles', grid_sub='from soft glam to smoky eyes', grid=[
         ('img', 'evening-13', 'Soft glam evening look'), ('panel', '01', 'Soft glam', 'Luminous skin, softly defined eyes and an elegant, timeless finish.', False),
         ('img', 'evening-12', 'Dramatic eye styling'), ('panel', '02', 'Smoky eyes', 'Smoky eyes and dramatic eye styling for the big nights.', True),
         ('panel', '03', 'Statement lips', 'Clean skin with a bold lip as the focus of the whole look.', True), ('img', 'evening-16', 'Sculpted contour and lips'),
-        ('panel', '04', 'Prom &amp; ball', 'Prom and ball styling that lasts all night and in every photo.', False), ('img', 'evening-4', 'Prom and ball styling')],
+        ('panel', '04', 'Hollywood glam', 'Flawless skin, liner and a classic red lip – a timeless look for a big night.', False), ('img', 'evening-4', 'Evening glamour styling')],
     price_title='Special occasions', price_note='Prices depend on the type of service, location and timing. Send me your event details and I will reply with a personalised quote within 24 hours.',
     price_col=('Evening &amp; events', 'Request', ['Cocktail Makeup', 'Evening Styling', 'Prom / Ball Makeup', 'Photo Shoots'], 'Request a quote +'),
     steps_title='How evening makeup works', steps=[
@@ -171,13 +172,110 @@ EVENING = dict(
         ('evening-11', 'Evening look – gala makeup'), ('evening-15', 'Evening look – radiant evening face'),
         ('evening-14', 'Evening look – modern evening styling'), ('evening-17', 'Evening look – finishing touch')],
     rv_sub='makeup that lasts into the night', reviews=pick('nelli', 'stepanka', 'glenn'),
-    faq_sub='evening makeup questions', faq=[
+    faq_sub='FAQ', faq_h2='Questions about evening makeup', faq=[
         ('How far in advance should I book?', 'For evening makeup and shoots, 2–3 weeks is usually enough, though last-minute slots can sometimes be arranged – just get in touch.'),
         ('How much does evening makeup cost in Prague?', 'Prices depend on the type of service, location and timing. Send me your event details and I will reply with a personalised quote within 24 hours.'),
         ('Do you come to me?', 'Yes. I work across all districts of Prague – including Praha 1 (Old Town), Praha 2 (Vinohrady) and Praha 8 (Karlín) – and travel to other cities in the Czech Republic and across Europe.'),
         ('Do you speak English?', 'Yes, I speak fluent English and Czech, so international clients and expats in Prague are very welcome.'), BOOK_FAQ],
-    related=[('Wedding makeup', '/en/wedding/', 'wedding-5'), ('Commercial makeup', '/en/commercial-makeup/', 'commercial-4')],
+    related=[('Ball makeup', '/en/ball-makeup/', 'evening-14'), ('Event makeup', '/en/event-makeup/', 'evening-1')],
     f_label='Book your evening makeup', f_text='Based in Prague, Czech Republic · Available for travel. Personalised quote within 24 hours.')
+
+PRICE_NOTE = 'Travel is charged separately depending on the location.'
+
+BALL = dict(
+    posts=['blush', 'catrice'],
+    path='/en/ball-makeup/', cs='/plesove-liceni/', crumb='Ball makeup',
+    parent=('Evening makeup', '/en/evening-makeup/'), tone='tone-ox',
+    title='Ball & Prom Makeup and Hair Prague | Nikol Pavlova',
+    desc='Ball and prom makeup and hair in Prague, at your home or hotel. Makeup that lasts until morning and looks great in photos. Dates open for the 2027 ball season.',
+    service_name='Ball makeup and hair Prague', service_type='Ball makeup and hairstyling',
+    offers=[('Ball makeup', 2500), ('Ball hairstyle', 2500), ('Ball makeup and hair', 4500)],
+    big='Ball<br>makeup', sub='and hair in Prague – makeup that lasts until morning',
+    lead='Makeup and hair for school-leaving balls (maturitní ples), formal balls and corporate balls. I come to your home or hotel anywhere in Prague and create a look that lasts the whole night, the dancing and every flash photo.',
+    buttons=[('Check available dates +', CAL), ('Prices', '#packages')], hero_img='evening-14',
+    hero_alt='Ball makeup Prague – glamour makeup and Hollywood waves',
+    marquee=['School-leaving balls', 'Formal balls', 'Corporate balls', 'Makeup &amp; hair', 'Lasts until morning', 'Prague &amp; surroundings'],
+    intro_title='Ball makeup without the stress – makeup and hair in one appointment', intro_tag='2027 ball season: January and February Saturdays fill up first',
+    intro_imgs=[('evening-17', 'Ball hairstyle – updo with loose strands and soft glam'), ('evening-12', 'Ball look – Hollywood waves and bold lashes')],
+    intro_body='I tailor <b>ball makeup</b> to your dress, hair and the character of the ball – from a soft look for a graduate to bold glam for a formal ball. I prep the skin so the makeup survives dancing, a warm ballroom and flash photos, and I do your <b>ball hairstyle</b> in the same appointment, so you don’t have to go anywhere else. I work at your home, your hotel or my studio in Prague 8 – Karlín. In ball season I recommend booking 4–6 weeks ahead.',
+    chips=['School-leaving, formal &amp; corporate balls', 'Makeup and hair in one appointment', 'Graduate and mum', 'English · Česky · Українська'],
+    grid_title='Ball looks and hairstyles', grid_sub='what suits your dress', grid=[
+        ('img', 'evening-13', 'Soft glam ball look'), ('panel', '01', 'Soft glam', 'Luminous skin and softly defined eyes. Works with light and pastel dresses and for graduates.', False),
+        ('img', 'evening-12', 'Hollywood waves and glamour makeup'), ('panel', '02', 'Hollywood waves', 'Glossy waves and bold lashes – a classic with long satin gowns.', True),
+        ('panel', '03', 'Elegant updo', 'A hairstyle that lasts a night of dancing and shows off your neckline and earrings.', True), ('img', 'wedding-12', 'Elegant updo and glamour makeup'),
+        ('panel', '04', 'Smoky eyes &amp; bold lips', 'A dramatic evening look for black, red and velvet gowns.', False), ('img', 'evening-6', 'Bold evening look for a ball')],
+    price_title='Ball makeup and hair', price_note=PRICE_NOTE + ' False lashes, a price for a group of friends and travel are agreed when you book.',
+    price_cols=[('Ball makeup', 'CZK 2,500', ['Skin prep', 'Makeup that lasts until morning', 'Matched to your dress and hair', 'Tips for touch-ups during the night'], 'Book +'),
+                ('Ball hairstyle', 'CZK 2,500', ['Updo, waves or half-up', 'Set to last all night', 'Matched to your dress and accessories'], 'Book +'),
+                ('Makeup + hair', 'CZK 4,500', ['Ball makeup', 'Ball hairstyle', 'One appointment, about 2 hours', 'You save CZK 500', 'Graduate and mum'], 'Book +')],
+    price_href=CAL,
+    steps_title='How ball makeup works', steps=[
+        ('Booking', 'Send me the date of the ball, when you need to leave and the location. In ball season, book 4–6 weeks ahead – Saturdays go fastest.'),
+        ('Dress and inspiration', 'Send me a photo of your dress and looks you like. We agree on how bold the makeup should be and the type of hairstyle.'),
+        ('Makeup and hair', 'Makeup alone takes 60–75 minutes, makeup with hair 2 hours. We start 2–3 hours before you leave for the ball.'),
+        ('Final check', 'Last touches, setting and tips on refreshing your look during the night.')],
+    gal_title='Ball looks', gallery=[],
+    banner=f'''<section class="sec--tight" aria-label="Makeup courses"><div class="wrap"><a class="banner" href="/en/courses/"><span class="txt"><span class="lbl pink">Makeup courses</span><span class="mid-h">Want to do your own ball makeup?</span><span class="serif" style="font-size:20px;color:#E9DCD8">In a one-on-one lesson for CZK 3,500 you learn an evening look on your own face.</span><span class="btn btn--pink">Makeup courses →</span></span><span class="img">{I('course', '', sizes='(max-width: 900px) 100vw, 50vw', style='object-position:50% 15%')}</span></a></div></section>
+''',
+    rv_sub='makeup and hair that last', reviews=pick('zoe_c', 'shirley', 'nelli'),
+    faq_sub='FAQ', faq_h2='Questions about ball makeup', faq=[
+        ('How much does ball makeup cost in Prague?', 'Ball makeup costs CZK 2,500, a ball hairstyle CZK 2,500, and makeup and hair together only CZK 4,500 – you save CZK 500. Travel is charged separately depending on the location.'),
+        ('Do you also do ball hairstyles?', 'Yes. I do makeup and hair in one appointment – from an elegant updo to Hollywood waves. Send me a photo of your dress and some inspiration.'),
+        ('How far ahead should I book?', 'In ball season (January–February) I recommend 4–6 weeks ahead; Saturdays disappear fastest. Outside the season, 2–3 weeks is usually enough.'),
+        ('Will the makeup last all night?', 'Yes. I prep the skin, set the makeup in layers and use waterproof products. I leave you the lipstick for small touch-ups.'),
+        ('How long does it take?', 'Makeup alone about 60–75 minutes, makeup and hair 2 hours.'),
+        ('Will you come to my home or hotel?', 'Yes, I travel all over Prague, and outside Prague by arrangement. Travel is charged separately depending on the location.'),
+        ('Can you also do my mum or friends?', 'Yes, I’m happy to get several people ready at once – just give the number when booking and I’ll plan the timing so you are all ready on time.'),
+        ('Can I send inspiration and a photo of my dress?', 'Definitely – it helps fine-tune the colours and intensity of the look.'),
+        ('I have sensitive skin – is that a problem?', 'Not at all. Let me know in advance and I’ll adapt the products.'), BOOK_FAQ],
+    related=[('Evening makeup', '/en/evening-makeup/', 'evening-5'), ('Event makeup', '/en/event-makeup/', 'evening-1')],
+    f_label='Book your ball makeup', f_text='2027 ball season · Prague and surroundings · Travel charged separately.')
+
+EVENTS = dict(
+    posts=['catrice', 'empties'],
+    path='/en/event-makeup/', cs='/liceni-na-akce/', crumb='Event makeup',
+    parent=('Evening makeup', '/en/evening-makeup/'), tone='tone-sand',
+    title='Event Makeup Artist Prague | Corporate Events & Galas',
+    desc='Makeup and hair for social events, galas and corporate events in Prague. For individuals and groups, in English and Czech. Book online or by phone.',
+    service_name='Event makeup Prague', service_type='Makeup and hair for social and corporate events',
+    offers=[('Event makeup', 2500), ('Event hairstyle', 2500), ('Event makeup and hair', 4500)],
+    big='Event<br>makeup', sub='in Prague – corporate events, galas &amp; parties',
+    lead='A gala, a company party, a conference, a birthday or a hen party. I do makeup and hair for you or your whole group – at your place, your hotel or right at the venue.',
+    buttons=[('Book online +', CAL), (f'Call {TEL_H}', f'tel:{TEL}'), ('Send an email', f'mailto:{MAIL}')], hero_img='evening-1',
+    hero_alt='Event makeup Prague – glamour look for a social event',
+    marquee=['Galas', 'Company parties', 'Conferences', 'Birthdays &amp; celebrations', 'Groups', 'English · Česky'],
+    intro_title='Event makeup for you and your company', intro_tag='from a gala to a conference',
+    intro_imgs=[('wedding-2', 'Group makeup and hair for a whole group'), ('evening-11', 'Gala makeup')],
+    intro_body='At an event you want to look great without the worry. <b>For you</b> I do makeup and hair for a gala, a party, a birthday, an anniversary, a premiere or a hen party. <b>For companies and organisers</b> I provide makeup for speakers and hosts before a conference or filming, group makeup for your team and touch-ups during the event. We can work in English, Czech or Ukrainian.',
+    chips=['For individuals and groups', 'Makeup and hair in one appointment', 'At the venue in Prague', 'English · Česky · Українська'],
+    grid_title='Event makeup formats', grid_sub='what I can do for you', grid=[
+        ('panel', '01', 'Individual makeup and hair', 'A look tailored to your outfit and the event – at your place, your hotel or my studio in Karlín.', False), ('img', 'evening-7', 'Makeup for a social event'),
+        ('panel', '02', 'Group makeup', 'Friends, bridesmaids or a whole team – I prepare a schedule so everyone is ready on time.', True), ('img', 'wedding-3', 'Makeup and hair for an event guest'),
+        ('img', 'evening-15', 'Makeup for a company party'), ('panel', '03', 'At the venue', 'I come to the venue and, if agreed, stay on for touch-ups during the evening.', True),
+        ('img', 'evening-2', 'Natural makeup on camera'), ('panel', '04', 'On camera and on stage', 'Makeup for speakers, hosts and filming that works under stage lights.', False)],
+    price_title='Prices per person', price_note=PRICE_NOTE + ' Touch-ups during the event, group prices and travel are agreed when you book.',
+    price_cols=[('Event makeup', 'CZK 2,500', ['Skin prep', 'Makeup that lasts all evening', 'Matched to your outfit and the event'], 'Book +'),
+                ('Event hairstyle', 'CZK 2,500', ['Updo, waves or a sleek style', 'Set to last all evening'], 'Book +'),
+                ('Makeup + hair', 'CZK 4,500', ['Event makeup', 'Hairstyle', 'One appointment, about 2 hours', 'You save CZK 500'], 'Book +')],
+    price_href=CAL,
+    steps_title='How event makeup works', steps=[
+        ('Enquiry', f'Call <a href="tel:{TEL}">{TEL_H}</a>, email <a href="mailto:{MAIL}">{MAIL}</a> or pick a time in <a href="{CAL}">Calendly</a>. Tell me the date, time, place and number of people.'),
+        ('Schedule', 'For groups I prepare a timetable – makeup alone takes 60–75 minutes per person, makeup with hair 2 hours.'),
+        ('Makeup and hair', 'At your place, your hotel or right at the venue, with products that last all evening.'),
+        ('Final check', 'Last touches before the event starts and, if agreed, touch-ups during the evening.')],
+    gal_title='Event looks', gallery=[
+        ('evening-1', 'Event makeup – glamour look'), ('evening-5', 'Evening look for a social event'),
+        ('evening-11', 'Gala makeup'), ('evening-3', 'Party look – bold lip and clean skin'),
+        ('evening-4', 'Elegant makeup for a corporate event'), ('wedding-2', 'Group makeup – getting several people ready')],
+    rv_sub='looks that last all evening', reviews=pick('zoe', 'glenn', 'erika'),
+    faq_sub='FAQ', faq_h2='Questions about event makeup', faq=[
+        ('How much does event makeup cost?', 'Per person: makeup CZK 2,500, hair CZK 2,500, makeup and hair together only CZK 4,500 – you save CZK 500. Travel is charged separately depending on the location.'),
+        ('How many people can you do?', 'It depends on the time we have. Allow roughly 60–75 minutes for makeup alone and 2 hours for makeup with hair per person – I plan the schedule around that.'),
+        ('Can you stay at the event for touch-ups?', 'Yes, by arrangement. Scope and price are agreed when you book.'),
+        ('Will you come to the venue?', 'Yes – to hotels, offices and venues anywhere in Prague, and outside Prague by arrangement. Travel is charged separately depending on the location.'),
+        ('Do you speak English?', 'Yes – English, Czech and Ukrainian, so international teams and foreign guests are very welcome.'), BOOK_FAQ],
+    related=[('Ball makeup', '/en/ball-makeup/', 'evening-14'), ('Commercial makeup', '/en/commercial-makeup/', 'commercial-4')],
+    f_label='Planning an event?', f_text='Send me the date, place and number of people – or pick a time online.')
 
 NUDE = dict(
     posts=['blush', 'summer'],
@@ -194,14 +292,14 @@ NUDE = dict(
     intro_imgs=[('nude-2', 'Nude look – soft natural glow'), ('nude-3', 'Nude look – fresh dewy skin')],
     intro_body='A nude look starts with careful skin preparation and light layers of product that melt into the skin. I tailor the makeup to your skin type, tone and occasion, so the result looks fresh in photos and in person – from morning to evening.',
     chips=['Skin prep first', 'Light coverage, no mask effect', 'Softly defined eyes, brows &amp; lips', 'English &amp; Czech'],
-    grid_title='Who it is for', grid_sub='when a nude look works best', grid=[
+    grid_title='Who nude makeup is for', grid_sub='when a nude look works best', grid=[
         ('panel', '01', 'Engagement shoots', 'A natural look that feels fresh and timeless in photos.', False), ('img', 'wedding-13', 'Natural bridal beauty'),
         ('panel', '02', 'Daytime portraits', 'Business, profile and personal portraits in daylight.', True), ('img', 'nude-3', 'Fresh dewy skin'),
         ('img', 'wedding-1', 'Soft bridal makeup'), ('panel', '03', 'Civil ceremonies', 'A soft bridal look for smaller and civil ceremonies.', True),
         ('img', 'nude-2', 'Soft natural glow'), ('panel', '04', 'Barely-there', 'Healthy glowing skin with a minimum of product.', False)],
-    price_title='Natural look', price_note='Prices depend on the type of service, location and timing. Send me the details and I will reply with a personalised quote within 24 hours.',
+    price_title='Natural makeup', price_note='Prices depend on the type of service, location and timing. Send me the details and I will reply with a personalised quote within 24 hours.',
     price_col=('Nude makeup', 'Request', ['Skin preparation', 'Light base &amp; concealer', 'Soft eye &amp; brow definition', 'Natural cheeks &amp; lips'], 'Request a quote +'),
-    steps_title='How it works', steps=[
+    steps_title='How nude makeup works', steps=[
         ('Enquiry', 'Send me the date, location and occasion. I usually reply within a few hours.'),
         ('Skin prep', 'Every look starts with skincare tailored to your skin type.'),
         ('Light layers', 'Coverage only where needed and soft definition of your features.'),
@@ -210,7 +308,7 @@ NUDE = dict(
     banner=f'''<section class="sec--tight" aria-label="Makeup courses"><div class="wrap"><a class="banner" href="/en/courses/"><span class="txt"><span class="lbl pink">Makeup courses</span><span class="mid-h">Want to learn the natural look yourself?</span><span class="serif" style="font-size:20px;color:#E9DCD8">In a one-on-one lesson we cover skin prep, colour theory and technique on your own face.</span><span class="btn btn--pink">Makeup courses →</span></span><span class="img">{I('course', '', sizes='(max-width: 900px) 100vw, 50vw', style='object-position:50% 15%')}</span></a></div></section>
 ''',
     rv_sub='natural, fresh skin', reviews=pick('karin', 'marie', 'beata'),
-    faq_sub='nude makeup questions', faq=[
+    faq_sub='FAQ', faq_h2='Questions about nude makeup', faq=[
         ('Does a nude look work for a wedding?', 'Yes. Natural nude is one of the bridal styles I offer – ideal for civil ceremonies and brides who want to look like themselves. See <a href="/en/wedding/">Wedding makeup</a>.'),
         ('How much does nude makeup cost?', 'Prices depend on the type of service, location and timing. Send me the details and I will reply with a personalised quote within 24 hours.'),
         ('How far in advance should I book?', 'For shoots and everyday events, 2–3 weeks is usually enough, though last-minute slots can sometimes be arranged – just get in touch.'), BOOK_FAQ],
@@ -232,14 +330,14 @@ COMMERCIAL = dict(
     intro_imgs=[('commercial-2', 'Commercial look – campaign shoot'), ('commercial-3', 'Commercial look – magazine editorial styling')],
     intro_body='I work on shoots in Prague and beyond. Before the shoot we go through the concept, lighting and number of looks, so the makeup matches the brief and lasts the whole production day. I stay on set for touch-ups, so every frame looks as clean as the first.',
     chips=['Adapted to light &amp; concept', 'On-set touch-ups all day', 'Travel across Czechia &amp; Europe', 'English &amp; Czech'],
-    grid_title='Project types', grid_sub='what I work on', grid=[
+    grid_title='Commercial project types', grid_sub='what I work on', grid=[
         ('img', 'commercial-1', 'Editorial shoot'), ('panel', '01', 'Beauty &amp; campaigns', 'Clean beauty work and brand campaigns for cosmetics and fashion labels.', False),
         ('img', 'commercial-3', 'Magazine editorial'), ('panel', '02', 'Editorial', 'Magazine editorials and bold, concept-led styling.', True),
         ('panel', '03', 'Lookbooks', 'Consistent looks for lookbooks and fashion collections.', True), ('img', 'commercial-5', 'Fashion editorial makeup'),
         ('panel', '04', 'Video content', 'Makeup for video and high-resolution content.', False), ('img', 'commercial-6', 'Media shoot')],
     price_title='Commercial projects', price_note='Commercial projects are priced individually by scope, location and date. Send me the shoot details and I will reply with a quote within 24 hours.',
     price_col=('Shoots &amp; production', 'Request', ['Concept &amp; look consultation', 'Makeup for light &amp; brief', 'On-set touch-ups', 'Travel across Czechia &amp; Europe'], 'Request a quote +'),
-    steps_title='How we work together', steps=[
+    steps_title='How a commercial shoot works', steps=[
         ('Brief', 'Send me the date, location, concept and number of looks. I usually reply within a few hours.'),
         ('Quote &amp; prep', 'You receive a quote within 24 hours and I prepare looks for the concept and light.'),
         ('Shoot day', 'Makeup on set and look changes following the production schedule.'),
@@ -248,7 +346,7 @@ COMMERCIAL = dict(
         ('commercial-3', 'Commercial look – magazine editorial styling'), ('commercial-4', 'Commercial look – beauty brand shoot'),
         ('commercial-5', 'Commercial look – fashion editorial'), ('commercial-6', 'Commercial look – media shoot')],
     rv_sub='shoots &amp; modelling', reviews=pick('polina', 'zoe_c', 'glenn'),
-    faq_sub='commercial makeup questions', faq=[
+    faq_sub='FAQ', faq_h2='Questions about commercial makeup', faq=[
         ('How much does commercial makeup cost?', 'Commercial projects are priced individually by type of service, location and date. Send me the details and I will reply with a personalised quote within 24 hours.'),
         ('How far in advance should I book a shoot?', 'For shoots, 2–3 weeks is usually enough, though last-minute slots can sometimes be arranged – just get in touch.'),
         ('Do you travel for shoots outside Prague?', 'Yes. I am based in Prague and travel for shoots to other cities in the Czech Republic and across Europe.'),
@@ -322,7 +420,7 @@ def courses():
 <p class="body" style="margin-top:16px">Tell Nikol what you want to achieve and she'll shape the course around it – from a single focused session to a fuller programme.</p></section>
 </article></div></section>
 '''
-    h += faq(LANG, 'makeup course questions', faq_items)
+    h += faq(LANG, 'FAQ', faq_items, title='Questions about makeup courses')
     h += teaser(LANG, ['blush', 'travel', 'brushes'], 'Practise at home', 'tutorials from the blog')
     h += related2(LANG, [('Wedding makeup', '/en/wedding/', 'wedding-5'), ('Nude makeup', '/en/nude-makeup/', 'nude-1')])
     h += footer(LANG, 'Book your makeup course', 'Get in touch', 'Lessons held in Prague, Czech Republic · In English or Czech. Personalised quote within 24 hours.', (CAL, 'Book your course online +'))
@@ -348,7 +446,7 @@ def portfolio():
     h += header(LANG, 'portfolio', '/portfolio/')
     h += f'''<section class="page-head u u-pf-head" aria-labelledby="page-h1"><div class="wrap">
 {crumbs(LANG, [HOME, ('Portfolio', None)])}
-<div class="top"><h1 class="h1" id="page-h1"><span class="big wide">Portfolio</span><span class="sub serif">makeup – Nikol Pavlova, makeup artist Prague</span></h1>
+<div class="top"><h1 class="h1" id="page-h1"><span class="big wide">Portfolio</span> <span class="sub serif">makeup – Nikol Pavlova, makeup artist Prague</span></h1>
 <p class="body">This is a curated selection of makeup work created by <b>Nikol Pavlova</b>, a professional makeup artist based in <b>Prague, Czech Republic</b>. The portfolio covers bridal looks for weddings across Prague and Europe, glamorous evening and cocktail makeup, soft natural nude styling, commercial and editorial work for photo shoots, and behind-the-scenes images from one-on-one makeup courses. Each look is designed to enhance the client's natural features while reflecting their personal style and the occasion.</p></div>
 </div></section>
 <section class="sec--tight u u-pf" aria-labelledby="looks-h">
@@ -376,4 +474,4 @@ def portfolio():
 
 
 def build():
-    home(); wedding(); service(EVENING); service(NUDE); service(COMMERCIAL); courses(); portfolio()
+    home(); wedding(); service(EVENING); service(BALL); service(EVENTS); service(NUDE); service(COMMERCIAL); courses(); portfolio()

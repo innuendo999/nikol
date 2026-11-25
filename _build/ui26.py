@@ -22,7 +22,7 @@ def hero_svc(lang, crumb_items, big, sub, desc, cta, photos, quote=None):
 <section class="u-hero" aria-labelledby="page-h1">
 <div class="u-hero-txt">
 {crumbs(lang, crumb_items, cls='u-crumbs')}
-<h1 class="u-h1" id="page-h1"><span class="big">{big}</span><span class="sub">{sub}</span></h1>
+<h1 class="u-h1" id="page-h1"><span class="big">{big}</span> <span class="sub">{sub}</span></h1>
 <p class="u-lead">{desc}</p>
 <p><a class="u-btn u-btn--dark" href="{cta[0]}">{cta[1]}</a></p>
 </div>
@@ -151,7 +151,7 @@ SVC_PHOTOS = {  # cs path / en path -> hero pair, pricing photos, optional new g
     'nude': dict(hero=['nude-1', 'nude-3'], price=['nude-2']),
     'commercial': dict(hero=['ev-cap', 'commercial-6'], price=['commercial-4']),
 }
-PATH_KEY = {'/vecerni-liceni/': 'evening', '/en/evening-makeup/': 'evening', '/plesove-liceni/': 'plesy', '/liceni-na-akce/': 'akce',
+PATH_KEY = {'/vecerni-liceni/': 'evening', '/en/evening-makeup/': 'evening', '/plesove-liceni/': 'plesy', '/en/ball-makeup/': 'plesy', '/liceni-na-akce/': 'akce', '/en/event-makeup/': 'akce',
             '/nude-liceni/': 'nude', '/en/nude-makeup/': 'nude', '/komercni-liceni/': 'commercial', '/en/commercial-makeup/': 'commercial'}
 
 

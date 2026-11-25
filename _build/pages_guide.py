@@ -214,6 +214,8 @@ def sales(lang):
     h += steps2(t['steps_title'], t['steps_sub'], t['steps'])
     h += faq(lang, {'cs': 'časté dotazy', 'uk': 'часті запитання'}.get(lang, 'FAQ'), t['faq'], title=t['faq_title'])
     h += footer(lang, t['foot'][0], t['foot'][1], t['foot'][2], (buy_href, buy_label) if ok else None)
+    if ok:   # Stripe checkout opens in a new tab, so the guide page stays open
+        h = h.replace(f'href="{buy_href}"', f'href="{buy_href}" target="_blank" rel="noopener"')
     write(path, h)
 
 

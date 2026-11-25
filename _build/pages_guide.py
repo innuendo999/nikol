@@ -14,7 +14,7 @@ from lib import img as I
 from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2
 
 # ---------------------------------------------------------------- settings (fill in before launch)
-DOWNLOAD_API = ''   # the Worker's URL, e.g. 'https://guide-download.nikolmakeup.workers.dev' (no trailing slash)
+DOWNLOAD_API = 'https://guide-download.nikolmakeup.workers.dev'   # the Worker's URL (no trailing slash)
 GUIDE = {
     'cs': dict(path='/pruvodce-stetci/', thanks='/pruvodce-stetci/dekuji/',
                stripe_link='https://buy.stripe.com/5kQ9AVfrYaGr27uaFp2Nq03',

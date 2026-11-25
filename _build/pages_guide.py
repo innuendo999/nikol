@@ -27,6 +27,7 @@ GUIDE = {
                price='699 грн', price_num=699, currency='UAH'),
 }
 LANGS = ('cs', 'en', 'uk')
+LISTED = ('cs', 'en')   # uk is unlisted: direct link only (noindex, no hreflang, not in the sitemap, nothing on the site links to it)
 OTHER = {'cs': 'en', 'en': 'cs', 'uk': 'cs'}   # target of the header language switch
 
 
@@ -76,7 +77,7 @@ T = {
             ('V jakém formátu průvodce je?', 'Je to PDF o 23 stranách. Otevřete ho v telefonu, tabletu i počítači.'),
             ('Jak průvodce dostanu?', 'Hned po zaplacení vás Stripe vrátí na můj web na stránku s tlačítkem ke stažení PDF. Odkaz ke stažení platí 30 dní, proto si PDF uložte hned.'),
             ('Musím si koupit stejné štětce?', 'Ne. Seznam štětců není povinný – průvodce vás naučí, jaký tvar a vlas štětce potřebujete. Na konci jsou i alternativy k zakoupení v Česku (Notino, Douglas).'),
-            ('Je průvodce i v jiných jazycích?', 'Ano: anglicky – <a href="/en/brush-guide/">Makeup brush guide</a>, ukrajinsky – <a href="/uk/gaid-penzlyky/">Гайд по пензликах</a>.'),
+            ('Je průvodce i v angličtině?', 'Ano, anglickou verzi najdete na stránce <a href="/en/brush-guide/">Makeup brush guide</a>.'),
             ('Stažení nefunguje, co teď?', f'Napište mi na <a href="mailto:{MAIL}">{MAIL}</a> e-mail, který jste zadali při platbě, a průvodce vám pošlu.')],
         foot=('Máte dotaz k průvodci?', 'Kontaktujte mě', 'Napište mi, ráda poradím, jestli je průvodce pro vás.'),
         ty_title='Děkuji za nákup | Průvodce štětci – Nikol Pavlova',
@@ -121,7 +122,7 @@ T = {
             ('What format is the guide?', 'It’s a 23-page PDF. It opens on a phone, tablet or computer.'),
             ('How do I get the guide?', 'Right after payment Stripe sends you back to my site, to a page with the PDF download button. The download link works for 30 days, so save the PDF right away.'),
             ('Do I need to buy the same brushes?', 'No. The brush list isn’t mandatory – the guide teaches you which brush shape and bristle you need. At the end there are also alternatives you can buy in Czechia (Notino, Douglas).'),
-            ('Is the guide available in other languages?', 'Yes: in Czech – <a href="/pruvodce-stetci/">Průvodce štětci</a>, and in Ukrainian – <a href="/uk/gaid-penzlyky/">Гайд по пензликах</a>.'),
+            ('Is the guide available in Czech?', 'Yes, the Czech version is on the <a href="/pruvodce-stetci/">Průvodce štětci</a> page.'),
             ('The download doesn’t work – what now?', f'Email me at <a href="mailto:{MAIL}">{MAIL}</a> from the address you used at checkout and I’ll send you the guide.')],
         foot=('Questions about the guide?', 'Get in touch', 'Message me and I’ll help you decide whether the guide is right for you.'),
         ty_title='Thank you | Makeup Brush Guide – Nikol Pavlova',
@@ -208,10 +209,10 @@ def sales(lang):
     path, ok = g['path'], ready(lang)
     buy_href = g['stripe_link'] if ok else '#packages'
     buy_label = f"{t['buy']} – {g['price']} +" if ok else t['buy_soon']
-    alts = [(l, GUIDE[l]['path']) for l in LANGS] + [('x-default', GUIDE['cs']['path'])] if all_ready() else []
+    alts = [(l, GUIDE[l]['path']) for l in LISTED] + [('x-default', GUIDE['cs']['path'])] if all_ready() and lang in LISTED else []
     h = head(lang, t['title'], t['desc'], path, alts, SITE + f'/assets/img/guide-{lang}-p01-800.webp', _schema(lang, t, g),
              preload(f'guide-{lang}-p01', '(max-width: 900px) 60vw, 30vw'))
-    if not ok:
+    if not ok or lang not in LISTED:
         h = _noindex(h, path)
     h += header(lang, path, other['path'])
     h += hero_svc(lang, t['crumbs'], t['big'], t['sub'], t['lead'], (buy_href, buy_label),

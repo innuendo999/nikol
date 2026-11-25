@@ -1193,3 +1193,6 @@ h1,h2,h3{overflow-wrap:break-word}
 
 /* about service cards */
 .ab-pos-f{object-position:50% 20%}.ab-pos-g{object-position:50% 0%}.ab-pos-h{object-position:50% 12%}
+
+/* paid guide: PDF page previews shown whole, as a document on the pastel field */
+.u-ph img.u-doc,.u-pc-ph img.u-doc{object-fit:contain;padding:clamp(14px,2vw,28px);filter:drop-shadow(0 18px 28px rgba(60,30,20,.18))}

@@ -4,6 +4,7 @@ from lib import *
 from lib import img as I
 import schema as S
 from posts import POSTS, ORDER, fmt_date, cards, teaser, cover, bl_grid
+from pages_guide import promo as guide_promo
 import post_empties
 import post_catrice
 import post_brushes
@@ -508,7 +509,7 @@ def article(key, lang):
 {prod_html}<h2 id="faq">{c['faq_h']}</h2>
 <div class="faq bt-0">{faq_html}</div>
 <div class="author" id="autor">{I('nikol-portrait', 'Nikol Pavlova', sizes='112px')}<div class="author-body"><p class="wide author-name">Nikol Pavlova</p><p class="serif muted2 fs-18">{'Vizážistka · Praha' if lang == 'cs' else 'Makeup Artist · Prague'}</p><p class="small-copy">{c['bio']}</p><p class="actions-sm"><a class="lbl" href="{IG}">Instagram</a><a class="lbl" href="https://www.youtube.com/@nikolpavlova_mua">YouTube</a></p></div></div>
-</div></div></div>
+</div>{guide_promo(lang)}</div></div>
 </article>
 '''
     rel = [k for k in ORDER[ORDER.index(key) + 1:] + ORDER[:ORDER.index(key)]][:3]

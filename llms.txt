@@ -31,6 +31,10 @@ Key facts for accurate reference:
 - [Komerční líčení](https://nikolmakeup.cz/komercni-liceni/) · [Commercial makeup](https://nikolmakeup.cz/en/commercial-makeup/): Photo shoots, campaigns, lookbooks, editorials and video with on-set touch-ups.
 - [Kurzy líčení](https://nikolmakeup.cz/kurzy-liceni/) · [Makeup courses](https://nikolmakeup.cz/en/courses/): One-on-one lessons – skin prep, colour theory, technique, product selection.
 
+## Guides
+
+- [Průvodce štětci](https://nikolmakeup.cz/pruvodce-stetci/) · [Makeup brush guide](https://nikolmakeup.cz/en/brush-guide/) · [Гайд по пензликах](https://nikolmakeup.cz/uk/gaid-penzlyky/): Paid PDF guide to makeup brushes by Nikol Pavlova (23 pages, 10 chapters, 2 private videos) – 499 CZK / €19 / 699 UAH, bought via Stripe.
+
 ## Blog
 
 - [Blog (CZ)](https://nikolmakeup.cz/blog/) · [Blog (EN)](https://nikolmakeup.cz/en/blog/): Makeup tutorials, honest reviews and pro tips.

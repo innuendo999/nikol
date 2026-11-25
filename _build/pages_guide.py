@@ -219,6 +219,27 @@ def sales(lang):
     write(path, h)
 
 
+PROMO = {
+    'cs': dict(lbl='Novinka', h='Holky, <em>průvodce štětci</em> je tady!', p='Který štětec na co, jakým pohybem s ním pracovat a jak ho mýt. 23 stran PDF a 2 neveřejná videa.', btn='Chci průvodce →'),
+    'en': dict(lbl='New', h='Girls, the <em>brush guide</em> is here!', p='Which brush for what, which movement to use and how to wash them. A 23-page PDF and 2 private videos.', btn='Get the guide →'),
+    'uk': dict(lbl='Новинка', h='Дівчата, <em>гайд по пензликах</em> уже тут!', p='Який пензлик для чого, яким рухом працювати і як мити. PDF на 23 сторінки і 2 закриті відео.', btn='Хочу гайд →'),
+}
+
+
+def promo(lang):
+    """Sticky card for the right column of blog articles (and a full-width card on narrower screens)."""
+    if not ready(lang):
+        return ''
+    g, t = GUIDE[lang], PROMO[lang]
+    return f'''<aside class="post-promo" aria-label="{T[lang]['price_col']}"><a class="pp-card" href="{g['path']}">
+<span class="pp-ph">{I(f'guide-{lang}-p01', T[lang]['hero_alt'][0], sizes='(max-width: 1200px) 40vw, 240px', cls='u-doc')}</span>
+<span class="pp-txt"><span class="pp-lbl">{t['lbl']} · PDF</span>
+<span class="pp-h">{t['h']}</span>
+<span class="pp-p">{t['p']}</span>
+<span class="pp-row"><span class="pp-price">{g['price']}</span><span class="pp-btn">{t['btn']}</span></span></span>
+</a></aside>'''
+
+
 def build():
     for lang in LANGS:
         sales(lang)

@@ -78,6 +78,20 @@ L = {
         reviews_title='Google reviews', reviews_all='All reviews on Google →', stars='Rated 5 out of 5', g_review='Google review', review_write='Write a review', swipe='Swipe for more reviews →', f_gbp='Google profile',
         faq_title='FAQ', related='Related service',
     ),
+    'uk': dict(  # only the Ukrainian brush-guide page uses this; nav links go to the Czech pages
+        skip='Перейти до змісту', home='Головна', about='Про мене', portfolio='Портфоліо', services='Послуги', blog='Блог',
+        contact='Контакти', book='Записатися', menu='Меню', main_nav='Головна навігація', other='CZ', other_label='CZ – Česká verze',
+        crumbs='Навігаційний ланцюжок', services_list=[
+            ('Весільний макіяж', '/svatebni-liceni/'), ('Вечірній макіяж', '/vecerni-liceni/'),
+            ('Макіяж на бал', '/plesove-liceni/'), ('Макіяж на події', '/liceni-na-akce/'), ('Nude макіяж', '/nude-liceni/'),
+            ('Комерційний макіяж', '/komercni-liceni/'), ('Курси макіяжу', '/kurzy-liceni/')],
+        blog_href='/blog/', home_href='/', portfolio_href='/portfolio/', about_href='/o-mne/',
+        f_services='Послуги', f_location='Локація', f_write='Напиши мені', f_call='Телефон / WhatsApp', f_site='Сайт', f_contact='Контакти', reviews='Відгуки', f_travel='Виїжджаю по Празі, Чехії та Європі', f_reply='Зазвичай відповідаю протягом кількох годин.', f_addr='Prvního pluku 8a<br>180 00 Praha 8 – Karlín', social='Соцмережі',
+        f_loc_text='Prvního pluku 8a, 180 00 Praha 8 – Karlín<br>Чехія',
+        rights='Усі права захищені', top='Нагору ↑', online='Записатися онлайн +', email='E-mail',
+        reviews_title='Відгуки Google', reviews_all='Усі відгуки в Google →', stars='Оцінка 5 з 5', g_review='Відгук Google', review_write='Написати відгук', swipe='Гортай, щоб побачити більше →', f_gbp='Профіль Google',
+        faq_title='Часті запитання', related='Пов’язана послуга',
+    ),
 }
 
 
@@ -105,7 +119,7 @@ def head(lang, title, desc, path, alternates, og_image, schema, preload_html='',
     url = SITE + path
     alt_html = '\n'.join(f'<link rel="alternate" hreflang="{hl}" href="{SITE}{p}">' for hl, p in alternates)
     ld = '\n'.join('<script type="application/ld+json">' + json.dumps(s, ensure_ascii=False, separators=(',', ':')) + '</script>' for s in schema)
-    locale = 'cs_CZ' if lang == 'cs' else 'en_GB'
+    locale = {'cs': 'cs_CZ', 'uk': 'uk_UA'}.get(lang, 'en_GB')
     return f'''<!doctype html>
 <html lang="{lang}">
 <head>
@@ -218,7 +232,7 @@ def footer(lang, cta_label, cta_title, cta_text, primary=None, pre=''):
 <nav class="f-col" aria-label="{t['f_site']}"><h3 class="lbl">{t['f_site']}</h3>{site}</nav>
 <div class="f-col"><h3 class="lbl">{t['f_contact']}</h3><a class="tel" href="tel:{TEL}">{TEL_H}</a><a href="mailto:{MAIL}">{MAIL}</a><address>{t['f_addr']}</address><p class="f-note">{t['f_travel']}</p></div>
 </div>
-<div class="f-bar lbl"><span>2026 © Nikol Pavlova · {'vizážistka Praha' if lang == 'cs' else 'makeup artist Prague'}</span><a href="#main">{t['top']}</a></div>
+<div class="f-bar lbl"><span>2026 © Nikol Pavlova · { {'cs': 'vizážistka Praha', 'uk': 'візажистка, Прага'}.get(lang, 'makeup artist Prague')}</span><a href="#main">{t['top']}</a></div>
 </div>
 <div class="f-name" aria-hidden="true">{img('nikol-footer', '', sizes='100vw')}<div class="mesh"></div><span>Nikol Pavlova</span></div>
 </footer>{close_zone}
@@ -253,14 +267,14 @@ def faq(lang, title_sub, items, hid='faq', title=None):
         op = ' open' if i == 0 else ''
         det += f'<details{op}><summary><h3>{q}</h3><span class="pm" aria-hidden="true"></span></summary><div><p>{ans}</p></div></details>\n'
     # title: topical H2 for service pages, e.g. 'Dotazy ke svatebnímu líčení' (first word upright, rest italic)
-    first, rest = title.split(' ', 1) if title else (('Časté', 'dotazy') if cs else ('Questions', '&amp; answers'))
+    first, rest = title.split(' ', 1) if title else (('Časté', 'dotazy') if cs else ('Часті', 'запитання') if lang == 'uk' else ('Questions', '&amp; answers'))
     return f'''<section class="faq-sec" aria-labelledby="{hid}-h">
 <div class="wrap faq-lay">
 <div class="faq-side">
 <p class="faq-label">({title_sub})</p>
 <h2 class="faq-h2" id="{hid}-h">{first} <em>{rest}</em></h2>
-<p class="faq-note">{'Nenašli jste odpověď? Napište mi, odpovídám obvykle během pár hodin.' if cs else 'Didn’t find your answer? Message me, I usually reply within a few hours.'}</p>
-<p class="faq-links"><a class="faq-btn" href="{WA}">WhatsApp</a><a class="faq-btn faq-btn--ghost" href="mailto:{MAIL}">{'E-mail' if cs else 'Email'}</a></p>
+<p class="faq-note">{'Nenašli jste odpověď? Napište mi, odpovídám obvykle během pár hodin.' if cs else 'Не знайшла відповідь? Напиши мені, зазвичай відповідаю протягом кількох годин.' if lang == 'uk' else 'Didn’t find your answer? Message me, I usually reply within a few hours.'}</p>
+<p class="faq-links"><a class="faq-btn" href="{WA}">WhatsApp</a><a class="faq-btn faq-btn--ghost" href="mailto:{MAIL}">{'Email' if lang == 'en' else 'E-mail'}</a></p>
 </div>
 <div class="faq">
 {det}</div>

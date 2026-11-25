@@ -33,7 +33,7 @@ PAIRS = [
 
 
 def sitemap():
-    pairs = PAIRS + ([(pages_guide.GUIDE['cs']['path'], pages_guide.GUIDE['en']['path'], '0.6')] if pages_guide.pair_ready() else [])
+    pairs = PAIRS
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for cs, en, pr in pairs:
@@ -47,6 +47,13 @@ def sitemap():
             out.append(f'    <priority>{pr}</priority>')
             for hl, ap in alts:
                 out.append(f'    <xhtml:link rel="alternate" hreflang="{hl}" href="{SITE}{ap}"/>')
+            out.append('  </url>')
+    if pages_guide.all_ready():   # paid guide: three languages, each listing all three
+        G = pages_guide.GUIDE
+        alts = [(l, G[l]['path']) for l in pages_guide.LANGS] + [('x-default', G['cs']['path'])]
+        for l in pages_guide.LANGS:
+            out += ['  <url>', f'    <loc>{SITE}{G[l]["path"]}</loc>', f'    <lastmod>{LASTMOD}</lastmod>', '    <priority>0.6</priority>']
+            out += [f'    <xhtml:link rel="alternate" hreflang="{hl}" href="{SITE}{ap}"/>' for hl, ap in alts]
             out.append('  </url>')
     out.append('</urlset>\n')
     open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write('\n'.join(out))

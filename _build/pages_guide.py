@@ -1,8 +1,10 @@
 """Paid PDF guide: sales pages (CZ, EN, UA).
 
 How the sale works: the "Buy" buttons open a Stripe Payment Link (stripe_link below).
-Payment and delivery of the PDF are handled entirely in Stripe (the Payment Link's
-after-payment settings), so the site has no thank-you or download page.
+Thank-you pages (THANKS paths below, noindex) are ready for the Stripe redirect
+?session_id={CHECKOUT_SESSION_ID}; their button sends the buyer to the Worker
+(_worker/guide-download, DOWNLOAD_API), which checks the payment and streams the PDF
+from private R2. Until DOWNLOAD_API is set, a thank-you page asks the buyer to email.
 
 Until stripe_link and price are filled in, a page is built with noindex,
 left out of the sitemap and the build prints a warning.
@@ -12,14 +14,15 @@ from lib import img as I
 from ui26 import hero_svc, strip, intro2, features2, pricing2, steps2
 
 # ---------------------------------------------------------------- settings (fill in before launch)
+DOWNLOAD_API = ''   # the Worker's URL, e.g. 'https://guide-download.nikolmakeup.workers.dev' (no trailing slash)
 GUIDE = {
-    'cs': dict(path='/pruvodce-stetci/',
+    'cs': dict(path='/pruvodce-stetci/', thanks='/pruvodce-stetci/dekuji/',
                stripe_link='https://buy.stripe.com/5kQ9AVfrYaGr27uaFp2Nq03',
                price='499 Kč', price_num=499, currency='CZK'),
-    'en': dict(path='/en/brush-guide/',
+    'en': dict(path='/en/brush-guide/', thanks='/en/brush-guide/thank-you/',
                stripe_link='https://buy.stripe.com/6oU4gB4Nk4i36nKaFp2Nq02',
                price='€19', price_num=19, currency='EUR'),
-    'uk': dict(path='/uk/gaid-penzlyky/',
+    'uk': dict(path='/uk/gaid-penzlyky/', thanks='/uk/gaid-penzlyky/dyakuyu/',
                stripe_link='https://buy.stripe.com/bJe5kF93A8yj6nK00L2Nq01',
                price='699 грн', price_num=699, currency='UAH'),
 }
@@ -76,6 +79,12 @@ T = {
             ('Je průvodce i v jiných jazycích?', 'Ano: anglicky – <a href="/en/brush-guide/">Makeup brush guide</a>, ukrajinsky – <a href="/uk/gaid-penzlyky/">Гайд по пензликах</a>.'),
             ('Stažení nefunguje, co teď?', f'Napište mi na <a href="mailto:{MAIL}">{MAIL}</a> e-mail, který jste zadali při platbě, a průvodce vám pošlu.')],
         foot=('Máte dotaz k průvodci?', 'Kontaktujte mě', 'Napište mi, ráda poradím, jestli je průvodce pro vás.'),
+        ty_title='Děkuji za nákup | Průvodce štětci – Nikol Pavlova',
+        ty_big='Děkuji!', ty_sub='váš průvodce štětci je připravený',
+        ty_text='Platba proběhla. Stáhněte si PDF a uložte si ho do telefonu nebo počítače.',
+        ty_btn='Stáhnout průvodce (PDF)', ty_note='Odkaz ke stažení platí 30 dní – uložte si PDF hned.',
+        ty_missing=f'Odkaz ke stažení se nenačetl. Napište mi prosím na <a href="mailto:{MAIL}">{MAIL}</a> e-mail, který jste zadali při platbě, a průvodce vám pošlu.',
+        ty_next='Mezitím se podívejte do blogu', ty_next_href='/blog/jak-myt-stetce-na-make-up/', ty_next_label='Jak mýt štětce na make-up →',
     ),
     'en': dict(
         title='Makeup Brush Guide (PDF) | Nikol Pavlova, Prague MUA',
@@ -115,6 +124,12 @@ T = {
             ('Is the guide available in other languages?', 'Yes: in Czech – <a href="/pruvodce-stetci/">Průvodce štětci</a>, and in Ukrainian – <a href="/uk/gaid-penzlyky/">Гайд по пензликах</a>.'),
             ('The download doesn’t work – what now?', f'Email me at <a href="mailto:{MAIL}">{MAIL}</a> from the address you used at checkout and I’ll send you the guide.')],
         foot=('Questions about the guide?', 'Get in touch', 'Message me and I’ll help you decide whether the guide is right for you.'),
+        ty_title='Thank you | Makeup Brush Guide – Nikol Pavlova',
+        ty_big='Thank you!', ty_sub='your brush guide is ready',
+        ty_text='Your payment went through. Download the PDF and save it to your phone or computer.',
+        ty_btn='Download the guide (PDF)', ty_note='The download link works for 30 days – save the PDF now.',
+        ty_missing=f'The download link didn’t load. Please email me at <a href="mailto:{MAIL}">{MAIL}</a> from the address you used at checkout and I’ll send you the guide.',
+        ty_next='In the meantime, read on the blog', ty_next_href='/en/blog/how-to-wash-makeup-brushes/', ty_next_label='How to wash makeup brushes →',
     ),
     'uk': dict(
         title='Гайд по пензликах для макіяжу (PDF) | Nikol Pavlova',
@@ -154,6 +169,12 @@ T = {
             ('Чи є гайд іншими мовами?', 'Так: чеською – <a href="/pruvodce-stetci/">Průvodce štětci</a>, англійською – <a href="/en/brush-guide/">Makeup brush guide</a>.'),
             ('Завантаження не працює, що робити?', f'Напиши мені на <a href="mailto:{MAIL}">{MAIL}</a> з адреси, яку вказала під час оплати, і я надішлю гайд.')],
         foot=('Є запитання про гайд?', 'Напиши мені', 'Напиши – підкажу, чи підійде тобі гайд.'),
+        ty_title='Дякую за покупку | Гайд по пензликах – Nikol Pavlova',
+        ty_big='Дякую!', ty_sub='твій гайд по пензликах готовий',
+        ty_text='Оплата пройшла. Завантаж PDF і збережи його в телефон чи комп’ютер.',
+        ty_btn='Завантажити гайд (PDF)', ty_note='Посилання на завантаження діє 30 днів – збережи PDF одразу.',
+        ty_missing=f'Посилання на завантаження не завантажилося. Напиши мені, будь ласка, на <a href="mailto:{MAIL}">{MAIL}</a> з адреси, яку вказала під час оплати, і я надішлю гайд.',
+        ty_next='А поки – почитай у блозі', ty_next_href='/blog/jak-myt-stetce-na-make-up/', ty_next_label='Як мити пензлики (чеською) →',
     ),
 }
 
@@ -265,8 +286,41 @@ f.querySelector('[data-fab-x]').addEventListener('click',function(){{f.classList
 '''
 
 
+NEXT = {'cs': ('Rezervovat líčení', 'Kurzy líčení', '/kurzy-liceni/'), 'en': ('Book makeup', 'Makeup courses', '/en/courses/'), 'uk': ('Записатися на макіяж', 'Курси макіяжу', '/kurzy-liceni/')}
+
+
+def thanks(lang):
+    """Stripe redirects here with ?session_id=cs_...; the button goes to the Worker, which checks the payment."""
+    t, g = T[lang], GUIDE[lang]
+    path = g['thanks']
+    h = head(lang, t['ty_title'], t['ty_text'], path, [], SITE + f'/assets/img/guide-{lang}-p01-800.webp', [])
+    h = _noindex(h, path)
+    h = h.replace('</head>', '<meta name="referrer" content="no-referrer">\n</head>', 1)   # keep session_id out of Referer headers
+    h += header(lang, '', GUIDE[OTHER[lang]]['thanks'])
+    h += f'''<div class="u"><section class="u-hero" aria-labelledby="page-h1">
+<div class="u-hero-txt">
+<h1 class="u-h1" id="page-h1"><span class="big">{t['ty_big']}</span> <span class="sub">{t['ty_sub']}</span></h1>
+<p class="u-lead">{t['ty_text']}</p>
+<p data-dl hidden><a class="u-btn u-btn--dark" data-dl-btn href="#">{t['ty_btn']}</a></p>
+<p class="u-lead" data-dl hidden style="font-size:15px;line-height:1.7">{t['ty_note']}</p>
+<p class="u-lead" data-dl-missing hidden style="font-size:15px;line-height:1.7">{t['ty_missing']}</p>
+<p class="actions-sm" style="margin-top:16px"><a class="u-link" href="{CAL}">{NEXT[lang][0]} →</a><a class="u-link" href="{NEXT[lang][2]}">{NEXT[lang][1]} →</a><a class="u-link" href="{IG}">Instagram →</a><a class="u-link" href="{t['ty_next_href']}">{t['ty_next_label']}</a></p>
+</div>
+<div class="u-hero-ph"><span class="u-ph u-ph--a">{I(f'guide-{lang}-p01', t['hero_alt'][0], sizes='(max-width: 900px) 60vw, 30vw', cls='u-doc', priority=True)}</span>
+<div class="u-hero-col"><span class="u-ph u-ph--b">{I(f'guide-{lang}-p21', t['feat_alts'][3], sizes='(max-width: 900px) 40vw, 22vw', cls='u-doc')}</span></div></div>
+</section></div>
+<script>(function(){{var id=new URLSearchParams(location.search).get('session_id'),api={DOWNLOAD_API!r};
+var ok=id&&/^cs_(test|live)_[A-Za-z0-9]+$/.test(id)&&api;
+document.querySelectorAll(ok?'[data-dl]':'[data-dl-missing]').forEach(function(e){{e.hidden=false}});
+if(ok)document.querySelector('[data-dl-btn]').href=api+'/download?lang={lang}&session_id='+encodeURIComponent(id);}})();</script>
+'''
+    h += footer(lang, t['foot'][0], t['foot'][1], t['foot'][2])
+    write(path, h)
+
+
 def build():
     for lang in LANGS:
         sales(lang)
+        thanks(lang)
         if not ready(lang):
             print(f'  ! brush guide ({lang}): set stripe_link and price in _build/pages_guide.py – page is noindex until then')
